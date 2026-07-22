@@ -86,6 +86,16 @@ def create_app() -> FastAPI:
     app.include_router(health_router)
     app.include_router(interview_router)
 
+    @app.get("/", tags=["Root"])
+    async def root():
+        return {
+            "success": True,
+            "message": "InterviewMind AI Backend is running",
+            "version": settings.APP_VERSION,
+            "docs": "/docs",
+            "health": "/api/health",
+        }
+
     # Register global exception handlers
     _register_exception_handlers(app)
 
