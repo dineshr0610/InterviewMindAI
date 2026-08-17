@@ -51,13 +51,13 @@ def update_interview_state(state: InterviewState):
 
     state["question_number"] += 1
 
-    if state["question_number"] > state["max_questions"]:
+    if state["question_number"] >= state["max_questions"]:
         state["interview_completed"] = True
 
-    if state["score"] >= 8:
+    if state["score"] >= 80:
         state["difficulty"] = "Medium"
 
-    elif state["score"] <= 4:
+    elif state["score"] <= 40:
         state["difficulty"] = "Easy"
 
     return state

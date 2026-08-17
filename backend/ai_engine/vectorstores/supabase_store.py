@@ -1,14 +1,10 @@
-"""
-Supabase PostgreSQL Vector Store integration using pgvector.
-Retrieves semantically similar documents from Supabase.
-"""
-
 from __future__ import annotations
 
 import logging
 import os
 from typing import List, Optional
 
+import requests
 from dotenv import load_dotenv
 from langchain_core.callbacks import CallbackManagerForRetrieverRun
 from langchain_core.documents import Document
@@ -22,10 +18,6 @@ logger = logging.getLogger("interviewmind.vectorstores.supabase")
 
 
 class SupabaseVectorRetriever(BaseRetriever):
-    """
-    Retriever using Supabase PostgreSQL + pgvector.
-    """
-
     k: int = 2
     similarity_threshold: float = 0.0
 
@@ -35,46 +27,52 @@ class SupabaseVectorRetriever(BaseRetriever):
         *,
         run_manager: Optional[CallbackManagerForRetrieverRun] = None,
     ) -> List[Document]:
-
-        logger.info(
-            "Executing Supabase pgvector retrieval for query: '%s'",
-            query[:60],
-        )
-
-        from supabase import create_client
-
         supabase_url = os.getenv("SUPABASE_URL")
         supabase_key = os.getenv("SUPABASE_SECRET_KEY")
 
         if not supabase_url:
             raise RuntimeError("SUPABASE_URL is not configured.")
-
         if not supabase_key:
             raise RuntimeError("SUPABASE_SECRET_KEY is not configured.")
 
-        client = create_client(
-            supabase_url,
-            supabase_key,
-        )
-
-        # Generate a 1536-dimensional embedding for the query.
         query_embedding = embedding_provider.embed_query(query)
 
-        # Search Supabase pgvector using the PostgreSQL RPC function.
-        response = client.rpc(
-            "match_document_embeddings",
-            {
-                "query_embedding": query_embedding,
-                "match_threshold": self.similarity_threshold,
-                "match_count": self.k,
-            },
-        ).execute()
+        if len(query_embedding) != 1536:
+            raise RuntimeError(
+                f"Expected 1536-dimensional query embedding, got {len(query_embedding)}"
+            )
 
-        documents = []
+        rpc_url = (
+            supabase_url.rstrip("/")
+            + "/rest/v1/rpc/match_document_embeddings"
+        )
 
-        for row in response.data or []:
-            metadata = row.get("metadata") or {}
+        headers = {
+            "apikey": supabase_key,
+            "Authorization": "Bearer " + supabase_key,
+            "Content-Type": "application/json",
+        }
 
+        payload = {
+            "query_embedding": query_embedding,
+            "match_threshold": self.similarity_threshold,
+            "match_count": self.k,
+        }
+
+        response = requests.post(
+            rpc_url,
+            headers=headers,
+            json=payload,
+            timeout=30,
+        )
+
+        response.raise_for_status()
+
+        rows = response.json() or []
+        documents: List[Document] = []
+
+        for row in rows:
+            metadata = dict(row.get("metadata") or {})
             metadata["similarity"] = row.get("similarity")
             metadata["source"] = "supabase_pgvector"
 
@@ -85,11 +83,7 @@ class SupabaseVectorRetriever(BaseRetriever):
                 )
             )
 
-        logger.info(
-            "Retrieved %d documents from Supabase pgvector.",
-            len(documents),
-        )
-
+        logger.info("Retrieved %d documents from Supabase pgvector.", len(documents))
         return documents
 
 
