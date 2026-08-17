@@ -1,82 +1,96 @@
 """
 Supabase PostgreSQL Vector Store integration using pgvector.
-Replaces ChromaDB as the unified vector store in Supabase.
+Retrieves semantically similar documents from Supabase.
 """
 
 from __future__ import annotations
 
-import importlib
 import logging
-from typing import List, Dict, Any, Optional
+import os
+from typing import List, Optional
+
+from dotenv import load_dotenv
+from langchain_core.callbacks import CallbackManagerForRetrieverRun
+from langchain_core.documents import Document
+from langchain_core.retrievers import BaseRetriever
+
+from ai_engine.embeddings.embedding_provider import embedding_provider
+
+load_dotenv()
 
 logger = logging.getLogger("interviewmind.vectorstores.supabase")
-
-try:
-    _docs_mod = importlib.import_module("langchain_core.documents")
-    _ret_mod = importlib.import_module("langchain_core.retrievers")
-    _cb_mod = importlib.import_module("langchain_core.callbacks")
-    Document = _docs_mod.Document
-    BaseRetriever = _ret_mod.BaseRetriever
-    CallbackManagerForRetrieverRun = _cb_mod.CallbackManagerForRetrieverRun
-except ImportError:
-    class Document:
-        def __init__(self, page_content: str, metadata: dict = None):
-            self.page_content = page_content
-            self.metadata = metadata or {}
-
-    class BaseRetriever:
-        def invoke(self, input_val: Any) -> List[Document]:
-            return self._get_relevant_documents(str(input_val))
-        def __or__(self, other: Any):
-            class PipeRunnable:
-                def __init__(self, first, second):
-                    self.first = first
-                    self.second = second
-                def invoke(self, val):
-                    docs = self.first.invoke(val)
-                    return self.second(docs)
-            return PipeRunnable(self, other)
-
-    CallbackManagerForRetrieverRun = Any
-
-
-class DummyEmbedding:
-    """Simple lightweight embedding fallback when HuggingFace/Gemini is offline."""
-    def embed_query(self, text: str) -> List[float]:
-        val = float(sum(ord(c) for c in text) % 100) / 100.0
-        return [val] * 384
 
 
 class SupabaseVectorRetriever(BaseRetriever):
     """
-    Retriever interfacing with Supabase pgvector extension.
-    Exposes standard Runnable interface for LangChain/LangGraph.
+    Retriever using Supabase PostgreSQL + pgvector.
     """
+
     k: int = 2
+    similarity_threshold: float = 0.0
 
     def _get_relevant_documents(
-        self, query: str, *, run_manager: Optional[CallbackManagerForRetrieverRun] = None
+        self,
+        query: str,
+        *,
+        run_manager: Optional[CallbackManagerForRetrieverRun] = None,
     ) -> List[Document]:
-        logger.info("Executing Supabase pgvector retrieval for query: '%s'", query[:60])
-        
-        fallback_docs = [
-            Document(
-                page_content=(
-                    f"Interview Topic Knowledge: Concepts, algorithms, and core principles "
-                    f"related to '{query}'. Focus on dynamic programming, arrays, system design, "
-                    f"and time/space complexity trade-offs."
-                ),
-                metadata={"source": "supabase_pgvector_knowledge_base"}
-            ),
-            Document(
-                page_content=(
-                    "Best Practices: Clearly state problem assumptions, evaluate edge cases, "
-                    "provide optimal time complexity (O(N) or O(log N)), and explain code structure step-by-step."
-                ),
-                metadata={"source": "supabase_pgvector_best_practices"}
-            ),
-        ]
-        return fallback_docs[:self.k]
+
+        logger.info(
+            "Executing Supabase pgvector retrieval for query: '%s'",
+            query[:60],
+        )
+
+        from supabase import create_client
+
+        supabase_url = os.getenv("SUPABASE_URL")
+        supabase_key = os.getenv("SUPABASE_SECRET_KEY")
+
+        if not supabase_url:
+            raise RuntimeError("SUPABASE_URL is not configured.")
+
+        if not supabase_key:
+            raise RuntimeError("SUPABASE_SECRET_KEY is not configured.")
+
+        client = create_client(
+            supabase_url,
+            supabase_key,
+        )
+
+        # Generate a 1536-dimensional embedding for the query.
+        query_embedding = embedding_provider.embed_query(query)
+
+        # Search Supabase pgvector using the PostgreSQL RPC function.
+        response = client.rpc(
+            "match_document_embeddings",
+            {
+                "query_embedding": query_embedding,
+                "match_threshold": self.similarity_threshold,
+                "match_count": self.k,
+            },
+        ).execute()
+
+        documents = []
+
+        for row in response.data or []:
+            metadata = row.get("metadata") or {}
+
+            metadata["similarity"] = row.get("similarity")
+            metadata["source"] = "supabase_pgvector"
+
+            documents.append(
+                Document(
+                    page_content=row["content"],
+                    metadata=metadata,
+                )
+            )
+
+        logger.info(
+            "Retrieved %d documents from Supabase pgvector.",
+            len(documents),
+        )
+
+        return documents
 
 
 retriever = SupabaseVectorRetriever()
