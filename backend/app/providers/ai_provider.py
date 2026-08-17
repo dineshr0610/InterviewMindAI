@@ -67,7 +67,7 @@ class AIProvider:
             try:
                 res = await asyncio.wait_for(
                     asyncio.to_thread(self.ai_service.generate_question, topic, difficulty),
-                    timeout=3.0,
+                    timeout=30.0,
                 )
                 if isinstance(res, dict):
                     q = res.get("question") or res.get("answer") or res.get("text")
@@ -111,7 +111,7 @@ class AIProvider:
             try:
                 result = await asyncio.wait_for(
                     asyncio.to_thread(self.eval_service.evaluate, question, answer),
-                    timeout=3.0,
+                    timeout=30.0,
                 )
                 if isinstance(result, dict) and "score" in result:
                     next_q = await self.generate_question(
@@ -127,7 +127,7 @@ class AIProvider:
                         improvements = [i.strip() for i in improvements.split(",") if i.strip()]
 
                     return {
-                        "score": int(result.get("score", 5)),
+                        "score": max(0, min(10, round(float(result.get("score", 5)) / 10))),
                         "feedback": str(result.get("feedback", "Good effort.")),
                         "strengths": strengths,
                         "improvements": improvements,
