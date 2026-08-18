@@ -5,7 +5,7 @@ It abstracts all LLM/LangChain/LangGraph execution details away from the applica
 """
 
 from __future__ import annotations
-
+from typing import Any, Dict, Optional
 import asyncio
 import logging
 import sys
@@ -91,6 +91,8 @@ class AIProvider:
         self,
         question: str,
         answer: str,
+        topic: Optional[str] = None,
+        difficulty: str = "Easy",
     ) -> Dict[str, Any]:
         """
         Evaluate a candidate's answer using Gunal's evaluation engine.

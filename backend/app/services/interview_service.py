@@ -160,6 +160,8 @@ class InterviewService:
             evaluation = await self.ai_provider.evaluate_answer(
                 question=current_question,
                 answer=stripped_answer,
+                topic=interview.topic,
+                difficulty=interview.difficulty,
             )
         except Exception as exc:
             raise AIProviderException(
