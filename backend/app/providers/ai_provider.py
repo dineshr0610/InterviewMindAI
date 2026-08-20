@@ -1,91 +1,117 @@
-"""
-AI Provider — Facade interface for Gunal's LangGraph AI engine.
-The backend calls this provider to generate questions and evaluate candidate answers.
-It abstracts all LLM/LangChain/LangGraph execution details away from the application logic.
+﻿"""
+AI Provider facade for InterviewMind AI.
 """
 
 from __future__ import annotations
+
 from typing import Any, Dict, Optional
 import asyncio
 import logging
 import sys
 from pathlib import Path
-from typing import Any, Dict
 
-# Ensure backend directory is in sys.path so ai_engine can be imported
 backend_dir = Path(__file__).resolve().parent.parent.parent
+
 if str(backend_dir) not in sys.path:
     sys.path.insert(0, str(backend_dir))
 
 logger = logging.getLogger("interviewmind.providers.ai")
 
 try:
-    from ai_engine.services.interview_service import InterviewService as AIInterviewService
-    from ai_engine.services.evaluation_service import EvaluationService as AIEvaluationService
-    from ai_engine.graphs.interview_graph import interview_graph
+    from ai_engine.services.interview_service import (
+        InterviewService as AIInterviewService,
+    )
+    from ai_engine.services.evaluation_service import (
+        EvaluationService as AIEvaluationService,
+    )
+
     AI_ENGINE_AVAILABLE = True
-    logger.info("Successfully imported ai_engine modules.")
+
 except Exception as exc:
-    logger.warning("Could not import ai_engine directly: %s. Using fallback provider logic.", exc)
+    logger.warning(
+        "Could not import ai_engine: %s",
+        exc,
+    )
     AI_ENGINE_AVAILABLE = False
 
 
 class AIProvider:
-    """
-    Facade Provider interfacing with Gunal's LangGraph engine.
-    Exposes strictly generate_question() and evaluate_answer().
-    """
 
     def __init__(self) -> None:
-        """Initialize the AI provider facade."""
-        self.ai_service = AIInterviewService() if AI_ENGINE_AVAILABLE else None
-        self.eval_service = AIEvaluationService() if AI_ENGINE_AVAILABLE else None
-        logger.info("AIProvider facade initialized (AI_ENGINE_AVAILABLE=%s).", AI_ENGINE_AVAILABLE)
+        self.ai_service = (
+            AIInterviewService()
+            if AI_ENGINE_AVAILABLE
+            else None
+        )
+
+        self.eval_service = (
+            AIEvaluationService()
+            if AI_ENGINE_AVAILABLE
+            else None
+        )
+
+        logger.info(
+            "AIProvider initialized (AI_ENGINE_AVAILABLE=%s)",
+            AI_ENGINE_AVAILABLE,
+        )
 
     async def generate_question(
         self,
         topic: str,
         difficulty: str = "Easy",
+        previous_questions: Optional[list[str]] = None,
     ) -> str:
-        """
-        Generate an interview question for the given topic and difficulty.
 
-        Args:
-            topic: The technical topic for the question.
-            difficulty: Difficulty level ("Easy", "Medium", "Hard").
+        previous_questions = previous_questions or []
 
-        Returns:
-            A generated interview question text.
-        """
         logger.info(
-            "Generating question via AIProvider: topic='%s', difficulty='%s'",
+            "Generating topic-locked question: topic='%s', difficulty='%s'",
             topic,
             difficulty,
         )
 
         if AI_ENGINE_AVAILABLE and self.ai_service:
             try:
-                res = await asyncio.wait_for(
-                    asyncio.to_thread(self.ai_service.generate_question, topic, difficulty),
+                result = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        self.ai_service.generate_question,
+                        topic,
+                        difficulty,
+                        previous_questions,
+                    ),
                     timeout=30.0,
                 )
-                if isinstance(res, dict):
-                    q = res.get("question") or res.get("answer") or res.get("text")
-                    if q:
-                        return str(q)
-                elif isinstance(res, str) and res.strip():
-                    return res.strip()
+
+                if isinstance(result, dict):
+                    question = (
+                        result.get("answer")
+                        or result.get("question")
+                        or result.get("text")
+                    )
+
+                    if question:
+                        return str(question).strip()
+
+                if isinstance(result, str) and result.strip():
+                    return result.strip()
+
             except Exception as exc:
-                logger.error("Error or timeout invoking ai_engine for question generation: %s", exc)
+                logger.error(
+                    "Question generation failed: %s",
+                    exc,
+                )
 
-        # Fallback question generator
-        questions = {
-            "Easy": f"Can you explain the fundamental principles and core concepts of {topic}?",
-            "Medium": f"Describe how you would design and implement a scalable solution using {topic}.",
-            "Hard": f"Design a production-grade architecture using {topic}, covering performance bottlenecks, security, and edge cases.",
-        }
+        # Deterministic emergency fallback.
+        from ai_engine.services.question_controller import (
+            AdaptiveQuestionController,
+        )
 
-        return questions.get(difficulty, questions["Easy"])
+        controller = AdaptiveQuestionController(topic)
+
+        return controller.fallback(
+            difficulty,
+            previous_questions,
+        )
 
     async def evaluate_answer(
         self,
@@ -94,80 +120,107 @@ class AIProvider:
         topic: Optional[str] = None,
         difficulty: str = "Easy",
     ) -> Dict[str, Any]:
-        """
-        Evaluate a candidate's answer using Gunal's evaluation engine.
 
-        Args:
-            question: The interview question asked.
-            answer: The candidate's response text.
-
-        Returns:
-            A dictionary containing score, feedback, strengths, improvements, next_question.
-        """
         logger.info(
-            "Evaluating answer via AIProvider for question: '%s...'",
-            question[:50] if len(question) > 50 else question,
+            "Evaluating answer for topic='%s'",
+            topic,
         )
 
         if AI_ENGINE_AVAILABLE and self.eval_service:
+
             try:
                 result = await asyncio.wait_for(
-                    asyncio.to_thread(self.eval_service.evaluate, question, answer),
+                    asyncio.to_thread(
+                        self.eval_service.evaluate,
+                        question,
+                        answer,
+                        topic,
+                        difficulty,
+                    ),
                     timeout=30.0,
                 )
+
                 if isinstance(result, dict) and "score" in result:
-                    next_q = await self.generate_question(
-                        topic=topic_from_question(question),
-                        difficulty="Medium" if result.get("score", 0) >= 8 else "Easy"
+
+                    raw_score = float(result.get("score", 0))
+
+                    # Support both 0-10 and 0-100 evaluator outputs.
+                    if raw_score > 10:
+                        score = round(raw_score / 10)
+                    else:
+                        score = round(raw_score)
+
+                    score = max(0, min(10, score))
+
+                    strengths = result.get(
+                        "strengths",
+                        ["Demonstrated subject knowledge"],
                     )
-                    strengths = result.get("strengths", ["Demonstrated subject knowledge"])
+
+                    improvements = result.get(
+                        "improvements",
+                        ["Provide more concrete technical examples"],
+                    )
+
                     if isinstance(strengths, str):
-                        strengths = [s.strip() for s in strengths.split(",") if s.strip()]
-                    
-                    improvements = result.get("improvements", ["Provide more concrete examples"])
+                        strengths = [
+                            s.strip()
+                            for s in strengths.split(",")
+                            if s.strip()
+                        ]
+
                     if isinstance(improvements, str):
-                        improvements = [i.strip() for i in improvements.split(",") if i.strip()]
+                        improvements = [
+                            s.strip()
+                            for s in improvements.split(",")
+                            if s.strip()
+                        ]
 
                     return {
-                        "score": max(0, min(10, round(float(result.get("score", 5)) / 10))),
-                        "feedback": str(result.get("feedback", "Good effort.")),
+                        "score": score,
+                        "feedback": str(
+                            result.get(
+                                "feedback",
+                                "Good effort.",
+                            )
+                        ),
                         "strengths": strengths,
                         "improvements": improvements,
-                        "next_question": next_q,
                     }
-            except Exception as exc:
-                logger.error("Error or timeout invoking ai_engine for answer evaluation: %s", exc)
 
-        # Fallback evaluation logic
+            except Exception as exc:
+                logger.error(
+                    "Answer evaluation failed: %s",
+                    exc,
+                )
+
+        # Deterministic fallback evaluation.
         answer_len = len(answer.strip())
-        score = min(10, max(1, answer_len // 40))
-        topic = topic_from_question(question)
-        next_q = await self.generate_question(topic=topic, difficulty="Medium" if score >= 8 else "Easy")
+
+        if answer_len >= 250:
+            score = 8
+        elif answer_len >= 150:
+            score = 7
+        elif answer_len >= 80:
+            score = 6
+        elif answer_len >= 40:
+            score = 5
+        else:
+            score = 3
 
         return {
             "score": score,
             "feedback": (
-                "The response shows solid foundational understanding. "
-                "Consider adding more concrete code examples and technical depth."
-                if score >= 6
-                else "The response addresses the question at a basic level. "
-                     "Expand further on technical mechanisms and architectural trade-offs."
+                "The answer demonstrates useful understanding. "
+                "Add more technical detail, examples, and edge cases."
             ),
             "strengths": [
-                "Clear communication structure",
-                "Addressed the primary question directly",
-            ] if score >= 6 else [
                 "Attempted the question",
+                "Communicated a technical explanation",
             ],
             "improvements": [
-                "Provide specific technical examples",
-                "Discuss edge cases and performance implications",
+                "Add concrete implementation details",
+                "Discuss complexity and edge cases",
             ],
-            "next_question": next_q,
         }
 
-
-def topic_from_question(question: str) -> str:
-    """Helper to extract topic keyword from question string."""
-    words = question.split()
-    return words[-1].strip("?.") if words else "this topic"

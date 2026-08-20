@@ -1,6 +1,6 @@
-"""
+﻿"""
 Repository layer for interview data access.
-Performs ONLY CRUD operations — no AI logic, no business rules.
+Performs ONLY CRUD operations â€” no AI logic, no business rules.
 """
 
 from __future__ import annotations
@@ -210,6 +210,35 @@ class InterviewRepository:
         await self.session.flush()
         return message
 
+    async def update_message(
+        self,
+        message_id: uuid.UUID,
+        answer: Optional[str] = None,
+        score: Optional[int] = None,
+        feedback: Optional[str] = None,
+        strengths: Optional[str] = None,
+        improvements: Optional[str] = None,
+        next_question: Optional[str] = None,
+    ) -> Optional[InterviewMessage]:
+        message = await self.session.get(InterviewMessage, message_id)
+        if message is None:
+            return None
+
+        if answer is not None:
+            message.answer = answer
+        if score is not None:
+            message.score = score
+        if feedback is not None:
+            message.feedback = feedback
+        if strengths is not None:
+            message.strengths = strengths
+        if improvements is not None:
+            message.improvements = improvements
+        if next_question is not None:
+            message.next_question = next_question
+
+        await self.session.flush()
+        return message
     async def get_messages(
         self, interview_id: uuid.UUID
     ) -> List[InterviewMessage]:
@@ -267,3 +296,4 @@ class InterviewRepository:
         )
         result = await self.session.execute(stmt)
         return len(list(result.scalars().all()))
+
