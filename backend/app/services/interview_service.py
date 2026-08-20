@@ -1,4 +1,4 @@
-"""
+﻿"""
 Service layer for interview business logic.
 Orchestrates interactions between API layer, repositories, and AI provider.
 """
@@ -168,29 +168,61 @@ class InterviewService:
                 message=f"Failed to evaluate answer: {str(exc)}"
             ) from exc
 
-        # Save the answer and evaluation
+        # Save the candidate answer against the ACTUAL current question.
+        score = int(evaluation.get("score", 0) or 0)
+
         await self.repository.save_message(
             interview_id=interview_id,
-            question=evaluation.get("next_question", current_question),
+            question=current_question,
             answer=stripped_answer,
-            score=evaluation.get("score", 0),
+            score=score,
             feedback=evaluation.get("feedback", ""),
             strengths=", ".join(evaluation.get("strengths", [])),
             improvements=", ".join(evaluation.get("improvements", [])),
-            next_question=evaluation.get("next_question", ""),
         )
 
-        # Adjust difficulty based on score
-        score = evaluation.get("score", 0)
-        new_difficulty = self._adjust_difficulty(score, interview.difficulty)
+        # Adapt difficulty from the candidate's performance.
+        new_difficulty = self._adjust_difficulty(
+            score,
+            interview.difficulty,
+        )
+
         if new_difficulty != interview.difficulty:
             await self.repository.update_interview_difficulty(
-                interview_id, new_difficulty
+                interview_id,
+                new_difficulty,
             )
 
-        # Format the response
-        return format_evaluation_for_response(evaluation)
+        # Build memory of every question already asked.
+        messages = await self.repository.get_messages(interview_id)
 
+        previous_questions = [
+            msg.question
+            for msg in messages
+            if msg.question
+        ]
+
+        # Generate the next question on the ORIGINAL topic.
+        try:
+            next_question = await self.ai_provider.generate_question(
+                topic=interview.topic,
+                difficulty=new_difficulty,
+                previous_questions=previous_questions,
+            )
+        except Exception as exc:
+            raise AIProviderException(
+                message=f"Failed to generate next question: {str(exc)}"
+            ) from exc
+
+        # Store one pending next question.
+        await self.repository.save_message(
+            interview_id=interview_id,
+            question=next_question,
+        )
+
+        evaluation["next_question"] = next_question
+
+        return format_evaluation_for_response(evaluation)
     async def end_interview(
         self,
         interview_id: uuid.UUID,
@@ -333,3 +365,4 @@ class InterviewService:
             new_idx = current_idx
 
         return difficulty_order[new_idx]
+
