@@ -12,7 +12,8 @@ def generate_question(state: InterviewState):
 
     response = service.generate_question(
         state["topic"],
-        state["difficulty"]
+        state["difficulty"],
+        [entry["question"] for entry in state["history"] if entry.get("question")],
     )
 
     state["question"] = response["answer"]
@@ -24,7 +25,9 @@ def evaluate_answer(state: InterviewState):
 
     result = evaluation_service.evaluate(
         state["question"],
-        state["answer"]
+        state["answer"],
+        state["topic"],
+        state["difficulty"],
     )
 
     state["score"] = result["score"]
@@ -54,11 +57,12 @@ def update_interview_state(state: InterviewState):
     if state["question_number"] >= state["max_questions"]:
         state["interview_completed"] = True
 
-    if state["score"] >= 80:
-        state["difficulty"] = "Medium"
-
-    elif state["score"] <= 40:
-        state["difficulty"] = "Easy"
+    difficulty_order = ["Easy", "Medium", "Hard"]
+    current_index = difficulty_order.index(state["difficulty"])
+    if state["score"] >= 8:
+        state["difficulty"] = difficulty_order[min(current_index + 1, 2)]
+    elif state["score"] <= 4:
+        state["difficulty"] = difficulty_order[max(current_index - 1, 0)]
 
     return state
 

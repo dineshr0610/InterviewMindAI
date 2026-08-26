@@ -42,6 +42,7 @@ class InterviewRepository:
         role: str,
         topic: str,
         difficulty: str = "Easy",
+        max_questions: int = 5,
     ) -> Interview:
         """
         Create a new interview session.
@@ -60,6 +61,7 @@ class InterviewRepository:
             role=role,
             topic=topic,
             difficulty=difficulty,
+            max_questions=max_questions,
             status=InterviewStatus.ACTIVE,
         )
         self.session.add(interview)
@@ -293,6 +295,18 @@ class InterviewRepository:
         stmt = (
             select(InterviewMessage)
             .where(InterviewMessage.interview_id == interview_id)
+        )
+        result = await self.session.execute(stmt)
+        return len(list(result.scalars().all()))
+
+    async def get_answered_message_count(self, interview_id: uuid.UUID) -> int:
+        """Return the number of questions that have received an answer."""
+        stmt = (
+            select(InterviewMessage)
+            .where(
+                InterviewMessage.interview_id == interview_id,
+                InterviewMessage.answer.is_not(None),
+            )
         )
         result = await self.session.execute(stmt)
         return len(list(result.scalars().all()))

@@ -5,7 +5,7 @@ Pydantic schemas for interview-related API requests and responses.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Optional
+from typing import Any, List, Literal, Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -51,6 +51,8 @@ class StartInterviewRequest(BaseModel):
         description="Technical topic for the interview",
         examples=["React"],
     )
+    difficulty: Literal["Easy", "Medium", "Hard"] = Field(default="Easy")
+    max_questions: int = Field(default=5, ge=1, le=10)
 
     @model_validator(mode="before")
     @classmethod

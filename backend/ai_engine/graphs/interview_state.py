@@ -3,6 +3,8 @@ from typing import TypedDict
 
 class InterviewState(TypedDict):
 
+    mode: str
+
     candidate_name: str
 
     topic: str
@@ -17,9 +19,9 @@ class InterviewState(TypedDict):
 
     feedback: str
 
-    strengths: str
+    strengths: list[str]
 
-    improvements: str
+    improvements: list[str]
 
     question_number: int
 

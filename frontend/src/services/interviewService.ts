@@ -5,11 +5,14 @@ export const interviewService = {
   /**
    * Start a new interview session
    */
-  async startInterview(request: StartInterviewRequest & { topic?: string }) {
+  async startInterview(request: StartInterviewRequest) {
+    const topicValue = request.topic && request.topic.trim() ? request.topic.trim() : request.job_role || 'General Technical'
     const response = await api.post('/api/interview/start', {
       candidate_name: request.candidate_name,
       role: request.job_role,
-      topic: request.topic || request.job_role || 'General',
+      topic: topicValue,
+      difficulty: request.difficulty || 'Easy',
+      max_questions: request.max_questions || 5,
     })
     const resData = response.data
     return resData.data || resData

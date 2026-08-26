@@ -6,6 +6,7 @@ import { QuestionCard } from '../../components/interview/QuestionCard'
 import { EvaluationPanel } from '../../components/interview/EvaluationPanel'
 import { AnswerForm } from '../../components/interview/AnswerForm'
 import { ChatTimeline } from '../../components/interview/ChatTimeline'
+import { InterviewResults } from '../../components/interview/InterviewResults'
 import { LoadingSpinner } from '../../components/common/LoadingSpinner'
 import { Button } from '../../components/ui/Button'
 import { useInterviewContext } from '../../context/InterviewContext'
@@ -16,7 +17,7 @@ import { motion } from 'framer-motion'
 
 export default function InterviewPage() {
   const navigate = useNavigate()
-  const { session, isLoading, error, submitAnswer, endInterview } = useInterviewContext()
+  const { session, isLoading, error, submitAnswer, endInterview, resetSession } = useInterviewContext()
   const [toasts, setToasts] = useState<ToastProps[]>([])
   const [showTimeline, setShowTimeline] = useState(false)
   const [hasSubmittedAnswer, setHasSubmittedAnswer] = useState(false)
@@ -66,7 +67,6 @@ export default function InterviewPage() {
       try {
         await endInterview()
         addToast('success', 'Interview ended. Thank you for practicing!')
-        setTimeout(() => navigate('/'), 2000)
       } catch (err) {
         const errorMsg = err instanceof Error ? err.message : 'Failed to end interview'
         addToast('error', errorMsg)
@@ -76,6 +76,16 @@ export default function InterviewPage() {
 
   if (!session) {
     return null
+  }
+
+  if (session.results) {
+    return (
+      <div className="flex flex-col min-h-screen">
+        <Header title="Interview Results" />
+        <InterviewResults history={session.results} onStartAgain={() => { resetSession(); navigate('/') }} />
+        <Footer />
+      </div>
+    )
   }
 
   const currentQuestion = session.messages

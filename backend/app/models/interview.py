@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from enum import Enum as PyEnum
 from typing import TYPE_CHECKING, List
 
-from sqlalchemy import DateTime, Enum as SQLEnum, String, Text, UUID
+from sqlalchemy import DateTime, Enum as SQLEnum, Integer, String, Text, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
@@ -60,6 +60,11 @@ class Interview(Base):
         String(50),
         nullable=False,
         default="Easy",
+    )
+    max_questions: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        default=5,
     )
     status: Mapped[InterviewStatus] = mapped_column(
         SQLEnum(InterviewStatus, name="interview_status"),

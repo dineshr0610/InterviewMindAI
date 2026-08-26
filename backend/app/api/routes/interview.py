@@ -46,6 +46,8 @@ async def start_interview(
         candidate_name=request.candidate_name,
         role=request.role,
         topic=request.topic,
+        difficulty=request.difficulty,
+        max_questions=request.max_questions,
     )
     logger.info(
         "Interview started: id=%s, candidate=%s, role=%s, topic=%s",

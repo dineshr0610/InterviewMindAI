@@ -53,6 +53,7 @@ class InterviewService:
         role: str,
         topic: str,
         difficulty: str = "Easy",
+        max_questions: int = settings.DEFAULT_MAX_QUESTIONS,
     ) -> Dict[str, Any]:
         """
         Start a new interview session.
@@ -78,6 +79,7 @@ class InterviewService:
             role=role,
             topic=topic,
             difficulty=difficulty,
+            max_questions=max_questions,
         )
 
         # Generate first question
@@ -148,44 +150,69 @@ class InterviewService:
         if interview.status != InterviewStatus.ACTIVE:
             raise InterviewNotActiveException(str(interview_id))
 
-        # Get the current question (latest message without an answer)
+        # The only pending question is the latest message without an answer.
+        # After it is answered, the next question is kept on that same record.
         latest_message = await self.repository.get_latest_message(interview_id)
-        if latest_message is None or latest_message.answer is not None:
-            current_question = latest_message.question if latest_message else ""
-        else:
+        if latest_message is None:
+            raise InterviewNotActiveException(str(interview_id))
+        if latest_message.answer is None:
             current_question = latest_message.question
+            pending_message = latest_message
+        else:
+            current_question = latest_message.next_question or ""
+            pending_message = None
 
-        # Evaluate answer via AI
+        if not current_question:
+            raise InterviewNotActiveException(str(interview_id))
+
+        messages = await self.repository.get_messages(interview_id)
+        answered_count_before = sum(1 for message in messages if message.answer is not None)
+        history = [
+            {"question": message.question, "answer": message.answer, "score": message.score}
+            for message in messages
+            if message.answer is not None
+        ]
+
+        # The provider executes the protected LangGraph for this answer turn.
         try:
-            evaluation = await self.ai_provider.evaluate_answer(
+            evaluation = await self.ai_provider.process_answer(
                 question=current_question,
                 answer=stripped_answer,
                 topic=interview.topic,
                 difficulty=interview.difficulty,
+                history=history,
+                question_number=answered_count_before,
+                max_questions=interview.max_questions,
             )
         except Exception as exc:
             raise AIProviderException(
                 message=f"Failed to evaluate answer: {str(exc)}"
             ) from exc
 
-        # Save the candidate answer against the ACTUAL current question.
+        # Save the candidate answer against the actual current question.
+        # Updating the pending record avoids duplicate question history rows.
         score = int(evaluation.get("score", 0) or 0)
-
-        await self.repository.save_message(
-            interview_id=interview_id,
-            question=current_question,
-            answer=stripped_answer,
-            score=score,
-            feedback=evaluation.get("feedback", ""),
-            strengths=", ".join(evaluation.get("strengths", [])),
-            improvements=", ".join(evaluation.get("improvements", [])),
-        )
+        message_values = {
+            "answer": stripped_answer,
+            "score": score,
+            "feedback": evaluation.get("feedback", ""),
+            "strengths": ", ".join(evaluation.get("strengths", [])),
+            "improvements": ", ".join(evaluation.get("improvements", [])),
+        }
+        if pending_message is not None:
+            answered_message = await self.repository.update_message(
+                pending_message.id,
+                **message_values,
+            )
+        else:
+            answered_message = await self.repository.save_message(
+                interview_id=interview_id,
+                question=current_question,
+                **message_values,
+            )
 
         # Adapt difficulty from the candidate's performance.
-        new_difficulty = self._adjust_difficulty(
-            score,
-            interview.difficulty,
-        )
+        new_difficulty = evaluation.get("difficulty") or self._adjust_difficulty(score, interview.difficulty)
 
         if new_difficulty != interview.difficulty:
             await self.repository.update_interview_difficulty(
@@ -193,34 +220,38 @@ class InterviewService:
                 new_difficulty,
             )
 
-        # Build memory of every question already asked.
-        messages = await self.repository.get_messages(interview_id)
-
-        previous_questions = [
-            msg.question
-            for msg in messages
-            if msg.question
-        ]
-
-        # Generate the next question on the ORIGINAL topic.
-        try:
-            next_question = await self.ai_provider.generate_question(
-                topic=interview.topic,
+        answered_count = await self.repository.get_answered_message_count(interview_id)
+        if answered_count >= interview.max_questions:
+            await self.repository.finish_interview(interview_id)
+            evaluation.update(
+                next_question=None,
                 difficulty=new_difficulty,
-                previous_questions=previous_questions,
+                status=InterviewStatus.COMPLETED.value,
             )
-        except Exception as exc:
-            raise AIProviderException(
-                message=f"Failed to generate next question: {str(exc)}"
-            ) from exc
+            return format_evaluation_for_response(evaluation)
 
-        # Store one pending next question.
-        await self.repository.save_message(
-            interview_id=interview_id,
-            question=next_question,
+        next_question = evaluation.get("next_question")
+        if not next_question:
+            await self.repository.finish_interview(interview_id)
+            evaluation.update(
+                next_question=None,
+                difficulty=new_difficulty,
+                status=InterviewStatus.COMPLETED.value,
+            )
+            return format_evaluation_for_response(evaluation)
+
+        # Keep the next question on the just-answered message.  The next turn
+        # creates its own message only when it receives an answer.
+        await self.repository.update_message(
+            answered_message.id,
+            next_question=next_question,
         )
 
-        evaluation["next_question"] = next_question
+        evaluation.update(
+            next_question=next_question,
+            difficulty=new_difficulty,
+            status=InterviewStatus.ACTIVE.value,
+        )
 
         return format_evaluation_for_response(evaluation)
     async def end_interview(
@@ -280,6 +311,7 @@ class InterviewService:
             "role": interview.role,
             "topic": interview.topic,
             "difficulty": interview.difficulty,
+            "max_questions": interview.max_questions,
             "status": interview.status.value if interview.status else None,
             "started_at": interview.started_at.isoformat() if interview.started_at else None,
             "ended_at": interview.ended_at.isoformat() if interview.ended_at else None,
@@ -329,6 +361,7 @@ class InterviewService:
             "role": interview.role,
             "topic": interview.topic,
             "difficulty": interview.difficulty,
+            "max_questions": interview.max_questions,
             "status": interview.status.value if interview.status else None,
             "started_at": interview.started_at.isoformat() if interview.started_at else None,
             "ended_at": interview.ended_at.isoformat() if interview.ended_at else None,

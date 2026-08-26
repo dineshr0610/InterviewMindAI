@@ -9,7 +9,7 @@ export function useInterview() {
   const [error, setError] = useState<string | null>(null)
 
   const startInterview = useCallback(
-    async (candidateName: string, jobRole: string) => {
+    async (candidateName: string, jobRole: string, topic?: string, difficulty?: 'Easy' | 'Medium' | 'Hard', maxQuestions?: number) => {
       try {
         setIsLoading(true)
         setError(null)
@@ -17,6 +17,9 @@ export function useInterview() {
         const response = await interviewService.startInterview({
           candidate_name: candidateName,
           job_role: jobRole,
+          topic: topic,
+          difficulty,
+          max_questions: maxQuestions,
         })
 
         const initialQuestion = response.question || response.first_question
@@ -35,6 +38,7 @@ export function useInterview() {
           id: response.interview_id,
           candidateName,
           role: jobRole,
+          topic: topic || jobRole,
           startTime: Date.now(),
           messages: initialMessages,
           isLoading: false,
@@ -60,6 +64,13 @@ export function useInterview() {
         throw new Error('No active interview session')
       }
 
+      const trimmedAnswer = answer ? answer.trim() : ''
+      if (trimmedAnswer.length < 10) {
+        const validationError = 'Answer must be at least 10 non-whitespace characters.'
+        setError(validationError)
+        throw new Error(validationError)
+      }
+
       try {
         setIsLoading(true)
         setError(null)
@@ -68,7 +79,7 @@ export function useInterview() {
         const answerMessage: ChatMessage = {
           id: `answer-${Date.now()}`,
           type: 'answer',
-          content: answer,
+          content: trimmedAnswer,
           timestamp: Date.now(),
         }
 
@@ -115,6 +126,11 @@ export function useInterview() {
           )
         }
 
+        if (response.status === 'completed') {
+          const results = await interviewService.getHistory(session.id)
+          setSession((prev) => prev ? { ...prev, endTime: Date.now(), results } : null)
+        }
+
         return {
           evaluation,
           nextQuestion: nextQ,
@@ -141,8 +157,8 @@ export function useInterview() {
       setError(null)
 
       await interviewService.endInterview(session.id)
-
-      setSession((prev) => (prev ? { ...prev, endTime: Date.now() } : null))
+      const results = await interviewService.getHistory(session.id)
+      setSession((prev) => (prev ? { ...prev, endTime: Date.now(), results } : null))
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to end interview'
       setError(errorMsg)

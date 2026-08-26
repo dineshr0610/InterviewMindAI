@@ -13,6 +13,9 @@ import { motion } from 'framer-motion'
 interface FormData {
   name: string
   role: string
+  topic?: string
+  difficulty: 'Easy' | 'Medium' | 'Hard'
+  maxQuestions: number
 }
 
 export default function HomePage() {
@@ -28,13 +31,16 @@ export default function HomePage() {
     defaultValues: {
       name: '',
       role: '',
+      topic: '',
+      difficulty: 'Easy',
+      maxQuestions: 5,
     },
   })
 
   const onSubmit = async (data: FormData) => {
     try {
       setSubmitError(null)
-      await startInterview(data.name, data.role)
+      await startInterview(data.name, data.role, data.topic, data.difficulty, data.maxQuestions)
       navigate('/interview')
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to start interview'
@@ -153,8 +159,41 @@ export default function HomePage() {
                       },
                     })}
                     label="Target Job Role"
-                    placeholder="e.g., Senior Product Manager"
+                    placeholder="e.g., Software Engineer"
                     error={errors.role?.message}
+                  />
+
+                  <Input
+                    {...register('topic')}
+                    label="Technical Topic / Focus Area (Optional)"
+                    placeholder="e.g., Binary Search, System Design, React"
+                    error={errors.topic?.message}
+                  />
+
+                  <div>
+                    <label className="block text-sm font-medium text-text mb-2" htmlFor="difficulty">Starting Difficulty</label>
+                    <select
+                      id="difficulty"
+                      {...register('difficulty')}
+                      className="w-full rounded-lg border border-surface-light bg-surface px-3 py-2 text-text"
+                    >
+                      <option value="Easy">Easy</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Hard">Hard</option>
+                    </select>
+                  </div>
+
+                  <Input
+                    {...register('maxQuestions', {
+                      valueAsNumber: true,
+                      min: { value: 1, message: 'Choose at least 1 question' },
+                      max: { value: 10, message: 'Choose no more than 10 questions' },
+                    })}
+                    type="number"
+                    min={1}
+                    max={10}
+                    label="Number of Questions"
+                    error={errors.maxQuestions?.message}
                   />
 
                   {submitError && (

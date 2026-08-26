@@ -41,10 +41,8 @@ export function AnswerForm({ onSubmit, isLoading, disabled }: AnswerFormProps) {
       <TextArea
         {...register('answer', {
           required: 'Please provide an answer',
-          minLength: {
-            value: 10,
-            message: 'Answer must be at least 10 characters',
-          },
+          validate: (val) =>
+            val.trim().length >= 10 || 'Answer must be at least 10 non-whitespace characters',
         })}
         placeholder="Type your answer here..."
         error={errors.answer?.message}

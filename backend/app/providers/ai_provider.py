@@ -24,6 +24,7 @@ try:
     from ai_engine.services.evaluation_service import (
         EvaluationService as AIEvaluationService,
     )
+    from ai_engine.graphs.interview_graph import interview_graph
 
     AI_ENGINE_AVAILABLE = True
 
@@ -43,6 +44,8 @@ class AIProvider:
             if AI_ENGINE_AVAILABLE
             else None
         )
+
+        self.interview_graph = interview_graph if AI_ENGINE_AVAILABLE else None
 
         self.eval_service = (
             AIEvaluationService()
@@ -69,6 +72,39 @@ class AIProvider:
             topic,
             difficulty,
         )
+
+        if self.interview_graph:
+            try:
+                result = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        self.interview_graph.invoke,
+                        {
+                            "mode": "start",
+                            "candidate_name": "",
+                            "topic": topic,
+                            "difficulty": difficulty,
+                            "question": "",
+                            "answer": "",
+                            "score": 0,
+                            "feedback": "",
+                            "strengths": [],
+                            "improvements": [],
+                            "question_number": 0,
+                            "max_questions": 1,
+                            "interview_completed": False,
+                            "history": [
+                                {"question": question}
+                                for question in previous_questions
+                            ],
+                        },
+                    ),
+                    timeout=30.0,
+                )
+                question = result.get("question") if isinstance(result, dict) else None
+                if question:
+                    return str(question).strip()
+            except Exception as exc:
+                logger.error("LangGraph question generation failed: %s", exc)
 
         if AI_ENGINE_AVAILABLE and self.ai_service:
             try:
@@ -112,6 +148,58 @@ class AIProvider:
             difficulty,
             previous_questions,
         )
+
+    async def process_answer(
+        self,
+        question: str,
+        answer: str,
+        topic: str,
+        difficulty: str,
+        history: list[dict],
+        question_number: int,
+        max_questions: int,
+    ) -> Dict[str, Any]:
+        """Execute the LangGraph answer turn and return its public result."""
+        if self.interview_graph:
+            try:
+                result = await asyncio.wait_for(
+                    asyncio.to_thread(
+                        self.interview_graph.invoke,
+                        {
+                            "mode": "answer",
+                            "candidate_name": "",
+                            "topic": topic,
+                            "difficulty": difficulty,
+                            "question": question,
+                            "answer": answer,
+                            "score": 0,
+                            "feedback": "",
+                            "strengths": [],
+                            "improvements": [],
+                            "question_number": question_number,
+                            "max_questions": max_questions,
+                            "interview_completed": False,
+                            "history": history,
+                        },
+                    ),
+                    timeout=30.0,
+                )
+                if isinstance(result, dict) and "score" in result:
+                    score = max(0, min(10, round(float(result.get("score", 0)))))
+                    return {
+                        "score": score,
+                        "feedback": str(result.get("feedback", "")),
+                        "strengths": result.get("strengths", []),
+                        "improvements": result.get("improvements", []),
+                        "next_question": None if result.get("interview_completed") else result.get("question"),
+                        "difficulty": result.get("difficulty", difficulty),
+                        "completed": bool(result.get("interview_completed")),
+                    }
+            except Exception as exc:
+                logger.error("LangGraph answer processing failed: %s", exc)
+
+        evaluation = await self.evaluate_answer(question, answer, topic, difficulty)
+        return {**evaluation, "next_question": None, "difficulty": difficulty, "completed": False}
 
     async def evaluate_answer(
         self,

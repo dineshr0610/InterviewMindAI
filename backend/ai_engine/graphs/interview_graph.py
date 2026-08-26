@@ -26,16 +26,15 @@ graph.add_node(
     update_interview_state
 )
 
-# Edges
-graph.add_edge(
+# Edges.  A start call generates only the first question; an answer call
+# evaluates the supplied question and then optionally generates one follow-up.
+graph.add_conditional_edges(
     START,
-    "generate_question"
+    lambda state: "evaluate" if state.get("mode") == "answer" else "generate",
+    {"generate": "generate_question", "evaluate": "evaluate_answer"},
 )
 
-graph.add_edge(
-    "generate_question",
-    "evaluate_answer"
-)
+graph.add_edge("generate_question", END)
 
 graph.add_edge(
     "evaluate_answer",
