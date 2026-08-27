@@ -28,7 +28,7 @@ class AdaptiveQuestionController:
         if not any(x in text for x in ["implement", "pointer", "variable", "operation"]):
             return "implementation"
 
-        if not any(x in text for x in ["complexity", "o(log", "o(1)", "o(n)"]):
+        if not any(x in text for x in ["complexit", "o(log", "o(1)", "o(n)"]):
             return "complexity"
 
         return "edge_cases"
@@ -46,7 +46,7 @@ class AdaptiveQuestionController:
                 "definition": ["what is", "define", "useful"],
                 "mechanism": ["how does", "work", "search space"],
                 "implementation": ["implement", "pointer", "variable", "operation"],
-                "complexity": ["complexity", "o(log", "o(1)", "o(n)"],
+                "complexity": ["complexit", "o(log", "o(1)", "o(n)"],
                 "edge_cases": ["edge case", "empty", "duplicate", "missing"],
             }[concept]
 

@@ -199,7 +199,7 @@ class AIProvider:
                 logger.error("LangGraph answer processing failed: %s", exc)
 
         evaluation = await self.evaluate_answer(question, answer, topic, difficulty)
-        return {**evaluation, "next_question": None, "difficulty": difficulty, "completed": False}
+        return {**evaluation, "next_question": None, "difficulty": None, "completed": False}
 
     async def evaluate_answer(
         self,
