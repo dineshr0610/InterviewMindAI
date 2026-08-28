@@ -12,13 +12,14 @@ from app.models.interview import InterviewStatus
 from app.services.interview_service import InterviewService
 
 
-def _interview(interview_id, max_questions: int = 5):
+def _interview(interview_id, max_questions: int = 5, messages: list = None):
     return SimpleNamespace(
         id=interview_id,
         topic="Binary Search",
         difficulty="Medium",
         max_questions=max_questions,
         status=InterviewStatus.ACTIVE,
+        messages=messages or [],
     )
 
 
@@ -50,6 +51,9 @@ async def test_answer_updates_pending_question_and_returns_next_question() -> No
         service = InterviewService(MagicMock())
 
     repository = MagicMock()
+    repository.get_interview_with_messages = AsyncMock(
+        return_value=_interview(interview_id, messages=[q1])
+    )
     repository.get_interview = AsyncMock(return_value=_interview(interview_id))
     repository.get_latest_message = AsyncMock(return_value=q1)
     repository.update_message = AsyncMock(return_value=q1)
@@ -106,6 +110,9 @@ async def test_next_turn_creates_only_its_own_answered_record() -> None:
         service = InterviewService(MagicMock())
 
     repository = MagicMock()
+    repository.get_interview_with_messages = AsyncMock(
+        return_value=_interview(interview_id, messages=[q1])
+    )
     repository.get_interview = AsyncMock(return_value=_interview(interview_id))
     repository.get_latest_message = AsyncMock(return_value=q1)
     repository.save_message = AsyncMock(return_value=q2)
@@ -146,6 +153,9 @@ async def test_limit_completes_without_generating_or_accepting_another_question(
         service = InterviewService(MagicMock())
 
     repository = MagicMock()
+    repository.get_interview_with_messages = AsyncMock(
+        return_value=_interview(interview_id, max_questions=1, messages=[q1])
+    )
     repository.get_interview = AsyncMock(return_value=_interview(interview_id, max_questions=1))
     repository.get_latest_message = AsyncMock(return_value=q1)
     repository.update_message = AsyncMock(return_value=q1)

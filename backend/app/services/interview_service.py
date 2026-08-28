@@ -139,8 +139,8 @@ class InterviewService:
                 "Answer must be at least 10 characters."
             )
 
-        # Fetch interview
-        interview = await self.repository.get_interview(interview_id)
+        # Fetch interview and all messages in ONE call for efficiency
+        interview = await self.repository.get_interview_with_messages(interview_id)
         if interview is None:
             raise InterviewNotFoundException(str(interview_id))
 
@@ -150,23 +150,29 @@ class InterviewService:
         if interview.status != InterviewStatus.ACTIVE:
             raise InterviewNotActiveException(str(interview_id))
 
+        # Get messages (already fetched with interview above)
+        messages = interview.messages
+        if not messages:
+            raise InterviewNotActiveException(str(interview_id))
+
         # The only pending question is the latest message without an answer.
-        # After it is answered, the next question is kept on that same record.
-        latest_message = await self.repository.get_latest_message(interview_id)
+        latest_message = messages[-1] if messages else None
         if latest_message is None:
             raise InterviewNotActiveException(str(interview_id))
+
         if latest_message.answer is None:
             current_question = latest_message.question
             pending_message = latest_message
+            answered_count_before = sum(1 for m in messages if m.answer is not None)
         else:
             current_question = latest_message.next_question or ""
             pending_message = None
+            answered_count_before = sum(1 for m in messages if m.answer is not None)
 
         if not current_question:
             raise InterviewNotActiveException(str(interview_id))
 
-        messages = await self.repository.get_messages(interview_id)
-        answered_count_before = sum(1 for message in messages if message.answer is not None)
+        # Build history for AI provider (from already-fetched messages)
         history = [
             {"question": message.question, "answer": message.answer, "score": message.score}
             for message in messages
@@ -220,7 +226,9 @@ class InterviewService:
                 new_difficulty,
             )
 
-        answered_count = await self.repository.get_answered_message_count(interview_id)
+        # Count answered messages (from already-fetched list, not a new DB query)
+        answered_count = sum(1 for m in messages if m.answer is not None) + (1 if pending_message is not None else 0)
+        
         if answered_count >= interview.max_questions:
             await self.repository.finish_interview(interview_id)
             evaluation.update(

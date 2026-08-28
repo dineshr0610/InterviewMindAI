@@ -8,6 +8,7 @@ from typing import Any, Dict, Optional
 import asyncio
 import logging
 import sys
+import time
 from pathlib import Path
 
 backend_dir = Path(__file__).resolve().parent.parent.parent
@@ -68,12 +69,14 @@ class AIProvider:
         previous_questions = previous_questions or []
 
         logger.info(
-            "Generating topic-locked question: topic='%s', difficulty='%s'",
+            "[start] Generating question: topic='%s', difficulty='%s'",
             topic,
             difficulty,
         )
 
+        # Try LangGraph first (includes RAG + validation)
         if self.interview_graph:
+            start_time = time.time()
             try:
                 result = await asyncio.wait_for(
                     asyncio.to_thread(
@@ -98,46 +101,20 @@ class AIProvider:
                             ],
                         },
                     ),
-                    timeout=30.0,
+                    timeout=15.0,  # Reduced from 30s for faster fallback
                 )
                 question = result.get("question") if isinstance(result, dict) else None
                 if question:
+                    elapsed_ms = (time.time() - start_time) * 1000
+                    logger.info("[start] question_generation_ms=%.0f", elapsed_ms)
                     return str(question).strip()
             except Exception as exc:
-                logger.error("LangGraph question generation failed: %s", exc)
+                elapsed_ms = (time.time() - start_time) * 1000
+                logger.warning("[start] LangGraph failed after %.0fms: %s", elapsed_ms, exc)
 
-        if AI_ENGINE_AVAILABLE and self.ai_service:
-            try:
-                result = await asyncio.wait_for(
-                    asyncio.to_thread(
-                        self.ai_service.generate_question,
-                        topic,
-                        difficulty,
-                        previous_questions,
-                    ),
-                    timeout=30.0,
-                )
-
-                if isinstance(result, dict):
-                    question = (
-                        result.get("answer")
-                        or result.get("question")
-                        or result.get("text")
-                    )
-
-                    if question:
-                        return str(question).strip()
-
-                if isinstance(result, str) and result.strip():
-                    return result.strip()
-
-            except Exception as exc:
-                logger.error(
-                    "Question generation failed: %s",
-                    exc,
-                )
-
-        # Deterministic emergency fallback.
+        # Skip the nested retry loop. Go directly to deterministic fallback.
+        # This prevents the dual retry (LangGraph timeout -> InterviewService retry -> another timeout).
+        logger.info("[start] Using deterministic fallback (no nested AI calls)")
         from ai_engine.services.question_controller import (
             AdaptiveQuestionController,
         )
@@ -161,6 +138,7 @@ class AIProvider:
     ) -> Dict[str, Any]:
         """Execute the LangGraph answer turn and return its public result."""
         if self.interview_graph:
+            start_time = time.time()
             try:
                 result = await asyncio.wait_for(
                     asyncio.to_thread(
@@ -182,10 +160,12 @@ class AIProvider:
                             "history": history,
                         },
                     ),
-                    timeout=30.0,
+                    timeout=15.0,  # Reduced from 30s for faster fallback
                 )
                 if isinstance(result, dict) and "score" in result:
                     score = max(0, min(10, round(float(result.get("score", 0)))))
+                    elapsed_ms = (time.time() - start_time) * 1000
+                    logger.info("[answer] evaluation_ms=%.0f", elapsed_ms)
                     return {
                         "score": score,
                         "feedback": str(result.get("feedback", "")),
@@ -196,10 +176,84 @@ class AIProvider:
                         "completed": bool(result.get("interview_completed")),
                     }
             except Exception as exc:
-                logger.error("LangGraph answer processing failed: %s", exc)
+                elapsed_ms = (time.time() - start_time) * 1000
+                logger.warning("[answer] LangGraph failed after %.0fms, using fallback: %s", elapsed_ms, exc)
 
-        evaluation = await self.evaluate_answer(question, answer, topic, difficulty)
-        return {**evaluation, "next_question": None, "difficulty": None, "completed": False}
+        # Use deterministic fallback instead of calling evaluate_answer (which would retry LLM).
+        # This avoids the dual timeout: LangGraph timeout (15s) -> evaluate_answer timeout (30s) = 45s wait.
+        logger.info("[answer] Using deterministic fallback (no nested LLM calls)")
+        return self._deterministic_evaluation(question, answer, topic, difficulty, history, question_number, max_questions)
+
+    def _deterministic_evaluation(
+        self,
+        question: str,
+        answer: str,
+        topic: str,
+        difficulty: str,
+        history: list[dict],
+        question_number: int,
+        max_questions: int,
+    ) -> Dict[str, Any]:
+        """
+        Deterministic fallback evaluation and next question generation.
+        Used when LangGraph or LLM calls fail to avoid long retry waits.
+        """
+        # Length-based score (deterministic, no AI)
+        answer_len = len(answer.strip())
+        if answer_len >= 250:
+            score = 8
+        elif answer_len >= 150:
+            score = 7
+        elif answer_len >= 80:
+            score = 6
+        elif answer_len >= 40:
+            score = 5
+        else:
+            score = 3
+
+        # Deterministic feedback
+        feedback = "Good effort. "
+        if score >= 8:
+            feedback += "Your answer demonstrates strong technical understanding."
+        elif score >= 6:
+            feedback += "Your answer shows solid understanding. Add more detail for stronger responses."
+        else:
+            feedback += "Your answer is a good start. Provide more comprehensive technical details."
+
+        # Strengths and improvements (deterministic)
+        strengths = ["Provided a response"]
+        if answer_len >= 80:
+            strengths.append("Good depth of explanation")
+        if "example" in answer.lower():
+            strengths.append("Included concrete examples")
+        
+        improvements = ["Elaborate further on implementation details"]
+        if score < 7:
+            improvements.append("Add more technical depth")
+        if "complexity" not in answer.lower():
+            improvements.append("Discuss time/space complexity")
+
+        # Deterministic next question (from controller fallback)
+        from ai_engine.services.question_controller import AdaptiveQuestionController
+        controller = AdaptiveQuestionController(topic)
+        
+        previous_questions = [h.get("question", "") for h in history]
+        next_question = None
+        
+        # Only generate next question if not at max
+        if question_number + 1 < max_questions:
+            next_question = controller.fallback(difficulty, previous_questions)
+
+        # Difficulty stays the same in fallback (service layer will adjust it based on score)
+        return {
+            "score": score,
+            "feedback": feedback,
+            "strengths": strengths,
+            "improvements": improvements,
+            "next_question": next_question,
+            "difficulty": None,  # Let service layer adjust
+            "completed": question_number + 1 >= max_questions,
+        }
 
     async def evaluate_answer(
         self,

@@ -36,6 +36,7 @@ def _make_interview(
     difficulty: str = "Medium",
     max_questions: int = 5,
     status: InterviewStatus = InterviewStatus.ACTIVE,
+    messages: list = None,
 ):
     return SimpleNamespace(
         id=interview_id or uuid4(),
@@ -43,6 +44,7 @@ def _make_interview(
         difficulty=difficulty,
         max_questions=max_questions,
         status=status,
+        messages=messages or [_pending_message()],  # Add messages attribute with default
     )
 
 
@@ -66,6 +68,7 @@ def _mock_repo(interview, latest_msg=None):
     """Build a repository mock with all async methods properly set up."""
     repo = MagicMock()
     repo.get_interview = AsyncMock(return_value=interview)
+    repo.get_interview_with_messages = AsyncMock(return_value=interview)  # Mock new method
     repo.get_latest_message = AsyncMock(return_value=latest_msg or _pending_message())
     repo.update_message = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
     repo.save_message = AsyncMock(return_value=SimpleNamespace(id=uuid4()))
@@ -435,7 +438,12 @@ class TestMaxQuestionsCompletion:
     @pytest.mark.asyncio
     async def test_max_3_completes_after_three_answers(self) -> None:
         iid = uuid4()
-        interview = _make_interview(iid, max_questions=3)
+        # Set up 2 already-answered questions + 1 pending
+        q1 = SimpleNamespace(id=uuid4(), question="Q1?", answer="A1", score=7)
+        q2 = SimpleNamespace(id=uuid4(), question="Q2?", answer="A2", score=7)
+        q3 = SimpleNamespace(id=uuid4(), question="Q3?", answer=None)  # Pending
+        
+        interview = _make_interview(iid, max_questions=3, messages=[q1, q2, q3])
 
         with patch("app.services.interview_service.AIProvider") as pc:
             pc.return_value.process_answer = AsyncMock(
@@ -443,8 +451,7 @@ class TestMaxQuestionsCompletion:
             )
             svc = InterviewService(MagicMock())
 
-        repo = _mock_repo(interview)
-        repo.get_answered_message_count = AsyncMock(return_value=3)
+        repo = _mock_repo(interview, latest_msg=q3)
         svc.repository = repo
 
         result = await svc.submit_answer(iid, "A" * 50)

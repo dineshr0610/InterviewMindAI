@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { InterviewSession, ChatMessage } from '../types'
 import { interviewService } from '../services/interviewService'
 import { parseEvaluation } from '../utils/parser'
@@ -7,6 +7,9 @@ export function useInterview() {
   const [session, setSession] = useState<InterviewSession | null>(null)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  
+  // Track in-flight requests to prevent duplicate submissions
+  const submitAnswerInFlightRef = useRef<boolean>(false)
 
   const startInterview = useCallback(
     async (candidateName: string, jobRole: string, topic?: string, difficulty?: 'Easy' | 'Medium' | 'Hard', maxQuestions?: number) => {
@@ -64,6 +67,12 @@ export function useInterview() {
         throw new Error('No active interview session')
       }
 
+      // Prevent duplicate submissions while one is in progress
+      if (submitAnswerInFlightRef.current) {
+        console.warn('[useInterview] submitAnswer already in progress, ignoring duplicate submission')
+        throw new Error('A submission is already in progress. Please wait for it to complete.')
+      }
+
       const trimmedAnswer = answer ? answer.trim() : ''
       if (trimmedAnswer.length < 10) {
         const validationError = 'Answer must be at least 10 non-whitespace characters.'
@@ -71,6 +80,7 @@ export function useInterview() {
         throw new Error(validationError)
       }
 
+      submitAnswerInFlightRef.current = true
       try {
         setIsLoading(true)
         setError(null)
@@ -141,6 +151,7 @@ export function useInterview() {
         console.error('[useInterview] Submit answer error:', err)
         throw err
       } finally {
+        submitAnswerInFlightRef.current = false
         setIsLoading(false)
       }
     },

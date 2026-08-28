@@ -36,6 +36,8 @@ export function AnswerForm({ onSubmit, isLoading, disabled }: AnswerFormProps) {
     }
   }
 
+  const isSubmitDisabled = isLoading || disabled
+
   return (
     <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4">
       <TextArea
@@ -47,13 +49,13 @@ export function AnswerForm({ onSubmit, isLoading, disabled }: AnswerFormProps) {
         placeholder="Type your answer here..."
         error={errors.answer?.message}
         rows={4}
-        disabled={isLoading || disabled}
+        disabled={isSubmitDisabled}
         className="resize-none"
       />
       <Button
         type="submit"
         isLoading={isLoading}
-        disabled={disabled}
+        disabled={isSubmitDisabled}
         className="w-full"
       >
         <Send className="h-4 w-4" />

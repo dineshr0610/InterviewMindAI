@@ -4,17 +4,13 @@
 class EvaluationService:
 
     def evaluate(self, question, answer, topic=None, difficulty="Easy"):
-
-        prompt = (
-            f"Topic: {topic or 'General'}\n"
-            f"Difficulty: {difficulty}\n"
-            f"Interview Question: {question}\n"
-            f"Candidate Answer: {answer}"
-        )
+        # Removed duplicate answer in prompt. The evaluation_chain template expects
+        # separate "question" and "answer" placeholders, not combined.
+        # Passing combined text as "question" and then answer separately was causing answer duplication.
 
         return evaluation_chain.invoke(
             {
-                "question": prompt,
+                "question": question,
                 "answer": answer,
             }
         )
