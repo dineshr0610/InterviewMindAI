@@ -1,11 +1,11 @@
-"""
+﻿"""
 Pydantic schemas for interview-related API requests and responses.
 """
 
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Literal, Optional
+from typing import Any, List, Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -27,7 +27,7 @@ class HealthResponse(BaseModel):
 class StartInterviewRequest(BaseModel):
     """
     Request schema for starting a new interview.
-    Requires only candidate_name and role/job_role.
+    Supports both `role` and `job_role` field names for frontend compatibility.
     """
 
     candidate_name: str = Field(
@@ -44,14 +44,18 @@ class StartInterviewRequest(BaseModel):
         description="Job role for the interview",
         examples=["Frontend Developer"],
     )
-    topic: Optional[str] = Field(
-        default=None,
+    topic: str = Field(
+        default="General Technical",
+        min_length=2,
         max_length=255,
-        description="Technical topic for the interview (defaults to role if omitted)",
+        description="Technical topic for the interview",
         examples=["React"],
     )
+
     difficulty: str = Field(
         default="Easy",
+        min_length=4,
+        max_length=50,
         description="Starting difficulty level",
     )
     max_questions: int = Field(
@@ -60,20 +64,15 @@ class StartInterviewRequest(BaseModel):
         le=20,
         description="Maximum number of interview questions",
     )
-
     @model_validator(mode="before")
     @classmethod
-    def handle_aliases_and_defaults(cls, data: Any) -> Any:
+    def handle_job_role_alias(cls, data: Any) -> Any:
         if isinstance(data, dict):
             if "job_role" in data and ("role" not in data or not data["role"]):
                 data["role"] = data["job_role"]
-            if not data.get("topic") and data.get("role"):
-                data["topic"] = data["role"]
-            elif not data.get("topic"):
-                data["topic"] = "General Technical"
         return data
 
-    @field_validator("candidate_name", "role")
+    @field_validator("candidate_name", "role", "topic")
     @classmethod
     def validate_not_empty(cls, value: str) -> str:
         stripped = value.strip()

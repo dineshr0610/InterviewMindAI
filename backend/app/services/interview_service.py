@@ -1,4 +1,4 @@
-﻿"""
+"""
 Service layer for interview business logic.
 Orchestrates interactions between API layer, repositories, and AI provider.
 """
@@ -6,6 +6,7 @@ Orchestrates interactions between API layer, repositories, and AI provider.
 from __future__ import annotations
 
 import uuid
+import logging
 from typing import Any, Dict, List, Optional, Tuple
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -23,6 +24,7 @@ from app.providers.ai_provider import AIProvider
 from app.repositories.interview_repository import InterviewRepository
 from app.utils.parser import format_evaluation_for_response, parse_evaluation
 
+logger = logging.getLogger("interviewmind.services.interview")
 
 class InterviewService:
     """
@@ -51,7 +53,7 @@ class InterviewService:
         self,
         candidate_name: str,
         role: str,
-        topic: str,
+        topic: Optional[str] = None,
         difficulty: str = "Easy",
         max_questions: int = settings.DEFAULT_MAX_QUESTIONS,
     ) -> Dict[str, Any]:
@@ -64,8 +66,9 @@ class InterviewService:
         Args:
             candidate_name: Name of the candidate.
             role: The job role.
-            topic: The technical topic.
+            topic: The technical topic (defaults to role if omitted).
             difficulty: Starting difficulty level.
+            max_questions: Maximum questions for this interview session.
 
         Returns:
             A dictionary with interview_id, first question, and difficulty.
@@ -73,20 +76,24 @@ class InterviewService:
         Raises:
             AIProviderException: If the AI engine fails to generate a question.
         """
+        resolved_topic = (topic or "").strip() or (role or "").strip() or "General Technical"
+        resolved_difficulty = difficulty or "Easy"
+        resolved_max_questions = max_questions or settings.DEFAULT_MAX_QUESTIONS
+
         # Create interview record
         interview = await self.repository.create_interview(
-            candidate_name=candidate_name,
-            role=role,
-            topic=topic,
-            difficulty=difficulty,
-            max_questions=max_questions,
+            candidate_name=candidate_name.strip(),
+            role=role.strip(),
+            topic=resolved_topic,
+            difficulty=resolved_difficulty,
+            max_questions=resolved_max_questions,
         )
 
         # Generate first question
         try:
             question = await self.ai_provider.generate_question(
-                topic=topic,
-                difficulty=difficulty,
+                topic=resolved_topic,
+                difficulty=resolved_difficulty,
             )
         except Exception as exc:
             raise AIProviderException(
@@ -231,6 +238,18 @@ class InterviewService:
             return format_evaluation_for_response(evaluation)
 
         next_question = evaluation.get("next_question")
+        if not next_question and answered_count < interview.max_questions:
+            try:
+                previous_questions = [msg.question for msg in messages if msg.question]
+                next_question = await self.ai_provider.generate_question(
+                    topic=interview.topic,
+                    difficulty=new_difficulty,
+                    previous_questions=previous_questions,
+                )
+            except Exception as e:
+                logger.warning("Failed to generate fallback next question: %s", e)
+                next_question = None
+
         if not next_question:
             await self.repository.finish_interview(interview_id)
             evaluation.update(
@@ -240,7 +259,7 @@ class InterviewService:
             )
             return format_evaluation_for_response(evaluation)
 
-        # Keep the next question on the just-answered message.  The next turn
+        # Keep the next question on the just-answered message. The next turn
         # creates its own message only when it receives an answer.
         await self.repository.update_message(
             answered_message.id,
@@ -254,6 +273,7 @@ class InterviewService:
         )
 
         return format_evaluation_for_response(evaluation)
+
     async def end_interview(
         self,
         interview_id: uuid.UUID,
@@ -398,4 +418,8 @@ class InterviewService:
             new_idx = current_idx
 
         return difficulty_order[new_idx]
+
+
+
+
 

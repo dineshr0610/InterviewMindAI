@@ -1,4 +1,4 @@
-import api from './api'
+﻿import api from './api'
 import { StartInterviewRequest, AnswerRequest } from '../types'
 
 function topicFromRole(role?: string): string {
@@ -52,19 +52,19 @@ function topicFromRole(role?: string): string {
 }
 
 export const interviewService = {
-  /**
-   * Start a new interview session
-   */
-  async startInterview(request: StartInterviewRequest) {
+  async startInterview(request: StartInterviewRequest & {
+    topic?: string
+    difficulty?: string
+    max_questions?: number
+  }) {
     const role = request.job_role?.trim() || 'Software Engineer'
-    const topicValue = request.topic && request.topic.trim() ? request.topic.trim() : topicFromRole(role)
 
     const response = await api.post('/api/interview/start', {
       candidate_name: request.candidate_name,
-      role: role,
-      topic: topicValue,
-      difficulty: request.difficulty || 'Easy',
-      max_questions: request.max_questions || 5,
+      role,
+      topic: request.topic || topicFromRole(role),
+      difficulty: request.difficulty || 'Medium',
+      max_questions: request.max_questions || 3,
     })
 
     const resData = response.data

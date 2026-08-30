@@ -1,4 +1,4 @@
-﻿"""
+"""
 Repository layer for interview data access.
 Performs ONLY CRUD operations â€” no AI logic, no business rules.
 """
@@ -300,14 +300,23 @@ class InterviewRepository:
         return len(list(result.scalars().all()))
 
     async def get_answered_message_count(self, interview_id: uuid.UUID) -> int:
-        """Return the number of questions that have received an answer."""
+        """
+        Get the count of answered messages for an interview.
+
+        Args:
+            interview_id: The UUID of the interview.
+
+        Returns:
+            The count of answered messages.
+        """
         stmt = (
             select(InterviewMessage)
             .where(
                 InterviewMessage.interview_id == interview_id,
-                InterviewMessage.answer.is_not(None),
+                InterviewMessage.answer.isnot(None),
             )
         )
         result = await self.session.execute(stmt)
         return len(list(result.scalars().all()))
+
 

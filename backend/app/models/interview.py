@@ -107,6 +107,7 @@ class Interview(Base):
             "role": self.role,
             "topic": self.topic,
             "difficulty": self.difficulty,
+            "max_questions": self.max_questions,
             "status": self.status.value if self.status else None,
             "started_at": self.started_at.isoformat() if self.started_at else None,
             "ended_at": self.ended_at.isoformat() if self.ended_at else None,

@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react'
+﻿import { useState, useCallback, useRef } from 'react'
 import { InterviewSession, ChatMessage } from '../types'
 import { interviewService } from '../services/interviewService'
 import { parseEvaluation } from '../utils/parser'
@@ -8,43 +8,35 @@ const MAX_QUESTIONS = 3
 function roleTopic(role: string): string {
   const r = role.toLowerCase()
 
-  if (r.includes('frontend') || r.includes('front-end') || r.includes('react') || r.includes('ui')) {
-    return 'Frontend Development'
+  if (r.includes('frontend') || r.includes('front-end')) {
+    return 'Frontend Developer: JavaScript, TypeScript, React, HTML, CSS, browser fundamentals, REST APIs, state management, performance, accessibility, testing, and frontend system design'
   }
 
-  if (r.includes('backend') || r.includes('back-end') || r.includes('api') || r.includes('server')) {
-    return 'Backend Development'
+  if (r.includes('backend') || r.includes('back-end')) {
+    return 'Backend Developer: APIs, databases, SQL, authentication, authorization, caching, concurrency, scalability, system design, testing, and backend architecture'
   }
 
   if (r.includes('full stack') || r.includes('fullstack')) {
-    return 'Full Stack Development'
+    return 'Full Stack Developer: JavaScript/TypeScript, React, APIs, databases, authentication, backend architecture, testing, deployment, performance, and system design'
   }
 
-  if (r.includes('data scientist') || r.includes('data science')) {
-    return 'Data Science'
+  if (r.includes('data scientist')) {
+    return 'Data Scientist: Python, statistics, probability, machine learning, feature engineering, model evaluation, SQL, experimentation, and data analysis'
   }
 
   if (r.includes('machine learning') || r.includes('ml engineer')) {
-    return 'Machine Learning'
+    return 'Machine Learning Engineer: Python, machine learning algorithms, model evaluation, feature engineering, data pipelines, deployment, MLOps, and system design'
   }
 
   if (r.includes('devops') || r.includes('cloud')) {
-    return 'DevOps & Cloud'
-  }
-
-  if (r.includes('python')) {
-    return 'Python Development'
-  }
-
-  if (r.includes('java')) {
-    return 'Java Development'
+    return 'DevOps/Cloud Engineer: Linux, networking, Docker, Kubernetes, CI/CD, cloud architecture, monitoring, security, infrastructure, and reliability'
   }
 
   if (r.includes('dsa') || r.includes('algorithm')) {
-    return 'Data Structures & Algorithms'
+    return 'Data Structures and Algorithms: arrays, strings, linked lists, stacks, queues, trees, graphs, hashing, sorting, searching, recursion, dynamic programming, and complexity analysis'
   }
 
-  return role.trim() || 'Software Engineering'
+  return `${role}: core technical concepts, practical problem solving, architecture, debugging, testing, performance, security, and real-world engineering practices`
 }
 
 export function useInterview() {
@@ -55,7 +47,7 @@ export function useInterview() {
   const submittingRef = useRef(false)
 
   const startInterview = useCallback(
-    async (candidateName: string, jobRole: string, topic?: string, difficulty?: 'Easy' | 'Medium' | 'Hard', maxQuestions?: number) => {
+    async (candidateName: string, jobRole: string) => {
       try {
         setIsLoading(true)
         setError(null)
@@ -64,9 +56,9 @@ export function useInterview() {
         const response = await interviewService.startInterview({
           candidate_name: candidateName,
           job_role: jobRole,
-          topic: topic || (jobRole ? roleTopic(jobRole) : undefined),
-          difficulty: difficulty || 'Easy',
-          max_questions: maxQuestions || 5,
+          topic: roleTopic(jobRole),
+          difficulty: 'Medium',
+          max_questions: MAX_QUESTIONS,
         })
 
         const initialQuestion = response.question || response.first_question
@@ -84,16 +76,16 @@ export function useInterview() {
           },
         ]
 
-        setSession({
+        const newSession: InterviewSession = {
           id: response.interview_id,
           candidateName,
           role: jobRole,
-          topic: topic || jobRole,
           startTime: Date.now(),
           messages: initialMessages,
           isLoading: false,
-        })
+        }
 
+        setSession(newSession)
         return response
       } catch (err) {
         const errorMsg =
@@ -115,40 +107,30 @@ export function useInterview() {
         throw new Error('No active interview session')
       }
 
-      if (session.endTime) {
-        return {
-          evaluation: session.currentEvaluation,
-          nextQuestion: null,
-          completed: true,
-        }
-      }
-
       if (submittingRef.current || isLoading) {
         return null
       }
 
-      const trimmedAnswer = answer ? answer.trim() : ''
+      const trimmedAnswer = answer.trim()
+
       if (trimmedAnswer.length < 10) {
-        const validationError = 'Answer must be at least 10 non-whitespace characters.'
-        setError(validationError)
-        throw new Error(validationError)
+        throw new Error('Answer must be at least 10 characters.')
       }
+
+      const questionMessages = session.messages.filter(
+        (m) => m.type === 'question'
+      )
 
       const answeredQuestionCount = session.messages.filter(
         (m) => m.type === 'answer'
       ).length
 
       if (answeredQuestionCount >= MAX_QUESTIONS) {
-        return {
-          evaluation: session.currentEvaluation,
-          nextQuestion: null,
-          completed: true,
-        }
+        throw new Error('This interview has already reached 3 questions.')
       }
 
-      const currentQuestion = session.messages
-        .filter((m) => m.type === 'question')
-        .pop()
+      const currentQuestion =
+        questionMessages[questionMessages.length - 1]
 
       if (!currentQuestion) {
         throw new Error('No active question found.')
@@ -169,9 +151,9 @@ export function useInterview() {
         setSession((prev) =>
           prev
             ? {
-              ...prev,
-              messages: [...prev.messages, answerMessage],
-            }
+                ...prev,
+                messages: [...prev.messages, answerMessage],
+              }
             : null
         )
 
@@ -184,29 +166,23 @@ export function useInterview() {
           response.evaluation || response
         )
 
+        const nextQ =
+          response.next_question ||
+          response.nextQuestion ||
+          evaluation.nextQuestion
+
         const newAnsweredCount = answeredQuestionCount + 1
 
-        // Store the evaluation permanently in the timeline.
-        const evaluationMessage: ChatMessage = {
-          id: `evaluation-${newAnsweredCount}-${Date.now()}`,
-          type: 'evaluation',
-          content: evaluation.feedback || `Score: ${evaluation.score}/10`,
-          timestamp: Date.now(),
-          evaluation,
-        }
-
-        // ============================================================
-        // FINAL QUESTION: Q3 ENDS THE INTERVIEW.
-        // NO next question is ever added after this point.
-        // ============================================================
+        /*
+         * Q3 is the final question.
+         * Never add another question after Q3.
+         */
         if (newAnsweredCount >= MAX_QUESTIONS) {
           try {
             await interviewService.endInterview(session.id)
           } catch (endError) {
-            // The interview is already logically complete in the UI.
-            // Backend end failure must not force the candidate to answer Q3 again.
             console.warn(
-              '[useInterview] Backend end request failed:',
+              '[useInterview] Could not automatically end interview:',
               endError
             )
           }
@@ -214,12 +190,10 @@ export function useInterview() {
           setSession((prev) =>
             prev
               ? {
-                ...prev,
-                messages: [...prev.messages, evaluationMessage],
-                currentEvaluation: evaluation,
-                endTime: Date.now(),
-                isLoading: false,
-              }
+                  ...prev,
+                  currentEvaluation: evaluation,
+                  endTime: Date.now(),
+                }
               : null
           )
 
@@ -230,66 +204,68 @@ export function useInterview() {
           }
         }
 
-        const nextQ =
-          response.next_question ||
-          response.nextQuestion ||
-          evaluation.nextQuestion
-
+        /*
+         * Only add a new question when one exists.
+         * The current question remains the question that was answered.
+         */
         if (nextQ) {
           const existingQuestions = session.messages
             .filter((m) => m.type === 'question')
-            .map((q) => q.content.trim().toLowerCase())
+            .map((m) => m.content.trim())
 
-          const duplicateQuestion = existingQuestions.includes(
-            nextQ.trim().toLowerCase()
+          /*
+           * Protect the UI if the backend accidentally returns
+           * the exact same question again.
+           */
+          const duplicateQuestion = existingQuestions.some(
+            (q) => q.toLowerCase() === nextQ.trim().toLowerCase()
           )
 
-          if (duplicateQuestion) {
+          if (!duplicateQuestion) {
+            const questionMessage: ChatMessage = {
+              id: `question-${newAnsweredCount + 1}-${Date.now()}`,
+              type: 'question',
+              content: nextQ.trim(),
+              timestamp: Date.now(),
+            }
+
+            setSession((prev) =>
+              prev
+                ? {
+                    ...prev,
+                    messages: [...prev.messages, questionMessage],
+                    currentEvaluation: evaluation,
+                  }
+                : null
+            )
+          } else {
+            setSession((prev) =>
+              prev
+                ? {
+                    ...prev,
+                    currentEvaluation: evaluation,
+                  }
+                : null
+            )
+
             throw new Error(
               'The AI returned a duplicate question. Please restart the interview.'
             )
           }
-
-          const questionMessage: ChatMessage = {
-            id: `question-${newAnsweredCount + 1}-${Date.now()}`,
-            type: 'question',
-            content: nextQ.trim(),
-            timestamp: Date.now(),
-          }
-
-          setSession((prev) =>
-            prev
-              ? {
-                ...prev,
-                messages: [
-                  ...prev.messages,
-                  evaluationMessage,
-                  questionMessage,
-                ],
-                currentEvaluation: evaluation,
-              }
-              : null
-          )
         } else {
           setSession((prev) =>
             prev
               ? {
-                ...prev,
-                messages: [...prev.messages, evaluationMessage],
-                currentEvaluation: evaluation,
-              }
+                  ...prev,
+                  currentEvaluation: evaluation,
+                }
               : null
           )
         }
 
-        if (response.status === 'completed') {
-          const results = await interviewService.getHistory(session.id)
-          setSession((prev) => prev ? { ...prev, endTime: Date.now(), results } : null)
-        }
-
         return {
           evaluation,
-          nextQuestion: nextQ || null,
+          nextQuestion: nextQ,
           completed: false,
         }
       } catch (err) {
@@ -314,17 +290,20 @@ export function useInterview() {
       throw new Error('No active interview session')
     }
 
-    if (session.endTime) {
-      return
-    }
-
     try {
       setIsLoading(true)
       setError(null)
 
       await interviewService.endInterview(session.id)
 
-      setSession((prev) => (prev ? { ...prev, endTime: Date.now() } : null))
+      setSession((prev) =>
+        prev
+          ? {
+              ...prev,
+              endTime: Date.now(),
+            }
+          : null
+      )
     } catch (err) {
       const errorMsg =
         err instanceof Error
