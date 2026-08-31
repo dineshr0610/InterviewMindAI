@@ -13,7 +13,7 @@ import { Button } from '../../components/ui/Button'
 import { useInterviewContext } from '../../context/InterviewContext'
 import { ToastContainer } from '../../components/common/Toast'
 import type { ToastProps } from '../../components/common/Toast'
-import { LogOut, ChevronDown } from 'lucide-react'
+import { LogOut, ChevronDown, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function InterviewPage() {
@@ -118,8 +118,10 @@ export default function InterviewPage() {
 
   // ================================================================
   // COMPLETED INTERVIEW
-  // IMPORTANT: No QuestionCard and NO AnswerForm are rendered here.
-  // This permanently prevents the Q3 -> Q3 -> limit reached problem.
+  // When the candidate explicitly ends the interview (or the internal
+  // safety limit is reached), show the results view. The interview only
+  // completes via the End Interview button, never after a small number
+  // of questions.
   // ================================================================
   if (isComplete) {
     return (
@@ -132,6 +134,9 @@ export default function InterviewPage() {
               messages={session.messages}
               candidateName={session.candidateName}
               role={session.role}
+              startTime={session.startTime}
+              endTime={session.endTime}
+              resumeUsed={session.resumeUsed}
             />
 
             <div className="mt-6 flex justify-center">
@@ -178,12 +183,17 @@ export default function InterviewPage() {
                 Questions Answered
               </p>
               <p className="font-semibold text-text">
-                {session.messages.filter((m) => m.type === 'answer').length} / 3
+                {session.messages.filter((m) => m.type === 'answer').length}
+                {session.resumeUsed && (
+                  <span className="ml-2 inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                    <FileText className="h-3 w-3" />
+                    Resume-Based
+                  </span>
+                )}
               </p>
-            </div>            <QuestionTimer
-              questionKey={`question-${session.messages.filter((m) => m.type === 'question').length}`}
-              timeLimitSeconds={60}
-            />
+            </div>
+
+            <QuestionTimer startTime={session.startTime} />
 
             <Button
               variant="outline"

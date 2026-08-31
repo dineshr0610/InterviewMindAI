@@ -54,11 +54,10 @@ class StartInterviewRequest(BaseModel):
         default="Easy",
         description="Starting difficulty level",
     )
-    max_questions: int = Field(
-        default=5,
-        ge=1,
-        le=20,
-        description="Maximum number of interview questions",
+    resume_text: Optional[str] = Field(
+        default=None,
+        max_length=16000,
+        description="Cleaned resume text for personalized questions (optional)",
     )
 
     @model_validator(mode="before")

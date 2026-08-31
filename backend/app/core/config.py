@@ -52,7 +52,8 @@ class Settings(BaseSettings):
     CORS_ALLOW_HEADERS: List[str] = ["*"]
 
     # Interview Defaults & Adaptive Difficulty Thresholds
-    DEFAULT_MAX_QUESTIONS: int = 5
+    DEFAULT_MAX_QUESTIONS: int = 50
+    MAX_INTERVIEW_QUESTIONS: int = 50
     DEFAULT_DIFFICULTY: str = "Easy"
     SCORE_UPGRADE_THRESHOLD: int = 8
     SCORE_DOWNGRADE_THRESHOLD: int = 4

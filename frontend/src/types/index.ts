@@ -27,6 +27,9 @@ export interface InterviewSession {
   isLoading: boolean
   error?: string
   results?: InterviewHistory
+  resumeFile?: string
+  resumeContext?: string
+  resumeUsed?: boolean
 }
 
 export interface InterviewHistoryMessage {
@@ -45,6 +48,7 @@ export interface InterviewHistory {
   topic: string
   difficulty: string
   status: string
+  resume_used?: boolean
   messages: InterviewHistoryMessage[]
 }
 
@@ -53,7 +57,7 @@ export interface StartInterviewRequest {
   job_role: string
   topic?: string
   difficulty?: 'Easy' | 'Medium' | 'Hard'
-  max_questions?: number
+  resume_text?: string
 }
 
 export interface AnswerRequest {

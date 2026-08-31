@@ -63,6 +63,7 @@ class AIProvider:
         topic: str,
         difficulty: str = "Easy",
         previous_questions: Optional[list[str]] = None,
+        resume_text: Optional[str] = None,
     ) -> str:
 
         previous_questions = previous_questions or []
@@ -90,12 +91,15 @@ class AIProvider:
                             "strengths": [],
                             "improvements": [],
                             "question_number": 0,
-                            "max_questions": 1,
+                            "max_questions": 0,
                             "interview_completed": False,
                             "history": [
                                 {"question": question}
                                 for question in previous_questions
                             ],
+                            "resume_text": resume_text,
+                            "next_strategy": "",
+                            "follow_up_depth": 0,
                         },
                     ),
                     timeout=30.0,
@@ -114,6 +118,7 @@ class AIProvider:
                         topic,
                         difficulty,
                         previous_questions,
+                        resume_text=resume_text,
                     ),
                     timeout=30.0,
                 )
@@ -158,6 +163,7 @@ class AIProvider:
         history: list[dict],
         question_number: int,
         max_questions: int,
+        resume_text: Optional[str] = None,
     ) -> Dict[str, Any]:
         """Execute the LangGraph answer turn and return its public result."""
         if self.interview_graph:
@@ -180,6 +186,9 @@ class AIProvider:
                             "max_questions": max_questions,
                             "interview_completed": False,
                             "history": history,
+                            "resume_text": resume_text,
+                            "next_strategy": "",
+                            "follow_up_depth": 0,
                         },
                     ),
                     timeout=30.0,

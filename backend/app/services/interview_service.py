@@ -56,6 +56,7 @@ class InterviewService:
         topic: Optional[str] = None,
         difficulty: str = "Easy",
         max_questions: int = settings.DEFAULT_MAX_QUESTIONS,
+        resume_text: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
         Start a new interview session.
@@ -68,7 +69,8 @@ class InterviewService:
             role: The job role.
             topic: The technical topic (defaults to role if omitted).
             difficulty: Starting difficulty level.
-            max_questions: Maximum questions for this interview session.
+            max_questions: Internal safety limit for questions.
+            resume_text: Cleaned resume text for personalized interview (optional).
 
         Returns:
             A dictionary with interview_id, first question, and difficulty.
@@ -78,7 +80,7 @@ class InterviewService:
         """
         resolved_topic = (topic or "").strip() or (role or "").strip() or "General Technical"
         resolved_difficulty = difficulty or "Easy"
-        resolved_max_questions = max_questions or settings.DEFAULT_MAX_QUESTIONS
+        resolved_max_questions = max_questions or settings.MAX_INTERVIEW_QUESTIONS
 
         # Create interview record
         interview = await self.repository.create_interview(
@@ -87,6 +89,7 @@ class InterviewService:
             topic=resolved_topic,
             difficulty=resolved_difficulty,
             max_questions=resolved_max_questions,
+            resume_text=resume_text,
         )
 
         # Generate first question
@@ -94,6 +97,7 @@ class InterviewService:
             question = await self.ai_provider.generate_question(
                 topic=resolved_topic,
                 difficulty=resolved_difficulty,
+                resume_text=resume_text,
             )
         except Exception as exc:
             raise AIProviderException(
@@ -190,6 +194,7 @@ class InterviewService:
                 history=history,
                 question_number=answered_count_before,
                 max_questions=interview.max_questions,
+                resume_text=interview.resume_text,
             )
         except Exception as exc:
             raise AIProviderException(
@@ -228,7 +233,10 @@ class InterviewService:
             )
 
         answered_count = await self.repository.get_answered_message_count(interview_id)
-        if answered_count >= interview.max_questions:
+
+        # Safety limit: gracefully complete only when the AI indicates completion
+        # or the high internal safety limit is reached.
+        if bool(evaluation.get("completed")) or answered_count >= (interview.max_questions or settings.MAX_INTERVIEW_QUESTIONS):
             await self.repository.finish_interview(interview_id)
             evaluation.update(
                 next_question=None,
@@ -238,13 +246,14 @@ class InterviewService:
             return format_evaluation_for_response(evaluation)
 
         next_question = evaluation.get("next_question")
-        if not next_question and answered_count < interview.max_questions:
+        if not next_question and answered_count < (interview.max_questions or settings.MAX_INTERVIEW_QUESTIONS):
             try:
                 previous_questions = [msg.question for msg in messages if msg.question]
                 next_question = await self.ai_provider.generate_question(
                     topic=interview.topic,
                     difficulty=new_difficulty,
                     previous_questions=previous_questions,
+                    resume_text=interview.resume_text,
                 )
             except Exception as e:
                 logger.warning("Failed to generate fallback next question: %s", e)
@@ -332,6 +341,7 @@ class InterviewService:
             "topic": interview.topic,
             "difficulty": interview.difficulty,
             "max_questions": interview.max_questions,
+            "resume_used": bool(interview.resume_text),
             "status": interview.status.value if interview.status else None,
             "started_at": interview.started_at.isoformat() if interview.started_at else None,
             "ended_at": interview.ended_at.isoformat() if interview.ended_at else None,
@@ -382,6 +392,7 @@ class InterviewService:
             "topic": interview.topic,
             "difficulty": interview.difficulty,
             "max_questions": interview.max_questions,
+            "resume_used": bool(interview.resume_text),
             "status": interview.status.value if interview.status else None,
             "started_at": interview.started_at.isoformat() if interview.started_at else None,
             "ended_at": interview.ended_at.isoformat() if interview.ended_at else None,

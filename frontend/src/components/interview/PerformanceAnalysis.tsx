@@ -8,6 +8,8 @@ import {
   AlertCircle,
   Brain,
   Target,
+  FileText,
+  Clock,
 } from 'lucide-react'
 import { Card } from '../ui/Card'
 import { ChatMessage } from '../../types'
@@ -16,22 +18,34 @@ interface PerformanceAnalysisProps {
   messages: ChatMessage[]
   candidateName: string
   role: string
+  startTime?: number
+  endTime?: number
+  resumeUsed?: boolean
 }
 
 function clamp(value: number, min: number, max: number) {
   return Math.max(min, Math.min(max, value))
 }
 
+function formatDuration(startTime?: number, endTime?: number) {
+  if (!startTime || !endTime) return null
+  const seconds = Math.max(0, Math.floor((endTime - startTime) / 1000))
+  const mins = Math.floor(seconds / 60)
+  const secs = seconds % 60
+  return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+}
+
 export function PerformanceAnalysis({
   messages,
   candidateName,
   role,
+  startTime,
+  endTime,
+  resumeUsed,
 }: PerformanceAnalysisProps) {
   const evaluations = messages
     .filter((m) => m.type === 'evaluation' && m.evaluation)
     .map((m) => m.evaluation!)
-  
-  const answers = messages.filter((m) => m.type === 'answer')
 
   const scores = evaluations.map((e) => Number(e.score) || 0)
 
@@ -135,6 +149,24 @@ export function PerformanceAnalysis({
               <p className="text-text-secondary mt-2">
                 {candidateName} · {role}
               </p>
+
+              <div className="mt-3 flex flex-wrap gap-2">
+                {resumeUsed && (
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded-full">
+                    <FileText className="h-3 w-3" />
+                    Resume-Based AI Interview
+                  </span>
+                )}
+                {(() => {
+                  const duration = formatDuration(startTime, endTime)
+                  return duration ? (
+                    <span className="inline-flex items-center gap-1 text-xs font-medium text-text-secondary bg-surface-light px-2 py-0.5 rounded-full">
+                      <Clock className="h-3 w-3" />
+                      {duration}
+                    </span>
+                  ) : null
+                })()}
+              </div>
             </div>
 
             <div className="text-center">
@@ -305,11 +337,9 @@ export function PerformanceAnalysis({
         </p>
 
         <p className="text-xs text-text-secondary mt-4">
-          Completed responses: {answers.length} / {MAX_QUESTIONS_PLACEHOLDER}
+          Questions answered: {evaluations.length}
         </p>
       </Card>
     </motion.div>
   )
 }
-
-const MAX_QUESTIONS_PLACEHOLDER = 3

@@ -64,7 +64,22 @@ export const interviewService = {
       role: role,
       topic: topicValue,
       difficulty: request.difficulty || 'Easy',
-      max_questions: request.max_questions || 5,
+      resume_text: request.resume_text || undefined,
+    })
+
+    const resData = response.data
+    return resData.data || resData
+  },
+
+  /**
+   * Upload a PDF resume and return the extracted clean text
+   */
+  async uploadResume(file: File) {
+    const formData = new FormData()
+    formData.append('file', file)
+
+    const response = await api.post('/api/interview/resume/upload', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
     })
 
     const resData = response.data

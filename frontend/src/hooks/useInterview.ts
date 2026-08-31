@@ -1,9 +1,7 @@
 import { useState, useCallback, useRef } from 'react'
-import { InterviewSession, ChatMessage } from '../types'
+import { InterviewSession, ChatMessage, InterviewHistory } from '../types'
 import { interviewService } from '../services/interviewService'
 import { parseEvaluation } from '../utils/parser'
-
-const MAX_QUESTIONS = 3
 
 function roleTopic(role: string): string {
   const r = role.toLowerCase()
@@ -55,7 +53,14 @@ export function useInterview() {
   const submittingRef = useRef(false)
 
   const startInterview = useCallback(
-    async (candidateName: string, jobRole: string, topic?: string, difficulty?: 'Easy' | 'Medium' | 'Hard', maxQuestions?: number) => {
+    async (
+      candidateName: string,
+      jobRole: string,
+      topic?: string,
+      difficulty?: 'Easy' | 'Medium' | 'Hard',
+      resumeText?: string,
+      resumeFile?: string
+    ) => {
       try {
         setIsLoading(true)
         setError(null)
@@ -66,7 +71,7 @@ export function useInterview() {
           job_role: jobRole,
           topic: topic || (jobRole ? roleTopic(jobRole) : undefined),
           difficulty: difficulty || 'Easy',
-          max_questions: maxQuestions || 5,
+          resume_text: resumeText,
         })
 
         const initialQuestion = response.question || response.first_question
@@ -92,6 +97,9 @@ export function useInterview() {
           startTime: Date.now(),
           messages: initialMessages,
           isLoading: false,
+          resumeFile: resumeFile || undefined,
+          resumeContext: resumeText || undefined,
+          resumeUsed: Boolean(resumeText),
         })
 
         return response
@@ -137,14 +145,6 @@ export function useInterview() {
       const answeredQuestionCount = session.messages.filter(
         (m) => m.type === 'answer'
       ).length
-
-      if (answeredQuestionCount >= MAX_QUESTIONS) {
-        return {
-          evaluation: session.currentEvaluation,
-          nextQuestion: null,
-          completed: true,
-        }
-      }
 
       const currentQuestion = session.messages
         .filter((m) => m.type === 'question')
@@ -193,41 +193,6 @@ export function useInterview() {
           content: evaluation.feedback || `Score: ${evaluation.score}/10`,
           timestamp: Date.now(),
           evaluation,
-        }
-
-        // ============================================================
-        // FINAL QUESTION: Q3 ENDS THE INTERVIEW.
-        // NO next question is ever added after this point.
-        // ============================================================
-        if (newAnsweredCount >= MAX_QUESTIONS) {
-          try {
-            await interviewService.endInterview(session.id)
-          } catch (endError) {
-            // The interview is already logically complete in the UI.
-            // Backend end failure must not force the candidate to answer Q3 again.
-            console.warn(
-              '[useInterview] Backend end request failed:',
-              endError
-            )
-          }
-
-          setSession((prev) =>
-            prev
-              ? {
-                ...prev,
-                messages: [...prev.messages, evaluationMessage],
-                currentEvaluation: evaluation,
-                endTime: Date.now(),
-                isLoading: false,
-              }
-              : null
-          )
-
-          return {
-            evaluation,
-            nextQuestion: null,
-            completed: true,
-          }
         }
 
         const nextQ =
@@ -283,7 +248,7 @@ export function useInterview() {
         }
 
         if (response.status === 'completed') {
-          const results = await interviewService.getHistory(session.id)
+          const results: InterviewHistory | undefined = await interviewService.getHistory(session.id)
           setSession((prev) => prev ? { ...prev, endTime: Date.now(), results } : null)
         }
 
@@ -324,7 +289,14 @@ export function useInterview() {
 
       await interviewService.endInterview(session.id)
 
-      setSession((prev) => (prev ? { ...prev, endTime: Date.now() } : null))
+      let results: InterviewHistory | undefined
+      try {
+        results = await interviewService.getHistory(session.id)
+      } catch (err) {
+        console.warn('[useInterview] History fetch failed after end:', err)
+      }
+
+      setSession((prev) => (prev ? { ...prev, endTime: Date.now(), results } : null))
     } catch (err) {
       const errorMsg =
         err instanceof Error

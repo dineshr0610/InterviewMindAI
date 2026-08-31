@@ -64,7 +64,11 @@ class Interview(Base):
     max_questions: Mapped[int] = mapped_column(
         Integer,
         nullable=False,
-        default=5,
+        default=50,
+    )
+    resume_text: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
     )
     status: Mapped[InterviewStatus] = mapped_column(
         SQLEnum(InterviewStatus, name="interview_status"),
@@ -108,6 +112,7 @@ class Interview(Base):
             "topic": self.topic,
             "difficulty": self.difficulty,
             "max_questions": self.max_questions,
+            "resume_used": bool(self.resume_text),
             "status": self.status.value if self.status else None,
             "started_at": self.started_at.isoformat() if self.started_at else None,
             "ended_at": self.ended_at.isoformat() if self.ended_at else None,

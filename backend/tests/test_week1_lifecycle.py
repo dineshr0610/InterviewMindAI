@@ -12,13 +12,14 @@ from app.models.interview import InterviewStatus
 from app.services.interview_service import InterviewService
 
 
-def _interview(interview_id, max_questions: int = 5):
+def _interview(interview_id, max_questions: int = 5, resume_text: str | None = None):
     return SimpleNamespace(
         id=interview_id,
         topic="Binary Search",
         difficulty="Medium",
         max_questions=max_questions,
         status=InterviewStatus.ACTIVE,
+        resume_text=resume_text,
     )
 
 
@@ -77,6 +78,7 @@ async def test_answer_updates_pending_question_and_returns_next_question() -> No
         history=[],
         question_number=0,
         max_questions=5,
+        resume_text=None,
     )
 
 

@@ -36,6 +36,7 @@ def _make_interview(
     difficulty: str = "Medium",
     max_questions: int = 5,
     status: InterviewStatus = InterviewStatus.ACTIVE,
+    resume_text: str | None = None,
 ):
     return SimpleNamespace(
         id=interview_id or uuid4(),
@@ -43,6 +44,7 @@ def _make_interview(
         difficulty=difficulty,
         max_questions=max_questions,
         status=status,
+        resume_text=resume_text,
     )
 
 

@@ -42,7 +42,8 @@ class InterviewRepository:
         role: str,
         topic: str,
         difficulty: str = "Easy",
-        max_questions: int = 5,
+        max_questions: int = 50,
+        resume_text: Optional[str] = None,
     ) -> Interview:
         """
         Create a new interview session.
@@ -52,6 +53,8 @@ class InterviewRepository:
             role: The job role.
             topic: The technical topic.
             difficulty: Starting difficulty level.
+            max_questions: Internal safety limit for questions.
+            resume_text: Cleaned resume text for personalized questions (optional).
 
         Returns:
             The created Interview instance.
@@ -62,6 +65,7 @@ class InterviewRepository:
             topic=topic,
             difficulty=difficulty,
             max_questions=max_questions,
+            resume_text=resume_text,
             status=InterviewStatus.ACTIVE,
         )
         self.session.add(interview)
