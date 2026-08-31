@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+﻿import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Header } from '../../components/layout/Header'
 import { Footer } from '../../components/layout/Footer'
@@ -7,39 +7,27 @@ import { EvaluationPanel } from '../../components/interview/EvaluationPanel'
 import { PerformanceAnalysis } from '../../components/interview/PerformanceAnalysis'
 import { AnswerForm } from '../../components/interview/AnswerForm'
 import { ChatTimeline } from '../../components/interview/ChatTimeline'
-import { InterviewResults } from '../../components/interview/InterviewResults'
 import { LoadingSpinner } from '../../components/common/LoadingSpinner'
+import { QuestionTimer } from '../../components/interview/QuestionTimer'
 import { Button } from '../../components/ui/Button'
 import { useInterviewContext } from '../../context/InterviewContext'
 import { ToastContainer } from '../../components/common/Toast'
 import type { ToastProps } from '../../components/common/Toast'
-import { LogOut, ChevronDown, Clock } from 'lucide-react'
+import { LogOut, ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export default function InterviewPage() {
   const navigate = useNavigate()
-  const { session, isLoading, error, submitAnswer, endInterview, resetSession } = useInterviewContext()
+  const {
+    session,
+    isLoading,
+    error,
+    submitAnswer,
+    endInterview,
+  } = useInterviewContext()
+
   const [toasts, setToasts] = useState<ToastProps[]>([])
   const [showTimeline, setShowTimeline] = useState(false)
-  const [elapsedSeconds, setElapsedSeconds] = useState(0)
-
-  useEffect(() => {
-    if (!session || session.endTime) return
-
-    setElapsedSeconds(Math.max(0, Math.floor((Date.now() - session.startTime) / 1000)))
-
-    const interval = setInterval(() => {
-      setElapsedSeconds(Math.max(0, Math.floor((Date.now() - session.startTime) / 1000)))
-    }, 1000)
-
-    return () => clearInterval(interval)
-  }, [session?.startTime, session?.endTime])
-
-  const formatDuration = (totalSeconds: number) => {
-    const mins = Math.floor(totalSeconds / 60)
-    const secs = totalSeconds % 60
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`
-  }
 
   useEffect(() => {
     if (!session) {
@@ -101,8 +89,7 @@ export default function InterviewPage() {
     ) {
       try {
         await endInterview()
-        addToast('success', 'Interview ended. Thank you for practicing!')
-        setTimeout(() => navigate('/'), 2000)
+        addToast('success', 'Interview ended.')
       } catch (err) {
         const errorMsg =
           err instanceof Error ? err.message : 'Failed to end interview'
@@ -115,7 +102,7 @@ export default function InterviewPage() {
     return null
   }
 
-  const isComplete = Boolean(session.endTime || session.results)
+  const isComplete = Boolean(session.endTime)
 
   const currentQuestion = session.messages
     .filter((m) => m.type === 'question')
@@ -135,23 +122,6 @@ export default function InterviewPage() {
   // This permanently prevents the Q3 -> Q3 -> limit reached problem.
   // ================================================================
   if (isComplete) {
-    if (session.results) {
-      return (
-        <div className="flex flex-col min-h-screen">
-          <Header title={`Interview Results - ${session.role}`} />
-          <InterviewResults
-            history={session.results}
-            onStartAgain={() => {
-              resetSession()
-              navigate('/')
-            }}
-          />
-          <Footer />
-          <ToastContainer toasts={toasts} onClose={removeToast} />
-        </div>
-      )
-    }
-
     return (
       <div className="flex flex-col min-h-screen">
         <Header title={`Interview Complete - ${session.role}`} />
@@ -167,10 +137,7 @@ export default function InterviewPage() {
             <div className="mt-6 flex justify-center">
               <Button
                 variant="outline"
-                onClick={() => {
-                  resetSession()
-                  navigate('/')
-                }}
+                onClick={() => navigate('/')}
               >
                 Start New Interview
               </Button>
@@ -213,17 +180,10 @@ export default function InterviewPage() {
               <p className="font-semibold text-text">
                 {session.messages.filter((m) => m.type === 'answer').length} / 3
               </p>
-            </div>
-
-            <div>
-              <p className="text-sm text-text-secondary flex items-center gap-1">
-                <Clock className="h-3.5 w-3.5 text-primary inline" />
-                Interview Duration
-              </p>
-              <p className="font-semibold text-text font-mono">
-                {formatDuration(elapsedSeconds)}
-              </p>
-            </div>
+            </div>            <QuestionTimer
+              questionKey={`question-${session.messages.filter((m) => m.type === 'question').length}`}
+              timeLimitSeconds={60}
+            />
 
             <Button
               variant="outline"
@@ -296,8 +256,9 @@ export default function InterviewPage() {
                     </span>
 
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform ${showTimeline ? 'rotate-180' : ''
-                        }`}
+                      className={`h-4 w-4 transition-transform ${
+                        showTimeline ? 'rotate-180' : ''
+                      }`}
                     />
                   </button>
                 )}
@@ -326,3 +287,5 @@ export default function InterviewPage() {
     </div>
   )
 }
+
+
