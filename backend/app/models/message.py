@@ -9,7 +9,7 @@ import uuid
 from datetime import datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text, UUID
+from sqlalchemy import DateTime, ForeignKey, Integer, JSON, String, Text, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
@@ -69,6 +69,13 @@ class InterviewMessage(Base):
         Text,
         nullable=True,
     )
+    topic: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    question_difficulty: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    question_type: Mapped[str | None] = mapped_column(String(80), nullable=True)
+    technical_concept: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    technical_evaluation: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    communication_evaluation: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    answer_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
         nullable=False,

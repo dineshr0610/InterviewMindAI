@@ -64,6 +64,8 @@ async def init_db() -> None:
     Create all database tables.
     Should be called on application startup.
     """
+    from app.models import CodeSubmission, Interview, InterviewMessage  # noqa: F401
+
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 

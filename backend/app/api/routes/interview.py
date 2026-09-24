@@ -14,6 +14,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.dependencies import get_db_session
 from app.schemas.interview import (
     AnswerRequest,
+    CodeSubmissionRequest,
+    CodingProblemRequest,
     StartInterviewRequest,
 )
 from app.services.interview_service import InterviewService
@@ -33,6 +35,18 @@ async def get_interview_service(
 ) -> InterviewService:
     """Dependency that creates an InterviewService instance with an active DB session."""
     return InterviewService(session=db)
+
+
+@router.get(
+    "/roles",
+    response_model=dict,
+    summary="List configurable technical roles",
+)
+async def get_roles(
+    service: InterviewService = Depends(get_interview_service),
+) -> dict:
+    """Return role requirements used by resume matching and question selection."""
+    return success_response({"roles": service.available_roles()})
 
 
 @router.post(
@@ -132,6 +146,7 @@ async def submit_answer(
     result = await service.submit_answer(
         interview_id=request.interview_id,
         answer=request.answer,
+        idempotency_key=request.idempotency_key,
     )
     logger.info(
         "Answer evaluated: interview_id=%s, score=%d",
@@ -139,6 +154,73 @@ async def submit_answer(
         result.get("score", 0),
     )
     return success_response(result)
+
+
+@router.get(
+    "/candidate/{candidate_name}/progress",
+    response_model=dict,
+    summary="Get completed assessment history for a candidate",
+)
+async def get_candidate_progress(
+    candidate_name: str,
+    service: InterviewService = Depends(get_interview_service),
+) -> dict:
+    return success_response(
+        await service.get_candidate_progress(candidate_name=candidate_name)
+    )
+
+
+@router.get(
+    "/{interview_id}/assessment",
+    response_model=dict,
+    summary="Get the stored final assessment",
+)
+async def get_final_assessment(
+    interview_id: UUID = Path(..., description="UUID of the interview session"),
+    service: InterviewService = Depends(get_interview_service),
+) -> dict:
+    return success_response(
+        await service.get_final_assessment(interview_id=interview_id)
+    )
+
+
+@router.post(
+    "/{interview_id}/coding/problem",
+    response_model=dict,
+    summary="Get a role-specific coding assessment",
+)
+async def get_coding_problem(
+    request: CodingProblemRequest,
+    interview_id: UUID = Path(..., description="UUID of the completed interview"),
+    service: InterviewService = Depends(get_interview_service),
+) -> dict:
+    return success_response(
+        await service.get_coding_problem(
+            interview_id=interview_id,
+            difficulty=request.difficulty,
+            language=request.language,
+        )
+    )
+
+
+@router.post(
+    "/{interview_id}/coding/submit",
+    response_model=dict,
+    summary="Run and review a coding assessment submission",
+)
+async def submit_code(
+    request: CodeSubmissionRequest,
+    interview_id: UUID = Path(..., description="UUID of the completed interview"),
+    service: InterviewService = Depends(get_interview_service),
+) -> dict:
+    return success_response(
+        await service.submit_code(
+            interview_id=interview_id,
+            problem_id=request.problem_id,
+            source_code=request.source_code,
+            language=request.language,
+        )
+    )
 
 
 @router.get(

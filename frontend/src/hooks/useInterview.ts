@@ -3,48 +3,6 @@ import { InterviewSession, ChatMessage, InterviewHistory } from '../types'
 import { interviewService } from '../services/interviewService'
 import { parseEvaluation } from '../utils/parser'
 
-function roleTopic(role: string): string {
-  const r = role.toLowerCase()
-
-  if (r.includes('frontend') || r.includes('front-end') || r.includes('react') || r.includes('ui')) {
-    return 'Frontend Development'
-  }
-
-  if (r.includes('backend') || r.includes('back-end') || r.includes('api') || r.includes('server')) {
-    return 'Backend Development'
-  }
-
-  if (r.includes('full stack') || r.includes('fullstack')) {
-    return 'Full Stack Development'
-  }
-
-  if (r.includes('data scientist') || r.includes('data science')) {
-    return 'Data Science'
-  }
-
-  if (r.includes('machine learning') || r.includes('ml engineer')) {
-    return 'Machine Learning'
-  }
-
-  if (r.includes('devops') || r.includes('cloud')) {
-    return 'DevOps & Cloud'
-  }
-
-  if (r.includes('python')) {
-    return 'Python Development'
-  }
-
-  if (r.includes('java')) {
-    return 'Java Development'
-  }
-
-  if (r.includes('dsa') || r.includes('algorithm')) {
-    return 'Data Structures & Algorithms'
-  }
-
-  return role.trim() || 'Software Engineering'
-}
-
 export function useInterview() {
   const [session, setSession] = useState<InterviewSession | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -69,7 +27,9 @@ export function useInterview() {
         const response = await interviewService.startInterview({
           candidate_name: candidateName,
           job_role: jobRole,
-          topic: topic || (jobRole ? roleTopic(jobRole) : undefined),
+          // Let the backend select a role-aware baseline topic unless the
+          // candidate explicitly selected a technical topic.
+          topic: topic || undefined,
           difficulty: difficulty || 'Easy',
           resume_text: resumeText,
         })

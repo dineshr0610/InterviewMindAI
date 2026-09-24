@@ -5,7 +5,7 @@ Pydantic schemas for interview-related API requests and responses.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Literal, Optional
+from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -116,6 +116,15 @@ class AnswerRequest(BaseModel):
         description="Candidate's answer text (min 10 characters)",
         examples=["The Virtual DOM is a lightweight representation of the real DOM in memory."],
     )
+    idempotency_key: Optional[str] = Field(
+        default=None,
+        min_length=8,
+        max_length=128,
+        description=(
+            "Stable client-generated key for retrying this answer submission. "
+            "Reusing the key with a different answer is rejected."
+        ),
+    )
 
     @field_validator("answer")
     @classmethod
@@ -124,6 +133,29 @@ class AnswerRequest(BaseModel):
         if not stripped:
             raise ValueError("Answer cannot be empty or whitespace only")
         return stripped
+
+
+class CodingProblemRequest(BaseModel):
+    """Optional preferences when requesting a role-specific coding problem."""
+
+    difficulty: Optional[str] = Field(default=None, max_length=50)
+    language: Optional[str] = Field(default=None, max_length=50)
+
+
+class CodeSubmissionRequest(BaseModel):
+    """A candidate submission for the currently selected coding problem."""
+
+    problem_id: str = Field(..., min_length=2, max_length=100)
+    source_code: str = Field(..., min_length=1, max_length=50_000)
+    language: Optional[str] = Field(default=None, max_length=50)
+    idempotency_key: Optional[str] = Field(default=None, min_length=8, max_length=128)
+
+    @field_validator("source_code")
+    @classmethod
+    def validate_source_code(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("Source code cannot be empty or whitespace only")
+        return value
 
 
 class AnswerResponse(BaseModel):

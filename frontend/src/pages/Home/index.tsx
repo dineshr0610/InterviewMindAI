@@ -4,6 +4,7 @@ import { useState, useRef, ChangeEvent } from 'react'
 import { Header } from '../../components/layout/Header'
 import { Footer } from '../../components/layout/Footer'
 import { Input } from '../../components/ui/Input'
+import { JobRoleCombobox } from '../../components/ui/JobRoleCombobox'
 import { Button } from '../../components/ui/Button'
 import { Card } from '../../components/ui/Card'
 import { useInterviewContext } from '../../context/InterviewContext'
@@ -32,6 +33,8 @@ export default function HomePage() {
   const {
     register,
     handleSubmit,
+    setValue,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     defaultValues: {
@@ -39,6 +42,14 @@ export default function HomePage() {
       role: '',
       topic: '',
       difficulty: 'Easy',
+    },
+  })
+
+  const roleField = register('role', {
+    required: 'Job role is required',
+    minLength: {
+      value: 2,
+      message: 'Job role must be at least 2 characters',
     },
   })
 
@@ -209,16 +220,14 @@ export default function HomePage() {
                     error={errors.name?.message}
                   />
 
-                  <Input
-                    {...register('role', {
-                      required: 'Job role is required',
-                      minLength: {
-                        value: 2,
-                        message: 'Job role must be at least 2 characters',
-                      },
-                    })}
+                  <JobRoleCombobox
                     label="Target Job Role"
-                    placeholder="e.g., Backend Developer, Python Engineer, Data Scientist"
+                    name={roleField.name}
+                    value={watch('role') || ''}
+                    onChange={(value) => {
+                      setValue('role', value.trim(), { shouldValidate: true })
+                    }}
+                    placeholder="Select a role or type your own"
                     error={errors.role?.message}
                   />
 
