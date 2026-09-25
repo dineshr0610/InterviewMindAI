@@ -72,14 +72,31 @@ export const interviewService = {
   },
 
   /**
-   * Upload a PDF resume and return the extracted clean text
+   * Upload a PDF or DOCX resume and return the extracted clean text
    */
-  async uploadResume(file: File) {
+  async uploadResume(file: File, role?: string) {
     const formData = new FormData()
     formData.append('file', file)
+    if (role) {
+      formData.append('role', role)
+    }
 
     const response = await api.post('/api/interview/resume/upload', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
+    })
+
+    const resData = response.data
+    return resData.data || resData
+  },
+
+  /**
+   * Analyze resume against selected role (Module 1 analysis)
+   */
+  async analyzeResume(resumeText: string, role: string, candidateName?: string) {
+    const response = await api.post('/api/interview/resume/analyze', {
+      resume_text: resumeText,
+      role,
+      candidate_name: candidateName || 'Candidate',
     })
 
     const resData = response.data

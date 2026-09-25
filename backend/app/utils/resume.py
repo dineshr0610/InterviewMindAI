@@ -10,7 +10,25 @@ from typing import Optional
 
 
 MAX_RESUME_SIZE_BYTES = 5 * 1024 * 1024  # 5 MB
-ALLOWED_MIME_TYPES = {"application/pdf"}
+ALLOWED_MIME_TYPES = {
+    "application/pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "application/msword",
+}
+
+
+def extract_text_from_file(file_content: bytes, filename: Optional[str] = None) -> Optional[str]:
+    """
+    Extract text from PDF, DOCX, or text file bytes.
+    Returns cleaned text or None if extraction fails.
+    """
+    try:
+        from app.resume_processing.parser import parse_resume_bytes
+
+        parsed = parse_resume_bytes(file_content, filename=filename)
+        return parsed.cleaned_text if parsed and parsed.cleaned_text.strip() else None
+    except Exception:
+        return extract_text_from_pdf(file_content)
 
 
 def extract_text_from_pdf(file_content: bytes) -> Optional[str]:

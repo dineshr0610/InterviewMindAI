@@ -12,10 +12,12 @@ import { interviewService } from '../../services/interviewService'
 import { Sparkles, Zap, Trophy, ArrowRight, FileText, Upload, X, Loader2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
+import { PreInterviewAnalysisModal, Module1AnalysisResult } from '../../components/interview/PreInterviewAnalysisModal'
+
 interface FormData {
   name: string
   role: string
-  topic?: string
+  topic: string
   difficulty: 'Easy' | 'Medium' | 'Hard'
 }
 
@@ -28,6 +30,9 @@ export default function HomePage() {
   const [resumeContext, setResumeContext] = useState<string | null>(null)
   const [resumeLoading, setResumeLoading] = useState(false)
   const [resumeError, setResumeError] = useState<string | null>(null)
+  const [analysisResult, setAnalysisResult] = useState<Module1AnalysisResult | null>(null)
+  const [showAnalysisModal, setShowAnalysisModal] = useState(false)
+  const [isAnalyzing, setIsAnalyzing] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const {
@@ -35,6 +40,7 @@ export default function HomePage() {
     handleSubmit,
     setValue,
     watch,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     defaultValues: {
@@ -53,6 +59,22 @@ export default function HomePage() {
     },
   })
 
+  const fetchResumeAnalysis = async (text: string, targetRole: string, candidateName: string) => {
+    if (!text || !targetRole) return null
+    try {
+      setIsAnalyzing(true)
+      const res = await interviewService.analyzeResume(text, targetRole, candidateName)
+      const data = res.data || res
+      setAnalysisResult(data)
+      return data
+    } catch (err) {
+      console.warn('[Home] Resume analysis error:', err)
+      return null
+    } finally {
+      setIsAnalyzing(false)
+    }
+  }
+
   const handleResumeUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -61,28 +83,37 @@ export default function HomePage() {
     setResumeLoading(true)
 
     try {
-      if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
-        throw new Error('Please upload a valid PDF resume.')
+      const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
+      const isDocx = file.name.toLowerCase().endsWith('.docx')
+
+      if (!isPdf && !isDocx) {
+        throw new Error('Please upload a valid PDF or DOCX resume.')
       }
 
       if (file.size > 5 * 1024 * 1024) {
         throw new Error('The resume file is too large. Maximum size is 5 MB.')
       }
 
-      const result = await interviewService.uploadResume(file)
+      const currentRole = getValues('role')
+      const result = await interviewService.uploadResume(file, currentRole || undefined)
 
       if (!result.resume_text) {
-        throw new Error('Unable to read this resume. Please upload a text-based PDF.')
+        throw new Error('Unable to read text from this resume.')
       }
 
       setResumeFile(file)
       setResumeContext(result.resume_text)
       setResumeError(null)
+
+      if (currentRole && currentRole.trim()) {
+        await fetchResumeAnalysis(result.resume_text, currentRole, getValues('name') || 'Candidate')
+      }
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to upload resume'
       setResumeError(errorMsg)
       setResumeFile(null)
       setResumeContext(null)
+      setAnalysisResult(null)
     } finally {
       setResumeLoading(false)
       if (fileInputRef.current) {
@@ -95,12 +126,37 @@ export default function HomePage() {
     setResumeFile(null)
     setResumeContext(null)
     setResumeError(null)
+    setAnalysisResult(null)
+    setShowAnalysisModal(false)
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
   }
 
-  const onSubmit = async (data: FormData) => {
+  const handlePreviewAnalysis = async () => {
+    if (!resumeContext) return
+    const currentRole = getValues('role')
+    if (!currentRole || !currentRole.trim()) {
+      setResumeError('Please select a Target Job Role to see role-specific match analysis.')
+      return
+    }
+
+    if (!analysisResult) {
+      const analysis = await fetchResumeAnalysis(
+        resumeContext,
+        currentRole,
+        getValues('name') || 'Candidate'
+      )
+      if (analysis) {
+        setShowAnalysisModal(true)
+      }
+    } else {
+      setShowAnalysisModal(true)
+    }
+  }
+
+  const proceedWithInterview = async () => {
+    const data = getValues()
     try {
       setSubmitError(null)
       await startInterview(
@@ -111,7 +167,36 @@ export default function HomePage() {
         resumeContext || undefined,
         resumeFile?.name || undefined
       )
+      setShowAnalysisModal(false)
       navigate('/interview')
+    } catch (err) {
+      const errorMsg = err instanceof Error ? err.message : 'Failed to start interview'
+      setSubmitError(errorMsg)
+      console.error('[Home] Interview start error:', err)
+    }
+  }
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      setSubmitError(null)
+
+      // If a resume is uploaded, present the pre-interview analysis overview first!
+      if (resumeContext && data.role) {
+        let currentAnalysis = analysisResult
+        if (!currentAnalysis || currentAnalysis.selected_role !== data.role) {
+          currentAnalysis = await fetchResumeAnalysis(
+            resumeContext,
+            data.role,
+            data.name || 'Candidate'
+          )
+        }
+        if (currentAnalysis) {
+          setShowAnalysisModal(true)
+          return
+        }
+      }
+
+      await proceedWithInterview()
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'Failed to start interview'
       setSubmitError(errorMsg)
@@ -263,7 +348,7 @@ export default function HomePage() {
                           <>
                             <Upload className="h-8 w-8 text-primary" />
                             <span className="text-sm font-medium">Upload Resume</span>
-                            <span className="text-xs">Supported format: PDF</span>
+                            <span className="text-xs">Supported format: PDF, DOCX</span>
                           </>
                         )}
                       </button>
@@ -271,30 +356,60 @@ export default function HomePage() {
                       <motion.div
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex items-center justify-between gap-3 p-4 rounded-lg bg-primary/10 border border-primary/30"
+                        className="p-3.5 rounded-lg bg-primary/10 border border-primary/30 space-y-2.5"
                       >
-                        <div className="flex items-center gap-3 min-w-0">
-                          <FileText className="h-8 w-8 text-primary flex-shrink-0" />
-                          <div className="min-w-0">
-                            <p className="font-medium text-text truncate">{resumeFile.name}</p>
-                            <p className="text-xs text-text-secondary">Resume-Based Interview</p>
+                        <div className="flex items-center justify-between gap-3">
+                          <div className="flex items-center gap-3 min-w-0">
+                            <FileText className="h-8 w-8 text-primary flex-shrink-0" />
+                            <div className="min-w-0">
+                              <p className="font-medium text-text truncate text-sm">{resumeFile.name}</p>
+                              <p className="text-xs text-text-secondary">
+                                {analysisResult ? (
+                                  <span className="text-primary font-semibold">
+                                    Match: {analysisResult.role_match_score}/100 • {analysisResult.matched_areas?.length || 0} skills aligned
+                                  </span>
+                                ) : isAnalyzing ? (
+                                  'Analyzing role fit...'
+                                ) : (
+                                  'Resume uploaded'
+                                )}
+                              </p>
+                            </div>
                           </div>
+                          <button
+                            type="button"
+                            onClick={handleRemoveResume}
+                            className="p-1.5 rounded-lg text-text-secondary hover:text-error hover:bg-error/10 transition-colors"
+                            aria-label="Remove resume"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
                         </div>
-                        <button
-                          type="button"
-                          onClick={handleRemoveResume}
-                          className="p-2 rounded-lg text-text-secondary hover:text-error hover:bg-error/10 transition-colors"
-                          aria-label="Remove resume"
-                        >
-                          <X className="h-5 w-5" />
-                        </button>
+
+                        {/* Preview Analysis Button */}
+                        <div className="pt-1 border-t border-primary/20 flex items-center justify-between">
+                          <button
+                            type="button"
+                            onClick={handlePreviewAnalysis}
+                            disabled={isAnalyzing}
+                            className="text-xs font-semibold text-primary hover:text-primary-light flex items-center gap-1.5 transition-colors"
+                          >
+                            <Sparkles className="h-3.5 w-3.5" />
+                            {analysisResult ? 'View Match Breakdown & Gaps' : 'Preview Match Analysis'}
+                          </button>
+                          {analysisResult && (
+                            <span className="text-[11px] text-text-secondary">
+                              Target: <strong className="text-text">{analysisResult.selected_role}</strong>
+                            </span>
+                          )}
+                        </div>
                       </motion.div>
                     )}
 
                     <input
                       ref={fileInputRef}
                       type="file"
-                      accept=".pdf,application/pdf"
+                      accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                       onChange={handleResumeUpload}
                       className="hidden"
                     />
@@ -320,7 +435,7 @@ export default function HomePage() {
                     type="submit"
                     variant="primary"
                     size="lg"
-                    isLoading={isSubmitting || isLoading}
+                    isLoading={isSubmitting || isLoading || isAnalyzing}
                     className="w-full group"
                   >
                     Start Interview
@@ -338,6 +453,16 @@ export default function HomePage() {
           </div>
         </motion.div>
       </main>
+
+      {/* Pre-Interview Resume Match & Skill Gaps Modal */}
+      <PreInterviewAnalysisModal
+        isOpen={showAnalysisModal}
+        onClose={() => setShowAnalysisModal(false)}
+        onProceed={proceedWithInterview}
+        analysis={analysisResult}
+        candidateName={watch('name') || 'Candidate'}
+        isLoading={isLoading}
+      />
 
       <Footer />
     </div>

@@ -1,0 +1,38 @@
+{
+  "selected_role": "string",
+  "role_match_score": "number 0-100",
+  "score_breakdown": {
+    "core_skills": "number",
+    "technical_concepts": "number",
+    "project_experience": "number",
+    "frameworks_tools": "number",
+    "relevant_experience": "number"
+  },
+  "matched_areas": [
+    {
+      "topic": "string",
+      "category": "string",
+      "confidence": "number 0-1",
+      "section": "string",
+      "source": "string",
+      "evidence": "string"
+    }
+  ],
+  "partial_matches": [],
+  "missing_areas": [],
+  "unrelated_skills": [],
+  "feedback": {
+    "strengths": [],
+    "focus_areas": [],
+    "resume_improvements": []
+  },
+  "interview_context": [
+    {
+      "topic": "string",
+      "category": "string",
+      "confidence": "number 0-1",
+      "evidence": "string",
+      "source": "string"
+    }
+  ]
+}

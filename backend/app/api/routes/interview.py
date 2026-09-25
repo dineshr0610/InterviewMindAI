@@ -20,9 +20,15 @@ from app.schemas.interview import (
 )
 from app.services.interview_service import InterviewService
 from app.utils.response import success_response
+from app.resume_processing import (
+    Module1AnalysisRequest,
+    Module1Output,
+    get_resume_processing_service,
+)
 from app.utils.resume import (
     ALLOWED_MIME_TYPES,
     MAX_RESUME_SIZE_BYTES,
+    extract_text_from_file,
     extract_text_from_pdf,
 )
 
@@ -83,17 +89,21 @@ async def start_interview(
     "/resume/upload",
     response_model=dict,
     status_code=status.HTTP_200_OK,
-    summary="Upload and parse a resume PDF",
-    description="Accepts a PDF resume, extracts and cleans its text, and returns the cleaned resume context.",
+    summary="Upload and parse a resume (PDF or DOCX)",
+    description="Accepts a PDF or DOCX resume, extracts and cleans its text, and optionally performs Module 1 analysis if role is provided.",
 )
 async def upload_resume(
     file: UploadFile = File(...),
 ) -> dict:
-    """Upload a PDF resume and extract its text for personalized interviews."""
-    if file.content_type not in ALLOWED_MIME_TYPES:
+    """Upload a PDF or DOCX resume and extract its text for personalized interviews."""
+    filename = file.filename or "resume.pdf"
+    lower_fn = filename.lower()
+    is_valid_ext = lower_fn.endswith(".pdf") or lower_fn.endswith(".docx") or lower_fn.endswith(".doc")
+    
+    if not is_valid_ext or file.content_type not in ALLOWED_MIME_TYPES:
         raise HTTPException(
             status_code=400,
-            detail="Please upload a valid PDF resume.",
+            detail="Please upload a valid PDF or DOCX resume.",
         )
 
     content = await file.read()
@@ -111,24 +121,67 @@ async def upload_resume(
 
     resume_text = extract_text_from_pdf(content)
     if not resume_text:
+        resume_text = extract_text_from_file(content, filename=filename)
+    if not resume_text:
         raise HTTPException(
             status_code=400,
-            detail="Unable to read this resume. Please upload a text-based PDF.",
+            detail="Unable to read this resume. Please upload a valid text-based PDF or DOCX file.",
         )
 
     logger.info(
         "Resume uploaded and parsed: filename=%s, chars=%d",
-        file.filename,
+        filename,
         len(resume_text),
     )
 
     return success_response(
         {
-            "filename": file.filename,
+            "filename": filename,
             "resume_text": resume_text,
             "char_count": len(resume_text),
         }
     )
+
+
+@router.post(
+    "/resume/analyze",
+    response_model=dict,
+    status_code=status.HTTP_200_OK,
+    summary="Analyze resume against selected technical role (Module 1)",
+    description="Performs deterministic scoring, multi-level matching, evidence extraction, and interview context generation.",
+)
+async def analyze_resume(
+    request: Module1AnalysisRequest,
+) -> dict:
+    """Module 1 Endpoint: Analyze resume against a single selected role."""
+    if not request.role or not request.role.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Please select a target technical role.",
+        )
+
+    if not request.resume_text or not request.resume_text.strip():
+        raise HTTPException(
+            status_code=400,
+            detail="Resume text is required for analysis.",
+        )
+
+    service = get_resume_processing_service()
+    try:
+        result = service.process(
+            resume_data=request.resume_text,
+            role=request.role,
+            candidate_name=request.candidate_name,
+        )
+        return success_response(result.model_dump())
+    except ValueError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    except Exception as exc:
+        logger.error("Resume analysis failed: %s", exc, exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail=f"An error occurred during resume analysis: {str(exc)}",
+        )
 
 
 @router.post(

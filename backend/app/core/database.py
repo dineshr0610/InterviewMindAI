@@ -16,9 +16,13 @@ class Base(DeclarativeBase):
 
 
 def get_async_db_url(url: str) -> str:
-    """Ensure database connection string uses the asyncpg driver."""
+    """Ensure database connection string uses the proper async driver."""
     if not url:
-        return "postgresql+asyncpg://postgres:postgres@localhost:5432/interviewmind"
+        return "sqlite+aiosqlite:///./interviewmind.db"
+    if url.startswith("sqlite://"):
+        return url.replace("sqlite://", "sqlite+aiosqlite://", 1)
+    if url.startswith("sqlite+aiosqlite://"):
+        return url
     if url.startswith("postgresql://"):
         return url.replace("postgresql://", "postgresql+asyncpg://", 1)
     if url.startswith("postgres://"):
@@ -28,12 +32,17 @@ def get_async_db_url(url: str) -> str:
 
 db_url = get_async_db_url(settings.DATABASE_URL)
 
+engine_kwargs: dict = {"echo": settings.DATABASE_ECHO}
+if not db_url.startswith("sqlite"):
+    engine_kwargs.update({
+        "pool_size": 5,
+        "max_overflow": 10,
+        "pool_pre_ping": True,
+    })
+
 engine = create_async_engine(
     db_url,
-    echo=settings.DATABASE_ECHO,
-    pool_size=5,
-    max_overflow=10,
-    pool_pre_ping=True,
+    **engine_kwargs,
 )
 
 async_session_factory = async_sessionmaker(
