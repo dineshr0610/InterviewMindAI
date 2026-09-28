@@ -829,9 +829,14 @@ class InterviewService:
     def _resume_context(resume_text: Optional[str], resume_match: Dict[str, Any]) -> Optional[str]:
         if not resume_text:
             return None
-        # Weak/no overlap is assessed through role foundations, not invented
-        # questions about unrelated resume items.
-        if resume_match.get("question_mode") == "foundational" and not resume_match.get("interview_context"):
+        has_matching = bool(
+            resume_match.get("matching_skills")
+            or resume_match.get("matched_areas")
+            or resume_match.get("interview_context")
+            or resume_match.get("relevant_technologies")
+        )
+        # Only if there is strictly 0 content matching do we withhold resume context for pure foundational mode
+        if resume_match.get("question_mode") == "foundational" and not has_matching:
             return None
         return resume_text
 

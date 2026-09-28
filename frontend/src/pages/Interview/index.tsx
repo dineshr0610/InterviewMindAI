@@ -1,4 +1,4 @@
-﻿import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Header } from '../../components/layout/Header'
 import { Footer } from '../../components/layout/Footer'
@@ -186,6 +186,12 @@ export default function InterviewPage() {
     )
   }
 
+  const currentDifficulty =
+    currentQuestion?.difficulty ||
+    session.currentDifficulty ||
+    session.difficulty ||
+    'Easy'
+
   return (
     <div className="flex flex-col min-h-screen">
       <Header title={`Interview - ${session.role}`} />
@@ -200,6 +206,7 @@ export default function InterviewPage() {
             startTime={session.startTime}
             onEndInterview={handleRequestEnd}
             endDisabled={isLoading}
+            difficulty={currentDifficulty}
           />
 
           {session.messages.length === 0 ? (
@@ -216,6 +223,7 @@ export default function InterviewPage() {
                     questionNumber={questionCount}
                     totalQuestions={null}
                     topic={session.topic}
+                    difficulty={currentDifficulty}
                     onSpeakStateChange={(speaking) => {
                       setQuestionSpeaking(speaking)
                       if (speaking && hasActiveQuestion) {
@@ -341,6 +349,7 @@ export default function InterviewPage() {
                   isLoading={isLoading}
                   hasActiveQuestion={hasActiveQuestion}
                   hasAnswerInProgress={recording}
+                  currentDifficulty={currentDifficulty}
                 />
               </div>
             </div>

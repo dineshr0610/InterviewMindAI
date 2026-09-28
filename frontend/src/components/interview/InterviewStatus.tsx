@@ -12,6 +12,7 @@ interface InterviewStatusProps {
   startTime: number
   onEndInterview: () => void
   endDisabled: boolean
+  difficulty?: string
 }
 
 export function InterviewStatus({
@@ -22,6 +23,7 @@ export function InterviewStatus({
   startTime,
   onEndInterview,
   endDisabled,
+  difficulty = 'Easy',
 }: InterviewStatusProps) {
   return (
     <motion.div
@@ -46,7 +48,31 @@ export function InterviewStatus({
 
       <StatusItem
         label="Interview Type"
-        value={resumeUsed ? 'Resume-Based' : 'General'}
+        value={resumeUsed ? 'Resume-Based' : 'Foundational'}
+      />
+
+      <StatusItem
+        label="Adaptive AI Level"
+        value={
+          <span className="flex items-center gap-1.5 font-semibold">
+            {difficulty === 'Hard' ? (
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-rose-400 bg-rose-500/10 border border-rose-500/20 px-2.5 py-0.5 rounded-full">
+                <span className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
+                Hard (Advanced)
+              </span>
+            ) : difficulty === 'Medium' ? (
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full">
+                <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+                Medium (Intermediate)
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                Easy (Foundational)
+              </span>
+            )}
+          </span>
+        }
       />
 
       <StatusItem

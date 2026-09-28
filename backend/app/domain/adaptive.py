@@ -44,15 +44,21 @@ def pick_baseline_topic(
             return requested
 
     mode = resume_match.get("question_mode")
-    matching = resume_match.get("matching_skills") or []
-    if mode == "resume_grounded" and matching:
+    matching = list(resume_match.get("matching_skills") or [])
+    if not matching and resume_match.get("matched_areas"):
+        for m in resume_match["matched_areas"]:
+            area_name = m.get("area") or m.get("skill") or m.get("topic") if isinstance(m, dict) else str(m)
+            if area_name and area_name not in matching:
+                matching.append(area_name)
+
+    if mode in ("resume_grounded", "mixed") and matching:
         for skill in matching:
             for topic in topics:
                 if skill.lower() in topic.lower() or any(
                     token in topic.lower() for token in skill.lower().split() if len(token) > 3
                 ):
                     return topic
-        return f"{matching[0]} in production systems"
+        return f"{matching[0]} in practical systems"
 
     if topics:
         return topics[0]

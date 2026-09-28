@@ -97,6 +97,7 @@ class ResumeProcessingService:
         """
         Assemble the structured interview_context list for Module 2 question generation.
         Includes candidate's demonstrated topics, categories, confidence, sources, and evidence.
+        Falls back to core role foundational topics if 0 direct matches are found.
         """
         context_items: List[InterviewContextItem] = []
         seen_topics = set()
@@ -115,6 +116,27 @@ class ResumeProcessingService:
                     )
                 )
 
+        # If zero matches found: inject general foundational topics for the role
+        if not context_items and match_result.role_profile:
+            role_p = match_result.role_profile
+            foundations = (
+                role_p.core_skills[:3]
+                + role_p.technical_concepts[:3]
+                + role_p.programming_languages[:2]
+            )
+            for top in foundations:
+                if top and top.lower() not in seen_topics:
+                    seen_topics.add(top.lower())
+                    context_items.append(
+                        InterviewContextItem(
+                            topic=top,
+                            category="general_foundations",
+                            confidence=0.5,
+                            evidence=f"Core foundational competency for {role_p.role_name}",
+                            source="General Role Foundations",
+                        )
+                    )
+
         return context_items
 
     @staticmethod
@@ -124,12 +146,18 @@ class ResumeProcessingService:
     ) -> str:
         """
         Format structured interview context into a clear text prompt block for Module 2.
-        Enables Module 2 to ground questions directly in candidate's project and experience evidence.
+        Enables Module 2 to ground questions directly in candidate's project and experience evidence,
+        or proceed with general foundational assessment if no direct overlap exists.
         """
         if not interview_context:
-            return ""
+            return (
+                f"FOUNDATIONAL ASSESSMENT MODE FOR {role_name.upper()}:\n"
+                f"- Resume showed no direct skill matches for this specific role.\n"
+                f"- Assess foundational principles, core theory, and standard coding problems in {role_name}."
+            )
 
-        lines = [f"VERIFIED RESUME EVIDENCE FOR {role_name.upper()}:"]
+        is_all_foundational = True
+        lines = [f"VERIFIED RESUME EVIDENCE & TOPICS FOR {role_name.upper()}:"]
         for item in interview_context:
             if isinstance(item, InterviewContextItem):
                 topic = item.topic
@@ -142,8 +170,17 @@ class ResumeProcessingService:
             else:
                 continue
 
+            if source != "General Role Foundations":
+                is_all_foundational = False
+
             lines.append(f"- Topic: {topic} | Context: {source}")
             lines.append(f"  Evidence: \"{evidence}\"")
+
+        if is_all_foundational:
+            lines.insert(
+                1,
+                "(Note: Foundational Mode Active — Assess general core competencies for this role)"
+            )
 
         return "\n".join(lines)
 

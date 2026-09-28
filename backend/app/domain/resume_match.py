@@ -37,19 +37,21 @@ def match_resume_to_role(profile: Dict[str, Any], role: Dict[str, Any]) -> Dict[
     )
     bonus = min(0.2, 0.04 * len(relevant_projects) + 0.03 * len(relevant_experience))
     resume_strength = round(min(100.0, (overlap_ratio * 80.0) + (bonus * 100.0)))
+    has_any_match = bool(matching_skills or relevant_projects or relevant_technologies)
     if not profile.get("resume_present"):
         resume_strength = 0.0
         role_relevance = "unknown"
         question_mode = "foundational"
-    elif overlap_ratio >= 0.55 or relevant_projects:
+    elif not has_any_match:
+        resume_strength = 0.0
+        role_relevance = "zero_match"
+        question_mode = "foundational"
+    elif overlap_ratio >= 0.55 or len(relevant_projects) >= 2:
         role_relevance = "strong"
         question_mode = "resume_grounded"
-    elif overlap_ratio >= 0.25:
+    else:
         role_relevance = "moderate"
         question_mode = "mixed"
-    else:
-        role_relevance = "weak"
-        question_mode = "foundational"
 
     return {
         "role_id": role.get("id"),

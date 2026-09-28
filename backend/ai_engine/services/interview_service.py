@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 from ai_engine.services.rag_service import RAGService
 from ai_engine.services.question_controller import (
@@ -43,8 +43,8 @@ class InterviewService:
 CANDIDATE RESUME CONTEXT:
 {cleaned}
 
-Use the resume context above to personalize the interview question.
-The question must be grounded in information actually present in the resume.
+When candidate resume context is provided, you MUST directly ground the question in the candidate's actual projects, claimed skills, or technical implementations from their resume (e.g. "In your resume, you built X using Y. How did you...").
+The question must test genuine technical understanding of what the candidate actually built or used.
 Do NOT invent skills, projects, or technologies that are not in the resume.
 Return to the resume whenever it is relevant throughout the interview.
 """
@@ -122,6 +122,39 @@ Required format:
 }}
 """
 
+        # 1. When a resume is present: Generate directly from candidate resume content using Gemini AI
+        if resume_text:
+            try:
+                from ai_engine.models.llm import llm
+                if llm:
+                    response = llm.invoke(prompt)
+                    raw_text = getattr(response, "content", str(response)).strip()
+                    import re
+                    match = re.search(r'\{.*\}', raw_text, re.DOTALL)
+                    if match:
+                        parsed = json.loads(match.group(0))
+                        question = parsed.get("answer") or parsed.get("question") or ""
+                    else:
+                        question = raw_text
+
+                    question = question.strip()
+                    if question and len(question) > 15 and not any(
+                        question.lower() == p.lower() for p in previous_questions
+                    ):
+                        return {"answer": question}
+            except Exception:
+                pass
+
+            # Smart resume-grounded fallback if API is unreachable
+            return {
+                "answer": (
+                    f"In your resume, you highlight experience with {topic}. "
+                    f"Could you walk me through a specific project where you implemented {topic}, "
+                    f"and explain the key technical trade-offs or performance challenges you encountered?"
+                )
+            }
+
+        # 2. When no resume (or core technical phase): Retrieve from Supabase Question Bank via RAG
         try:
             result = self.rag.ask(prompt)
 

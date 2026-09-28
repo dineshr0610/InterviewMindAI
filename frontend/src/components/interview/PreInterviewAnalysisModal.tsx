@@ -78,13 +78,15 @@ export const PreInterviewAnalysisModal: React.FC<PreInterviewAnalysisModalProps>
   const getScoreColor = (score: number) => {
     if (score >= 75) return 'text-emerald-400'
     if (score >= 50) return 'text-amber-400'
-    return 'text-blue-400'
+    if (score >= 25) return 'text-blue-400'
+    return 'text-indigo-400'
   }
 
   const getScoreBadge = (score: number) => {
     if (score >= 75) return { label: 'Strong Fit', bg: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' }
     if (score >= 50) return { label: 'Moderate Fit', bg: 'bg-amber-500/10 text-amber-400 border-amber-500/30' }
-    return { label: 'Foundational Fit', bg: 'bg-blue-500/10 text-blue-400 border-blue-500/30' }
+    if (score > 0) return { label: 'Foundational Overlap', bg: 'bg-blue-500/10 text-blue-400 border-blue-500/30' }
+    return { label: 'Foundational Mode (0 Matches)', bg: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30' }
   }
 
   const badge = getScoreBadge(analysis.role_match_score)
@@ -96,6 +98,8 @@ export const PreInterviewAnalysisModal: React.FC<PreInterviewAnalysisModalProps>
     { label: 'Frameworks & Tools', value: analysis.score_breakdown?.frameworks_tools ?? 0, icon: ShieldCheck },
     { label: 'Relevant Experience', value: analysis.score_breakdown?.relevant_experience ?? 0, icon: TrendingUp },
   ]
+
+  const hasMatchedAreas = Boolean(analysis.matched_areas && analysis.matched_areas.length > 0)
 
   return (
     <AnimatePresence>
@@ -178,13 +182,19 @@ export const PreInterviewAnalysisModal: React.FC<PreInterviewAnalysisModalProps>
             {/* Matched Areas & Verified Evidence */}
             <div className="space-y-3">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                {hasMatchedAreas ? (
+                  <CheckCircle2 className="h-4 w-4 text-emerald-400" />
+                ) : (
+                  <Layers className="h-4 w-4 text-indigo-400" />
+                )}
                 <h4 className="text-sm font-bold text-text">
-                  Demonstrated Competencies & Evidence ({analysis.matched_areas?.length || 0})
+                  {hasMatchedAreas
+                    ? `Demonstrated Competencies & Evidence (${analysis.matched_areas.length})`
+                    : `General Foundational Assessment Mode (0 Matches)`}
                 </h4>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-48 overflow-y-auto pr-1">
-                {analysis.matched_areas && analysis.matched_areas.length > 0 ? (
+                {hasMatchedAreas ? (
                   analysis.matched_areas.map((match, i) => (
                     <div
                       key={i}
@@ -208,7 +218,14 @@ export const PreInterviewAnalysisModal: React.FC<PreInterviewAnalysisModalProps>
                     </div>
                   ))
                 ) : (
-                  <p className="text-xs text-text-secondary col-span-2">No direct overlap areas identified.</p>
+                  <div className="col-span-2 p-4 rounded-xl bg-indigo-500/10 border border-indigo-500/30 space-y-2">
+                    <p className="text-xs text-indigo-200 leading-relaxed font-medium">
+                      Zero direct skill matches were detected in this resume for <strong>{analysis.selected_role}</strong>.
+                    </p>
+                    <p className="text-[11px] text-text-secondary">
+                      The AI interview will proceed smoothly by assessing <strong>General Technical Fundamentals & Core Concepts</strong> for {analysis.selected_role} to evaluate problem-solving ability.
+                    </p>
+                  </div>
                 )}
               </div>
             </div>

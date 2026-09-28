@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Card } from '../ui/Card'
 import { Button } from '../ui/Button'
-import { MessageCircle, Volume2, Square, FileText } from 'lucide-react'
+import { MessageCircle, Volume2, Square, FileText, Zap } from 'lucide-react'
 import { useTextToSpeech } from '../../hooks/useTextToSpeech'
 
 interface QuestionPanelProps {
@@ -9,6 +9,7 @@ interface QuestionPanelProps {
   questionNumber: number
   totalQuestions: number | null
   topic?: string
+  difficulty?: string
   onSpeakStateChange?: (speaking: boolean) => void
 }
 
@@ -17,6 +18,7 @@ export function QuestionPanel({
   questionNumber,
   totalQuestions,
   topic,
+  difficulty = 'Easy',
   onSpeakStateChange,
 }: QuestionPanelProps) {
   const { speaking, isSupported, speak, stop } = useTextToSpeech()
@@ -53,6 +55,20 @@ export function QuestionPanel({
                 <span className="inline-flex items-center gap-1 rounded-full bg-surface-light/60 px-2 py-0.5 text-[11px] font-medium text-text-secondary">
                   <FileText className="h-3 w-3" />
                   {topic}
+                </span>
+              )}
+              {difficulty && (
+                <span
+                  className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-semibold border ${
+                    difficulty === 'Hard'
+                      ? 'bg-rose-500/10 text-rose-400 border-rose-500/20'
+                      : difficulty === 'Medium'
+                        ? 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                        : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                  }`}
+                >
+                  <Zap className="h-3 w-3" />
+                  Adaptive: {difficulty}
                 </span>
               )}
             </div>

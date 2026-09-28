@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
 import { Card } from '../ui/Card'
 import { Evaluation } from '../../types'
-import { Star, TrendingUp, AlertCircle, CheckCircle, Loader2 } from 'lucide-react'
+import { Star, TrendingUp, TrendingDown, AlertCircle, CheckCircle, Loader2, Zap } from 'lucide-react'
 
 interface PerformancePanelProps {
   evaluation: Evaluation | null
   isLoading: boolean
   hasActiveQuestion: boolean
   hasAnswerInProgress: boolean
+  currentDifficulty?: string
 }
 
 export function PerformancePanel({
@@ -15,6 +16,7 @@ export function PerformancePanel({
   isLoading,
   hasActiveQuestion,
   hasAnswerInProgress,
+  currentDifficulty,
 }: PerformancePanelProps) {
   // While submitting, show evaluating.
   if (isLoading) {
@@ -104,6 +106,49 @@ export function PerformancePanel({
                 }`}
               />
             </div>
+          </div>
+        </div>
+
+        {/* Real-Time Adaptive Difficulty Feedback Banner */}
+        <div
+          className={`p-3.5 rounded-xl border flex items-start gap-3 text-xs ${
+            evaluation.score >= 8
+              ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+              : evaluation.score <= 4
+                ? 'bg-rose-500/10 border-rose-500/30 text-rose-300'
+                : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+          }`}
+        >
+          {evaluation.score >= 8 ? (
+            <div className="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-400 flex-shrink-0 mt-0.5">
+              <TrendingUp className="h-4 w-4" />
+            </div>
+          ) : evaluation.score <= 4 ? (
+            <div className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 flex-shrink-0 mt-0.5">
+              <TrendingDown className="h-4 w-4" />
+            </div>
+          ) : (
+            <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 flex-shrink-0 mt-0.5">
+              <Zap className="h-4 w-4" />
+            </div>
+          )}
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-[13px]">
+                {evaluation.score >= 8
+                  ? `▲ Adaptive Difficulty Scaled UP (${evaluation.difficulty || currentDifficulty || 'Advanced'})`
+                  : evaluation.score <= 4
+                    ? `▼ Adaptive Difficulty Calibrated (${evaluation.difficulty || currentDifficulty || 'Foundational'})`
+                    : `▶ Difficulty Maintained (${evaluation.difficulty || currentDifficulty || 'Intermediate'})`}
+              </span>
+            </div>
+            <p className="mt-1 text-text-secondary leading-relaxed">
+              {evaluation.score >= 8
+                ? `High technical proficiency (${evaluation.score}/10) detected. Next question will test deeper edge cases & complexity.`
+                : evaluation.score <= 4
+                  ? `Conceptual gap detected (${evaluation.score}/10). Calibrating next question to reinforce core fundamentals.`
+                  : `Solid response (${evaluation.score}/10). Continuing at current assessment depth.`}
+            </p>
           </div>
         </div>
 

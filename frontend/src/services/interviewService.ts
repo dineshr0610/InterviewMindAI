@@ -24,28 +24,24 @@ function topicFromRole(role?: string): string {
     return 'Java Development'
   }
 
-  if (r.includes('data scientist') || r.includes('data science')) {
-    return 'Data Science'
+  if (r.includes('data analyst') || r.includes('data analysis') || r.includes('analytics')) {
+    return 'Data Analysis & SQL'
+  }
+
+  if (r.includes('ai engineer') || r.includes('artificial intelligence') || r.includes('genai') || r.includes('llm')) {
+    return 'Artificial Intelligence & LLMs'
   }
 
   if (r.includes('machine learning') || r.includes('ml engineer')) {
     return 'Machine Learning'
   }
 
+  if (r.includes('database') || r.includes('sql') || r.includes('dba')) {
+    return 'Database Development & SQL'
+  }
+
   if (r.includes('devops') || r.includes('cloud')) {
-    return 'DevOps and Cloud'
-  }
-
-  if (r.includes('software engineer') || r.includes('software developer')) {
-    return 'Software Engineering'
-  }
-
-  if (r.includes('mobile') || r.includes('android') || r.includes('ios')) {
-    return 'Mobile Development'
-  }
-
-  if (r.includes('database') || r.includes('dba')) {
-    return 'Database Engineering'
+    return 'DevOps & Cloud Engineering'
   }
 
   return role?.trim() || 'Software Engineering'

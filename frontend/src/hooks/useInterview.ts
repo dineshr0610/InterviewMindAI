@@ -40,12 +40,15 @@ export function useInterview() {
           throw new Error('Backend did not return the first interview question.')
         }
 
+        const initialDifficulty = response.difficulty || difficulty || 'Easy'
+
         const initialMessages: ChatMessage[] = [
           {
             id: 'question-1',
             type: 'question',
             content: initialQuestion,
             timestamp: Date.now(),
+            difficulty: initialDifficulty,
           },
         ]
 
@@ -54,6 +57,10 @@ export function useInterview() {
           candidateName,
           role: jobRole,
           topic: topic || jobRole,
+          difficulty: initialDifficulty,
+          currentDifficulty: initialDifficulty,
+          previousDifficulty: initialDifficulty,
+          difficultyShift: 'unchanged',
           startTime: Date.now(),
           messages: initialMessages,
           isLoading: false,
@@ -144,6 +151,31 @@ export function useInterview() {
           response.evaluation || response
         )
 
+        const prevDiff = session.currentDifficulty || session.difficulty || 'Easy'
+        const score = evaluation.score
+
+        // Compute adaptive difficulty level
+        let nextDiff = response.difficulty || response.evaluation?.difficulty
+        if (!nextDiff) {
+          if (score >= 8) {
+            nextDiff = prevDiff === 'Easy' ? 'Medium' : 'Hard'
+          } else if (score <= 4) {
+            nextDiff = prevDiff === 'Hard' ? 'Medium' : 'Easy'
+          } else {
+            nextDiff = prevDiff
+          }
+        }
+
+        let shift: 'increased' | 'decreased' | 'unchanged' = 'unchanged'
+        if (score >= 8) {
+          shift = 'increased'
+        } else if (score <= 4) {
+          shift = 'decreased'
+        }
+
+        evaluation.difficulty = nextDiff
+        evaluation.difficultyShift = shift
+
         const newAnsweredCount = answeredQuestionCount + 1
 
         // Store the evaluation permanently in the timeline.
@@ -152,6 +184,7 @@ export function useInterview() {
           type: 'evaluation',
           content: evaluation.feedback || `Score: ${evaluation.score}/10`,
           timestamp: Date.now(),
+          difficulty: nextDiff,
           evaluation,
         }
 
@@ -180,12 +213,16 @@ export function useInterview() {
             type: 'question',
             content: nextQ.trim(),
             timestamp: Date.now(),
+            difficulty: nextDiff,
           }
 
           setSession((prev) =>
             prev
               ? {
                 ...prev,
+                currentDifficulty: nextDiff,
+                previousDifficulty: prevDiff,
+                difficultyShift: shift,
                 messages: [
                   ...prev.messages,
                   evaluationMessage,
@@ -200,6 +237,9 @@ export function useInterview() {
             prev
               ? {
                 ...prev,
+                currentDifficulty: nextDiff,
+                previousDifficulty: prevDiff,
+                difficultyShift: shift,
                 messages: [...prev.messages, evaluationMessage],
                 currentEvaluation: evaluation,
               }

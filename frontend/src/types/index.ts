@@ -4,6 +4,8 @@ export interface Evaluation {
   strengths: string[]
   weaknesses: string[]
   nextQuestion?: string
+  difficulty?: 'Easy' | 'Medium' | 'Hard' | string
+  difficultyShift?: 'increased' | 'decreased' | 'unchanged'
   raw?: string
 }
 
@@ -12,6 +14,7 @@ export interface ChatMessage {
   type: 'question' | 'answer' | 'evaluation'
   content: string
   timestamp: number
+  difficulty?: string
   evaluation?: Evaluation
 }
 
@@ -20,6 +23,10 @@ export interface InterviewSession {
   candidateName: string
   role: string
   topic?: string
+  difficulty?: string
+  currentDifficulty?: string
+  previousDifficulty?: string
+  difficultyShift?: 'increased' | 'decreased' | 'unchanged'
   startTime: number
   endTime?: number
   messages: ChatMessage[]

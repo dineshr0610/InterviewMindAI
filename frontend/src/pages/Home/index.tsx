@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { useState, useRef, ChangeEvent } from 'react'
+import { useState, useRef, useEffect, ChangeEvent } from 'react'
 import { Header } from '../../components/layout/Header'
 import { Footer } from '../../components/layout/Footer'
 import { Input } from '../../components/ui/Input'
@@ -18,7 +18,6 @@ interface FormData {
   name: string
   role: string
   topic: string
-  difficulty: 'Easy' | 'Medium' | 'Hard'
 }
 
 export default function HomePage() {
@@ -47,9 +46,10 @@ export default function HomePage() {
       name: '',
       role: '',
       topic: '',
-      difficulty: 'Easy',
     },
   })
+
+  const selectedRole = watch('role')
 
   const roleField = register('role', {
     required: 'Job role is required',
@@ -74,6 +74,13 @@ export default function HomePage() {
       setIsAnalyzing(false)
     }
   }
+
+  // Auto-analyze resume when target role changes
+  useEffect(() => {
+    if (resumeContext && selectedRole && selectedRole.trim().length >= 2) {
+      fetchResumeAnalysis(resumeContext, selectedRole.trim(), getValues('name') || 'Candidate')
+    }
+  }, [selectedRole, resumeContext])
 
   const handleResumeUpload = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -163,7 +170,7 @@ export default function HomePage() {
         data.name,
         data.role,
         data.topic || undefined,
-        data.difficulty,
+        'Easy',
         resumeContext || undefined,
         resumeFile?.name || undefined
       )
@@ -316,16 +323,24 @@ export default function HomePage() {
                     error={errors.role?.message}
                   />
 
-                  <div className="w-full space-y-2">
-                    <label className="block text-sm font-medium text-text">Interview Difficulty</label>
-                    <select
-                      {...register('difficulty')}
-                      className="w-full px-4 py-2.5 rounded-lg bg-surface border-2 border-surface-light text-text placeholder-text-secondary transition-all duration-200 focus:outline-none focus:border-primary focus:bg-surface-light"
-                    >
-                      <option value="Easy">Adaptive AI (Easy start)</option>
-                      <option value="Medium">Medium</option>
-                      <option value="Hard">Hard</option>
-                    </select>
+                  {/* Dynamic Adaptive AI Badge */}
+                  <div className="w-full rounded-xl bg-surface/80 border border-primary/20 p-3.5 flex items-start gap-3 bg-gradient-to-r from-primary/5 via-surface to-surface shadow-sm">
+                    <div className="p-2 rounded-lg bg-primary/10 text-primary mt-0.5 flex-shrink-0">
+                      <Zap className="h-4 w-4" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                          Adaptive AI Engine Active
+                        </span>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          Auto-Calibrated
+                        </span>
+                      </div>
+                      <p className="text-xs text-text-secondary mt-1 leading-relaxed">
+                        Questions dynamically scale in real-time (<span className="text-emerald-400 font-medium">Easy</span> ↔ <span className="text-amber-400 font-medium">Medium</span> ↔ <span className="text-rose-400 font-medium">Hard</span>) based on your answer depth and technical score.
+                      </p>
+                    </div>
                   </div>
 
                   {/* Resume Upload */}
@@ -366,7 +381,10 @@ export default function HomePage() {
                               <p className="text-xs text-text-secondary">
                                 {analysisResult ? (
                                   <span className="text-primary font-semibold">
-                                    Match: {analysisResult.role_match_score}/100 • {analysisResult.matched_areas?.length || 0} skills aligned
+                                    Match: {analysisResult.role_match_score}/100 • {analysisResult.matched_areas?.length || 0} skills aligned{' '}
+                                    {analysisResult.role_match_score === 0 || !analysisResult.matched_areas?.length
+                                      ? '(Foundational Mode)'
+                                      : ''}
                                   </span>
                                 ) : isAnalyzing ? (
                                   'Analyzing role fit...'

@@ -42,7 +42,9 @@
         "Promises",
         "Event Loop",
         "State Management",
-        "Component Architecture"
+        "Component Architecture",
+        "DOM Manipulation",
+        "Browser Concepts"
       ],
       "testing": [
         "Jest",
@@ -60,7 +62,8 @@
         "JavaScript",
         "TypeScript",
         "C#",
-        "Go"
+        "Go",
+        "SQL"
       ],
       "core_skills": [
         "Backend Development",
@@ -91,7 +94,9 @@
         "Database Management",
         "Caching",
         "Concurrency",
-        "Message Queues"
+        "Message Queues",
+        "Server Architecture",
+        "CRUD Operations"
       ],
       "tools": [
         "Git",
@@ -112,7 +117,8 @@
         "JavaScript",
         "TypeScript",
         "Python",
-        "Java"
+        "Java",
+        "SQL"
       ],
       "frontend": [
         "HTML",
@@ -142,7 +148,8 @@
         "API Integration",
         "Client Server Architecture",
         "State Management",
-        "Database Design"
+        "Database Design",
+        "Frontend + backend + databases + APIs"
       ],
       "tools": [
         "Git",
@@ -165,7 +172,10 @@
         "Feature Engineering",
         "Model Training",
         "Model Evaluation",
-        "Data Preprocessing"
+        "Data Preprocessing",
+        "ML Algorithms",
+        "Regression",
+        "Classification"
       ],
       "machine_learning": [
         "Supervised Learning",
@@ -224,7 +234,9 @@
         "Data Cleaning",
         "Data Visualization",
         "Exploratory Data Analysis",
-        "Statistical Analysis"
+        "Statistical Analysis",
+        "Statistics",
+        "Excel Concepts"
       ],
       "libraries": [
         "Pandas",
@@ -319,7 +331,11 @@
         "Containerization",
         "Continuous Integration",
         "Continuous Deployment",
-        "System Administration"
+        "System Administration",
+        "Linux",
+        "Git",
+        "Docker",
+        "Cloud Networking"
       ],
       "tools": [
         "Git",
@@ -418,7 +434,8 @@
         "Application Security",
         "Threat Detection",
         "Vulnerability Assessment",
-        "Incident Response"
+        "Incident Response",
+        "Database Security"
       ],
       "security": [
         "Authentication",
