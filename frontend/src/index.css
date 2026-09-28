@@ -96,3 +96,130 @@ body {
 .animate-slide-up {
   animation: slide-up 0.3s ease-out;
 }
+
+/* ============================================================
+   AI Interviewer room animations
+   ============================================================ */
+
+/* Subtle breathing on the avatar body */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-2px) scale(1.012);
+  }
+}
+
+/* Subtle head idle sway */
+@keyframes head-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+
+/* Blink for eyelids / eyes */
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.06);
+  }
+}
+
+/* Listening microphone pulse */
+@keyframes mic-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(56, 189, 248, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+
+/* Speaking waveform bars */
+@keyframes wave-bounce {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+/* Access point (small pulsing dot) */
+@keyframes dot-ping {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Processing spinner ring during evaluation */
+@keyframes ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Speaking glow pulse around the avatar */
+@keyframes speak-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.0),
+      inset 0 0 0 2px rgba(56, 189, 248, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(56, 189, 248, 0.08),
+      inset 0 0 24px 2px rgba(56, 189, 248, 0.35);
+  }
+}
+
+.animate-speak-glow {
+  animation: speak-glow 1.6s ease-in-out infinite;
+}
+
+.animate-breathe {
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+.animate-head-sway {
+  animation: head-sway 6s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 4.2s infinite;
+  transform-origin: center;
+}
+
+.animate-mic-pulse {
+  animation: mic-pulse 1.8s ease-out infinite;
+}
+
+.animate-wave-bar {
+  animation: wave-bounce 0.9s ease-in-out infinite;
+}
+
+.animate-dot-ping {
+  animation: dot-ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.animate-ring-spin {
+  animation: ring-spin 0.9s linear infinite;
+}

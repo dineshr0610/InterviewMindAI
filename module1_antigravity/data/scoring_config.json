@@ -1,0 +1,24 @@
+{
+  "score_range": {
+    "min": 0,
+    "max": 100
+  },
+  "weights": {
+    "core_skills": 0.35,
+    "technical_concepts": 0.25,
+    "project_experience": 0.2,
+    "frameworks_tools": 0.1,
+    "relevant_experience": 0.1
+  },
+  "matching": {
+    "exact_match_weight": 1.0,
+    "semantic_match_threshold": 0.72,
+    "partial_match_threshold": 0.55
+  },
+  "rules": [
+    "The numerical score must be calculated deterministically.",
+    "LLM output must not directly invent the numerical score.",
+    "Every matched area should have resume evidence where possible.",
+    "Core skills should contribute more than supporting skills."
+  ]
+}

@@ -136,4 +136,6 @@ def format_evaluation_for_response(evaluation: Dict) -> Dict:
         "strengths": strengths if isinstance(strengths, list) else [],
         "improvements": improvements if isinstance(improvements, list) else [],
         "next_question": evaluation.get("next_question", ""),
+        "difficulty": evaluation.get("difficulty"),
+        "status": evaluation.get("status"),
     }

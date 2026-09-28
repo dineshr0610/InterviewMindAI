@@ -82,6 +82,50 @@ class AIProviderException(BaseInterviewException):
         )
 
 
+class DuplicateAnswerException(BaseInterviewException):
+    """Raised when the same pending question is answered again with a different payload."""
+
+    def __init__(self, message: str = "This question was already answered.") -> None:
+        super().__init__(
+            message=message,
+            error_code="DUPLICATE_ANSWER",
+            status_code=409,
+        )
+
+
+class AnswerProcessingException(BaseInterviewException):
+    """Raised when a retry reaches an answer that is still being evaluated."""
+
+    def __init__(self) -> None:
+        super().__init__(
+            message="This answer is already being evaluated. Retry with the same idempotency key shortly.",
+            error_code="ANSWER_PROCESSING",
+            status_code=409,
+        )
+
+
+class InvalidRoleException(BaseInterviewException):
+    """Raised when the selected technical role is invalid."""
+
+    def __init__(self, message: str = "Invalid technical role.") -> None:
+        super().__init__(
+            message=message,
+            error_code="INVALID_ROLE",
+            status_code=422,
+        )
+
+
+class CodingAssessmentException(BaseInterviewException):
+    """Raised when a coding-assessment request cannot be fulfilled safely."""
+
+    def __init__(self, message: str) -> None:
+        super().__init__(
+            message=message,
+            error_code="CODING_ASSESSMENT_ERROR",
+            status_code=422,
+        )
+
+
 class DatabaseException(BaseInterviewException):
     """Raised on database connection or execution failures."""
 

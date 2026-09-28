@@ -21,7 +21,7 @@ if api_key and api_key.strip():
         genai_mod = importlib.import_module("langchain_google_genai")
         ChatGoogleGenerativeAI = getattr(genai_mod, "ChatGoogleGenerativeAI")
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-3.5-flash",
             google_api_key=api_key.strip(),
             temperature=0
         )

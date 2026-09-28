@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { Card } from '../ui/Card'
-import { MessageCircle } from 'lucide-react'
+import { Button } from '../ui/Button'
+import { MessageCircle, Volume2, Square } from 'lucide-react'
+import { useTextToSpeech } from '../../hooks/useTextToSpeech'
 
 interface QuestionCardProps {
   question: string
@@ -8,6 +10,16 @@ interface QuestionCardProps {
 }
 
 export function QuestionCard({ question, questionNumber }: QuestionCardProps) {
+  const { speaking, isSupported, speak, stop } = useTextToSpeech()
+
+  const handleListen = () => {
+    if (speaking) {
+      stop()
+    } else {
+      speak(question)
+    }
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -25,9 +37,29 @@ export function QuestionCard({ question, questionNumber }: QuestionCardProps) {
                 Question {questionNumber}
               </p>
             )}
-            <p className="text-lg font-semibold text-text leading-relaxed">{question}</p>
+            <p className="text-lg font-semibold text-text leading-relaxed">
+              {question}
+            </p>
           </div>
         </div>
+
+        {isSupported && (
+          <div className="flex justify-end">
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={handleListen}
+            >
+              {speaking ? (
+                <Square className="h-4 w-4" />
+              ) : (
+                <Volume2 className="h-4 w-4" />
+              )}
+              {speaking ? 'Stop' : 'Listen to Question'}
+            </Button>
+          </div>
+        )}
       </Card>
     </motion.div>
   )

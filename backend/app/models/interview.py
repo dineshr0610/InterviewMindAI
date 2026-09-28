@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from enum import Enum as PyEnum
 from typing import TYPE_CHECKING, List
 
-from sqlalchemy import DateTime, Enum as SQLEnum, String, Text, UUID
+from sqlalchemy import DateTime, Enum as SQLEnum, Integer, JSON, String, Text, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy.sql import func
 
@@ -61,6 +61,28 @@ class Interview(Base):
         nullable=False,
         default="Easy",
     )
+    max_questions: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+        default=50,
+    )
+    resume_text: Mapped[str | None] = mapped_column(
+        Text,
+        nullable=True,
+    )
+    phase: Mapped[str] = mapped_column(
+        String(50),
+        nullable=False,
+        default="technical",
+        server_default="technical",
+    )
+    candidate_profile: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    role_snapshot: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    resume_match: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    assessment_state: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    final_assessment: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    coding_result: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    last_answer_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True)
     status: Mapped[InterviewStatus] = mapped_column(
         SQLEnum(InterviewStatus, name="interview_status"),
         nullable=False,
@@ -102,6 +124,9 @@ class Interview(Base):
             "role": self.role,
             "topic": self.topic,
             "difficulty": self.difficulty,
+            "max_questions": self.max_questions,
+            "resume_used": bool(self.resume_text),
+            "phase": self.phase,
             "status": self.status.value if self.status else None,
             "started_at": self.started_at.isoformat() if self.started_at else None,
             "ended_at": self.ended_at.isoformat() if self.ended_at else None,

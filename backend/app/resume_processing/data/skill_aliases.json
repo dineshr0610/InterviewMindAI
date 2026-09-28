@@ -1,0 +1,96 @@
+{
+  "Python": [
+    "python3",
+    "python 3"
+  ],
+  "JavaScript": [
+    "javascript",
+    "js"
+  ],
+  "TypeScript": [
+    "typescript",
+    "ts"
+  ],
+  "Scikit-learn": [
+    "sklearn",
+    "scikit learn",
+    "scikit-learn"
+  ],
+  "React": [
+    "react.js",
+    "reactjs",
+    "react js"
+  ],
+  "Node.js": [
+    "node",
+    "nodejs",
+    "node js"
+  ],
+  "Express.js": [
+    "express",
+    "expressjs"
+  ],
+  "PostgreSQL": [
+    "postgres",
+    "postgresql"
+  ],
+  "MongoDB": [
+    "mongo",
+    "mongodb"
+  ],
+  "MySQL": [
+    "mysql",
+    "my sql"
+  ],
+  "SQL": [
+    "structured query language"
+  ],
+  "C++": [
+    "cpp",
+    "c plus plus"
+  ],
+  "C#": [
+    "csharp",
+    "c sharp"
+  ],
+  "Power BI": [
+    "powerbi"
+  ],
+  "GitHub Actions": [
+    "github action"
+  ],
+  "Kubernetes": [
+    "k8s",
+    "kubernetes"
+  ],
+  "Docker": [
+    "dockerized",
+    "docker container"
+  ],
+  "Machine Learning": [
+    "machine learning",
+    "ml"
+  ],
+  "Deep Learning": [
+    "deep learning",
+    "dl"
+  ],
+  "Natural Language Processing": [
+    "nlp",
+    "natural language processing"
+  ],
+  "Application Programming Interface": [
+    "api",
+    "apis"
+  ],
+  "REST API": [
+    "rest",
+    "restful api",
+    "rest api"
+  ],
+  "Object Oriented Programming": [
+    "oop",
+    "object-oriented programming",
+    "object oriented programming"
+  ]
+}

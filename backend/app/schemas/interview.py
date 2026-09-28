@@ -5,7 +5,7 @@ Pydantic schemas for interview-related API requests and responses.
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, List, Optional
+from typing import Any, Dict, List, Optional
 from uuid import UUID
 
 from pydantic import BaseModel, Field, field_validator, model_validator
@@ -27,7 +27,7 @@ class HealthResponse(BaseModel):
 class StartInterviewRequest(BaseModel):
     """
     Request schema for starting a new interview.
-    Supports both `role` and `job_role` field names for frontend compatibility.
+    Requires only candidate_name and role/job_role.
     """
 
     candidate_name: str = Field(
@@ -44,23 +44,35 @@ class StartInterviewRequest(BaseModel):
         description="Job role for the interview",
         examples=["Frontend Developer"],
     )
-    topic: str = Field(
-        default="General Technical",
-        min_length=2,
+    topic: Optional[str] = Field(
+        default=None,
         max_length=255,
-        description="Technical topic for the interview",
+        description="Technical topic for the interview (defaults to role if omitted)",
         examples=["React"],
+    )
+    difficulty: str = Field(
+        default="Easy",
+        description="Starting difficulty level",
+    )
+    resume_text: Optional[str] = Field(
+        default=None,
+        max_length=16000,
+        description="Cleaned resume text for personalized questions (optional)",
     )
 
     @model_validator(mode="before")
     @classmethod
-    def handle_job_role_alias(cls, data: Any) -> Any:
+    def handle_aliases_and_defaults(cls, data: Any) -> Any:
         if isinstance(data, dict):
             if "job_role" in data and ("role" not in data or not data["role"]):
                 data["role"] = data["job_role"]
+            if not data.get("topic") and data.get("role"):
+                data["topic"] = data["role"]
+            elif not data.get("topic"):
+                data["topic"] = "General Technical"
         return data
 
-    @field_validator("candidate_name", "role", "topic")
+    @field_validator("candidate_name", "role")
     @classmethod
     def validate_not_empty(cls, value: str) -> str:
         stripped = value.strip()
@@ -104,6 +116,15 @@ class AnswerRequest(BaseModel):
         description="Candidate's answer text (min 10 characters)",
         examples=["The Virtual DOM is a lightweight representation of the real DOM in memory."],
     )
+    idempotency_key: Optional[str] = Field(
+        default=None,
+        min_length=8,
+        max_length=128,
+        description=(
+            "Stable client-generated key for retrying this answer submission. "
+            "Reusing the key with a different answer is rejected."
+        ),
+    )
 
     @field_validator("answer")
     @classmethod
@@ -112,6 +133,29 @@ class AnswerRequest(BaseModel):
         if not stripped:
             raise ValueError("Answer cannot be empty or whitespace only")
         return stripped
+
+
+class CodingProblemRequest(BaseModel):
+    """Optional preferences when requesting a role-specific coding problem."""
+
+    difficulty: Optional[str] = Field(default=None, max_length=50)
+    language: Optional[str] = Field(default=None, max_length=50)
+
+
+class CodeSubmissionRequest(BaseModel):
+    """A candidate submission for the currently selected coding problem."""
+
+    problem_id: str = Field(..., min_length=2, max_length=100)
+    source_code: str = Field(..., min_length=1, max_length=50_000)
+    language: Optional[str] = Field(default=None, max_length=50)
+    idempotency_key: Optional[str] = Field(default=None, min_length=8, max_length=128)
+
+    @field_validator("source_code")
+    @classmethod
+    def validate_source_code(cls, value: str) -> str:
+        if not value.strip():
+            raise ValueError("Source code cannot be empty or whitespace only")
+        return value
 
 
 class AnswerResponse(BaseModel):
@@ -246,3 +290,4 @@ class EndInterviewResponse(BaseModel):
         ...,
         description="UUID of the ended interview",
     )
+

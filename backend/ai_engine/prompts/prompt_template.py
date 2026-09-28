@@ -1,7 +1,7 @@
 from langchain_core.prompts import PromptTemplate
 
 RAG_PROMPT = PromptTemplate.from_template("""
-You are an expert Java interviewer.
+You are an expert technical interviewer.
 
 Answer ONLY using the given context.
 

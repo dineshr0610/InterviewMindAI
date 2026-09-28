@@ -40,3 +40,10 @@ dist/
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Databases
+*.db
+*.sqlite3
+*.db-journal
+backend/*.db
+backend/*.db-journal

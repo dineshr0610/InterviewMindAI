@@ -6,7 +6,7 @@ interface InterviewContextType {
   session: InterviewSession | null
   isLoading: boolean
   error: string | null
-  startInterview: (candidateName: string, jobRole: string) => Promise<any>
+  startInterview: (candidateName: string, jobRole: string, topic?: string, difficulty?: 'Easy' | 'Medium' | 'Hard', resumeText?: string, resumeFile?: string) => Promise<any>
   submitAnswer: (answer: string) => Promise<any>
   endInterview: () => Promise<void>
   resetSession: () => void
