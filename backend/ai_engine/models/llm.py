@@ -15,17 +15,18 @@ logger = logging.getLogger("interviewmind.ai_engine.llm")
 
 api_key = os.getenv("GEMINI_API_KEY")
 
+model_name = os.getenv("GEMINI_MODEL", "gemini-3.8-flash").strip()
 llm: Any = None
 if api_key and api_key.strip():
     try:
         genai_mod = importlib.import_module("langchain_google_genai")
         ChatGoogleGenerativeAI = getattr(genai_mod, "ChatGoogleGenerativeAI")
         llm = ChatGoogleGenerativeAI(
-            model="gemini-3.5-flash",
+            model=model_name,
             google_api_key=api_key.strip(),
             temperature=0
         )
-        logger.info("ChatGoogleGenerativeAI initialized successfully with GEMINI_API_KEY.")
+        logger.info("ChatGoogleGenerativeAI initialized successfully with model '%s'.", model_name)
     except Exception as exc:
         logger.warning("Failed to initialize ChatGoogleGenerativeAI: %s. Using fallback LLM.", exc)
 

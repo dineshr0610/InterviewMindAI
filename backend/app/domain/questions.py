@@ -59,24 +59,32 @@ def select_non_duplicate(
     return None
 
 
-def topic_aligned(question: str, topic: str) -> bool:
+def topic_aligned(question: str, topic: str, resume_context: Optional[str] = None) -> bool:
     topic_tokens = question_tokens(topic)
     if not topic_tokens:
         return True
-    return bool(topic_tokens & question_tokens(question))
+    q_tokens = question_tokens(question)
+    if bool(topic_tokens & q_tokens):
+        return True
+    if resume_context:
+        resume_toks = question_tokens(resume_context)
+        if len(q_tokens & resume_toks) >= 2:
+            return True
+    return False
 
 
 def validate_question(
     question: str,
     topic: str,
     previous: Sequence[str],
+    resume_context: Optional[str] = None,
 ) -> Tuple[bool, str]:
     text = (question or "").strip()
     if len(text) < 15:
         return False, "empty"
     if is_duplicate(text, previous):
         return False, "duplicate"
-    if not topic_aligned(text, topic):
+    if not topic_aligned(text, topic, resume_context=resume_context):
         return False, "topic_missing"
     lowered = text.lower()
     if re.fullmatch(r"what is .+[?]?$", lowered) and topic_aligned(topic, topic):

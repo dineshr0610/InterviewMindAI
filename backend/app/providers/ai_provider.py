@@ -1,4 +1,4 @@
-﻿"""
+"""
 AI Provider facade for InterviewMind AI.
 """
 
@@ -64,17 +64,26 @@ class AIProvider:
         difficulty: str = "Easy",
         previous_questions: Optional[list[str]] = None,
         resume_text: Optional[str] = None,
-    ) -> str:
+        strategy: Optional[str] = None,
+        last_answer: Optional[str] = None,
+        role: Optional[str] = None,
+        resume_match: Optional[dict] = None,
+        interview_phase: Optional[str] = None,
+        state: Optional[dict] = None,
+        return_metadata: bool = False,
+    ) -> Any:
 
         previous_questions = previous_questions or []
 
         logger.info(
-            "Generating topic-locked question: topic='%s', difficulty='%s'",
+            "Generating question: topic='%s', difficulty='%s', role='%s', phase='%s'",
             topic,
             difficulty,
+            role,
+            interview_phase,
         )
 
-        if self.interview_graph:
+        if self.interview_graph and not resume_match:
             try:
                 result = await asyncio.wait_for(
                     asyncio.to_thread(
@@ -98,7 +107,7 @@ class AIProvider:
                                 for question in previous_questions
                             ],
                             "resume_text": resume_text,
-                            "next_strategy": "",
+                            "next_strategy": strategy or "",
                             "follow_up_depth": 0,
                         },
                     ),
@@ -106,7 +115,7 @@ class AIProvider:
                 )
                 question = result.get("question") if isinstance(result, dict) else None
                 if question:
-                    return str(question).strip()
+                    return result if return_metadata and isinstance(result, dict) else str(question).strip()
             except Exception as exc:
                 logger.error("LangGraph question generation failed: %s", exc)
 
@@ -119,11 +128,19 @@ class AIProvider:
                         difficulty,
                         previous_questions,
                         resume_text=resume_text,
+                        strategy=strategy,
+                        last_answer=last_answer,
+                        role=role,
+                        resume_match=resume_match,
+                        interview_phase=interview_phase,
+                        state=state,
                     ),
                     timeout=30.0,
                 )
 
                 if isinstance(result, dict):
+                    if return_metadata:
+                        return result
                     question = (
                         result.get("answer")
                         or result.get("question")
@@ -134,7 +151,7 @@ class AIProvider:
                         return str(question).strip()
 
                 if isinstance(result, str) and result.strip():
-                    return result.strip()
+                    return {"answer": result.strip()} if return_metadata else result.strip()
 
             except Exception as exc:
                 logger.error(
@@ -148,11 +165,19 @@ class AIProvider:
         )
 
         controller = AdaptiveQuestionController(topic)
-
-        return controller.fallback(
+        fallback_text = controller.fallback(
             difficulty,
             previous_questions,
         )
+        if return_metadata:
+            return {
+                "answer": fallback_text,
+                "source": "fallback",
+                "category": "implementation",
+                "intent": "implement",
+                "difficulty": difficulty,
+            }
+        return fallback_text
 
     async def process_answer(
         self,

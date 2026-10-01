@@ -78,14 +78,14 @@ class SupabaseVectorRetriever(BaseRetriever):
                     rpc_url,
                     headers=headers,
                     json=payload,
-                    timeout=15,
+                    timeout=3,
                 )
                 if response.status_code == 200:
                     rows = response.json() or []
             except Exception as rest_exc:
                 logger.warning("Supabase REST RPC retrieval failed, trying direct DB: %s", rest_exc)
 
-        if not rows and db_url:
+        if not rows and db_url and "postgres" in db_url.lower():
             try:
                 import json
                 import asyncio
