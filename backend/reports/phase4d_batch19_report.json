@@ -1,0 +1,386 @@
+{
+  "role_selected": "Data Analyst",
+  "total_staged_before_batch19": 2622,
+  "cumulative_difficulty_before": {
+    "easy": [
+      234,
+      26.2
+    ],
+    "medium": [
+      417,
+      46.7
+    ],
+    "hard": [
+      241,
+      27.0
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.653,
+    "answer": 0.438,
+    "question+answer": 0.508
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "you have a",
+      3
+    ],
+    [
+      "what tradeoffs exist",
+      3
+    ],
+    [
+      "how do you",
+      2
+    ],
+    [
+      "explain the difference",
+      2
+    ],
+    [
+      "what is a",
+      2
+    ],
+    [
+      "explain the concept",
+      2
+    ],
+    [
+      "what are the",
+      2
+    ],
+    [
+      "what is the",
+      1
+    ],
+    [
+      "explain the purpose",
+      1
+    ],
+    [
+      "an analyst wrote",
+      1
+    ],
+    [
+      "you need to",
+      1
+    ],
+    [
+      "a query calculating",
+      1
+    ],
+    [
+      "you are performing",
+      1
+    ],
+    [
+      "you write a",
+      1
+    ],
+    [
+      "explain what a",
+      1
+    ],
+    [
+      "what is cohort",
+      1
+    ],
+    [
+      "you are analyzing",
+      1
+    ],
+    [
+      "when designing a",
+      1
+    ],
+    [
+      "a product manager",
+      1
+    ],
+    [
+      "the marketing team",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "how would you",
+      70
+    ],
+    [
+      "what is the",
+      65
+    ],
+    [
+      "what are the",
+      64
+    ],
+    [
+      "how do you",
+      25
+    ],
+    [
+      "what tradeoffs exist",
+      22
+    ],
+    [
+      "what is a",
+      18
+    ],
+    [
+      "explain the concept",
+      18
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "you need to",
+      14
+    ],
+    [
+      "explain the difference",
+      14
+    ],
+    [
+      "explain the purpose",
+      9
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "you have a",
+      8
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ]
+  ],
+  "top_opening_share_new_batch": 0.06,
+  "distinct_openings_new_batch": 41,
+  "role_distribution": {
+    "Data Analyst": 50
+  },
+  "skill_distribution": {
+    "Advanced SQL": 7,
+    "SQL Fundamentals": 5,
+    "Business Analytics": 8,
+    "Statistical Reasoning": 7,
+    "Data Cleaning": 6,
+    "Data Visualization": 6,
+    "Data Transformation": 5,
+    "Root Cause Analysis": 6
+  },
+  "technology_distribution": {
+    "SQL": 12,
+    "Analytics": 20,
+    "Statistics": 7,
+    "Tableau/Power BI": 6,
+    "Python": 5
+  },
+  "topic_distribution": {
+    "Window Functions & CTEs": 7,
+    "Joins & Edge Cases": 5,
+    "Metrics & KPIs": 8,
+    "A/B Testing & Stats": 7,
+    "Data Quality & Outliers": 6,
+    "Dashboards & Storytelling": 6,
+    "Pandas & Python": 5,
+    "Metric Investigation": 6
+  },
+  "intent_distribution": {
+    "fundamentals": 8,
+    "implement": 6,
+    "explain": 8,
+    "scenario": 14,
+    "tradeoff": 8,
+    "debug": 6
+  },
+  "difficulty_distribution": {
+    "medium": 28,
+    "easy": 10,
+    "hard": 12
+  },
+  "question_type_distribution": {
+    "concept": 16,
+    "implementation": 6,
+    "scenario": 14,
+    "tradeoff": 8,
+    "debugging": 6
+  },
+  "bucket_progress": {
+    "Advanced SQL | Window Functions & CTEs": {
+      "generated_now": 7
+    },
+    "SQL Fundamentals | Joins & Edge Cases": {
+      "generated_now": 5
+    },
+    "Business Analytics | Metrics & KPIs": {
+      "generated_now": 8
+    },
+    "Statistical Reasoning | A/B Testing & Stats": {
+      "generated_now": 7
+    },
+    "Data Cleaning | Data Quality & Outliers": {
+      "generated_now": 6
+    },
+    "Data Visualization | Dashboards & Storytelling": {
+      "generated_now": 6
+    },
+    "Data Transformation | Pandas & Python": {
+      "generated_now": 5
+    },
+    "Root Cause Analysis | Metric Investigation": {
+      "generated_now": 6
+    }
+  },
+  "cumulative_generated_production": 942,
+  "cumulative_staging_total": 2672,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 50,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 100,
+    "Full Stack Developer": 50,
+    "Frontend Developer": 100,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      244,
+      25.9
+    ],
+    "medium": [
+      445,
+      47.2
+    ],
+    "hard": [
+      253,
+      26.9
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -3.8,
+    "medium": 1.7,
+    "hard": 2.0
+  },
+  "target_gap_pct_points_after": {
+    "easy": -4.1,
+    "medium": 2.2,
+    "hard": 1.9
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 400,
+    "Frontend Developer": 400,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 450,
+    "Machine Learning Engineer": 450,
+    "Full Stack Developer": 450
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 50,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 100,
+      "Full Stack Developer": 50,
+      "Frontend Developer": 100,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 408,
+      "Data Analyst": 82,
+      "AI Engineer": 70,
+      "Full Stack Developer": 148,
+      "Machine Learning Engineer": 58,
+      "DevOps / Cloud Engineer": 96,
+      "Frontend Developer": 36,
+      "Performance Engineer": 88,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 31,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 66,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 11,
+      "Product Manager": 14,
+      "Data Scientist": 18,
+      "Business Intelligence": 6
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Data Engineer": 23,
+    "Database Developer": 7,
+    "Product Manager": 14,
+    "Data Scientist": 18,
+    "Business Intelligence": 6
+  },
+  "records_appended": 50,
+  "final_file_line_count": 942,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

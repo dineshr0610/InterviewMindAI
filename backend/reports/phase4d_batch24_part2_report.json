@@ -1,0 +1,288 @@
+{
+  "role_selected": "Frontend Developer",
+  "total_staged_before_batch24": 2917,
+  "cumulative_difficulty_before": {
+    "easy": [
+      284,
+      23.9
+    ],
+    "medium": [
+      588,
+      49.5
+    ],
+    "hard": [
+      315,
+      26.5
+    ]
+  },
+  "attempted": 5,
+  "accepted": 5,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.264,
+    "answer": 0.232,
+    "question+answer": 0.218
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "you attempt to",
+      1
+    ],
+    [
+      "what are the",
+      1
+    ],
+    [
+      "you need to",
+      1
+    ],
+    [
+      "your web application",
+      1
+    ],
+    [
+      "what does the",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      91
+    ],
+    [
+      "what is the",
+      83
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      32
+    ],
+    [
+      "explain the concept",
+      26
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "what is a",
+      23
+    ],
+    [
+      "you need to",
+      20
+    ],
+    [
+      "you have a",
+      19
+    ],
+    [
+      "explain the difference",
+      17
+    ],
+    [
+      "you are building",
+      17
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "explain the purpose",
+      11
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "what does the",
+      7
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "why is it",
+      6
+    ]
+  ],
+  "top_opening_share_new_batch": 0.2,
+  "distinct_openings_new_batch": 5,
+  "role_distribution": {
+    "Frontend Developer": 5
+  },
+  "skill_distribution": {
+    "Browser APIs": 5
+  },
+  "technology_distribution": {
+    "Web APIs": 5
+  },
+  "topic_distribution": {
+    "Workers & Observers": 5
+  },
+  "intent_distribution": {
+    "debug": 1,
+    "tradeoff": 1,
+    "implement": 1,
+    "scenario": 1,
+    "explain": 1
+  },
+  "difficulty_distribution": {
+    "medium": 3,
+    "hard": 1,
+    "easy": 1
+  },
+  "question_type_distribution": {
+    "debugging": 1,
+    "tradeoff": 1,
+    "implementation": 1,
+    "scenario": 1,
+    "concept": 1
+  },
+  "bucket_progress": {
+    "Browser APIs | Workers & Observers": {
+      "generated_now": 5
+    }
+  },
+  "cumulative_generated_production": 1192,
+  "cumulative_staging_total": 2922,
+  "cumulative_generated_by_role": {
+    "Python Developer": 150,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 100,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 100,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 150,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      285,
+      23.9
+    ],
+    "medium": [
+      591,
+      49.6
+    ],
+    "hard": [
+      316,
+      26.5
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -6.1,
+    "medium": 4.5,
+    "hard": 1.5
+  },
+  "target_gap_pct_points_after": {
+    "easy": -6.1,
+    "medium": 4.6,
+    "hard": 1.5
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 350,
+    "Frontend Developer": 350,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 150,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 100,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 100,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 150,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 482,
+      "Data Analyst": 89,
+      "AI Engineer": 76,
+      "Full Stack Developer": 168,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 115,
+      "Frontend Developer": 55,
+      "Performance Engineer": 95,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 44,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 83,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 17,
+      "Product Manager": 14,
+      "Data Scientist": 68,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 79,
+      "Site Reliability Engineer": 16,
+      "UX Engineer": 15
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Full Stack Developer": 5,
+    "Software Engineer": 5
+  },
+  "records_appended": 5,
+  "final_file_line_count": 1192,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

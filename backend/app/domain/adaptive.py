@@ -20,6 +20,9 @@ def initial_assessment_state(
     )
     topic_inventory = resume_match.get("topic_inventory") or {}
     evidence_items = resume_match.get("evidence_items") or topic_inventory.get("evidence_items") or []
+    ai_focus_areas = list(resume_match.get("ai_focus_areas") or [])
+    ai_skill_gaps = list(resume_match.get("ai_skill_gaps") or [])
+    analysis_source = resume_match.get("analysis_source") or "deterministic"
     return {
         "phase": "technical",
         "interview_phase": "resume_phase" if has_resume else "role_phase",
@@ -34,6 +37,9 @@ def initial_assessment_state(
         "resume_questions_count": 0,
         "matched_resume_topics": resume_match.get("resume_topics") or resume_match.get("matched_skills") or [],
         "missing_skills": resume_match.get("missing_skills") or [],
+        "ai_focus_areas": ai_focus_areas,
+        "ai_skill_gaps": ai_skill_gaps,
+        "analysis_source": analysis_source,
         "match_score": resume_match.get("match_score") or resume_match.get("resume_strength") or 0,
         "next_strategy": "baseline",
         "question_mode": resume_match.get("question_mode") or "foundational",
@@ -117,7 +123,8 @@ def adapt_after_answer(
 
     difficulty = _adjust_difficulty(technical_score, current_difficulty)
     follow_up_depth = int(next_state.get("follow_up_depth") or 0)
-    strategy = choose_next_strategy(technical_score, follow_up_depth)
+    has_misconception = bool(missing_points)
+    strategy = choose_next_strategy(technical_score, follow_up_depth, has_misconception=has_misconception)
     if strategy in DEEPENING_STRATEGIES:
         follow_up_depth += 1
     else:
@@ -169,6 +176,8 @@ def adapt_after_answer(
         matched_resume_topics=matched_resume_topics,
         missing_skills=missing_skills,
         topics_covered=list(next_state.get("topics_covered") or []),
+        ai_focus_areas=list(next_state.get("ai_focus_areas") or []),
+        ai_skill_gaps=list(next_state.get("ai_skill_gaps") or []),
     )
 
     updated_topics_covered = list(dict.fromkeys([*(next_state.get("topics_covered") or []), next_topic]))
@@ -216,56 +225,75 @@ def choose_next_topic(
     matched_resume_topics: Optional[List[str]] = None,
     missing_skills: Optional[List[str]] = None,
     topics_covered: Optional[List[str]] = None,
+    ai_focus_areas: Optional[List[str]] = None,
+    ai_skill_gaps: Optional[List[str]] = None,
 ) -> str:
     topics = list(role.get("important_topics") or [])
     topic_inventory = topic_inventory or {}
     matched_resume_topics = matched_resume_topics or []
     missing_skills = missing_skills or []
     topics_covered = topics_covered or []
+    ai_focus_areas = ai_focus_areas or []
+    ai_skill_gaps = ai_skill_gaps or []
 
-    # If the strategy is not topic_transition (e.g. follow_up, deeper_probe, edge_case, clarification, fundamentals), stay on current topic
+    # If the strategy is not topic_transition, stay on current topic
     if strategy != "topic_transition":
         return current_topic
 
-    # Strategy is topic_transition: Find the next best unexplored topic
-    # 1. Unexplored resume projects / technologies
+    candidate_topics = {}
+
+    # Gather potential topics and assign base scores
     projects = topic_inventory.get("projects") or []
     for proj in projects:
         proj_name = proj.get("name") if isinstance(proj, dict) else str(proj)
-        if proj_name and proj_name not in topics_covered and proj_name not in topic_scores:
-            return proj_name
+        if proj_name and proj_name not in topics_covered:
+            candidate_topics[proj_name] = 8.0  # High priority for projects
+
+    # AI-identified interview focus areas — probed with high priority (after projects)
+    for focus in ai_focus_areas:
+        if focus and focus not in topics_covered:
+            candidate_topics[focus] = 7.5
 
     technologies = topic_inventory.get("technologies") or []
     for tech in technologies:
-        if tech and tech not in topics_covered and tech not in topic_scores:
-            return tech
+        if tech and tech not in topics_covered:
+            candidate_topics[tech] = 7.0
 
     for r_topic in matched_resume_topics:
-        if r_topic and r_topic not in topics_covered and r_topic not in topic_scores:
-            return r_topic
+        if r_topic and r_topic not in topics_covered:
+            candidate_topics[r_topic] = 6.0
 
-    # 2. Missing role skills (test how candidate reasons about tools they haven't used yet)
+    # AI-identified skill gaps — probe these to expose depth
+    for gap in ai_skill_gaps:
+        if gap and gap not in topics_covered:
+            candidate_topics[gap] = 5.5
+
     for missing in missing_skills:
-        if missing and missing not in topics_covered and missing not in topic_scores:
-            return missing
+        if missing and missing not in topics_covered:
+            candidate_topics[missing] = 5.0
 
-    # 3. Uncovered role requirements
-    uncovered_role = [topic for topic in topics if topic not in topic_scores and topic not in topics_covered]
-    if uncovered_role:
-        return uncovered_role[0]
+    for role_topic in topics:
+        if role_topic and role_topic not in topics_covered:
+            candidate_topics[role_topic] = 4.0
 
-    # 4. Weak topics that need another attempt
-    weak = [
-        topic
-        for topic, score in topic_scores.items()
-        if score <= 5 and topic != current_topic
-    ]
-    if weak:
-        return weak[0]
+    # Adjust scores based on candidate state
+    weak_topics = [t for t, s in topic_scores.items() if s <= 5 and t != current_topic]
+    for weak in weak_topics:
+        # Re-visiting weak topics gets a medium priority, but lower than new resume topics
+        candidate_topics[weak] = 5.5
 
+    # If we have misconceptions, it might be worth diving into them as a topic
     if missing_points:
-        return f"{current_topic}: {missing_points[0][:80]}"
-    return current_topic
+        mp_topic = f"{current_topic} concepts: {missing_points[0][:40]}"
+        if mp_topic not in topics_covered:
+            candidate_topics[mp_topic] = 6.5
+
+    if not candidate_topics:
+        return current_topic
+
+    # Select the topic with the highest score
+    best_topic = max(candidate_topics.items(), key=lambda x: x[1])[0]
+    return best_topic
 
 
 def _adjust_difficulty(score: int, current: str) -> str:

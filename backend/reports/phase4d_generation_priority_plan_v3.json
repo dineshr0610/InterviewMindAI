@@ -1,0 +1,132 @@
+[
+  {
+    "role": "Java Developer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Java Core",
+      "Collections Framework",
+      "Java Language",
+      "Java Backend Engineering",
+      "Java Concurrency"
+    ]
+  },
+  {
+    "role": "ML Engineer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Supervised Learning",
+      "Model Evaluation",
+      "Deep Learning",
+      "Feature Engineering",
+      "Production ML"
+    ]
+  },
+  {
+    "role": "Full Stack Developer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Authentication",
+      "System Architecture",
+      "Debugging",
+      "Application Security",
+      "Deployment Sequencing"
+    ]
+  },
+  {
+    "role": "Frontend Developer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Browser APIs",
+      "Component Architecture",
+      "Frontend Testing",
+      "HTML/DOM & CSS",
+      "Web Performance & APIs"
+    ]
+  },
+  {
+    "role": "Data Analyst",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Data Cleaning",
+      "Root Cause Analysis",
+      "Data Transformation",
+      "Data Visualization",
+      "Business Analytics"
+    ]
+  },
+  {
+    "role": "Python Developer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Python Concurrency",
+      "Advanced OOP",
+      "Python Fundamentals",
+      "Production Debugging",
+      "Functions & Functional Programming"
+    ]
+  },
+  {
+    "role": "AI Engineer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "AI Evaluation",
+      "AI Security",
+      "AI Operations",
+      "AI Agents",
+      "Structured Outputs"
+    ]
+  },
+  {
+    "role": "Database Developer",
+    "current_count": 200,
+    "remaining": 300,
+    "priority": 300,
+    "top_skills": [
+      "Database Replication",
+      "Database Architecture",
+      "Query Performance & Indexing",
+      "Database Operations",
+      "Transactions & Operations"
+    ]
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "current_count": 245,
+    "remaining": 255,
+    "priority": 255,
+    "top_skills": [
+      "Networking",
+      "Linux Core",
+      "Cloud Security",
+      "Reliability Engineering",
+      "CI/CD Architecture"
+    ]
+  },
+  {
+    "role": "Backend Developer",
+    "current_count": 247,
+    "remaining": 253,
+    "priority": 253,
+    "top_skills": [
+      "Background Processing",
+      "Performance",
+      "Horizontal Scaling",
+      "Security",
+      "Messaging"
+    ]
+  }
+]

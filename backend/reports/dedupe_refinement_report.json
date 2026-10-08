@@ -1,0 +1,235 @@
+{
+  "intent_distribution": {
+    "implement": 78,
+    "compare": 82,
+    "fundamentals": 474,
+    "explain": 1239,
+    "tradeoff": 10,
+    "design": 12,
+    "scenario": 14,
+    "debug": 11,
+    "optimize": 30,
+    "architecture": 7,
+    "diagnose": 5
+  },
+  "total_conversational": 1962,
+  "kept_count": 1857,
+  "dropped_count": 105,
+  "drop_reasons": {
+    "near_duplicate": 84,
+    "semantic_repetition": 10,
+    "exact_match": 11
+  },
+  "dropped_samples": [
+    {
+      "question": "What is VPC peering?",
+      "dup_of": "What is VPC?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "AWS"
+    },
+    {
+      "question": "You need an instance for short-term and the workload running on instance must not be interrupted. Which pricing model would you use?",
+      "dup_of": "You need an instance for running an application for a period of 2 years continuously, without changing instance type. Which pricing model would you use?",
+      "reason": "semantic_repetition",
+      "intent": "design",
+      "skill": "AWS"
+    },
+    {
+      "question": "What is dynamic Scaling policy in regards to Auto Scaling Groups?",
+      "dup_of": "What is a predictive scaling policy in regards to Auto Scaling Groups?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "AWS"
+    },
+    {
+      "question": "You need an instance for running workloads. You don't care if they fail for a given moment as long as they run eventually. Which pricing model would you use?",
+      "dup_of": "You need an instance for running an application for a period of 2 years continuously, without changing instance type. Which pricing model would you use?",
+      "reason": "semantic_repetition",
+      "intent": "design",
+      "skill": "AWS"
+    },
+    {
+      "question": "You need an instance for two years, but only between 10:00-15:00 every day. Which pricing model would you use?",
+      "dup_of": "You need an instance for running an application for a period of 2 years continuously, without changing instance type. Which pricing model would you use?",
+      "reason": "semantic_repetition",
+      "intent": "design",
+      "skill": "AWS"
+    },
+    {
+      "question": "What are some use cases for using Network Load Balancer?",
+      "dup_of": "What are some use cases for using Gateway Load Balancer?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What can you attach to an EC2 instance in order to store data?",
+      "dup_of": "What can you attach to an EC2 instance in order to store data?",
+      "reason": "exact_match",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What's a \"listener\" in regards to ELB?",
+      "dup_of": "What's a \"target group\" in regards to ELB?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What would you use for SQL database?",
+      "dup_of": "What would you use for NoSQL database?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What are the cons and pros of the \"Cluster\" placement group strategy?",
+      "dup_of": "What are the cons and pros of the \"Spread\" placement group strategy?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "Explain scaling cooldowns in regards to Auto Scaling Groups",
+      "dup_of": "Explain Lifecycle hooks in regards to Auto Scaling Groups",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What are the supported target groups for network load balancer?",
+      "dup_of": "What are the supported target groups for gateway load balancer?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What are some use cases for weighted routing policy?",
+      "dup_of": "What are some use cases for using geolocation routing policy?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "AWS"
+    },
+    {
+      "question": "What is a Runner in GitHub Actions?",
+      "dup_of": "What is a Workflow in GitHub Actions?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "CI/CD"
+    },
+    {
+      "question": "In Zuul, What are the check pipelines?",
+      "dup_of": "In Zuul, What are the gate pipelines?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "CI/CD"
+    },
+    {
+      "question": "What are the limitations or disadvantages of Jenkins?",
+      "dup_of": "What are some of Jenkins limitations?",
+      "reason": "semantic_repetition",
+      "intent": "tradeoff",
+      "skill": "CI/CD"
+    },
+    {
+      "question": "What is a Job in GitHub Actions?",
+      "dup_of": "What is a Workflow in GitHub Actions?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "CI/CD"
+    },
+    {
+      "question": "What are some use cases for using Ingress?",
+      "dup_of": "What are some use cases for using Static Pods?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "How to list the pods in the current namespace?",
+      "dup_of": "How to list all daemonsets in the current namespace?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "Explain selectors",
+      "dup_of": "Explain Selectors",
+      "reason": "exact_match",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "What happens when you delete a Pod?",
+      "dup_of": "What happens when you delete a deployment?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "What is a Service in Kubernetes?",
+      "dup_of": "What is a \"Deployment\" in Kubernetes?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "How to list ReplicaSets in the current namespace?",
+      "dup_of": "How to list all daemonsets in the current namespace?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "What components the Operator consists of?",
+      "dup_of": "What components the Operator Framework consists of?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "What is Ingress Controller?",
+      "dup_of": "What is Ingress?",
+      "reason": "near_duplicate",
+      "intent": "fundamentals",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "What kubectl describe pod [pod name] does? command does?",
+      "dup_of": "What kubectl logs [pod-name] command does?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "You applied a taint with k taint node minikube app=web:NoSchedule on the only node in your cluster and then executed kubectl run some-pod --image=redis. What will happen?",
+      "dup_of": "You applied a taint with k taint node minikube app=web:NoSchedule on the only node in your cluster and then executed kubectl run some-pod --image=redis but the Pod is in pending state. How to fix it?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Kubernetes"
+    },
+    {
+      "question": "How do you create a private key for a CA (certificate authority)?",
+      "dup_of": "How do you create a public key for a CA (certificate authority)?",
+      "reason": "near_duplicate",
+      "intent": "explain",
+      "skill": "Linux"
+    },
+    {
+      "question": "What is a Linux distribution?",
+      "dup_of": "What is a Linux distribution?",
+      "reason": "exact_match",
+      "intent": "fundamentals",
+      "skill": "Linux"
+    },
+    {
+      "question": "What are you using for troubleshooting and debugging process issues?",
+      "dup_of": "What are you using for troubleshooting and debugging network issues?",
+      "reason": "near_duplicate",
+      "intent": "debug",
+      "skill": "Linux"
+    }
+  ]
+}

@@ -25,6 +25,7 @@ DEEPENING_STRATEGIES = {
     TRADEOFF,
     SCENARIO,
     ARCHITECTURE,
+    "misconception_diagnostic",
 }
 
 # Standardized Question Categories across the interview pool
@@ -112,8 +113,11 @@ CATEGORY_QUESTION_TEMPLATES = {
 }
 
 
-def choose_next_strategy(score: int, follow_up_depth: int = 0) -> str:
+def choose_next_strategy(score: int, follow_up_depth: int = 0, has_misconception: bool = False) -> str:
     """Choose the most appropriate next-interview action for the last answer."""
+    if has_misconception:
+        return "misconception_diagnostic"
+        
     if follow_up_depth >= MAX_FOLLOW_UP_DEPTH:
         return TOPIC_TRANSITION
 
@@ -139,17 +143,39 @@ def choose_next_strategy(score: int, follow_up_depth: int = 0) -> str:
 
 
 DIVERSITY_PROMPTS = {
-    FOLLOW_UP: "Ask a focused follow-up that references the candidate's last answer.",
-    CLARIFICATION: "Ask a clarifying question about an underdeveloped part of the candidate's last answer.",
-    DEEPER_PROBE: "Probe deeper into a specific, interesting claim or concept in the candidate's last answer.",
-    EDGE_CASE: "Ask about an important edge case or failure condition related to what the candidate just described.",
-    TRADEOFF: "Ask about the trade-offs, limitations, or alternatives of the approach the candidate described.",
-    SCENARIO: "Pose a realistic production scenario or scaling situation building on the candidate's last answer.",
-    ARCHITECTURE: "Ask how the technique or system the candidate described fits into a larger system or architecture.",
-    FUNDAMENTALS: "Re-visit the fundamental concept in a simpler way so the candidate has a chance to recover.",
-    PROBLEM_SOLVING: "Ask a practical problem-solving question using the concepts the candidate just discussed.",
-    TOPIC_TRANSITION: "Naturally transition to another relevant aspect of the role/topic that has not been covered yet.",
+    FOLLOW_UP: "Determine whether the candidate can substantiate their previous claim with deeper technical details.",
+    CLARIFICATION: "Clarify an underdeveloped or ambiguous part of the candidate's last answer.",
+    DEEPER_PROBE: "Probe deeper into the core mechanics or reasoning behind a specific claim in the candidate's last answer.",
+    EDGE_CASE: "Determine whether the candidate can reason about failure modes, race conditions, or edge cases related to their described approach.",
+    TRADEOFF: "Determine whether the candidate understands the limitations, costs, or alternatives to the approach they described.",
+    SCENARIO: "Determine whether the candidate can adapt their knowledge to a realistic production scenario or scaling constraint.",
+    ARCHITECTURE: "Determine whether the candidate understands how their described technique fits into the broader system architecture.",
+    FUNDAMENTALS: "Re-visit the fundamental concept to evaluate base-level competency if the previous response struggled.",
+    PROBLEM_SOLVING: "Evaluate practical problem-solving skills using the concepts the candidate just discussed.",
+    TOPIC_TRANSITION: "Transition to a new technical area to ensure broad coverage of the role's requirements.",
 }
+
+DIFFICULTY_RUBRIC = {
+    "easy": "Test fundamental understanding, direct explanation, and basic implementation.",
+    "medium": "Test application of concepts, debugging, design decisions, and tradeoffs.",
+    "hard": "Test ambiguous real-world scenarios, architecture decisions, competing constraints, failure modes, and deep reasoning."
+}
+
+# Map conversational strategies to standard intents
+STRATEGY_TO_INTENT = {
+    FOLLOW_UP: "explain",
+    CLARIFICATION: "explain",
+    DEEPER_PROBE: "reasoning",
+    EDGE_CASE: "debug",
+    TRADEOFF: "tradeoff",
+    SCENARIO: "scenario",
+    ARCHITECTURE: "architecture",
+    FUNDAMENTALS: "fundamentals",
+    PROBLEM_SOLVING: "implement",
+    TOPIC_TRANSITION: "experience",
+    "misconception_diagnostic": "diagnose"
+}
+
 
 
 # Standard Question Intents across interview turns
@@ -188,39 +214,43 @@ ALL_QUESTION_INTENTS = [
 ]
 
 
-def detect_question_intent(question_text: str) -> str:
+def detect_question_intent(question_text: str, desired_intent: str = None) -> str:
     """Classify the technical intent of an interview question."""
     if not question_text:
         return INTENT_EXPLAIN
     q = question_text.lower()
     
-    if any(k in q for k in ["why did you choose", "what led you", "reason for picking", "rationale behind", "justify", "why select"]):
-        return INTENT_JUSTIFY
-    if any(k in q for k in ["trade-off", "tradeoff", "compromise", "drawback", "limitation", "pros and cons", "downsides"]):
-        return INTENT_TRADEOFF
-    if any(k in q for k in ["what happens if", "suppose", "if user traffic", "scenario", "imagine", "if two users", "if two concurrent", "concurrent transactions", "conflict", "race condition", "traffic increased"]):
-        return INTENT_SCENARIO
-    if any(k in q for k in ["how did you design", "schema design", "database schema", "model", "endpoint design", "how did you structure", "structure your"]):
-        return INTENT_DESIGN
-    if any(k in q for k in ["optimize", "optimizing", "index", "indexing", "bottleneck", "latency", "throughput", "caching", "cache", "performance", "improve this query"]):
-        return INTENT_OPTIMIZE
-    if any(k in q for k in ["bug", "troubleshoot", "debug", "failure", "error", "exception", "failure recovery", "edge case", "production issue"]):
-        return INTENT_DEBUG
-    if any(k in q for k in ["compare", "difference between", "versus", " vs ", "over alternative"]):
-        return INTENT_COMPARE
-    if (
-        any(k in q for k in ["architecture", "high-level", "system overview", "component boundaries", "walk me through the architecture", "components interact", "components are structured", "structure the architecture", "are structured"])
-        or bool(re.search(r"components.*(?:structure|interact|boundar)", q))
-    ):
-        return INTENT_ARCHITECTURE
-    if any(k in q for k in ["how did you implement", "code", "hooks", "function", "library", "pattern", "syntax", "implementation details", "how does a request move", "data flow"]):
-        return INTENT_IMPLEMENT
-    if any(k in q for k in ["what is", "how does", "define", "concept of", "core principle", "under the hood"]):
-        return INTENT_FUNDAMENTALS
-    if any(k in q for k in ["how would you evaluate", "how would you assess", "reasoning", "decision", "how would you evaluate whether"]):
-        return INTENT_REASONING
-    if any(k in q for k in ["in your experience", "in your project", "have you worked"]):
-        return INTENT_EXPERIENCE
+    # Use exact word boundaries for single generic words
+    def matches_any(keywords: list[str]) -> bool:
+        for k in keywords:
+            if re.search(r'\b' + re.escape(k) + r'\b', q):
+                return True
+        return False
+        
+    intent_checks = {
+        INTENT_JUSTIFY: lambda: any(k in q for k in ["why did you choose", "what led you", "reason for picking", "rationale behind", "justify", "why select", "why did you decide"]),
+        INTENT_TRADEOFF: lambda: any(k in q for k in ["trade-off", "tradeoff", "compromise", "drawback", "limitation", "pros and cons", "downsides"]),
+        INTENT_SCENARIO: lambda: any(k in q for k in ["what happens if", "suppose", "if user traffic", "scenario", "imagine", "if two users", "if two concurrent", "concurrent transactions", "conflict", "race condition", "traffic increased", "what if"]),
+        INTENT_DESIGN: lambda: any(k in q for k in ["how did you design", "schema design", "database schema", "model", "endpoint design", "how did you structure", "structure your", "system design"]),
+        INTENT_OPTIMIZE: lambda: any(k in q for k in ["optimize", "optimizing", "bottleneck", "latency", "throughput", "caching", "cache", "performance", "improve this query"]) or matches_any(["index", "indexing"]),
+        INTENT_DEBUG: lambda: any(k in q for k in ["troubleshoot", "failure recovery", "edge case", "production issue"]) or matches_any(["bug", "debug", "failure"]),
+        INTENT_COMPARE: lambda: any(k in q for k in ["compare", "difference between", "versus", " vs ", "over alternative"]),
+        INTENT_ARCHITECTURE: lambda: any(k in q for k in ["architecture", "high-level", "system overview", "component boundaries", "walk me through the architecture", "components interact", "components are structured", "structure the architecture", "are structured", "architectural structure"]) or bool(re.search(r"components.*(?:structure|interact|boundar)", q)),
+        INTENT_IMPLEMENT: lambda: any(k in q for k in ["how did you implement", "implementation details", "how does a request move", "data flow"]) or matches_any(["code", "hooks", "function", "library", "pattern", "syntax"]),
+        INTENT_REASONING: lambda: any(k in q for k in ["how would you evaluate", "how would you assess", "reasoning", "decision", "how would you evaluate whether"]),
+        INTENT_EXPERIENCE: lambda: any(k in q for k in ["in your experience", "in your project", "have you worked"]),
+        INTENT_FUNDAMENTALS: lambda: any(k in q for k in ["what is", "how does", "concept of", "core principle", "under the hood"]) or matches_any(["define"]),
+        INTENT_DIAGNOSE: lambda: matches_any(["diagnose", "misconception", "why would"]),
+    }
+    
+    # Prioritize actual intended interview intent
+    if desired_intent and desired_intent in intent_checks and intent_checks[desired_intent]():
+        return desired_intent
+        
+    for intent_name, check_func in intent_checks.items():
+        if check_func():
+            return intent_name
+            
     return INTENT_EXPLAIN
 
 
@@ -230,34 +260,35 @@ class AdaptiveQuestionController:
         self.topic = topic
 
     def choose_focus(self, difficulty: str, previous_questions: list[str]) -> str:
-        text = " ".join(previous_questions).lower()
         if not previous_questions:
             return "definition"
-        if not any(x in text for x in ["how does", "mechanism", "work step by step", "architecture"]):
+        
+        # Determine coverage by intents rather than just exact keywords
+        covered_intents = {detect_question_intent(q) for q in previous_questions}
+        text = " ".join(previous_questions).lower()
+        
+        if not (INTENT_ARCHITECTURE in covered_intents or any(x in text for x in ["mechanism", "how does", "architecture", "work step by step"])):
             return "mechanism"
-        if not any(x in text for x in ["implement", "code", "function", "pattern", "library"]):
+        if not (INTENT_IMPLEMENT in covered_intents or any(x in text for x in ["implement", "code", "pattern", "library"])):
             return "implementation"
-        if not any(x in text for x in ["edge case", "bug", "error", "null", "failure"]):
+        if not (INTENT_DEBUG in covered_intents or any(x in text for x in ["edge case", "bug", "error", "failure"])):
             return "edge_cases"
         return "tradeoffs"
 
-    def fallback(
+    def fallback_candidates(
         self,
         difficulty: str = "Medium",
-        previous_questions: list[str] | None = None,
         category: str | None = None,
         project_name: str | None = None,
         technology: str | None = None,
-    ) -> str:
-        previous_questions = previous_questions or []
+    ) -> list[str]:
         subject = project_name or technology or self.topic
+        candidates = []
         
         if category and category in CATEGORY_QUESTION_TEMPLATES:
             templates = CATEGORY_QUESTION_TEMPLATES[category]
             for template in templates:
-                cand = template.format(subject=subject)
-                if not any(cand.lower() == p.lower() for p in previous_questions):
-                    return cand
+                candidates.append(template.format(subject=subject))
 
         # Default progressive templates
         templates = [
@@ -267,11 +298,10 @@ class AdaptiveQuestionController:
             f"What edge cases, error handling, or performance challenges did you encounter in {subject}?",
             f"What are the main technical trade-offs of using {subject} compared to alternative approaches?",
         ]
-        for cand in templates:
-            if not any(cand.lower() == p.lower() for p in previous_questions):
-                return cand
-
-        return f"In your technical experience with {subject}, what were the key architecture decisions and trade-offs you made?"
+        candidates.extend(templates)
+        candidates.append(f"In your technical experience with {subject}, what were the key architecture decisions and trade-offs you made?")
+        
+        return candidates
 
     def validate(
         self,
@@ -367,10 +397,15 @@ class AdaptiveQuestionController:
                         INTENT_TRADEOFF,
                         INTENT_DEBUG,
                     )):
-                        return False, "semantic_repetition"
+                        q_words = set(re.findall(r"\b[a-z0-9]+\b", q))
+                        p_words = set(re.findall(r"\b[a-z0-9]+\b", prev_lower))
+                        if q_words and p_words:
+                            sim = len(q_words & p_words) / max(1, len(q_words | p_words))
+                            if sim >= 0.35:
+                                return False, "semantic_repetition"
 
         # 5. Topic alignment check
-        if self.topic and not resume_context:
+        if self.topic and not resume_context and not target_subject:
             topic_tokens = [t for t in re.findall(r"\b[a-z0-9]+\b", self.topic.lower()) if len(t) > 2]
             if topic_tokens and not any(token in q for token in topic_tokens):
                 return False, "topic_missing"

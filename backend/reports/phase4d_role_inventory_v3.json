@@ -1,0 +1,79 @@
+[
+  {
+    "raw_role": "Python Developer",
+    "count": 200,
+    "canonical_mapping": "Python Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Java Developer",
+    "count": 200,
+    "canonical_mapping": "Java Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "DevOps / Cloud Engineer",
+    "count": 245,
+    "canonical_mapping": "DevOps / Cloud Engineer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "AI Engineer",
+    "count": 200,
+    "canonical_mapping": "AI Engineer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Database Developer",
+    "count": 200,
+    "canonical_mapping": "Database Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Machine Learning Engineer",
+    "count": 100,
+    "canonical_mapping": "ML Engineer",
+    "confidence": 1.0,
+    "normalization_status": "REQUIRES_NORMALIZATION"
+  },
+  {
+    "raw_role": "Data Analyst",
+    "count": 200,
+    "canonical_mapping": "Data Analyst",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Full Stack Developer",
+    "count": 200,
+    "canonical_mapping": "Full Stack Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Frontend Developer",
+    "count": 200,
+    "canonical_mapping": "Frontend Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "Backend Developer",
+    "count": 247,
+    "canonical_mapping": "Backend Developer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  },
+  {
+    "raw_role": "ML Engineer",
+    "count": 100,
+    "canonical_mapping": "ML Engineer",
+    "confidence": 1.0,
+    "normalization_status": "ALREADY_CANONICAL"
+  }
+]

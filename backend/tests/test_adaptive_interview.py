@@ -645,45 +645,37 @@ class TestQuestionProgression:
     def test_fallback_starts_with_definition(self) -> None:
         from ai_engine.services.question_controller import AdaptiveQuestionController
         ctrl = AdaptiveQuestionController("Binary Search")
-        q = ctrl.fallback("Medium", [])
-        assert "What is" in q
-        assert "Binary Search" in q
+        qs = ctrl.fallback_candidates("Medium")
+        assert "What is" in qs[0]
+        assert "Binary Search" in qs[0]
 
     def test_fallback_moves_past_covered_concepts(self) -> None:
         from ai_engine.services.question_controller import AdaptiveQuestionController
         ctrl = AdaptiveQuestionController("Binary Search")
 
-        q1 = ctrl.fallback("Medium", [])
-        q2 = ctrl.fallback("Medium", [q1])
-        q3 = ctrl.fallback("Medium", [q1, q2])
+        qs = ctrl.fallback_candidates("Medium")
+        q1, q2, q3 = qs[0], qs[1], qs[2]
 
         assert q1 != q2
         assert q2 != q3
         assert q1 != q3
 
     def test_fallback_covers_all_concepts(self) -> None:
-        """Run fallback 5 times with growing history; all returned questions differ."""
+        """Run fallback_candidates and check all returned questions differ."""
         from ai_engine.services.question_controller import AdaptiveQuestionController
         ctrl = AdaptiveQuestionController("Binary Search")
 
-        questions = []
-        for _ in range(5):
-            q = ctrl.fallback("Medium", questions)
-            assert q not in questions, f"Repeated question: {q}"
-            questions.append(q)
+        questions = ctrl.fallback_candidates("Medium")
+        assert len(set(questions)) == len(questions)
 
     def test_fallback_returns_generic_after_all_concepts(self) -> None:
-        """After all 5 concepts are covered, fallback returns a generic question."""
+        """After all concepts are covered, fallback candidates should end with generic."""
         from ai_engine.services.question_controller import AdaptiveQuestionController
         ctrl = AdaptiveQuestionController("Binary Search")
 
-        all_qs = []
-        for _ in range(5):
-            q = ctrl.fallback("Medium", all_qs)
-            all_qs.append(q)
-
-        generic = ctrl.fallback("Medium", all_qs)
-        assert generic not in all_qs
+        qs = ctrl.fallback_candidates("Medium")
+        generic = qs[-1]
+        assert "architecture decisions and trade-offs" in generic
         assert "Binary Search" in generic
 
     def test_fallback_all_questions_contain_topic(self) -> None:
@@ -691,11 +683,9 @@ class TestQuestionProgression:
         from ai_engine.services.question_controller import AdaptiveQuestionController
         ctrl = AdaptiveQuestionController("Binary Search")
 
-        questions = []
-        for _ in range(6):
-            q = ctrl.fallback("Medium", questions)
+        qs = ctrl.fallback_candidates("Medium")
+        for q in qs:
             assert "Binary Search" in q, f"Missing topic in: {q}"
-            questions.append(q)
 
     def test_validate_catches_semantic_duplicates(self) -> None:
         from ai_engine.services.question_controller import AdaptiveQuestionController

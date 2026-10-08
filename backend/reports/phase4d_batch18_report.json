@@ -1,0 +1,402 @@
+{
+  "role_selected": "Backend Developer",
+  "total_staged_before_batch18": 2574,
+  "cumulative_difficulty_before": {
+    "easy": [
+      223,
+      26.4
+    ],
+    "medium": [
+      393,
+      46.6
+    ],
+    "hard": [
+      228,
+      27.0
+    ]
+  },
+  "attempted": 50,
+  "accepted": 48,
+  "rejected": 2,
+  "rejection_reasons": {
+    "semantic_competency_duplicate": 2
+  },
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 2,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [
+    [
+      "What is the semantic difference between a `PUT` request and a `PATCH` ",
+      0.677
+    ],
+    [
+      "Explain the difference between a Write-Through cache and a Cache-Aside",
+      0.594
+    ]
+  ],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.752,
+    "answer": 0.677,
+    "question+answer": 0.627
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "how would you",
+      8
+    ],
+    [
+      "what tradeoffs exist",
+      5
+    ],
+    [
+      "what is the",
+      4
+    ],
+    [
+      "what are the",
+      4
+    ],
+    [
+      "explain the concept",
+      3
+    ],
+    [
+      "what is a",
+      3
+    ],
+    [
+      "a backend service",
+      2
+    ],
+    [
+      "an external partner",
+      1
+    ],
+    [
+      "explain the purpose",
+      1
+    ],
+    [
+      "a client application",
+      1
+    ],
+    [
+      "a security audit",
+      1
+    ],
+    [
+      "you implemented a",
+      1
+    ],
+    [
+      "explain the saga",
+      1
+    ],
+    [
+      "microservice a calls",
+      1
+    ],
+    [
+      "a distributed trace",
+      1
+    ],
+    [
+      "a background worker",
+      1
+    ],
+    [
+      "an application publishes",
+      1
+    ],
+    [
+      "a backend api",
+      1
+    ],
+    [
+      "two users simultaneously",
+      1
+    ],
+    [
+      "a backend job",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "how would you",
+      70
+    ],
+    [
+      "what is the",
+      64
+    ],
+    [
+      "what are the",
+      62
+    ],
+    [
+      "how do you",
+      23
+    ],
+    [
+      "what tradeoffs exist",
+      19
+    ],
+    [
+      "what is a",
+      16
+    ],
+    [
+      "explain the concept",
+      16
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "you need to",
+      13
+    ],
+    [
+      "explain the difference",
+      12
+    ],
+    [
+      "explain the purpose",
+      8
+    ],
+    [
+      "when would you",
+      8
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "how does the",
+      5
+    ]
+  ],
+  "top_opening_share_new_batch": 0.167,
+  "distinct_openings_new_batch": 26,
+  "role_distribution": {
+    "Backend Developer": 48
+  },
+  "skill_distribution": {
+    "API Design": 5,
+    "Security": 6,
+    "Distributed Systems": 6,
+    "Messaging": 6,
+    "Performance": 4,
+    "Databases": 7,
+    "Reliability": 7,
+    "Scaling": 4,
+    "Observability": 3
+  },
+  "technology_distribution": {
+    "HTTP": 5,
+    "Security": 6,
+    "Architecture": 23,
+    "Redis": 4,
+    "SQL": 7,
+    "Monitoring": 3
+  },
+  "topic_distribution": {
+    "REST & Webhooks": 5,
+    "Auth & Rate Limiting": 6,
+    "Microservices": 6,
+    "Queues & Events": 6,
+    "Caching": 4,
+    "Transactions & ORMs": 7,
+    "Fault Tolerance": 7,
+    "Load Balancing": 4,
+    "Debugging": 3
+  },
+  "intent_distribution": {
+    "tradeoff": 9,
+    "scenario": 11,
+    "explain": 8,
+    "implement": 8,
+    "debug": 6,
+    "fundamentals": 6
+  },
+  "difficulty_distribution": {
+    "medium": 24,
+    "easy": 11,
+    "hard": 13
+  },
+  "question_type_distribution": {
+    "tradeoff": 9,
+    "scenario": 11,
+    "concept": 14,
+    "implementation": 8,
+    "debugging": 6
+  },
+  "bucket_progress": {
+    "API Design | REST & Webhooks": {
+      "generated_now": 5
+    },
+    "Security | Auth & Rate Limiting": {
+      "generated_now": 6
+    },
+    "Distributed Systems | Microservices": {
+      "generated_now": 6
+    },
+    "Messaging | Queues & Events": {
+      "generated_now": 6
+    },
+    "Performance | Caching": {
+      "generated_now": 4
+    },
+    "Databases | Transactions & ORMs": {
+      "generated_now": 7
+    },
+    "Reliability | Fault Tolerance": {
+      "generated_now": 7
+    },
+    "Scaling | Load Balancing": {
+      "generated_now": 4
+    },
+    "Observability | Debugging": {
+      "generated_now": 3
+    }
+  },
+  "cumulative_generated_production": 892,
+  "cumulative_staging_total": 2622,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 50,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 50,
+    "Full Stack Developer": 50,
+    "Frontend Developer": 100,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      234,
+      26.2
+    ],
+    "medium": [
+      417,
+      46.7
+    ],
+    "hard": [
+      241,
+      27.0
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -3.6,
+    "medium": 1.6,
+    "hard": 2.0
+  },
+  "target_gap_pct_points_after": {
+    "easy": -3.8,
+    "medium": 1.7,
+    "hard": 2.0
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 400,
+    "Frontend Developer": 400,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 450,
+    "AI Engineer": 450,
+    "Machine Learning Engineer": 450,
+    "Full Stack Developer": 450
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 50,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 50,
+      "Full Stack Developer": 50,
+      "Frontend Developer": 100,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 408,
+      "Data Analyst": 82,
+      "AI Engineer": 70,
+      "Full Stack Developer": 148,
+      "Machine Learning Engineer": 58,
+      "DevOps / Cloud Engineer": 96,
+      "Frontend Developer": 36,
+      "Performance Engineer": 88,
+      "System Design": 4,
+      "Database Developer": 17,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 31,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 43,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 11
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Frontend Developer": 5,
+    "Architecture": 17,
+    "Security Engineer": 6,
+    "Data Engineer": 6,
+    "Performance Engineer": 7,
+    "Database Developer": 7,
+    "DevOps / Cloud Engineer": 14
+  },
+  "records_appended": 48,
+  "final_file_line_count": 892,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

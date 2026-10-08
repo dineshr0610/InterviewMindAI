@@ -1,0 +1,361 @@
+{
+  "role_selected": "Backend Developer",
+  "total_staged_before_batch28": 3072,
+  "cumulative_difficulty_before": {
+    "easy": [
+      306,
+      22.8
+    ],
+    "medium": [
+      667,
+      49.7
+    ],
+    "hard": [
+      369,
+      27.5
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.4,
+    "answer": 0.446,
+    "question+answer": 0.461
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      4
+    ],
+    [
+      "what are the",
+      3
+    ],
+    [
+      "explain the concept",
+      3
+    ],
+    [
+      "you implement a",
+      2
+    ],
+    [
+      "when architecting a",
+      2
+    ],
+    [
+      "you have a",
+      2
+    ],
+    [
+      "a backend service",
+      2
+    ],
+    [
+      "a background worker",
+      1
+    ],
+    [
+      "you notice that",
+      1
+    ],
+    [
+      "how do you",
+      1
+    ],
+    [
+      "in message queue",
+      1
+    ],
+    [
+      "a nodejs backend",
+      1
+    ],
+    [
+      "a python celery",
+      1
+    ],
+    [
+      "explain the outbox",
+      1
+    ],
+    [
+      "a backend worker",
+      1
+    ],
+    [
+      "an application uses",
+      1
+    ],
+    [
+      "what is backpressure",
+      1
+    ],
+    [
+      "a massive backlog",
+      1
+    ],
+    [
+      "you deploy a",
+      1
+    ],
+    [
+      "a monolithic backend",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what is the",
+      106
+    ],
+    [
+      "what are the",
+      105
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      38
+    ],
+    [
+      "explain the concept",
+      35
+    ],
+    [
+      "you need to",
+      26
+    ],
+    [
+      "what is a",
+      26
+    ],
+    [
+      "you have a",
+      26
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "explain the difference",
+      17
+    ],
+    [
+      "you are building",
+      17
+    ],
+    [
+      "you notice that",
+      17
+    ],
+    [
+      "explain the purpose",
+      11
+    ],
+    [
+      "you are designing",
+      10
+    ],
+    [
+      "what does the",
+      9
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "you deploy a",
+      8
+    ],
+    [
+      "when designing a",
+      7
+    ]
+  ],
+  "top_opening_share_new_batch": 0.08,
+  "distinct_openings_new_batch": 39,
+  "role_distribution": {
+    "Backend Developer": 50
+  },
+  "skill_distribution": {
+    "Background Processing": 17,
+    "Horizontal Scaling": 17,
+    "Backend Reliability": 16
+  },
+  "technology_distribution": {
+    "Backend": 50
+  },
+  "topic_distribution": {
+    "Queues & Workers": 17,
+    "Statelessness & Caching": 17,
+    "Fault Tolerance": 16
+  },
+  "intent_distribution": {
+    "scenario": 12,
+    "debug": 9,
+    "tradeoff": 10,
+    "implement": 7,
+    "explain": 6,
+    "fundamentals": 6
+  },
+  "difficulty_distribution": {
+    "medium": 24,
+    "hard": 18,
+    "easy": 8
+  },
+  "question_type_distribution": {
+    "scenario": 12,
+    "debugging": 9,
+    "tradeoff": 10,
+    "implementation": 7,
+    "concept": 12
+  },
+  "bucket_progress": {
+    "Background Processing | Queues & Workers": {
+      "generated_now": 17
+    },
+    "Horizontal Scaling | Statelessness & Caching": {
+      "generated_now": 17
+    },
+    "Backend Reliability | Fault Tolerance": {
+      "generated_now": 16
+    }
+  },
+  "cumulative_generated_production": 1392,
+  "cumulative_staging_total": 3122,
+  "cumulative_generated_by_role": {
+    "Python Developer": 150,
+    "Java Developer": 150,
+    "DevOps / Cloud Engineer": 195,
+    "AI Engineer": 100,
+    "Database Developer": 150,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 100,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 150,
+    "Backend Developer": 197
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      314,
+      22.6
+    ],
+    "medium": [
+      691,
+      49.6
+    ],
+    "hard": [
+      387,
+      27.8
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": 2.8,
+    "medium": -0.3,
+    "hard": -2.5
+  },
+  "target_gap_pct_points_after": {
+    "easy": 2.6,
+    "medium": -0.4,
+    "hard": -2.2
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 350,
+    "Frontend Developer": 350,
+    "Java Developer": 350,
+    "Database Developer": 350,
+    "DevOps / Cloud Engineer": 305,
+    "Backend Developer": 303,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 150,
+      "Java Developer": 150,
+      "DevOps / Cloud Engineer": 195,
+      "AI Engineer": 100,
+      "Database Developer": 150,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 100,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 150,
+      "Backend Developer": 197
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 632,
+      "Data Analyst": 89,
+      "AI Engineer": 76,
+      "Full Stack Developer": 168,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 165,
+      "Frontend Developer": 55,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 122,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 61,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 118,
+      "Python Developer": 10,
+      "Data Architect": 20,
+      "Platform Engineer": 33,
+      "Product Manager": 14,
+      "Data Scientist": 68,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 132,
+      "Site Reliability Engineer": 101,
+      "UX Engineer": 15
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Backend Developer": 50,
+    "Software Engineer": 17,
+    "Architecture": 33,
+    "Site Reliability Engineer": 16
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1392,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

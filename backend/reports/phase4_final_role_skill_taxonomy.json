@@ -1,0 +1,486 @@
+{
+  "Python Developer": {
+    "Python Core": {
+      "Data Structures": [
+        "Lists vs Tuples",
+        "Dicts",
+        "Sets"
+      ],
+      "Functions": [
+        "Closures",
+        "Decorators",
+        "Generators"
+      ],
+      "OOP": [
+        "Inheritance",
+        "Metaclasses",
+        "Dunder Methods"
+      ],
+      "Memory": [
+        "GC",
+        "GIL"
+      ]
+    },
+    "Concurrency": {
+      "AsyncIO": [
+        "Event Loop",
+        "Coroutines"
+      ],
+      "Multithreading": [
+        "Threading",
+        "Locks"
+      ],
+      "Multiprocessing": [
+        "Processes",
+        "IPC"
+      ]
+    },
+    "Web Frameworks": {
+      "FastAPI": [
+        "Dependency Injection",
+        "Pydantic",
+        "Routers"
+      ],
+      "Django": [
+        "ORM",
+        "Middleware",
+        "Signals"
+      ],
+      "Flask": [
+        "Contexts",
+        "Blueprints"
+      ]
+    },
+    "Testing & QA": {
+      "pytest": [
+        "Fixtures",
+        "Mocking",
+        "Parametrization"
+      ]
+    },
+    "Performance": {
+      "Profiling": [
+        "cProfile",
+        "Memory Profiler"
+      ],
+      "Optimization": [
+        "Cython",
+        "Vectorization"
+      ]
+    }
+  },
+  "Frontend Developer": {
+    "JavaScript": {
+      "Core JS": [
+        "Closures",
+        "Event Loop",
+        "Promises",
+        "Types"
+      ],
+      "Browser APIs": [
+        "DOM",
+        "Web Workers",
+        "Storage"
+      ],
+      "Performance": [
+        "Debouncing",
+        "Throttling"
+      ]
+    },
+    "React": {
+      "State Management": [
+        "Hooks",
+        "Redux",
+        "Context"
+      ],
+      "Rendering": [
+        "VDOM",
+        "Concurrent Mode",
+        "SSR"
+      ],
+      "Performance": [
+        "Memoization",
+        "Code Splitting"
+      ]
+    },
+    "HTML/CSS": {
+      "Layouts": [
+        "Flexbox",
+        "Grid"
+      ],
+      "Accessibility": [
+        "ARIA",
+        "Semantics"
+      ],
+      "Performance": [
+        "Critical Rendering Path"
+      ]
+    },
+    "Web Security": {
+      "Security": [
+        "XSS",
+        "CSRF",
+        "CORS",
+        "CSP"
+      ]
+    },
+    "Testing": {
+      "Jest/RTL": [
+        "Unit Tests",
+        "Component Tests"
+      ]
+    }
+  },
+  "Java Developer": {
+    "Java Core": {
+      "Collections": [
+        "HashMap",
+        "ConcurrentHashMap",
+        "Lists"
+      ],
+      "Memory": [
+        "Garbage Collection",
+        "JVM Internals"
+      ],
+      "OOP": [
+        "Interfaces",
+        "Polymorphism"
+      ]
+    },
+    "Concurrency": {
+      "Multithreading": [
+        "Executors",
+        "Locks",
+        "ThreadLocal",
+        "Volatile"
+      ]
+    },
+    "Spring Framework": {
+      "Spring Boot": [
+        "Auto-configuration",
+        "Actuator"
+      ],
+      "Spring MVC": [
+        "Controllers",
+        "Filters"
+      ],
+      "Spring Data": [
+        "JPA",
+        "Transactions"
+      ]
+    },
+    "Testing": {
+      "JUnit/Mockito": [
+        "Unit Testing",
+        "Mocking"
+      ]
+    }
+  },
+  "Database Developer": {
+    "Relational Databases": {
+      "PostgreSQL": [
+        "Indexing",
+        "VACUUM",
+        "MVCC"
+      ],
+      "MySQL": [
+        "InnoDB",
+        "Replication"
+      ],
+      "SQL": [
+        "Window Functions",
+        "Joins",
+        "CTEs"
+      ]
+    },
+    "NoSQL Databases": {
+      "MongoDB": [
+        "Aggregation",
+        "Sharding"
+      ],
+      "Redis": [
+        "Data Structures",
+        "Persistence",
+        "Eviction"
+      ]
+    },
+    "Architecture & Design": {
+      "Data Modeling": [
+        "Normalization",
+        "Denormalization"
+      ],
+      "Scaling": [
+        "Sharding",
+        "Replication",
+        "Partitioning"
+      ]
+    },
+    "Optimization": {
+      "Query Tuning": [
+        "Execution Plans",
+        "Index Strategies"
+      ]
+    }
+  },
+  "DevOps / Cloud Engineer": {
+    "Cloud Providers": {
+      "AWS": [
+        "EC2",
+        "S3",
+        "VPC",
+        "IAM",
+        "EKS",
+        "Lambda"
+      ]
+    },
+    "Containerization": {
+      "Docker": [
+        "Images",
+        "Networking",
+        "Security"
+      ],
+      "Kubernetes": [
+        "Pods",
+        "Deployments",
+        "Services",
+        "Ingress",
+        "StatefulSets"
+      ]
+    },
+    "CI/CD": {
+      "GitHub Actions / GitLab CI": [
+        "Pipelines",
+        "Runners"
+      ],
+      "Jenkins": [
+        "Declarative Pipelines"
+      ]
+    },
+    "Infrastructure as Code": {
+      "Terraform": [
+        "State",
+        "Modules",
+        "Providers"
+      ]
+    },
+    "Linux & Networking": {
+      "Linux Core": [
+        "Processes",
+        "File Systems",
+        "Permissions"
+      ],
+      "Networking": [
+        "TCP/IP",
+        "DNS",
+        "Load Balancing"
+      ]
+    },
+    "Observability": {
+      "Monitoring": [
+        "Prometheus",
+        "Grafana",
+        "Logging"
+      ]
+    }
+  },
+  "Backend Developer": {
+    "API Design": {
+      "REST": [
+        "Verbs",
+        "Status Codes",
+        "Pagination"
+      ],
+      "GraphQL": [
+        "Resolvers",
+        "N+1 Problem"
+      ],
+      "gRPC": [
+        "Protobufs",
+        "Streaming"
+      ]
+    },
+    "Microservices": {
+      "Architecture": [
+        "Saga Pattern",
+        "Event Sourcing",
+        "Service Discovery"
+      ],
+      "Communication": [
+        "Message Queues",
+        "Event Driven"
+      ]
+    },
+    "Caching": {
+      "Strategies": [
+        "Write-through",
+        "Cache Aside",
+        "Eviction"
+      ],
+      "Tools": [
+        "Redis",
+        "Memcached"
+      ]
+    },
+    "Databases": {
+      "SQL & NoSQL": [
+        "Transactions",
+        "ACID",
+        "CAP Theorem",
+        "Connection Pooling"
+      ]
+    },
+    "Security": {
+      "Authentication": [
+        "JWT",
+        "OAuth2",
+        "Sessions"
+      ],
+      "Authorization": [
+        "RBAC",
+        "ABAC"
+      ]
+    }
+  },
+  "Data Analyst": {
+    "SQL": {
+      "Advanced Queries": [
+        "Window Functions",
+        "CTEs",
+        "Subqueries"
+      ],
+      "Performance": [
+        "Query Tuning"
+      ]
+    },
+    "Data Visualization": {
+      "Tools": [
+        "Tableau",
+        "PowerBI"
+      ],
+      "Concepts": [
+        "Chart Selection",
+        "Dashboard Design"
+      ]
+    },
+    "Statistics": {
+      "Probability": [
+        "Distributions",
+        "A/B Testing",
+        "Hypothesis Testing"
+      ]
+    },
+    "Python/R": {
+      "Pandas": [
+        "Data Manipulation",
+        "Aggregations",
+        "Cleaning"
+      ]
+    }
+  },
+  "AI Engineer": {
+    "LLMs": {
+      "Architecture": [
+        "Transformers",
+        "Attention"
+      ],
+      "Prompting": [
+        "Few-shot",
+        "Chain of Thought",
+        "Zero-shot"
+      ]
+    },
+    "RAG": {
+      "Components": [
+        "Vector DBs",
+        "Embeddings",
+        "Retrieval Strategies",
+        "Chunking"
+      ]
+    },
+    "AI Agents": {
+      "Orchestration": [
+        "LangChain",
+        "LlamaIndex",
+        "Tool Use"
+      ]
+    },
+    "MLOps for LLMs": {
+      "Deployment": [
+        "Serving",
+        "Quantization",
+        "Monitoring"
+      ]
+    }
+  },
+  "Machine Learning Engineer": {
+    "ML Algorithms": {
+      "Supervised": [
+        "Trees",
+        "Linear Models",
+        "SVM"
+      ],
+      "Unsupervised": [
+        "Clustering",
+        "PCA"
+      ]
+    },
+    "Deep Learning": {
+      "Architectures": [
+        "CNN",
+        "RNN",
+        "Transformers"
+      ],
+      "Optimization": [
+        "Gradient Descent",
+        "Loss Functions",
+        "Regularization"
+      ]
+    },
+    "Model Training": {
+      "Process": [
+        "Cross Validation",
+        "Hyperparameter Tuning",
+        "Overfitting"
+      ]
+    },
+    "MLOps": {
+      "Pipelines": [
+        "Data Drift",
+        "Model Registry",
+        "Feature Store",
+        "Serving"
+      ]
+    }
+  },
+  "Full Stack Developer": {
+    "Frontend": {
+      "Frameworks": [
+        "React / Vue / Angular"
+      ],
+      "Core": [
+        "HTML/CSS/JS"
+      ]
+    },
+    "Backend": {
+      "APIs": [
+        "REST / GraphQL"
+      ],
+      "Frameworks": [
+        "Node.js / Python / Java"
+      ]
+    },
+    "Databases": {
+      "SQL / NoSQL": [
+        "Modeling",
+        "Querying"
+      ]
+    },
+    "Architecture": {
+      "System Design": [
+        "Scalability",
+        "Security",
+        "Deployment"
+      ]
+    }
+  }
+}

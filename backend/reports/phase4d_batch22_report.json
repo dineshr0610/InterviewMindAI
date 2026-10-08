@@ -1,0 +1,391 @@
+{
+  "role_selected": "Full Stack Developer",
+  "total_staged_before_batch22": 2772,
+  "cumulative_difficulty_before": {
+    "easy": [
+      262,
+      25.1
+    ],
+    "medium": [
+      503,
+      48.3
+    ],
+    "hard": [
+      277,
+      26.6
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.747,
+    "answer": 0.45,
+    "question+answer": 0.57
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      5
+    ],
+    [
+      "what are the",
+      5
+    ],
+    [
+      "you have a",
+      4
+    ],
+    [
+      "you are building",
+      2
+    ],
+    [
+      "you deploy a",
+      2
+    ],
+    [
+      "what is a",
+      2
+    ],
+    [
+      "explain the purpose",
+      1
+    ],
+    [
+      "an api get",
+      1
+    ],
+    [
+      "your frontend sends",
+      1
+    ],
+    [
+      "a user clicks",
+      1
+    ],
+    [
+      "when storing a",
+      1
+    ],
+    [
+      "your frontend stores",
+      1
+    ],
+    [
+      "a user copies",
+      1
+    ],
+    [
+      "explain the difference",
+      1
+    ],
+    [
+      "why is it",
+      1
+    ],
+    [
+      "your api is",
+      1
+    ],
+    [
+      "a user updates",
+      1
+    ],
+    [
+      "a user opens",
+      1
+    ],
+    [
+      "a frontend form",
+      1
+    ],
+    [
+      "when building a",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      81
+    ],
+    [
+      "what is the",
+      73
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      27
+    ],
+    [
+      "explain the concept",
+      25
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "what is a",
+      21
+    ],
+    [
+      "explain the difference",
+      16
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "you need to",
+      15
+    ],
+    [
+      "you are building",
+      14
+    ],
+    [
+      "you have a",
+      13
+    ],
+    [
+      "explain the purpose",
+      10
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "what does the",
+      6
+    ],
+    [
+      "why is it",
+      6
+    ]
+  ],
+  "top_opening_share_new_batch": 0.1,
+  "distinct_openings_new_batch": 36,
+  "role_distribution": {
+    "Full Stack Developer": 50
+  },
+  "skill_distribution": {
+    "Frontend/Backend Integration": 7,
+    "Application Security": 7,
+    "State Management": 6,
+    "Database to UI": 6,
+    "Asynchronous Workflows": 6,
+    "Deployment & Architecture": 6,
+    "End-to-End Debugging": 6,
+    "Full Stack Performance": 6
+  },
+  "technology_distribution": {
+    "Web Architecture": 19,
+    "Security": 7,
+    "Full Stack": 6,
+    "DevOps": 6,
+    "Observability": 6,
+    "Performance": 6
+  },
+  "topic_distribution": {
+    "CORS & HTTP": 7,
+    "Auth & Vulnerabilities": 7,
+    "Caching & Sync": 6,
+    "Data Flow & Consistency": 6,
+    "WebSockets & Background Jobs": 6,
+    "CI/CD & Versioning": 6,
+    "Tracing & Latency": 6,
+    "Scaling & Bottlenecks": 6
+  },
+  "intent_distribution": {
+    "explain": 7,
+    "scenario": 13,
+    "debug": 8,
+    "fundamentals": 7,
+    "tradeoff": 8,
+    "implement": 7
+  },
+  "difficulty_distribution": {
+    "easy": 9,
+    "hard": 9,
+    "medium": 32
+  },
+  "question_type_distribution": {
+    "concept": 14,
+    "scenario": 13,
+    "debugging": 8,
+    "tradeoff": 8,
+    "implementation": 7
+  },
+  "bucket_progress": {
+    "Frontend/Backend Integration | CORS & HTTP": {
+      "generated_now": 7
+    },
+    "Application Security | Auth & Vulnerabilities": {
+      "generated_now": 7
+    },
+    "State Management | Caching & Sync": {
+      "generated_now": 6
+    },
+    "Database to UI | Data Flow & Consistency": {
+      "generated_now": 6
+    },
+    "Asynchronous Workflows | WebSockets & Background Jobs": {
+      "generated_now": 6
+    },
+    "Deployment & Architecture | CI/CD & Versioning": {
+      "generated_now": 6
+    },
+    "End-to-End Debugging | Tracing & Latency": {
+      "generated_now": 6
+    },
+    "Full Stack Performance | Scaling & Bottlenecks": {
+      "generated_now": 6
+    }
+  },
+  "cumulative_generated_production": 1092,
+  "cumulative_staging_total": 2822,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 100,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 100,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 100,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      271,
+      24.8
+    ],
+    "medium": [
+      535,
+      49.0
+    ],
+    "hard": [
+      286,
+      26.2
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -4.9,
+    "medium": 3.3,
+    "hard": 1.6
+  },
+  "target_gap_pct_points_after": {
+    "easy": -5.2,
+    "medium": 4.0,
+    "hard": 1.2
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 400,
+    "Frontend Developer": 400,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 100,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 100,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 100,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 452,
+      "Data Analyst": 89,
+      "AI Engineer": 76,
+      "Full Stack Developer": 148,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 115,
+      "Frontend Developer": 55,
+      "Performance Engineer": 95,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 44,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 73,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 17,
+      "Product Manager": 14,
+      "Data Scientist": 68,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 6,
+      "Software Engineer": 14,
+      "Site Reliability Engineer": 6
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Frontend Developer": 19,
+    "Backend Developer": 25,
+    "Security Engineer": 7,
+    "DevOps / Cloud Engineer": 6,
+    "Site Reliability Engineer": 6
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1092,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

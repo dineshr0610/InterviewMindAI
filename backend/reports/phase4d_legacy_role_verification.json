@@ -1,0 +1,26 @@
+{
+  "verification_summary": "Legacy verification completed via NLP heuristic rules. Supabase data was read-only.",
+  "legacy_role_counts": {
+    "Backend Developer": 254,
+    "Frontend Developer": 1476
+  },
+  "verified_role_counts": {
+    "Backend Developer": 254,
+    "Frontend Developer": 1476
+  },
+  "frontend_forensic_results": {
+    "total_metadata_frontend": 1476,
+    "VERIFIED_FRONTEND": 120,
+    "CROSS_ROLE_FRONTEND": 1300,
+    "MISCLASSIFIED": 0,
+    "DUPLICATE_OR_NEAR_DUPLICATE": 56,
+    "LOW_QUALITY_OR_NON_INTERVIEW": 0,
+    "NEEDS_REVIEW": 0,
+    "misclassified_as_backend": 0,
+    "misclassified_as_data_ml": 0
+  },
+  "warnings": [
+    "Many Frontend Developer questions may be cross-role or misclassified.",
+    "Verification heuristics are text-based approximations."
+  ]
+}

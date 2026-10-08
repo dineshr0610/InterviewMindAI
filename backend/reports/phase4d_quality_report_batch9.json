@@ -1,0 +1,454 @@
+{
+  "role_selected": "Full Stack Developer",
+  "total_staged_before_batch9": 2130,
+  "cumulative_difficulty_before": {
+    "easy": [
+      110,
+      27.5
+    ],
+    "medium": [
+      175,
+      43.8
+    ],
+    "hard": [
+      115,
+      28.8
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.248,
+    "answer": 0.168,
+    "question+answer": 0.25
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "how would you",
+      3
+    ],
+    [
+      "a teammate puts",
+      1
+    ],
+    [
+      "your react app",
+      1
+    ],
+    [
+      "login succeeds and",
+      1
+    ],
+    [
+      "why shouldnt hiding",
+      1
+    ],
+    [
+      "for a singlepage",
+      1
+    ],
+    [
+      "describe how a",
+      1
+    ],
+    [
+      "an admin removes",
+      1
+    ],
+    [
+      "the react app",
+      1
+    ],
+    [
+      "how should logout",
+      1
+    ],
+    [
+      "why would an",
+      1
+    ],
+    [
+      "in the authorization",
+      1
+    ],
+    [
+      "why must a",
+      1
+    ],
+    [
+      "what does openid",
+      1
+    ],
+    [
+      "how does the",
+      1
+    ],
+    [
+      "should the oauth",
+      1
+    ],
+    [
+      "google login works",
+      1
+    ],
+    [
+      "a security review",
+      1
+    ],
+    [
+      "a user signs",
+      1
+    ],
+    [
+      "design the authentication",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what is the",
+      31
+    ],
+    [
+      "what are the",
+      30
+    ],
+    [
+      "how do you",
+      14
+    ],
+    [
+      "how would you",
+      13
+    ],
+    [
+      "you need to",
+      9
+    ],
+    [
+      "what is a",
+      8
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "how does the",
+      5
+    ],
+    [
+      "explain how rate",
+      4
+    ],
+    [
+      "how does a",
+      4
+    ],
+    [
+      "when would you",
+      4
+    ],
+    [
+      "explain how global",
+      3
+    ],
+    [
+      "explain how search",
+      3
+    ],
+    [
+      "explain how theme",
+      3
+    ],
+    [
+      "explain how acid",
+      3
+    ],
+    [
+      "explain how tlsssl",
+      3
+    ]
+  ],
+  "top_opening_share_new_batch": 0.06,
+  "distinct_openings_new_batch": 48,
+  "role_distribution": {
+    "Full Stack Developer": 50
+  },
+  "skill_distribution": {
+    "Authentication": 20,
+    "System Architecture": 10,
+    "Debugging": 20
+  },
+  "technology_distribution": {
+    "Security": 20,
+    "Architecture": 10,
+    "Full Stack": 20
+  },
+  "topic_distribution": {
+    "JWT": 10,
+    "OAuth": 10,
+    "Monolith vs Microservices": 10,
+    "Network Tab": 10,
+    "Server Logs": 10
+  },
+  "intent_distribution": {
+    "explain": 11,
+    "scenario": 10,
+    "implement": 5,
+    "debug": 5,
+    "tradeoff": 6,
+    "architecture": 3,
+    "diagnose": 6,
+    "fundamentals": 4
+  },
+  "difficulty_distribution": {
+    "easy": 22,
+    "medium": 24,
+    "hard": 4
+  },
+  "question_type_distribution": {
+    "concept": 15,
+    "scenario": 10,
+    "implementation": 5,
+    "debugging": 11,
+    "tradeoff": 6,
+    "architecture": 3
+  },
+  "bucket_progress": {
+    "Authentication | JWT": {
+      "generated_now": 10,
+      "planned": 15,
+      "remaining_in_bucket": 5
+    },
+    "Authentication | OAuth": {
+      "generated_now": 10,
+      "planned": 15,
+      "remaining_in_bucket": 5
+    },
+    "System Architecture | Monolith vs Microservices": {
+      "generated_now": 10,
+      "planned": 30,
+      "remaining_in_bucket": 20
+    },
+    "Debugging | Network Tab": {
+      "generated_now": 10,
+      "planned": 15,
+      "remaining_in_bucket": 5
+    },
+    "Debugging | Server Logs": {
+      "generated_now": 10,
+      "planned": 15,
+      "remaining_in_bucket": 5
+    }
+  },
+  "cumulative_generated_production": 450,
+  "cumulative_staging_total": 2180,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 50,
+    "DevOps / Cloud Engineer": 50,
+    "AI Engineer": 50,
+    "Database Developer": 50,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 50,
+    "Full Stack Developer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      132,
+      29.3
+    ],
+    "medium": [
+      199,
+      44.2
+    ],
+    "hard": [
+      119,
+      26.4
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -2.5,
+    "medium": -1.2,
+    "hard": 3.8
+  },
+  "target_gap_pct_points_after": {
+    "easy": -0.7,
+    "medium": -0.8,
+    "hard": 1.4
+  },
+  "remaining_gap_count": 3261,
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 50,
+      "DevOps / Cloud Engineer": 50,
+      "AI Engineer": 50,
+      "Database Developer": 50,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 50,
+      "Full Stack Developer": 50
+    },
+    "C_combined_primary_role": {
+      "AI Engineer": 50,
+      "Backend Developer": 254,
+      "Data Analyst": 50,
+      "Database Developer": 50,
+      "DevOps / Cloud Engineer": 50,
+      "Frontend Developer": 1476,
+      "Full Stack Developer": 50,
+      "Java Developer": 50,
+      "Machine Learning Engineer": 50,
+      "Python Developer": 100
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 275,
+      "Data Analyst": 77,
+      "AI Engineer": 70,
+      "Full Stack Developer": 13,
+      "Machine Learning Engineer": 58,
+      "DevOps / Cloud Engineer": 30,
+      "Frontend Developer": 31,
+      "Performance Engineer": 44,
+      "System Design": 4,
+      "Database Developer": 5,
+      "Architecture": 24,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 16,
+      "Security Engineer": 5,
+      "Network Engineer": 7,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 3,
+      "Python Developer": 10
+    }
+  },
+  "priority1_remaining_by_role": {
+    "AI Engineer": 160,
+    "Backend Developer": 195,
+    "Data Analyst": 130,
+    "Database Developer": 160,
+    "DevOps / Cloud Engineer": 250,
+    "Frontend Developer": 180,
+    "Full Stack Developer": 160,
+    "Java Developer": 160,
+    "Machine Learning Engineer": 190,
+    "Python Developer": 170
+  },
+  "coverage_matrix": {
+    "Python Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 100,
+      "combined_primary": 100,
+      "applicable_role_count_generated": 10,
+      "priority1_remaining": 170
+    },
+    "Frontend Developer": {
+      "existing_supabase_primary": 1476,
+      "generated_primary": 0,
+      "combined_primary": 1476,
+      "applicable_role_count_generated": 31,
+      "priority1_remaining": 180
+    },
+    "Java Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 2,
+      "priority1_remaining": 160
+    },
+    "Database Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 5,
+      "priority1_remaining": 160
+    },
+    "DevOps / Cloud Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 30,
+      "priority1_remaining": 250
+    },
+    "Backend Developer": {
+      "existing_supabase_primary": 254,
+      "generated_primary": 0,
+      "combined_primary": 254,
+      "applicable_role_count_generated": 275,
+      "priority1_remaining": 195
+    },
+    "Data Analyst": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 77,
+      "priority1_remaining": 130
+    },
+    "AI Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 70,
+      "priority1_remaining": 160
+    },
+    "Machine Learning Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 58,
+      "priority1_remaining": 190
+    },
+    "Full Stack Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 13,
+      "priority1_remaining": 160
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Backend Developer": 50,
+    "Frontend Developer": 30,
+    "DevOps / Cloud Engineer": 20
+  },
+  "records_appended": 50,
+  "final_file_line_count": 450,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

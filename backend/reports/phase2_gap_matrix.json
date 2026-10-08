@@ -1,0 +1,96 @@
+{
+  "MVP_TARGET": 200,
+  "gaps": [
+    {
+      "ROLE": "Python Developer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "Frontend Developer",
+      "SKILLS_PRESENT": [
+        "JavaScript",
+        "React"
+      ],
+      "CURRENT_COUNT": 898,
+      "REQUIRED_COUNT": 200,
+      "GAP": 698,
+      "STATUS": "GREEN"
+    },
+    {
+      "ROLE": "Java Developer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "Database Developer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "DevOps / Cloud Engineer",
+      "SKILLS_PRESENT": [
+        "AWS",
+        "CI/CD",
+        "Git",
+        "Kubernetes",
+        "Linux"
+      ],
+      "CURRENT_COUNT": 922,
+      "REQUIRED_COUNT": 200,
+      "GAP": 722,
+      "STATUS": "GREEN"
+    },
+    {
+      "ROLE": "Backend Developer",
+      "SKILLS_PRESENT": [
+        "System Design"
+      ],
+      "CURRENT_COUNT": 37,
+      "REQUIRED_COUNT": 200,
+      "GAP": -163,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "Data Analyst",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "AI Engineer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "Machine Learning Engineer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    },
+    {
+      "ROLE": "Full Stack Developer",
+      "SKILLS_PRESENT": [],
+      "CURRENT_COUNT": 0,
+      "REQUIRED_COUNT": 200,
+      "GAP": -200,
+      "STATUS": "RED"
+    }
+  ]
+}

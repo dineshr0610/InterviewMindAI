@@ -82,14 +82,45 @@ def _extract_technologies(text: str, skills: List[str]) -> List[str]:
 
 
 def _extract_section_items(text: str, headings: List[str]) -> List[str]:
-    section = _section_text(text, headings)
-    if not section:
-        return []
-    items: List[str] = []
-    for raw in re.split(r"\n+", section):
-        line = re.sub(r"^[\-\*\u2022\d\.\)]\s*", "", raw).strip()
-        if len(line) >= 20:
-            items.append(line[:240])
+    from app.resume_processing.parser import parse_resume_text
+    
+    parsed = parse_resume_text(text)
+    
+    # Map the headings to canonical names based on parser.py
+    target_canonical = None
+    if "project" in headings[0].lower() or "projects" in headings[0].lower():
+        target_canonical = "projects"
+    elif "experience" in headings[0].lower() or "employment" in headings[0].lower():
+        target_canonical = "experience"
+    elif "education" in headings[0].lower() or "academic" in headings[0].lower():
+        target_canonical = "education"
+    elif "certifications" in headings[0].lower() or "certificates" in headings[0].lower():
+        target_canonical = "certifications"
+        
+    items = []
+    if target_canonical and target_canonical in parsed.sections:
+        for item in parsed.sections[target_canonical].items:
+            # Filter out non-project lines and section sub-labels
+            title_lower = item.title.lower()
+            if len(item.title) > 120 or ":" in item.title:
+                continue
+            if title_lower in {"tech stack", "technologies", "environment", "tools", "skills", "dynamic pages", "key features"}:
+                continue
+                
+            content = f"{item.title} - {item.description}" if item.description else item.title
+            if len(content) > 20:
+                items.append(content[:240])
+                
+    if not items:
+        # Fallback to the old logic if parsing fails to find anything
+        section = _section_text(text, headings)
+        if not section:
+            return []
+        for raw in re.split(r"\n+", section):
+            line = re.sub(r"^[\-\*\u2022\d\.\)]\s*", "", raw).strip()
+            if len(line) >= 20 and ":" not in line and line.lower() not in {"tech stack", "technologies", "environment", "dynamic pages", "key features"}:
+                items.append(line[:240])
+                
     return items
 
 

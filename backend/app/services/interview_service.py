@@ -83,6 +83,19 @@ class InterviewService:
                 resume_match["role_match_score"] = m1_output.role_match_score
                 resume_match["score_breakdown"] = m1_output.score_breakdown.model_dump()
                 resume_match["feedback"] = m1_output.feedback.model_dump()
+                resume_match["analysis_source"] = m1_output.analysis_source
+                # Extract AI-identified focus areas and skill gaps to enrich the adaptive state
+                if m1_output.ai_analysis:
+                    ai_analysis = m1_output.ai_analysis
+                    resume_match["ai_focus_areas"] = ai_analysis.get("interview_focus_areas") or []
+                    resume_match["ai_skill_gaps"] = ai_analysis.get("skill_gaps") or []
+                    resume_match["ai_transferable_skills"] = ai_analysis.get("transferable_skills") or []
+                    logger.info(
+                        "AI analysis integrated: source=%s, focus_areas=%d, skill_gaps=%d",
+                        m1_output.analysis_source,
+                        len(resume_match["ai_focus_areas"]),
+                        len(resume_match["ai_skill_gaps"]),
+                    )
             except Exception as exc:
                 logger.warning("Module 1 resume processing integration fallback: %s", exc)
 
@@ -103,6 +116,8 @@ class InterviewService:
             resume_match=resume_match,
             assessment_state=state,
         )
+
+        state["interview_id"] = str(interview.id)
 
         question, meta = await self._retrieve_question(
             topic=current_topic,
@@ -763,7 +778,13 @@ class InterviewService:
         # competing RAG system.
         from ai_engine.services.question_controller import AdaptiveQuestionController
 
-        fallback = AdaptiveQuestionController(topic).fallback(difficulty, previous_questions)
+        fallback_candidates = AdaptiveQuestionController(topic).fallback_candidates(difficulty)
+        fallback = fallback_candidates[0] if fallback_candidates else "What is your experience with this topic?"
+        
+        for cand in fallback_candidates:
+            if not any(cand.lower() == p.lower() for p in previous_questions):
+                fallback = cand
+                break
         valid, _ = validate_question(fallback, topic, previous_questions, resume_context=resume_text)
         return (fallback, {"source": "fallback", "category": "implementation", "intent": "implement"}) if valid else (None, {})
 
@@ -1125,5 +1146,12 @@ class InterviewService:
                 "next_strategy",
                 "question_mode",
                 "remaining_interview_time",
+                # AI-analysis enrichments
+                "strong_areas",
+                "weak_areas",
+                "misconceptions",
+                "ai_focus_areas",
+                "ai_skill_gaps",
+                "analysis_source",
             )
         }

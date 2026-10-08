@@ -1,0 +1,389 @@
+{
+  "role_selected": "Frontend Developer",
+  "total_staged_before_batch11": 2225,
+  "cumulative_difficulty_before": {
+    "easy": [
+      148,
+      29.9
+    ],
+    "medium": [
+      221,
+      44.6
+    ],
+    "hard": [
+      126,
+      25.5
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.415,
+    "answer": 0.353,
+    "question+answer": 0.362
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      7
+    ],
+    [
+      "how do you",
+      4
+    ],
+    [
+      "how can you",
+      1
+    ],
+    [
+      "a recursive promise",
+      1
+    ],
+    [
+      "an event listener",
+      1
+    ],
+    [
+      "compare settimeout and",
+      1
+    ],
+    [
+      "what happens to",
+      1
+    ],
+    [
+      "explain the concept",
+      1
+    ],
+    [
+      "implement a basic",
+      1
+    ],
+    [
+      "a parent component",
+      1
+    ],
+    [
+      "you have a",
+      1
+    ],
+    [
+      "compare controlled and",
+      1
+    ],
+    [
+      "what are the",
+      1
+    ],
+    [
+      "how would you",
+      1
+    ],
+    [
+      "describe the virtual",
+      1
+    ],
+    [
+      "explain the cleanup",
+      1
+    ],
+    [
+      "write a custom",
+      1
+    ],
+    [
+      "a useeffect hook",
+      1
+    ],
+    [
+      "you fetch data",
+      1
+    ],
+    [
+      "compare useeffect and",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what is the",
+      40
+    ],
+    [
+      "what are the",
+      34
+    ],
+    [
+      "how do you",
+      21
+    ],
+    [
+      "how would you",
+      16
+    ],
+    [
+      "you need to",
+      10
+    ],
+    [
+      "what is a",
+      8
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "how does the",
+      5
+    ],
+    [
+      "what does the",
+      5
+    ],
+    [
+      "when would you",
+      5
+    ],
+    [
+      "explain how rate",
+      4
+    ],
+    [
+      "explain the concept",
+      4
+    ],
+    [
+      "how does a",
+      4
+    ],
+    [
+      "explain how global",
+      3
+    ],
+    [
+      "explain how search",
+      3
+    ],
+    [
+      "explain how theme",
+      3
+    ]
+  ],
+  "top_opening_share_new_batch": 0.14,
+  "distinct_openings_new_batch": 41,
+  "role_distribution": {
+    "Frontend Developer": 50
+  },
+  "skill_distribution": {
+    "Core JavaScript": 8,
+    "React Fundamentals": 8,
+    "React Hooks": 7,
+    "Performance Optimization": 7,
+    "Web Security": 6,
+    "Debugging Tools": 7,
+    "HTML/DOM": 7
+  },
+  "technology_distribution": {
+    "JavaScript": 15,
+    "React": 15,
+    "Security": 6,
+    "DevTools": 7,
+    "HTML": 7
+  },
+  "topic_distribution": {
+    "Event Loop": 8,
+    "Components": 8,
+    "useEffect": 7,
+    "Memoization": 7,
+    "CORS": 6,
+    "Profiling": 7,
+    "Accessibility": 7
+  },
+  "intent_distribution": {
+    "fundamentals": 8,
+    "implement": 7,
+    "debug": 7,
+    "scenario": 7,
+    "compare": 6,
+    "tradeoff": 5,
+    "architecture": 4,
+    "explain": 6
+  },
+  "difficulty_distribution": {
+    "easy": 14,
+    "medium": 22,
+    "hard": 14
+  },
+  "question_type_distribution": {
+    "concept": 14,
+    "implementation": 7,
+    "debugging": 7,
+    "scenario": 7,
+    "comparison": 6,
+    "tradeoff": 5,
+    "architecture": 4
+  },
+  "bucket_progress": {
+    "Core JavaScript | Event Loop": {
+      "generated_now": 8,
+      "planned": 15,
+      "remaining_in_bucket": 7
+    },
+    "React Fundamentals | Components": {
+      "generated_now": 8,
+      "planned": 15,
+      "remaining_in_bucket": 7
+    },
+    "React Hooks | useEffect": {
+      "generated_now": 7,
+      "planned": 15,
+      "remaining_in_bucket": 8
+    },
+    "Performance Optimization | Memoization": {
+      "generated_now": 7,
+      "planned": 15,
+      "remaining_in_bucket": 8
+    },
+    "Web Security | CORS": {
+      "generated_now": 6,
+      "planned": 10,
+      "remaining_in_bucket": 4
+    },
+    "Debugging Tools | Profiling": {
+      "generated_now": 7,
+      "planned": 15,
+      "remaining_in_bucket": 8
+    },
+    "HTML/DOM | Accessibility": {
+      "generated_now": 7,
+      "planned": 15,
+      "remaining_in_bucket": 8
+    }
+  },
+  "cumulative_generated_production": 545,
+  "cumulative_staging_total": 2275,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 50,
+    "DevOps / Cloud Engineer": 95,
+    "AI Engineer": 50,
+    "Database Developer": 50,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 50,
+    "Full Stack Developer": 50,
+    "Frontend Developer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      162,
+      29.7
+    ],
+    "medium": [
+      243,
+      44.6
+    ],
+    "hard": [
+      140,
+      25.7
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -0.1,
+    "medium": -0.4,
+    "hard": 0.5
+  },
+  "target_gap_pct_points_after": {
+    "easy": -0.3,
+    "medium": -0.4,
+    "hard": 0.7
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 400,
+    "Frontend Developer": 450,
+    "Java Developer": 450,
+    "Database Developer": 450,
+    "DevOps / Cloud Engineer": 405,
+    "Backend Developer": 500,
+    "Data Analyst": 450,
+    "AI Engineer": 450,
+    "Machine Learning Engineer": 450,
+    "Full Stack Developer": 450
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 50,
+      "DevOps / Cloud Engineer": 95,
+      "AI Engineer": 50,
+      "Database Developer": 50,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 50,
+      "Full Stack Developer": 50,
+      "Frontend Developer": 50
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 325,
+      "Data Analyst": 77,
+      "AI Engineer": 70,
+      "Full Stack Developer": 73,
+      "Machine Learning Engineer": 58,
+      "DevOps / Cloud Engineer": 30,
+      "Frontend Developer": 31,
+      "Performance Engineer": 44,
+      "System Design": 4,
+      "Database Developer": 5,
+      "Architecture": 24,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 16,
+      "Security Engineer": 5,
+      "Network Engineer": 7,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 3,
+      "Python Developer": 10
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Full Stack Developer": 50,
+    "Backend Developer": 14
+  },
+  "records_appended": 50,
+  "final_file_line_count": 545,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

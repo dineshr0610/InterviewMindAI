@@ -141,4 +141,6 @@ def get_role_by_identifier(role_identifier: str) -> Optional[Dict[str, Any]]:
             return role
 
     # 4. Fallback to default first role if nothing matches
+    if roles:
+        return roles[0]
     return None

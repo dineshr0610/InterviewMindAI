@@ -1,0 +1,303 @@
+ROLE,SKILL,TECHNOLOGY,TOPIC,PRIORITY,EXISTING,TARGET,GAP,MISSING_INTENTS,MISSING_DIFFICULTIES
+Python Developer,Python Fundamentals,Python,Data Types,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Python Fundamentals,Python,Variables,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Functions & Functional Programming,Python,Closures,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Functions & Functional Programming,Python,Decorators,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,OOP,Python,Inheritance,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,OOP,Python,Metaclasses,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Data Structures,Python,Lists,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Data Structures,Python,Dicts,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Data Structures,Python,Sets,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Algorithms,Python,Sorting,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Algorithms,Python,Graph,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Iterators & Generators,Python,yield,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Iterators & Generators,Python,itertools,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Exceptions,Python,Custom Exceptions,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Exceptions,Python,Handling,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Modules & Packaging,Python,pip,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Modules & Packaging,Python,venv,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Memory Management,Python,GC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Memory Management,Python,GIL,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Concurrency,Python,Multithreading,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Concurrency,Python,Multiprocessing,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,AsyncIO,Python,Event Loop,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,AsyncIO,Python,Coroutines,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Testing,pytest,Mocking,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Testing,pytest,Fixtures,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Performance,Python,Profiling,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Performance,Python,Cython,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,APIs,REST,Design,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Python Developer,FastAPI,FastAPI,Dependency Injection,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Django,Django,ORM,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Django,Django,Middleware,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Python Developer,SQL,SQL,Queries,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Python Developer,PostgreSQL,PostgreSQL,Indexing,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,ORMs,SQLAlchemy,Sessions,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Security,Python,Injection,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Security,Python,Auth,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Deployment,Docker,Containers,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Observability,Prometheus,Metrics,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Architecture,Python,Microservices,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,System Design,Python,Scalability,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Python Developer,Debugging,Python,pdb,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Python Developer,Debugging,Python,Tracing,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,HTML/DOM,HTML,Semantics,CORE,97,15,0,scenario|architecture,
+Frontend Developer,HTML/DOM,HTML,Accessibility,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,CSS & Styling,CSS,Flexbox,CORE,19,15,0,debug|scenario|architecture,easy
+Frontend Developer,CSS & Styling,CSS,Grid,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Core JavaScript,JavaScript,Closures,CORE,733,15,0,debug|architecture,
+Frontend Developer,Core JavaScript,JavaScript,Event Loop,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Browser APIs,JavaScript,Storage,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Browser APIs,JavaScript,Workers,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,React Fundamentals,React,JSX,CORE,592,15,0,fundamentals|debug|architecture,easy
+Frontend Developer,React Fundamentals,React,Components,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,React Hooks,React,useEffect,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,React Hooks,React,Custom Hooks,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,State Management,Redux,Global State,CORE,33,30,0,fundamentals|explain|implement|debug|scenario|architecture,easy|medium
+Frontend Developer,Component Architecture,React,Design Patterns,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Performance Optimization,JavaScript,Memoization,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Performance Optimization,JavaScript,Code Splitting,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Web Security,Security,XSS,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Web Security,Security,CSRF,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Web Security,Security,CORS,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Testing (Jest/RTL),Jest,Unit,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Testing (Jest/RTL),Jest,E2E,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Build Tools,Webpack,Bundling,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,TypeScript,TypeScript,Types,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,TypeScript,TypeScript,Interfaces,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Network Requests,JavaScript,Fetch,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Network Requests,JavaScript,Axios,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,Routing,React Router,SPA Routing,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,SSR / SSG,Next.js,Server Rendering,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Frontend Developer,PWA,Web,Service Workers,SECONDARY,2,10,8,fundamentals|implement,easy
+Frontend Developer,Debugging Tools,DevTools,Profiling,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Frontend Developer,Debugging Tools,DevTools,Network,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Java Core,Java,Types,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Java Core,Java,OOP,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Collections Framework,Java,Map,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Collections Framework,Java,List,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Memory Management,Java,GC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Memory Management,Java,JVM,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Concurrency,Java,Threads,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Concurrency,Java,Executors,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Streams API,Java,Lambdas,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Streams API,Java,Streams,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Spring Core,Spring,IoC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Spring Core,Spring,AOP,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Spring Boot,Spring Boot,Auto-config,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Spring Data JPA,Hibernate,Entities,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Spring Data JPA,Hibernate,Transactions,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Spring Security,Spring Security,Auth,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Spring Security,Spring Security,OAuth2,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Microservices,Java,Service Discovery,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Testing,JUnit,Unit Testing,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Build Tools,Maven,Dependencies,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Design Patterns,Java,Singleton,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Design Patterns,Java,Factory,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Performance Tuning,Java,JProfiler,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Performance Tuning,Java,GC Tuning,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Java Developer,Debugging,Java,Heap Dumps,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Java Developer,Debugging,Java,Thread Dumps,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,SQL Fundamentals,SQL,Queries,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,SQL Fundamentals,SQL,Joins,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Advanced SQL,SQL,Window Functions,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Advanced SQL,SQL,CTEs,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Relational Theory,RDBMS,Normalization,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Indexing,SQL,B-Trees,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Indexing,SQL,Hash,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Query Optimization,SQL,Execution Plans,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Query Optimization,SQL,EXPLAIN,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Transactions,SQL,ACID,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Transactions,SQL,Isolation Levels,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,PostgreSQL,PostgreSQL,MVCC,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,PostgreSQL,PostgreSQL,VACUUM,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,MySQL,MySQL,InnoDB,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Database Developer,NoSQL Concepts,NoSQL,CAP Theorem,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Database Developer,MongoDB,MongoDB,Aggregation,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Redis,Redis,Data Structures,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Redis,Redis,Caching,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Data Modeling,DB Design,Schemas,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Database Developer,Scaling Databases,Architecture,Sharding,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Scaling Databases,Architecture,Replication,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Security,SQL,SQL Injection,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Security,SQL,Roles,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Backups & Recovery,SQL,WAL,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Database Developer,Backups & Recovery,SQL,PITR,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Linux Core,Linux,Processes,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Linux Core,Linux,File Systems,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Bash Scripting,Bash,Scripts,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Bash Scripting,Bash,Pipes,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Networking,Networking,TCP/IP,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Networking,Networking,DNS,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Networking,Networking,Load Balancing,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Docker,Docker,Images,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Docker,Docker,Containers,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Docker,Docker,Networks,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Core,Kubernetes,Pods,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Core,Kubernetes,Deployments,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Core,Kubernetes,Services,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Adv,Kubernetes,StatefulSets,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Adv,Kubernetes,Operators,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Kubernetes Adv,Kubernetes,RBAC,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,AWS Compute,AWS,EC2,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,AWS Compute,AWS,Lambda,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,AWS Networking,AWS,VPC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,AWS Networking,AWS,Route53,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,AWS Storage,AWS,S3,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,AWS Storage,AWS,EBS,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,AWS IAM,AWS,Policies,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,AWS IAM,AWS,Roles,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Terraform,Terraform,State,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Terraform,Terraform,Modules,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,CI/CD Pipelines,CI/CD,GitHub Actions,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,CI/CD Pipelines,CI/CD,GitLab,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Jenkins,Jenkins,Pipelines,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Git,Git,Workflows,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Git,Git,Hooks,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Monitoring,Prometheus,Metrics,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Monitoring,Prometheus,Alerting,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+DevOps / Cloud Engineer,Logging,ELK,Aggregation,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+DevOps / Cloud Engineer,Security,Security,Secrets Management,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,API Design,REST,Endpoints,CORE,17,15,0,fundamentals|explain|implement|debug|scenario,easy|medium
+Backend Developer,API Design,REST,Status Codes,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,GraphQL,GraphQL,Resolvers,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,GraphQL,GraphQL,Schemas,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Language Core,Python,Concurrency,CORE,26,15,0,debug|scenario,easy
+Backend Developer,Language Core,Python,OOP,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Database Integration,SQL,ORMs,CORE,9,15,6,fundamentals|explain|implement|debug|scenario,easy|medium
+Backend Developer,Database Integration,SQL,Connection Pooling,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Caching Strategies,Redis,Eviction,CORE,2,15,13,fundamentals|explain|implement|debug|scenario|architecture,easy|medium
+Backend Developer,Caching Strategies,Redis,Write-through,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Microservices,Architecture,Service Discovery,CORE,156,15,0,fundamentals|explain|implement|debug|scenario,easy
+Backend Developer,Microservices,Architecture,Resilience,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Message Queues,RabbitMQ,Pub/Sub,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Message Queues,RabbitMQ,Event Sourcing,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Authentication,Security,JWT,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Authentication,Security,OAuth2,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Authentication,Security,Sessions,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Authorization,Security,RBAC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Authorization,Security,ABAC,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Performance,Backend,Profiling,IMPORTANT,44,10,0,fundamentals|explain|implement,easy|medium
+Backend Developer,Performance,Backend,Load Testing,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Security,Security,OWASP,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Security,Security,Encryption,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Testing,Testing,Integration,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Testing,Testing,Unit,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,Deployment,Docker,Containers,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Backend Developer,System Design,Architecture,Scalability,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,System Design,Architecture,CAP Theorem,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Debugging,Backend,Log Analysis,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Backend Developer,Debugging,Backend,Tracing,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,SQL Basics,SQL,Selects,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,SQL Basics,SQL,Joins,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,SQL Advanced,SQL,Window Functions,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,SQL Advanced,SQL,CTEs,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Data Visualization,Tableau,Dashboards,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Data Visualization,Tableau,Chart Types,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Statistics Basics,Statistics,Mean,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Statistics Basics,Statistics,Median,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Statistics Basics,Statistics,Variance,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Probability,Statistics,Distributions,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Probability,Statistics,Bayes,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,A/B Testing,Statistics,Hypothesis Testing,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,A/B Testing,Statistics,P-values,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Python Pandas,Python,DataFrames,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Python Pandas,Python,Aggregation,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Python Data Viz,Matplotlib,Plotting,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Data Cleaning,Data,Missing Values,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,Data Cleaning,Data,Outliers,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Data Analyst,ETL Concepts,ETL,Pipelines,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Data Modeling,Data Warehouse,Star Schema,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Data Modeling,Data Warehouse,Snowflake,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Business Intelligence,BI,KPIs,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Business Intelligence,BI,Metrics,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Spreadsheets,Excel,Pivot Tables,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Spreadsheets,Excel,VLOOKUP,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Communication,Soft Skills,Storytelling with Data,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Data Analyst,Debugging,Data,Data Quality Audits,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,LLM Architecture,LLMs,Transformers,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,LLM Architecture,LLMs,Attention,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Prompt Engineering,LLMs,Zero-shot,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Prompt Engineering,LLMs,CoT,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,RAG Core,RAG,Vector DBs,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,RAG Core,RAG,Embeddings,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,RAG Advanced,RAG,Re-ranking,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,RAG Advanced,RAG,Chunking Strategies,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,AI Agents,Agents,Tool Use,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,AI Agents,Agents,Reasoning Loops,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,LangChain / LlamaIndex,LangChain,Chains,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,LangChain / LlamaIndex,LangChain,Memory,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Fine-tuning,LLMs,PEFT,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Fine-tuning,LLMs,LoRA,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Model Evaluation,Evaluation,BLEU,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Model Evaluation,Evaluation,ROUGE,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Model Evaluation,Evaluation,LLM-as-a-Judge,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Vector Databases,Pinecone,Index Types,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,MLOps for LLMs,MLOps,Prompt Management,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,MLOps for LLMs,MLOps,Monitoring,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Deployment,Serving,vLLM,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Deployment,Serving,TGI,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Python,Python,API Integrations,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Python,Python,Async,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+AI Engineer,Security,AI Security,Prompt Injection,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Security,AI Security,Jailbreaks,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Ethics & Bias,Ethics,Fairness,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Ethics & Bias,Ethics,Safety,SECONDARY,0,5,5,fundamentals|explain|implement,easy|medium|hard
+AI Engineer,Debugging,AI,Hallucination Mitigation,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Supervised Learning,ML,Linear Regression,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Supervised Learning,ML,Trees,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Supervised Learning,ML,SVM,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Unsupervised Learning,ML,Clustering,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Unsupervised Learning,ML,PCA,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Deep Learning Fundamentals,Deep Learning,Neural Networks,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Deep Learning Fundamentals,Deep Learning,Backpropagation,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Computer Vision,Deep Learning,CNNs,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Computer Vision,Deep Learning,Object Detection,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,NLP,NLP,Word Embeddings,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,NLP,NLP,RNNs,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Model Evaluation,ML,Precision,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Model Evaluation,ML,Recall,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Model Evaluation,ML,ROC-AUC,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Hyperparameter Tuning,ML,Grid Search,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Hyperparameter Tuning,ML,Bayesian Optimization,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Data Preprocessing,ML,Feature Engineering,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Data Preprocessing,ML,Scaling,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Python ML Ecosystem,Scikit-learn,Pipelines,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Deep Learning Frameworks,PyTorch,Tensors,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Deep Learning Frameworks,PyTorch,Training Loops,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,MLOps,MLOps,Model Registry,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,MLOps,MLOps,Data Drift,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Model Serving,Deployment,ONNX,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Model Serving,Deployment,TF Serving,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Model Serving,Deployment,TorchServe,IMPORTANT,0,6,6,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Feature Stores,Architecture,Online vs Offline,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Distributed Training,Architecture,Data Parallelism,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Machine Learning Engineer,Debugging,ML,Overfitting,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Machine Learning Engineer,Debugging,ML,Vanishing Gradients,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Frontend Frameworks,React,Components,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Frontend Frameworks,React,State,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,HTML/CSS/JS,Web,DOM,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,HTML/CSS/JS,Web,Styling,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,HTML/CSS/JS,Web,ES6+,CORE,0,10,10,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Backend Frameworks,Node.js,Routing,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Backend Frameworks,Node.js,Middleware,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,API Design,REST,Endpoints,CORE,17,30,13,fundamentals|explain|implement|debug|scenario,easy|medium
+Full Stack Developer,Databases (SQL),SQL,Queries,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Databases (SQL),SQL,Modeling,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Databases (NoSQL),MongoDB,Documents,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Databases (NoSQL),MongoDB,Caching,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Authentication,Security,JWT,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Authentication,Security,OAuth,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Web Security,Security,XSS,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Web Security,Security,CSRF,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Deployment,Docker,Hosting,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Deployment,Docker,CI/CD,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,System Architecture,Architecture,Monolith vs Microservices,CORE,0,30,30,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Performance,Full Stack,Load Time,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Performance,Full Stack,Database Indexes,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Testing,Testing,E2E,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Testing,Testing,Unit,IMPORTANT,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Version Control,Git,Workflows,IMPORTANT,0,20,20,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,WebSockets,WebSockets,Real-time,SECONDARY,0,10,10,fundamentals|explain|implement,easy|medium|hard
+Full Stack Developer,Debugging,Full Stack,Network Tab,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard
+Full Stack Developer,Debugging,Full Stack,Server Logs,CORE,0,15,15,fundamentals|explain|implement|tradeoff|debug|scenario|architecture,easy|medium|hard

@@ -1,0 +1,362 @@
+{
+  "role_selected": "Python Developer",
+  "total_staged_before_batch33": 3322,
+  "cumulative_difficulty_before": {
+    "easy": [
+      347,
+      21.8
+    ],
+    "medium": [
+      780,
+      49.0
+    ],
+    "hard": [
+      465,
+      29.2
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.768,
+    "answer": 0.396,
+    "question+answer": 0.502
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      4
+    ],
+    [
+      "you need to",
+      4
+    ],
+    [
+      "you have a",
+      2
+    ],
+    [
+      "in python what",
+      2
+    ],
+    [
+      "what does the",
+      2
+    ],
+    [
+      "how does a",
+      1
+    ],
+    [
+      "how do you",
+      1
+    ],
+    [
+      "what is method",
+      1
+    ],
+    [
+      "you define def",
+      1
+    ],
+    [
+      "you want to",
+      1
+    ],
+    [
+      "you need an",
+      1
+    ],
+    [
+      "you are designing",
+      1
+    ],
+    [
+      "you want printuser",
+      1
+    ],
+    [
+      "you use a",
+      1
+    ],
+    [
+      "what is name",
+      1
+    ],
+    [
+      "you want a",
+      1
+    ],
+    [
+      "you write an",
+      1
+    ],
+    [
+      "you run an",
+      1
+    ],
+    [
+      "what exactly is",
+      1
+    ],
+    [
+      "thread a acquires",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "what is the",
+      129
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      106
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      41
+    ],
+    [
+      "you need to",
+      36
+    ],
+    [
+      "explain the concept",
+      35
+    ],
+    [
+      "what is a",
+      33
+    ],
+    [
+      "you have a",
+      31
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "you are building",
+      21
+    ],
+    [
+      "you deploy a",
+      19
+    ],
+    [
+      "explain the difference",
+      18
+    ],
+    [
+      "you notice that",
+      17
+    ],
+    [
+      "you are designing",
+      12
+    ],
+    [
+      "explain the purpose",
+      12
+    ],
+    [
+      "in the context",
+      12
+    ],
+    [
+      "what does the",
+      11
+    ],
+    [
+      "when would you",
+      9
+    ]
+  ],
+  "top_opening_share_new_batch": 0.08,
+  "distinct_openings_new_batch": 41,
+  "role_distribution": {
+    "Python Developer": 50
+  },
+  "skill_distribution": {
+    "Advanced OOP": 17,
+    "Python Concurrency": 17,
+    "Production Debugging": 16
+  },
+  "technology_distribution": {
+    "Python": 50
+  },
+  "topic_distribution": {
+    "Metaclasses & Descriptors": 17,
+    "Threading & Multiprocessing": 17,
+    "Garbage Collection & Profiling": 16
+  },
+  "intent_distribution": {
+    "explain": 9,
+    "implement": 11,
+    "debug": 10,
+    "tradeoff": 7,
+    "fundamentals": 5,
+    "scenario": 8
+  },
+  "difficulty_distribution": {
+    "medium": 23,
+    "hard": 19,
+    "easy": 8
+  },
+  "question_type_distribution": {
+    "concept": 14,
+    "implementation": 11,
+    "debugging": 10,
+    "tradeoff": 7,
+    "scenario": 8
+  },
+  "bucket_progress": {
+    "Advanced OOP | Metaclasses & Descriptors": {
+      "generated_now": 17
+    },
+    "Python Concurrency | Threading & Multiprocessing": {
+      "generated_now": 17
+    },
+    "Production Debugging | Garbage Collection & Profiling": {
+      "generated_now": 16
+    }
+  },
+  "cumulative_generated_production": 1642,
+  "cumulative_staging_total": 3372,
+  "cumulative_generated_by_role": {
+    "Python Developer": 200,
+    "Java Developer": 150,
+    "DevOps / Cloud Engineer": 195,
+    "AI Engineer": 150,
+    "Database Developer": 150,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 150,
+    "Full Stack Developer": 150,
+    "Frontend Developer": 150,
+    "Backend Developer": 197,
+    "ML Engineer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      355,
+      21.6
+    ],
+    "medium": [
+      803,
+      48.9
+    ],
+    "hard": [
+      484,
+      29.5
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": 3.8,
+    "medium": -3.0,
+    "hard": -0.8
+  },
+  "target_gap_pct_points_after": {
+    "easy": 3.6,
+    "medium": -3.1,
+    "hard": -0.5
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 300,
+    "Frontend Developer": 350,
+    "Java Developer": 350,
+    "Database Developer": 350,
+    "DevOps / Cloud Engineer": 305,
+    "Backend Developer": 303,
+    "Data Analyst": 350,
+    "AI Engineer": 350,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 350
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 200,
+      "Java Developer": 150,
+      "DevOps / Cloud Engineer": 195,
+      "AI Engineer": 150,
+      "Database Developer": 150,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 150,
+      "Full Stack Developer": 150,
+      "Frontend Developer": 150,
+      "Backend Developer": 197,
+      "ML Engineer": 50
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 746,
+      "Data Analyst": 139,
+      "AI Engineer": 143,
+      "Full Stack Developer": 218,
+      "Machine Learning Engineer": 88,
+      "DevOps / Cloud Engineer": 182,
+      "Frontend Developer": 72,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 140,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 79,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 166,
+      "Python Developer": 60,
+      "Data Architect": 20,
+      "Platform Engineer": 33,
+      "Product Manager": 47,
+      "Data Scientist": 169,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 165,
+      "Site Reliability Engineer": 117,
+      "UX Engineer": 15,
+      "ML Engineer": 50
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Python Developer": 50,
+    "Backend Developer": 50
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1642,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

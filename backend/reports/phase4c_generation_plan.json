@@ -1,0 +1,5881 @@
+[
+  {
+    "role": "Python Developer",
+    "skill": "Python Fundamentals",
+    "technology": "Python",
+    "topic": "Data Types",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Python Fundamentals",
+    "technology": "Python",
+    "topic": "Variables",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Functions & Functional Programming",
+    "technology": "Python",
+    "topic": "Closures",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Functions & Functional Programming",
+    "technology": "Python",
+    "topic": "Decorators",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "OOP",
+    "technology": "Python",
+    "topic": "Inheritance",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "OOP",
+    "technology": "Python",
+    "topic": "Metaclasses",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Data Structures",
+    "technology": "Python",
+    "topic": "Lists",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Data Structures",
+    "technology": "Python",
+    "topic": "Dicts",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Data Structures",
+    "technology": "Python",
+    "topic": "Sets",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Algorithms",
+    "technology": "Python",
+    "topic": "Sorting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Algorithms",
+    "technology": "Python",
+    "topic": "Graph",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Iterators & Generators",
+    "technology": "Python",
+    "topic": "yield",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Iterators & Generators",
+    "technology": "Python",
+    "topic": "itertools",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Exceptions",
+    "technology": "Python",
+    "topic": "Custom Exceptions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Exceptions",
+    "technology": "Python",
+    "topic": "Handling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Modules & Packaging",
+    "technology": "Python",
+    "topic": "pip",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Modules & Packaging",
+    "technology": "Python",
+    "topic": "venv",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Memory Management",
+    "technology": "Python",
+    "topic": "GC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Memory Management",
+    "technology": "Python",
+    "topic": "GIL",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Concurrency",
+    "technology": "Python",
+    "topic": "Multithreading",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Concurrency",
+    "technology": "Python",
+    "topic": "Multiprocessing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "AsyncIO",
+    "technology": "Python",
+    "topic": "Event Loop",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "AsyncIO",
+    "technology": "Python",
+    "topic": "Coroutines",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Testing",
+    "technology": "pytest",
+    "topic": "Mocking",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Testing",
+    "technology": "pytest",
+    "topic": "Fixtures",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Performance",
+    "technology": "Python",
+    "topic": "Profiling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Performance",
+    "technology": "Python",
+    "topic": "Cython",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "APIs",
+    "technology": "REST",
+    "topic": "Design",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "FastAPI",
+    "technology": "FastAPI",
+    "topic": "Dependency Injection",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Django",
+    "technology": "Django",
+    "topic": "ORM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Django",
+    "technology": "Django",
+    "topic": "Middleware",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "SQL",
+    "technology": "SQL",
+    "topic": "Queries",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "PostgreSQL",
+    "technology": "PostgreSQL",
+    "topic": "Indexing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "ORMs",
+    "technology": "SQLAlchemy",
+    "topic": "Sessions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Security",
+    "technology": "Python",
+    "topic": "Injection",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Security",
+    "technology": "Python",
+    "topic": "Auth",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Deployment",
+    "technology": "Docker",
+    "topic": "Containers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Observability",
+    "technology": "Prometheus",
+    "topic": "Metrics",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Architecture",
+    "technology": "Python",
+    "topic": "Microservices",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "System Design",
+    "technology": "Python",
+    "topic": "Scalability",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Debugging",
+    "technology": "Python",
+    "topic": "pdb",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Python Developer",
+    "skill": "Debugging",
+    "technology": "Python",
+    "topic": "Tracing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "HTML/DOM",
+    "technology": "HTML",
+    "topic": "Accessibility",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "CSS & Styling",
+    "technology": "CSS",
+    "topic": "Grid",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Core JavaScript",
+    "technology": "JavaScript",
+    "topic": "Event Loop",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Browser APIs",
+    "technology": "JavaScript",
+    "topic": "Storage",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Browser APIs",
+    "technology": "JavaScript",
+    "topic": "Workers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "React Fundamentals",
+    "technology": "React",
+    "topic": "Components",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "React Hooks",
+    "technology": "React",
+    "topic": "useEffect",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "React Hooks",
+    "technology": "React",
+    "topic": "Custom Hooks",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Component Architecture",
+    "technology": "React",
+    "topic": "Design Patterns",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Performance Optimization",
+    "technology": "JavaScript",
+    "topic": "Memoization",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Performance Optimization",
+    "technology": "JavaScript",
+    "topic": "Code Splitting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Web Security",
+    "technology": "Security",
+    "topic": "XSS",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Web Security",
+    "technology": "Security",
+    "topic": "CSRF",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Web Security",
+    "technology": "Security",
+    "topic": "CORS",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Testing (Jest/RTL)",
+    "technology": "Jest",
+    "topic": "Unit",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Testing (Jest/RTL)",
+    "technology": "Jest",
+    "topic": "E2E",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Build Tools",
+    "technology": "Webpack",
+    "topic": "Bundling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "TypeScript",
+    "technology": "TypeScript",
+    "topic": "Types",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "TypeScript",
+    "technology": "TypeScript",
+    "topic": "Interfaces",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Network Requests",
+    "technology": "JavaScript",
+    "topic": "Fetch",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Network Requests",
+    "technology": "JavaScript",
+    "topic": "Axios",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Routing",
+    "technology": "React Router",
+    "topic": "SPA Routing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "SSR / SSG",
+    "technology": "Next.js",
+    "topic": "Server Rendering",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "PWA",
+    "technology": "Web",
+    "topic": "Service Workers",
+    "missing_intents": [
+      "fundamentals",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy"
+    ],
+    "recommended_question_count": 8,
+    "priority": 4
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Debugging Tools",
+    "technology": "DevTools",
+    "topic": "Profiling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Frontend Developer",
+    "skill": "Debugging Tools",
+    "technology": "DevTools",
+    "topic": "Network",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Java Core",
+    "technology": "Java",
+    "topic": "Types",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Java Core",
+    "technology": "Java",
+    "topic": "OOP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Collections Framework",
+    "technology": "Java",
+    "topic": "Map",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Collections Framework",
+    "technology": "Java",
+    "topic": "List",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Memory Management",
+    "technology": "Java",
+    "topic": "GC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Memory Management",
+    "technology": "Java",
+    "topic": "JVM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Concurrency",
+    "technology": "Java",
+    "topic": "Threads",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Concurrency",
+    "technology": "Java",
+    "topic": "Executors",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Streams API",
+    "technology": "Java",
+    "topic": "Lambdas",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Streams API",
+    "technology": "Java",
+    "topic": "Streams",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Core",
+    "technology": "Spring",
+    "topic": "IoC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Core",
+    "technology": "Spring",
+    "topic": "AOP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Boot",
+    "technology": "Spring Boot",
+    "topic": "Auto-config",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Data JPA",
+    "technology": "Hibernate",
+    "topic": "Entities",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Data JPA",
+    "technology": "Hibernate",
+    "topic": "Transactions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Security",
+    "technology": "Spring Security",
+    "topic": "Auth",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Spring Security",
+    "technology": "Spring Security",
+    "topic": "OAuth2",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Microservices",
+    "technology": "Java",
+    "topic": "Service Discovery",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Testing",
+    "technology": "JUnit",
+    "topic": "Unit Testing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Build Tools",
+    "technology": "Maven",
+    "topic": "Dependencies",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Design Patterns",
+    "technology": "Java",
+    "topic": "Singleton",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Design Patterns",
+    "technology": "Java",
+    "topic": "Factory",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Performance Tuning",
+    "technology": "Java",
+    "topic": "JProfiler",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Performance Tuning",
+    "technology": "Java",
+    "topic": "GC Tuning",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Debugging",
+    "technology": "Java",
+    "topic": "Heap Dumps",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Java Developer",
+    "skill": "Debugging",
+    "technology": "Java",
+    "topic": "Thread Dumps",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "SQL Fundamentals",
+    "technology": "SQL",
+    "topic": "Queries",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "SQL Fundamentals",
+    "technology": "SQL",
+    "topic": "Joins",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Advanced SQL",
+    "technology": "SQL",
+    "topic": "Window Functions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Advanced SQL",
+    "technology": "SQL",
+    "topic": "CTEs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Relational Theory",
+    "technology": "RDBMS",
+    "topic": "Normalization",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Indexing",
+    "technology": "SQL",
+    "topic": "B-Trees",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Indexing",
+    "technology": "SQL",
+    "topic": "Hash",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Query Optimization",
+    "technology": "SQL",
+    "topic": "Execution Plans",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Query Optimization",
+    "technology": "SQL",
+    "topic": "EXPLAIN",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Transactions",
+    "technology": "SQL",
+    "topic": "ACID",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Transactions",
+    "technology": "SQL",
+    "topic": "Isolation Levels",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "PostgreSQL",
+    "technology": "PostgreSQL",
+    "topic": "MVCC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "PostgreSQL",
+    "technology": "PostgreSQL",
+    "topic": "VACUUM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "MySQL",
+    "technology": "MySQL",
+    "topic": "InnoDB",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "NoSQL Concepts",
+    "technology": "NoSQL",
+    "topic": "CAP Theorem",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "MongoDB",
+    "technology": "MongoDB",
+    "topic": "Aggregation",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Redis",
+    "technology": "Redis",
+    "topic": "Data Structures",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Redis",
+    "technology": "Redis",
+    "topic": "Caching",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Data Modeling",
+    "technology": "DB Design",
+    "topic": "Schemas",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Scaling Databases",
+    "technology": "Architecture",
+    "topic": "Sharding",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Scaling Databases",
+    "technology": "Architecture",
+    "topic": "Replication",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Security",
+    "technology": "SQL",
+    "topic": "SQL Injection",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Security",
+    "technology": "SQL",
+    "topic": "Roles",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Backups & Recovery",
+    "technology": "SQL",
+    "topic": "WAL",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Database Developer",
+    "skill": "Backups & Recovery",
+    "technology": "SQL",
+    "topic": "PITR",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Linux Core",
+    "technology": "Linux",
+    "topic": "Processes",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Linux Core",
+    "technology": "Linux",
+    "topic": "File Systems",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Bash Scripting",
+    "technology": "Bash",
+    "topic": "Scripts",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Bash Scripting",
+    "technology": "Bash",
+    "topic": "Pipes",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Networking",
+    "technology": "Networking",
+    "topic": "TCP/IP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Networking",
+    "technology": "Networking",
+    "topic": "DNS",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Networking",
+    "technology": "Networking",
+    "topic": "Load Balancing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Docker",
+    "technology": "Docker",
+    "topic": "Images",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Docker",
+    "technology": "Docker",
+    "topic": "Containers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Docker",
+    "technology": "Docker",
+    "topic": "Networks",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Core",
+    "technology": "Kubernetes",
+    "topic": "Pods",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Core",
+    "technology": "Kubernetes",
+    "topic": "Deployments",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Core",
+    "technology": "Kubernetes",
+    "topic": "Services",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Adv",
+    "technology": "Kubernetes",
+    "topic": "StatefulSets",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Adv",
+    "technology": "Kubernetes",
+    "topic": "Operators",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Kubernetes Adv",
+    "technology": "Kubernetes",
+    "topic": "RBAC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Compute",
+    "technology": "AWS",
+    "topic": "EC2",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Compute",
+    "technology": "AWS",
+    "topic": "Lambda",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Networking",
+    "technology": "AWS",
+    "topic": "VPC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Networking",
+    "technology": "AWS",
+    "topic": "Route53",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Storage",
+    "technology": "AWS",
+    "topic": "S3",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS Storage",
+    "technology": "AWS",
+    "topic": "EBS",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS IAM",
+    "technology": "AWS",
+    "topic": "Policies",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "AWS IAM",
+    "technology": "AWS",
+    "topic": "Roles",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Terraform",
+    "technology": "Terraform",
+    "topic": "State",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Terraform",
+    "technology": "Terraform",
+    "topic": "Modules",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "CI/CD Pipelines",
+    "technology": "CI/CD",
+    "topic": "GitHub Actions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "CI/CD Pipelines",
+    "technology": "CI/CD",
+    "topic": "GitLab",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Jenkins",
+    "technology": "Jenkins",
+    "topic": "Pipelines",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Git",
+    "technology": "Git",
+    "topic": "Workflows",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Git",
+    "technology": "Git",
+    "topic": "Hooks",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Monitoring",
+    "technology": "Prometheus",
+    "topic": "Metrics",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Monitoring",
+    "technology": "Prometheus",
+    "topic": "Alerting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Logging",
+    "technology": "ELK",
+    "topic": "Aggregation",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "DevOps / Cloud Engineer",
+    "skill": "Security",
+    "technology": "Security",
+    "topic": "Secrets Management",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "API Design",
+    "technology": "REST",
+    "topic": "Status Codes",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "GraphQL",
+    "technology": "GraphQL",
+    "topic": "Resolvers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "GraphQL",
+    "technology": "GraphQL",
+    "topic": "Schemas",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Language Core",
+    "technology": "Python",
+    "topic": "OOP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Database Integration",
+    "technology": "SQL",
+    "topic": "ORMs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "debug",
+      "scenario"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium"
+    ],
+    "recommended_question_count": 6,
+    "priority": 2
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Database Integration",
+    "technology": "SQL",
+    "topic": "Connection Pooling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Caching Strategies",
+    "technology": "Redis",
+    "topic": "Eviction",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium"
+    ],
+    "recommended_question_count": 13,
+    "priority": 2
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Caching Strategies",
+    "technology": "Redis",
+    "topic": "Write-through",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Microservices",
+    "technology": "Architecture",
+    "topic": "Resilience",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Message Queues",
+    "technology": "RabbitMQ",
+    "topic": "Pub/Sub",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Message Queues",
+    "technology": "RabbitMQ",
+    "topic": "Event Sourcing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Authentication",
+    "technology": "Security",
+    "topic": "JWT",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Authentication",
+    "technology": "Security",
+    "topic": "OAuth2",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Authentication",
+    "technology": "Security",
+    "topic": "Sessions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Authorization",
+    "technology": "Security",
+    "topic": "RBAC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Authorization",
+    "technology": "Security",
+    "topic": "ABAC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Performance",
+    "technology": "Backend",
+    "topic": "Load Testing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Security",
+    "technology": "Security",
+    "topic": "OWASP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Security",
+    "technology": "Security",
+    "topic": "Encryption",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Testing",
+    "technology": "Testing",
+    "topic": "Integration",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Testing",
+    "technology": "Testing",
+    "topic": "Unit",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Deployment",
+    "technology": "Docker",
+    "topic": "Containers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "System Design",
+    "technology": "Architecture",
+    "topic": "Scalability",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "System Design",
+    "technology": "Architecture",
+    "topic": "CAP Theorem",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Debugging",
+    "technology": "Backend",
+    "topic": "Log Analysis",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Backend Developer",
+    "skill": "Debugging",
+    "technology": "Backend",
+    "topic": "Tracing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "SQL Basics",
+    "technology": "SQL",
+    "topic": "Selects",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "SQL Basics",
+    "technology": "SQL",
+    "topic": "Joins",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "SQL Advanced",
+    "technology": "SQL",
+    "topic": "Window Functions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "SQL Advanced",
+    "technology": "SQL",
+    "topic": "CTEs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Visualization",
+    "technology": "Tableau",
+    "topic": "Dashboards",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Visualization",
+    "technology": "Tableau",
+    "topic": "Chart Types",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Statistics Basics",
+    "technology": "Statistics",
+    "topic": "Mean",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Statistics Basics",
+    "technology": "Statistics",
+    "topic": "Median",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Statistics Basics",
+    "technology": "Statistics",
+    "topic": "Variance",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Probability",
+    "technology": "Statistics",
+    "topic": "Distributions",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Probability",
+    "technology": "Statistics",
+    "topic": "Bayes",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "A/B Testing",
+    "technology": "Statistics",
+    "topic": "Hypothesis Testing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "A/B Testing",
+    "technology": "Statistics",
+    "topic": "P-values",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Python Pandas",
+    "technology": "Python",
+    "topic": "DataFrames",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Python Pandas",
+    "technology": "Python",
+    "topic": "Aggregation",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Python Data Viz",
+    "technology": "Matplotlib",
+    "topic": "Plotting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Cleaning",
+    "technology": "Data",
+    "topic": "Missing Values",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Cleaning",
+    "technology": "Data",
+    "topic": "Outliers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "ETL Concepts",
+    "technology": "ETL",
+    "topic": "Pipelines",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Modeling",
+    "technology": "Data Warehouse",
+    "topic": "Star Schema",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Data Modeling",
+    "technology": "Data Warehouse",
+    "topic": "Snowflake",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Business Intelligence",
+    "technology": "BI",
+    "topic": "KPIs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Business Intelligence",
+    "technology": "BI",
+    "topic": "Metrics",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Spreadsheets",
+    "technology": "Excel",
+    "topic": "Pivot Tables",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Spreadsheets",
+    "technology": "Excel",
+    "topic": "VLOOKUP",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Communication",
+    "technology": "Soft Skills",
+    "topic": "Storytelling with Data",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Data Analyst",
+    "skill": "Debugging",
+    "technology": "Data",
+    "topic": "Data Quality Audits",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "LLM Architecture",
+    "technology": "LLMs",
+    "topic": "Transformers",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "LLM Architecture",
+    "technology": "LLMs",
+    "topic": "Attention",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Prompt Engineering",
+    "technology": "LLMs",
+    "topic": "Zero-shot",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Prompt Engineering",
+    "technology": "LLMs",
+    "topic": "CoT",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "RAG Core",
+    "technology": "RAG",
+    "topic": "Vector DBs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "RAG Core",
+    "technology": "RAG",
+    "topic": "Embeddings",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "RAG Advanced",
+    "technology": "RAG",
+    "topic": "Re-ranking",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "RAG Advanced",
+    "technology": "RAG",
+    "topic": "Chunking Strategies",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "AI Agents",
+    "technology": "Agents",
+    "topic": "Tool Use",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "AI Agents",
+    "technology": "Agents",
+    "topic": "Reasoning Loops",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "LangChain / LlamaIndex",
+    "technology": "LangChain",
+    "topic": "Chains",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "LangChain / LlamaIndex",
+    "technology": "LangChain",
+    "topic": "Memory",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Fine-tuning",
+    "technology": "LLMs",
+    "topic": "PEFT",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Fine-tuning",
+    "technology": "LLMs",
+    "topic": "LoRA",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Model Evaluation",
+    "technology": "Evaluation",
+    "topic": "BLEU",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Model Evaluation",
+    "technology": "Evaluation",
+    "topic": "ROUGE",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Model Evaluation",
+    "technology": "Evaluation",
+    "topic": "LLM-as-a-Judge",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Vector Databases",
+    "technology": "Pinecone",
+    "topic": "Index Types",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "MLOps for LLMs",
+    "technology": "MLOps",
+    "topic": "Prompt Management",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "MLOps for LLMs",
+    "technology": "MLOps",
+    "topic": "Monitoring",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Deployment",
+    "technology": "Serving",
+    "topic": "vLLM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Deployment",
+    "technology": "Serving",
+    "topic": "TGI",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Python",
+    "technology": "Python",
+    "topic": "API Integrations",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Python",
+    "technology": "Python",
+    "topic": "Async",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Security",
+    "technology": "AI Security",
+    "topic": "Prompt Injection",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Security",
+    "technology": "AI Security",
+    "topic": "Jailbreaks",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Ethics & Bias",
+    "technology": "Ethics",
+    "topic": "Fairness",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Ethics & Bias",
+    "technology": "Ethics",
+    "topic": "Safety",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 5,
+    "priority": 4
+  },
+  {
+    "role": "AI Engineer",
+    "skill": "Debugging",
+    "technology": "AI",
+    "topic": "Hallucination Mitigation",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Supervised Learning",
+    "technology": "ML",
+    "topic": "Linear Regression",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Supervised Learning",
+    "technology": "ML",
+    "topic": "Trees",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Supervised Learning",
+    "technology": "ML",
+    "topic": "SVM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Unsupervised Learning",
+    "technology": "ML",
+    "topic": "Clustering",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Unsupervised Learning",
+    "technology": "ML",
+    "topic": "PCA",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Deep Learning Fundamentals",
+    "technology": "Deep Learning",
+    "topic": "Neural Networks",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Deep Learning Fundamentals",
+    "technology": "Deep Learning",
+    "topic": "Backpropagation",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Computer Vision",
+    "technology": "Deep Learning",
+    "topic": "CNNs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Computer Vision",
+    "technology": "Deep Learning",
+    "topic": "Object Detection",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "NLP",
+    "technology": "NLP",
+    "topic": "Word Embeddings",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "NLP",
+    "technology": "NLP",
+    "topic": "RNNs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Evaluation",
+    "technology": "ML",
+    "topic": "Precision",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Evaluation",
+    "technology": "ML",
+    "topic": "Recall",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Evaluation",
+    "technology": "ML",
+    "topic": "ROC-AUC",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Hyperparameter Tuning",
+    "technology": "ML",
+    "topic": "Grid Search",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Hyperparameter Tuning",
+    "technology": "ML",
+    "topic": "Bayesian Optimization",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Data Preprocessing",
+    "technology": "ML",
+    "topic": "Feature Engineering",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Data Preprocessing",
+    "technology": "ML",
+    "topic": "Scaling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Python ML Ecosystem",
+    "technology": "Scikit-learn",
+    "topic": "Pipelines",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Deep Learning Frameworks",
+    "technology": "PyTorch",
+    "topic": "Tensors",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Deep Learning Frameworks",
+    "technology": "PyTorch",
+    "topic": "Training Loops",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "MLOps",
+    "technology": "MLOps",
+    "topic": "Model Registry",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "MLOps",
+    "technology": "MLOps",
+    "topic": "Data Drift",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Serving",
+    "technology": "Deployment",
+    "topic": "ONNX",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Serving",
+    "technology": "Deployment",
+    "topic": "TF Serving",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Model Serving",
+    "technology": "Deployment",
+    "topic": "TorchServe",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 6,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Feature Stores",
+    "technology": "Architecture",
+    "topic": "Online vs Offline",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Distributed Training",
+    "technology": "Architecture",
+    "topic": "Data Parallelism",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Debugging",
+    "technology": "ML",
+    "topic": "Overfitting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Machine Learning Engineer",
+    "skill": "Debugging",
+    "technology": "ML",
+    "topic": "Vanishing Gradients",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Frontend Frameworks",
+    "technology": "React",
+    "topic": "Components",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Frontend Frameworks",
+    "technology": "React",
+    "topic": "State",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "HTML/CSS/JS",
+    "technology": "Web",
+    "topic": "DOM",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "HTML/CSS/JS",
+    "technology": "Web",
+    "topic": "Styling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "HTML/CSS/JS",
+    "technology": "Web",
+    "topic": "ES6+",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Backend Frameworks",
+    "technology": "Node.js",
+    "topic": "Routing",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Backend Frameworks",
+    "technology": "Node.js",
+    "topic": "Middleware",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "API Design",
+    "technology": "REST",
+    "topic": "Endpoints",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "debug",
+      "scenario"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium"
+    ],
+    "recommended_question_count": 13,
+    "priority": 2
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Databases (SQL)",
+    "technology": "SQL",
+    "topic": "Queries",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Databases (SQL)",
+    "technology": "SQL",
+    "topic": "Modeling",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Databases (NoSQL)",
+    "technology": "MongoDB",
+    "topic": "Documents",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Databases (NoSQL)",
+    "technology": "MongoDB",
+    "topic": "Caching",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Authentication",
+    "technology": "Security",
+    "topic": "JWT",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Authentication",
+    "technology": "Security",
+    "topic": "OAuth",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Web Security",
+    "technology": "Security",
+    "topic": "XSS",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Web Security",
+    "technology": "Security",
+    "topic": "CSRF",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Deployment",
+    "technology": "Docker",
+    "topic": "Hosting",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Deployment",
+    "technology": "Docker",
+    "topic": "CI/CD",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "System Architecture",
+    "technology": "Architecture",
+    "topic": "Monolith vs Microservices",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 30,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Performance",
+    "technology": "Full Stack",
+    "topic": "Load Time",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Performance",
+    "technology": "Full Stack",
+    "topic": "Database Indexes",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Testing",
+    "technology": "Testing",
+    "topic": "E2E",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Testing",
+    "technology": "Testing",
+    "topic": "Unit",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Version Control",
+    "technology": "Git",
+    "topic": "Workflows",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 20,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "WebSockets",
+    "technology": "WebSockets",
+    "topic": "Real-time",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 10,
+    "priority": 4
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Debugging",
+    "technology": "Full Stack",
+    "topic": "Network Tab",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  },
+  {
+    "role": "Full Stack Developer",
+    "skill": "Debugging",
+    "technology": "Full Stack",
+    "topic": "Server Logs",
+    "missing_intents": [
+      "fundamentals",
+      "explain",
+      "implement",
+      "tradeoff",
+      "debug",
+      "scenario",
+      "architecture"
+    ],
+    "missing_difficulties": [
+      "easy",
+      "medium",
+      "hard"
+    ],
+    "recommended_question_count": 15,
+    "priority": 1
+  }
+]

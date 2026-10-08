@@ -1,0 +1,13 @@
+{
+  "batch": "batch_41_ml_engineer",
+  "records_attempted": 50,
+  "records_accepted": 50,
+  "records_rejected": 0,
+  "rejection_reasons": {},
+  "staging_metrics": {
+    "previous_staging_total": 1992,
+    "final_staging_total": 2042,
+    "role_total": 100,
+    "remaining_to_500": 400
+  }
+}

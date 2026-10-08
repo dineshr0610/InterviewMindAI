@@ -173,7 +173,11 @@ async def analyze_resume(
             role=request.role,
             candidate_name=request.candidate_name,
         )
-        return success_response(result.model_dump())
+        res_dump = result.model_dump()
+        import json
+        with open("scratch/latest_analyze_response.json", "w") as f:
+            json.dump(res_dump, f, indent=2)
+        return success_response(res_dump)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     except Exception as exc:

@@ -1,0 +1,132 @@
+{
+ "real_technical_dataset.json": {
+  "rows": 6127,
+  "in_db_exact_content": 6127,
+  "not_in_db": 0,
+  "by_source": [
+   [
+    "https://github.com/sahil280114/codealpaca",
+    4500
+   ],
+   [
+    "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md",
+    716
+   ],
+   [
+    "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md",
+    581
+   ],
+   [
+    "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+    166
+   ],
+   [
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md",
+    61
+   ],
+   [
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md",
+    53
+   ],
+   [
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md",
+    36
+   ],
+   [
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md",
+    9
+   ],
+   [
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md",
+    5
+   ]
+  ],
+  "keys": [
+   "id",
+   "role",
+   "role_id",
+   "category",
+   "topic",
+   "subtopic",
+   "difficulty",
+   "content",
+   "metadata"
+  ],
+  "not_in_db_by_source": []
+ },
+ "technical_knowledge_5000.json": {
+  "rows": 5553,
+  "in_db_exact_content": 4444,
+  "not_in_db": 1109,
+  "by_source": [
+   [
+    "InterviewMind-AI-Curated-Dataset-v1",
+    5553
+   ]
+  ],
+  "keys": [
+   "id",
+   "role",
+   "role_id",
+   "category",
+   "topic",
+   "subtopic",
+   "difficulty",
+   "entry_type",
+   "content",
+   "metadata"
+  ],
+  "not_in_db_by_source": [
+   [
+    "InterviewMind-AI-Curated-Dataset-v1",
+    1109
+   ]
+  ]
+ },
+ "db_by_source": [
+  [
+   "https://github.com/sahil280114/codealpaca",
+   4500
+  ],
+  [
+   "InterviewMind-AI-Curated-Dataset-v1",
+   3261
+  ],
+  [
+   "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md",
+   716
+  ],
+  [
+   "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md",
+   581
+  ],
+  [
+   "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+   166
+  ],
+  [
+   "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md",
+   61
+  ],
+  [
+   "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md",
+   53
+  ],
+  [
+   "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md",
+   36
+  ],
+  [
+   "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md",
+   9
+  ],
+  [
+   "NONE",
+   6
+  ],
+  [
+   "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md",
+   5
+  ]
+ ]
+}

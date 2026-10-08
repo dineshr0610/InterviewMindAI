@@ -42,3 +42,32 @@ AS $$
     ORDER BY de.embedding <=> query_embedding
     LIMIT match_count;
 $$;
+
+CREATE OR REPLACE FUNCTION match_document_embeddings_filtered(
+    query_embedding VECTOR(1536),
+    metadata_filter JSONB DEFAULT '{}'::jsonb,
+    match_threshold FLOAT DEFAULT 0.5,
+    match_count INT DEFAULT 2
+)
+RETURNS TABLE (
+    id UUID,
+    content TEXT,
+    metadata JSONB,
+    similarity FLOAT
+)
+LANGUAGE SQL
+STABLE
+AS $$
+    SELECT
+        de.id,
+        de.content,
+        de.metadata,
+        1 - (de.embedding <=> query_embedding) AS similarity
+    FROM document_embeddings de
+    WHERE de.embedding IS NOT NULL
+      AND de.metadata @> metadata_filter
+      AND (de.metadata->>'status' IS NULL OR de.metadata->>'status' != 'inactive')
+      AND 1 - (de.embedding <=> query_embedding) >= match_threshold
+    ORDER BY de.embedding <=> query_embedding
+    LIMIT match_count;
+$$;

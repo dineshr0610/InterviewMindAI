@@ -1,0 +1,117 @@
+=== Prep for the system design interview (len 1003)
+### Technical Interview Question: Prep for the system design interview
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Medium
+
+#### Technical Explanation & Model Answer
+In addition to coding interviews, system design is a **required component** of the **technical interview process** at many tech companies.
+
+**Practice common system design interview questions** and **compare** your results with **sample solutions**: discussions, code, and diagrams.
+
+Additional topics for interview prep:
+
+* [Study guide](#study-guide)
+* [How to approach a system design interview question](#how-to-approach-a-system-design-interview-question)
+* [System design interview questions, **with solutions**](#system-design-interview-questions-with-solutions)
+* [Object-oriented design interview questions, **with solutions**](#object-oriented-design-interview-questions-with-solutions)
+* [Additional system design interview questions](#additional-system-design-interview-questions)
+
+=== Object-oriented design interview questions with solutions (len 1217)
+### Technical Interview Question: Object-oriented design interview questions with solutions
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+> Common object-oriented design interview questions with sample discussions, code, and diagrams.
+>
+> Solutions linked to content in the `solutions/` folder.
+
+>**Note: This section is under development**
+
+| Question | |
+|---|---|
+| Design a hash map | [Solution](solutions/object_oriented_design/hash_table/hash_map.ipynb)  |
+| Design a least recently used cache | [Solution](solutions/object_oriented_design/lru_cache/lru_cache.ipynb)  |
+| Design a call center | [Solution](solutions/object_oriented_design/call_center/call_center.ipynb)  |
+| Design a deck of cards | [Solution](solutions/object_oriented_design/deck_of_cards/deck_of_cards.ipynb)  |
+| Design a parking lot | [Solution](solutions/object_oriented_design/parking_lot/parking_lot.ipynb)  |
+| Design a chat server | [Solution](solutions/object_oriented_design/online_chat/online_chat.ipynb)  |
+| Design a circular array | [Contribute](#contributing)  |
+| Add an object-oriented design question | [Contribute](#contributing) |
+
+=== How to approach a system design interview question (len 614)
+### Technical Interview Question: How to approach a system design interview question
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Medium
+
+#### Technical Explanation & Model Answer
+> How to tackle a system design interview question.
+
+The system design interview is an **open-ended conversation**.  You are expected to lead it.
+
+You can use the following steps to guide the discussion.  To help solidify this process, work through the [System design interview questions with solutions](#system-design-interview-questions-with-solutions) section using the following steps.
+
+=== System design interview questions with solutions (len 1292)
+### Technical Interview Question: System design interview questions with solutions
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+> Common system design interview questions with sample discussions, code, and diagrams.
+>
+> Solutions linked to content in the `solutions/` folder.
+
+| Question | |
+|---|---|
+| Design Pastebin.com (or Bit.ly) | [Solution](solutions/system_design/pastebin/README.md) |
+| Design the Twitter timeline and search (or Facebook feed and search) | [Solution](solutions/system_design/twitter/README.md) |
+| Design a web crawler | [Solution](solutions/system_design/web_crawler/README.md) |
+| Design Mint.com | [Solution](solutions/system_design/mint/README.md) |
+| Design the data structures for a social network | [Solution](solutions/system_design/social_graph/README.md) |
+| Design a key-value store for a search engine | [Solution](solutions/system_design/query_cache/README.md) |
+| Design Amazon's sales ranking by category feature | [Solution](solutions/system_design/sales_rank/README.md) |
+| Design a system that scales to millions of users on AWS | [Solution](solutions/system_design/scaling_aws/README.md) |
+| Add a system design question | [Contribute](#contributing) |
+
+=== Design a web crawler (len 298)
+### Technical Interview Question: Design a web crawler
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+[View exercise and solution](solutions/system_design/web_crawler/README.md)
+
+![Imgur](images/bWxPtQA.png)
+
+=== Design Pastebin.com (or Bit.ly) (len 306)
+### Technical Interview Question: Design Pastebin.com (or Bit.ly)
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+[View exercise and solution](solutions/system_design/pastebin/README.md)
+
+![Imgur](images/4edXG0T.png)
+
+=== Additional system design interview questions (len 5538)
+### Technical Interview Question: Additional system design interview questions
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+> Common system design interview questions, with links to resources on how to solve each.
+
+| Question | Reference(s) |
+|---|---|
+| Design a file sync service like Dropbox | [youtube.com](https://www.youtube.com/watch?v=PE4gwstWhmc) |
+| Design a search engine like Google | [queue.acm.org](http://queue.acm.org/detail.cfm?id=988407)<br/>[stackexchange.com](http://programmers.stackexchange.com/questions/38324/interview-question-how-would-you-implement-google-search)<br/>[ardendertat.com](http://www.ardendertat.com/2012/01/11/implementing-search-engines/)<br/>[stanford.edu](http://infolab.stanford.edu/~backrub/google.html) |
+| Design a scalable web crawler like Google | [quora.com](https://www.quora.com/How-can-I-build-a-web-crawler-from-scratch) |
+| Design Google docs | [code.google.com](https://code.google.com/p/google-mobwrite/)<br/>[neil.fraser.name](https://neil.fraser.name/writing/sync/) |
+| Design a key-value store like Redis | [codecapsule.com](http://codecapsule.com/2012/11/07/ikvs-implementing-a-key-value-store-table-of-contents/)<br/>[allthingsdistributed.com](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) |
+| Design a cache system like Memcached | [slideshare.net](http://www.slideshare.net/oemebamo/introduction-to-memcached) |
+| Des
+
+=== role_requirements top keys: ['schema_version', 'source', 'roles']
+roles: ['frontend_developer', 'backend_developer']
+frontend_developer -> {"display_name": "Frontend Developer", "note": "ESCO does not have a direct 'Frontend Developer' occupation. Mapped to: 'user interface developer' (primary), 'web developer' (primary), 'user interface designer' (supporting).", "occupation_mappings": [{"uri": "http://data.europa.eu/esco/occupation/866c7813-2c03-47d7-9bdc-192cfbace57c", "preferred_label": "user interface developer", "alt_labels": ["user interface engineer", "user interface developers", "UI programmer", "front end developer", "UI developer", "UI developers"], "mapping_type": "primary", "reason": "ESCO 'user interface developer' is the closest match. Alt labels include 'front end developer' and 'UI programmer'.", "skill_count_essential": 17, "skill_count_optional": 81}, {"uri": "http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d", "preferred_label": "web developer", "alt_labels": ["web application developer", "web developers", "web engineer", "web specialist", "web programmer"], "mapping_type": "primary", "reason": "ESCO 'web developer' covers HTML, CSS, JS, web programming. Alt labels include 'web application developer'.", "skill_count_essential": 26, "skill_count_optional": 77}, {"uri": "http:
+backend_developer -> {"display_name": "Backend Developer", "note": "ESCO does not have a direct 'Backend Developer' occupation. Mapped to: 'ICT application developer' (primary), 'software developer' (primary), 'ICT system developer' (supporting), 'database developer' (supporting-specialization).", "occupation_mappings": [{"uri": "http://data.europa.eu/esco/occupation/bd272aee-adc9-4a06-a15c-a73b4b4a46a7", "preferred_label": "ICT application developer", "alt_labels": ["application developer", "application software developers", "application designer", "app software developer", "software programmer", "application software engineer"], "mapping_type": "primary", "reason": "ESCO 'ICT application developer'. Alt labels: 'application developer', 'software programmer', 'application software engineer'.", "skill_count_essential": 17, "skill_count_optional": 74}, {"uri": "http://data.europa.eu/esco/occupation/f2b15a0e-e65a-438a-affb-29b9d50b77d1", "preferred_label": "software developer", "alt_labels": ["application developer", "solutions developer", "electric vehicle software development engineer", "programmer", "application programmer", "software specialist", "application software developer", "software engineer",

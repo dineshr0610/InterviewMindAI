@@ -3,8 +3,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import json
 import logging
+import os
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from functools import lru_cache
+from typing import Any, Dict, List, Optional, Set, Tuple
 
 from ai_engine.services.rag_service import RAGService
 from ai_engine.services.question_controller import (
@@ -40,6 +42,9 @@ from ai_engine.services.question_controller import (
     INTENT_TRADEOFF,
     detect_question_intent,
     choose_next_strategy,
+    DIFFICULTY_RUBRIC,
+    STRATEGY_TO_INTENT,
+    DIVERSITY_PROMPTS,
 )
 from app.utils.resume import sanitize_resume_for_prompt
 
@@ -73,9 +78,104 @@ def extract_llm_text(response: Any) -> str:
                 parts.append(str(part["text"]))
             elif hasattr(part, "text"):
                 parts.append(str(part.text))
-        if parts:
-            return "".join(parts).strip()
     return str(response).strip()
+
+
+def parse_llm_question_json(raw_text: str) -> Optional[str]:
+    """
+    Safely extracts a structured question from LLM output.
+    Strictly requires valid JSON with a non-empty 'question' field.
+    Rejects raw conversational text (no fallback).
+    """
+    if not raw_text or not isinstance(raw_text, str):
+        return None
+        
+    raw_text = raw_text.strip()
+    
+    # Check for markdown JSON code block
+    markdown_match = re.search(r'```(?:json)?\s*(\{.*?\})\s*```', raw_text, re.DOTALL)
+    
+    if markdown_match:
+        json_str = markdown_match.group(1).strip()
+    else:
+        # If no code block, require the entire string to be a JSON object
+        if not raw_text.startswith('{') or not raw_text.endswith('}'):
+            return None
+        json_str = raw_text
+        
+    try:
+        parsed = json.loads(json_str)
+        if not isinstance(parsed, dict):
+            return None
+        
+        q_text = parsed.get("question")
+        if not q_text or not isinstance(q_text, str) or not q_text.strip():
+            return None
+            
+        return q_text.strip()
+    except Exception:
+        return None
+
+
+@lru_cache(maxsize=1)
+def load_role_requirements() -> dict:
+    try:
+        # Resolve path to the workspace root e:\interview\role_requirements.json
+        # interview_service.py is in backend/ai_engine/services/
+        path = os.path.join(os.path.dirname(__file__), "..", "..", "..", "role_requirements.json")
+        path = os.path.abspath(path)
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        logger.warning("Could not load role requirements: %s", e)
+        return {}
+
+@lru_cache(maxsize=32)
+def get_role_skill_rankings(role_name: str) -> Tuple[Set[str], Set[str], Set[str]]:
+    """Returns (core_skills, supporting_skills, optional_skills) for the given role."""
+    if not role_name:
+        return set(), set(), set()
+        
+    data = load_role_requirements()
+    roles_data = data.get("roles", {})
+    
+    role_lower = role_name.lower().replace(" ", "_").replace("-", "_")
+    
+    matched_roles = []
+    if "full_stack" in role_lower or "fullstack" in role_lower:
+        if "frontend_developer" in roles_data:
+            matched_roles.append(roles_data["frontend_developer"])
+        if "backend_developer" in roles_data:
+            matched_roles.append(roles_data["backend_developer"])
+    else:
+        for rk, rdata in roles_data.items():
+            if rk.replace("_developer", "") in role_lower:
+                matched_roles.append(rdata)
+                
+    if not matched_roles:
+        return set(), set(), set()
+
+    core_skills = set()
+    supporting_skills = set()
+    optional_skills = set()
+    
+    for rdata in matched_roles:
+        for skill in rdata.get("core_skills", []):
+            core_skills.add(skill["label"].lower())
+            for alt in skill.get("alt_labels", []):
+                core_skills.add(alt.lower())
+                
+        for skill in rdata.get("supporting_skills", []):
+            supporting_skills.add(skill["label"].lower())
+            for alt in skill.get("alt_labels", []):
+                supporting_skills.add(alt.lower())
+                
+        for skill in rdata.get("optional_skills", []):
+            optional_skills.add(skill["label"].lower())
+            for alt in skill.get("alt_labels", []):
+                optional_skills.add(alt.lower())
+                
+    return core_skills, supporting_skills, optional_skills
 
 
 @dataclass
@@ -107,6 +207,11 @@ class QuestionCandidate:
     is_valid: bool = True
     rejection_reason: Optional[str] = None
     selection_reason: Optional[str] = None
+    
+    # RAG Diagnostics
+    rag_rank: Optional[int] = None
+    rag_similarity: Optional[float] = None
+    rag_id: Optional[str] = None
 
 
 class QuestionQualityEvaluator:
@@ -148,6 +253,11 @@ class QuestionQualityEvaluator:
         last_answer: Optional[str] = None,
         strategy: Optional[str] = None,
         target_difficulty: str = "Medium",
+        follow_up_depth: int = 0,
+        turn_count: int = 0,
+        total_projects: int = 0,
+        total_technologies: int = 0,
+        semantic_detector=None,
     ) -> QuestionCandidate:
         text = candidate.text.strip()
         q_lower = text.lower()
@@ -163,13 +273,26 @@ class QuestionQualityEvaluator:
             "can you explain it",
             "tell us about it",
         ]
-        is_imperative_prompt = q_lower.startswith((
+        
+        q_clean = q_lower.strip(" \t\n-*#\"'")
+        is_imperative_prompt = q_clean.startswith((
             "explain", "describe", "walk me through", "compare", "discuss",
-            "outline", "detail", "clarify", "elaborate"
+            "outline", "detail", "clarify", "elaborate", "please explain", "please describe"
         ))
-        if len(text) < 15 or ("?" not in text and not is_imperative_prompt):
+        
+        if len(text) > 500 or len(words) > 100:
             candidate.is_valid = False
-            candidate.rejection_reason = "Question text too short or not a valid question / prompt"
+            candidate.rejection_reason = "Long article instead of a concise question"
+            return candidate
+
+        if len(text) < 15:
+            candidate.is_valid = False
+            candidate.rejection_reason = "Question text too short"
+            return candidate
+            
+        if "?" not in text and not is_imperative_prompt:
+            candidate.is_valid = False
+            candidate.rejection_reason = "Not a valid question or imperative prompt"
             return candidate
 
         if len(words) < 5 or any(vp in q_lower for vp in vague_phrases):
@@ -194,6 +317,32 @@ class QuestionQualityEvaluator:
                     candidate.rejection_reason = f"Near duplicate of previous question (similarity: {sim:.2f})"
                     return candidate
 
+        # 2.5 Semantic duplicate check via embeddings
+        if semantic_detector:
+            sem_result = semantic_detector.check_duplicate(text)
+            
+            # Log diagnostics
+            logger.info(
+                f"[Semantic Duplicate Diagnostic] "
+                f"candidate_similarity={sem_result['candidate_similarity']} "
+                f"matched_previous_question_index={sem_result['matched_previous_question_index']} "
+                f"semantic_duplicate={sem_result['semantic_duplicate']} "
+                f"threshold={sem_result['threshold']}"
+            )
+
+            if sem_result.get("semantic_duplicate") and sem_result.get("matched_previous_question_index") is not None:
+                matched_idx = sem_result["matched_previous_question_index"]
+                if matched_idx < len(previous_questions):
+                    prev_q_text = previous_questions[matched_idx]
+                    prev_intent = detect_question_intent(prev_q_text)
+                    
+                    if candidate.intent == prev_intent:
+                        candidate.is_valid = False
+                        candidate.rejection_reason = f"semantic_duplicate (similarity: {sem_result['candidate_similarity']:.2f})"
+                        return candidate
+                    else:
+                        candidate.generic_penalty += 2.0
+                        logger.info(f"Intent mismatch saved candidate from semantic duplicate rejection: {candidate.intent} vs {prev_intent}")
         # 3. Semantic repetition check: (same project/technology + same intent)
         if candidate.project or candidate.technology:
             subj = (candidate.project or candidate.technology or "").lower()
@@ -210,9 +359,14 @@ class QuestionQualityEvaluator:
                         INTENT_TRADEOFF,
                         INTENT_DEBUG,
                     ):
-                        candidate.is_valid = False
-                        candidate.rejection_reason = f"Semantic duplicate: same subject ({subj}) and intent ({candidate.intent})"
-                        return candidate
+                        q_words = set(re.findall(r"\b[a-z0-9]+\b", q_lower))
+                        p_words = set(re.findall(r"\b[a-z0-9]+\b", prev_lower))
+                        if q_words and p_words:
+                            sim = len(q_words & p_words) / max(1, len(q_words | p_words))
+                            if sim >= 0.35:
+                                candidate.is_valid = False
+                                candidate.rejection_reason = f"Semantic duplicate: same subject ({subj}), intent ({candidate.intent}), and high similarity ({sim:.2f})"
+                                return candidate
 
         # 4. Hallucination check: False claims of experience with unverified tools
         if candidate.source == SOURCE_GEMINI_RESUME and unsupported_technologies:
@@ -280,6 +434,11 @@ class QuestionQualityEvaluator:
         elif "frontend" in role_lower and any(t in q_lower for t in ["react", "component", "state", "dom", "rendering", "css", "browser", "hook"]):
             candidate.role_relevance = min(10.0, candidate.role_relevance + 1.5)
 
+        from ai_engine.services.question_controller import STRATEGY_TO_INTENT
+        desired_intent = STRATEGY_TO_INTENT.get(strategy) if strategy else None
+        if desired_intent and candidate.intent != desired_intent:
+            candidate.role_relevance -= 1.5
+
         # B. Resume Relevance & Grounding (0 to 10)
         if candidate.source == SOURCE_FOLLOW_UP:
             candidate.resume_relevance = 9.8 if last_answer else 9.0
@@ -291,6 +450,10 @@ class QuestionQualityEvaluator:
             candidate.resume_relevance = 6.5
 
         # C. Answer Continuation Value (0 to 10)
+        # Apply depth decay: follow-ups beyond depth 2 get progressively less
+        # advantage, preventing the system from indefinitely chasing follow-ups
+        # when important topics remain uncovered.
+        depth_decay = max(0.0, min(1.0, 1.0 - max(0, follow_up_depth - 2) * 0.25))
         if candidate.source == SOURCE_FOLLOW_UP and last_answer:
             ans_len = len(last_answer.strip())
             if ans_len >= 80:
@@ -302,8 +465,10 @@ class QuestionQualityEvaluator:
             # Boost follow-up when adaptive strategy explicitly requests deepening
             if strategy in ("follow_up", "deeper_probe", "edge_case", "tradeoff"):
                 candidate.answer_continuation_value = min(10.0, candidate.answer_continuation_value + 3.0)
+            # Apply depth decay to follow-ups beyond depth 2
+            candidate.answer_continuation_value *= depth_decay
         elif strategy in ("follow_up", "deeper_probe", "edge_case", "tradeoff"):
-            candidate.answer_continuation_value = 7.0
+            candidate.answer_continuation_value = 7.0 * depth_decay
         else:
             candidate.answer_continuation_value = 4.0
 
@@ -318,15 +483,22 @@ class QuestionQualityEvaluator:
         # E. Difficulty Fit (0 to 10)
         candidate.difficulty_fit = 8.5
 
-        # F. Coverage Value (0 to 4) - Secondary tie-breaker
+        # F. Coverage Value (0 to 7) - Stronger incentive for unexplored topics
+        # Scales up as interview progresses: early turns should go deep on
+        # high-importance topics; later turns need breadth. The coverage bonus
+        # increases with turn_count to create natural breadth pressure.
         cov = 0.0
+        progress_multiplier = min(1.5, 1.0 + (turn_count / 15.0) * 0.5)  # 1.0 to 1.5
         if candidate.project and candidate.project not in projects_covered:
-            cov += 1.5
+            # Uncovered projects get higher value when many remain uncovered
+            uncovered_project_ratio = (total_projects - len(projects_covered)) / max(1, total_projects)
+            cov += 2.0 * progress_multiplier * max(0.5, uncovered_project_ratio)
         if candidate.technology and candidate.technology not in technologies_covered:
-            cov += 1.5
+            uncovered_tech_ratio = (total_technologies - len(technologies_covered)) / max(1, total_technologies)
+            cov += 2.0 * progress_multiplier * max(0.5, uncovered_tech_ratio)
         if candidate.category and candidate.category not in categories_covered:
-            cov += 1.0
-        candidate.coverage_value = min(4.0, cov)
+            cov += 1.5
+        candidate.coverage_value = min(7.0, cov)
 
         # G. Interview Value Base (reduced from 8.0 to 5.0 for wider score differentiation)
         candidate.interview_value = 5.0
@@ -392,13 +564,33 @@ class InterviewService:
             {"name": str(p).split("\n")[0].strip(), "evidence": str(p), "technologies": matched_technologies[:3]}
             for p in matched_projects
         ]
-        technologies_inventory = topic_inventory.get("technologies") or matched_technologies or matched_skills
+        technologies_inventory = list(topic_inventory.get("technologies") or matched_technologies or matched_skills)
+        
+        # Rank technologies_inventory by role importance so core skills are prioritized
+        core_skills, supporting_skills, optional_skills = get_role_skill_rankings(role_name)
+        if core_skills or supporting_skills or optional_skills:
+            def get_tech_importance(tech: str) -> int:
+                t_lower = str(tech).lower().strip()
+                if t_lower in core_skills: return 3
+                if t_lower in supporting_skills: return 2
+                if t_lower in optional_skills: return 1
+                for ck in core_skills:
+                    if t_lower in ck or ck in t_lower: return 3
+                for sk in supporting_skills:
+                    if t_lower in sk or sk in t_lower: return 2
+                for ok in optional_skills:
+                    if t_lower in ok or ok in t_lower: return 1
+                return 0
+                
+            # Stable sort preserves the original resume matching order (evidence strength) as tie-breaker
+            technologies_inventory.sort(key=get_tech_importance, reverse=True)
         
         projects_covered = list(state_dict.get("projects_covered") or [])
         technologies_covered = list(state_dict.get("technologies_covered") or [])
         categories_covered = list(state_dict.get("categories_covered") or [])
         missing_skills_covered = list(state_dict.get("missing_skills_covered") or [])
         recent_intents = list(state_dict.get("recent_question_intents") or [])
+        follow_up_depth = int(state_dict.get("follow_up_depth") or 0)
 
         # List of technologies unsupported by the candidate's resume
         unsupported_technologies = [
@@ -409,19 +601,43 @@ class InterviewService:
         has_resume = bool(resume_text or matched_skills or matched_projects)
         turn_count = len(previous_questions)
 
+        # Compute remaining coverage for interview-aware prompts
+        remaining_projects = [
+            (p.get("name") if isinstance(p, dict) else str(p))
+            for p in projects_inventory
+            if (p.get("name") if isinstance(p, dict) else str(p)) not in projects_covered
+        ]
+        remaining_technologies = [t for t in technologies_inventory if t not in technologies_covered]
+        topics_covered_list = list(state_dict.get("topics_covered") or [])
+        current_objective = state_dict.get("current_objective", "assess_role_competency")
+
         # ------------------------------------------------------------------
         # 2. Determine Focus Project, Technology, and Category
         # ------------------------------------------------------------------
+        # Compute a pseudo-random rotation offset based on interview_id to vary the first question
+        rotation_offset = 0
+        int_id = state_dict.get("interview_id")
+        if int_id:
+            import hashlib
+            rotation_offset = int(hashlib.md5(str(int_id).encode()).hexdigest(), 16)
+
         unexplored_projects = [
             p for p in projects_inventory
             if (p.get("name") if isinstance(p, dict) else str(p)) not in projects_covered
         ]
-        target_proj_dict = unexplored_projects[0] if unexplored_projects else (projects_inventory[0] if projects_inventory else None)
+        if unexplored_projects:
+            target_proj_dict = unexplored_projects[rotation_offset % len(unexplored_projects)]
+        else:
+            target_proj_dict = projects_inventory[rotation_offset % len(projects_inventory)] if projects_inventory else None
+            
         target_proj_name = (target_proj_dict.get("name") if isinstance(target_proj_dict, dict) else str(target_proj_dict)) if target_proj_dict else ""
         target_proj_evidence = (target_proj_dict.get("evidence") if isinstance(target_proj_dict, dict) else str(target_proj_dict)) if target_proj_dict else ""
 
         unexplored_techs = [t for t in technologies_inventory if t not in technologies_covered]
-        target_technology = unexplored_techs[0] if unexplored_techs else (technologies_inventory[0] if technologies_inventory else topic)
+        if unexplored_techs:
+            target_technology = unexplored_techs[rotation_offset % len(unexplored_techs)]
+        else:
+            target_technology = technologies_inventory[rotation_offset % len(technologies_inventory)] if technologies_inventory else topic
 
         # Dynamic category selection based on role priorities
         role_cats = QuestionQualityEvaluator.ROLE_PRIORITY_CATEGORIES.get("backend", ALL_QUESTION_CATEGORIES)
@@ -431,7 +647,10 @@ class InterviewService:
                 break
 
         uncovered_cats = [c for c in role_cats if c not in categories_covered[-4:]]
-        target_category = uncovered_cats[0] if uncovered_cats else role_cats[turn_count % len(role_cats)]
+        if uncovered_cats:
+            target_category = uncovered_cats[(turn_count + rotation_offset) % len(uncovered_cats)]
+        else:
+            target_category = role_cats[(turn_count + rotation_offset) % len(role_cats)]
 
         controller = AdaptiveQuestionController(topic)
         candidate_pool: List[QuestionCandidate] = []
@@ -441,29 +660,54 @@ class InterviewService:
         # ------------------------------------------------------------------
 
         # --- Candidate A: Conversational Follow-Up (if candidate provided substantive answer) ---
-        if last_answer and len(last_answer.strip()) >= 20 and strategy in ("follow_up", "clarification", "deeper_probe", "edge_case", "tradeoff", "scenario", "architecture"):
+        if last_answer and len(last_answer.strip()) >= 20 and strategy in ("follow_up", "clarification", "deeper_probe", "edge_case", "tradeoff", "scenario", "architecture", "misconception_diagnostic"):
+            # Build coverage awareness for the follow-up prompt
+            remaining_summary = ""
+            if remaining_projects:
+                remaining_summary += f"\nUNCOVERED PROJECTS still needing assessment: {', '.join(remaining_projects[:4])}"
+            if remaining_technologies:
+                remaining_summary += f"\nUNCOVERED TECHNOLOGIES still needing assessment: {', '.join(remaining_technologies[:6])}"
+
+            desired_intent = STRATEGY_TO_INTENT.get(strategy, INTENT_EXPLAIN)
+            intent_purpose = DIVERSITY_PROMPTS.get(strategy, "Ask a follow-up question.")
+            diff_rubric = DIFFICULTY_RUBRIC.get(difficulty, DIFFICULTY_RUBRIC.get("medium", ""))
+
             follow_up_prompt = f"""
+SYSTEM:
 You are a senior technical interviewer for {role_name}.
-The candidate just answered your previous technical question.
 
-TARGET ROLE: {role_name}
-CANDIDATE'S LAST ANSWER:
+CONTEXT:
+- Target Role: {role_name}
+- Target Topic: {topic}
+- Current Difficulty: {difficulty}
+- Difficulty Definition: {diff_rubric}
+- Candidate's Last Answer (PRIMARY CONTEXT):
 "{last_answer}"
+- Known Weaknesses (SECONDARY CONTEXT): {', '.join(state_dict.get('weak_areas', [])[:5]) or 'None'}
+- Known Misconceptions (SECONDARY CONTEXT): {', '.join(state_dict.get('misconceptions', [])[:3]) or 'None'}
+- Recent Questions (DO NOT REPEAT):
+{chr(10).join(f"- {q}" for q in previous_questions[-6:]) if previous_questions else "None"}
 
-INTERVIEW GOAL:
-Ask a sharp, concrete technical follow-up question directly investigating what the candidate claimed in their answer.
-Probe into:
-- Technical trade-offs or limitations of the approach they described
-- Edge cases, error handling, or concurrency/failure scenarios
-- Concrete mechanics or implementation details
+INTERVIEW STRATEGY:
+- Desired Intent: {desired_intent}
+- Intent Purpose: {intent_purpose}
 
-STRICT RULES:
-1. Ground the follow-up directly in what the candidate explicitly stated.
-2. DO NOT ask generic textbook questions (e.g. "What is Full Stack Development?").
-3. DO NOT repeat previous questions.
-4. Return ONLY valid JSON:
+QUESTIONING RULES:
+- Independently formulate the question from the supplied context.
+- Do not use a fixed sentence template.
+- Do not copy or paraphrase previous questions.
+- Do not merely replace technology names in an existing pattern.
+- Avoid repeating the same reasoning angle if the topic is revisited.
+- Choose natural conversational wording yourself.
+- Avoid repeatedly using the same sentence structure or phrasing when another natural formulation would fit the intended question better.
+- Ask exactly one question.
+- The question must be technically coherent, answerable, and match the specified difficulty.
+- Stay grounded in the candidate's last answer.
+
+OUTPUT:
+Return ONLY valid JSON:
 {{
-    "question": "Your single conversational follow-up question here"
+    "question": "..."
 }}
 """
             try:
@@ -471,15 +715,9 @@ STRICT RULES:
                 if llm:
                     response = llm.invoke(follow_up_prompt)
                     raw_text = extract_llm_text(response)
-                    match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                    if match:
-                        parsed = json.loads(match.group(0))
-                        q_text = parsed.get("question") or parsed.get("answer") or ""
-                    else:
-                        q_text = raw_text
-                    q_text = q_text.strip().strip('"').strip("'")
+                    q_text = parse_llm_question_json(raw_text)
                     if q_text and len(q_text) >= 15:
-                        intent = detect_question_intent(q_text)
+                        intent = detect_question_intent(q_text, desired_intent)
                         candidate_pool.append(QuestionCandidate(
                             text=q_text,
                             source=SOURCE_FOLLOW_UP,
@@ -489,7 +727,7 @@ STRICT RULES:
                             project=target_proj_name,
                             technology=target_technology,
                             difficulty=difficulty,
-                            selection_reason="Candidate provided substantive technical claims; probing trade-offs and edge cases."
+                            selection_reason="Targeting identified misconception." if strategy == "misconception_diagnostic" else "Candidate provided substantive technical claims; probing trade-offs and edge cases."
                         ))
             except Exception as exc:
                 logger.warning("Follow-up generation error: %s", exc)
@@ -502,50 +740,62 @@ STRICT RULES:
             )
 
             category_instructions = {
-                CAT_ARCHITECTURE: f"Ask about the high-level system architecture, component boundaries, and design patterns used in {target_proj_name or target_technology}.",
-                CAT_DATA_FLOW: f"Ask how data flows end-to-end through {target_proj_name or target_technology}, from client request to backend/database and back.",
-                CAT_IMPLEMENTATION: f"Ask about concrete implementation details, state management, or key libraries in {target_technology}.",
-                CAT_TECH_CHOICE: f"Ask why {target_technology} was chosen for {target_proj_name or 'this system'} compared to alternatives, and what trade-offs were accepted.",
-                CAT_DATABASE: f"Ask about database schema design, indexing, transactions, or query optimization in {target_proj_name or target_technology}.",
-                CAT_API: f"Ask about REST/GraphQL API design, request validation, error status codes, or payload structuring in {target_proj_name or target_technology}.",
-                CAT_SECURITY: f"Ask about authentication, authorization, token storage/revocation, or data protection in {target_proj_name or target_technology}.",
-                CAT_DEBUGGING: f"Ask about a challenging technical bug, race condition, or edge case encountered while building with {target_technology}, and how it was resolved.",
-                CAT_PERFORMANCE: f"Ask about performance bottlenecks, rendering optimizations, query latency, or caching in {target_proj_name or target_technology}.",
-                CAT_TRADEOFFS: f"Ask what technical trade-offs, limitations, or architectural compromises were made in {target_proj_name or target_technology}.",
-                CAT_ROLE_COMPETENCY: f"Ask an in-depth engineering competency question regarding {target_technology} in the context of {role_name}.",
+                CAT_ARCHITECTURE: "Evaluate understanding of high-level system architecture, component boundaries, and design patterns.",
+                CAT_DATA_FLOW: "Evaluate understanding of how data flows end-to-end through the system.",
+                CAT_IMPLEMENTATION: "Evaluate understanding of concrete implementation details, state management, or key libraries.",
+                CAT_TECH_CHOICE: "Evaluate reasoning for choosing this technology over alternatives and trade-offs accepted.",
+                CAT_DATABASE: "Evaluate understanding of database schema design, indexing, transactions, or query optimization.",
+                CAT_API: "Evaluate understanding of API design, request validation, error handling, or payload structuring.",
+                CAT_SECURITY: "Evaluate understanding of authentication, authorization, or data protection.",
+                CAT_DEBUGGING: "Evaluate problem-solving skills for challenging technical bugs, race conditions, or edge cases.",
+                CAT_PERFORMANCE: "Evaluate understanding of performance bottlenecks, optimization, or caching.",
+                CAT_TRADEOFFS: "Evaluate understanding of technical trade-offs, limitations, or architectural compromises.",
+                CAT_ROLE_COMPETENCY: "Evaluate in-depth engineering competency in the context of the role.",
             }
             spec_cat_goal = category_instructions.get(target_category, category_instructions[CAT_IMPLEMENTATION])
+            desired_intent = target_category  # For resume phase, category generally aligns with intent
+            diff_rubric = DIFFICULTY_RUBRIC.get(difficulty, DIFFICULTY_RUBRIC.get("medium", ""))
 
             resume_prompt = f"""
+SYSTEM:
 You are a senior technical interviewer for the role of {role_name}.
 You have reviewed the candidate's resume and are testing whether they genuinely understand and built what they claim.
 
-CANDIDATE'S VERIFIED RESUME DETAILS:
+CONTEXT:
 - Target Role: {role_name}
-- Focus Project: {target_proj_name or "Resume project work"}
-- Focus Technology: {target_technology}
-- Target Question Category: {target_category} ({spec_cat_goal})
-- Matched Skills: {", ".join(matched_skills[:8]) if matched_skills else "Technical background"}
-- Matched Technologies: {", ".join(matched_technologies[:8]) if matched_technologies else target_technology}
-- Matched Projects: {", ".join(str(p.get("name") if isinstance(p, dict) else p) for p in projects_inventory[:4])}
-
-PROJECT EVIDENCE & EXCERPTS:
+- Target Technology/Topic (PRIMARY CONTEXT): {target_technology or topic}
+- Target Project (PRIMARY CONTEXT): {target_proj_name or "Resume project work"}
+- Verified Resume Evidence (PRIMARY CONTEXT):
 {evidence_block}
-
-INTERVIEW PROGRESS:
-- Current Target Topic: {target_technology or topic}
+- Candidate's Last Answer (TRANSITION CONTEXT):
+"{last_answer}"
 - Current Difficulty: {difficulty}
-- Previous Questions Asked:
-{chr(10).join(f"- {q}" for q in previous_questions) if previous_questions else "None (First Question)"}
+- Difficulty Definition: {diff_rubric}
+- Recent Question Intents: {', '.join(recent_intents[-3:]) if recent_intents else 'None yet'}
+- Recent Questions (DO NOT REPEAT):
+{chr(10).join(f"- {q}" for q in previous_questions[-6:]) if previous_questions else "None (First Question)"}
 
-STRICT INTERVIEWER RULES:
-1. Ground the question DIRECTLY in what the candidate ACTUALLY built in their resume (e.g. "In your {target_proj_name or 'project'}, you utilized {target_technology}. How did you handle {target_category}...").
-2. NEVER invent technologies, frameworks, or databases not mentioned in the resume.
-3. NEVER ask generic textbook trivia (e.g. "What is Full Stack Development?", "What is polymorphism?").
-4. Specifically address the question category: {target_category}.
-5. Return ONLY valid JSON:
+INTERVIEW STRATEGY:
+- Desired Intent: {desired_intent}
+- Intent Purpose: {spec_cat_goal}
+
+QUESTIONING RULES:
+- Independently formulate the question from the supplied context.
+- Do not use a fixed sentence template.
+- Do not copy or paraphrase previous questions.
+- Avoid repeating the same reasoning angle.
+- Choose natural conversational wording yourself.
+- Avoid repeatedly using the same sentence structure or phrasing when another natural formulation would fit the intended question better.
+- Ask exactly one question.
+- The question must be technically coherent and answerable.
+- Stay grounded in the candidate's verified resume experience.
+- NEVER invent technologies, frameworks, or databases not mentioned in the resume.
+- Do not treat a skill listed in the resume as proof of advanced production experience — probe for genuine understanding.
+
+OUTPUT:
+Return ONLY valid JSON:
 {{
-    "question": "Your single personalized interview question here"
+    "question": "..."
 }}
 """
             try:
@@ -553,15 +803,9 @@ STRICT INTERVIEWER RULES:
                 if llm:
                     response = llm.invoke(resume_prompt)
                     raw_text = extract_llm_text(response)
-                    match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                    if match:
-                        parsed = json.loads(match.group(0))
-                        q_text = parsed.get("question") or parsed.get("answer") or ""
-                    else:
-                        q_text = raw_text
-                    q_text = q_text.strip().strip('"').strip("'")
+                    q_text = parse_llm_question_json(raw_text)
                     if q_text and len(q_text) >= 15:
-                        intent = detect_question_intent(q_text)
+                        intent = detect_question_intent(q_text, desired_intent)
                         candidate_pool.append(QuestionCandidate(
                             text=q_text,
                             source=SOURCE_GEMINI_RESUME,
@@ -576,32 +820,83 @@ STRICT INTERVIEWER RULES:
             except Exception as exc:
                 logger.warning("Gemini resume question generation error: %s", exc)
 
-        # --- Candidate C: Supabase Question Bank Retrieval (In role_phase or when exploring role competencies) ---
-        if interview_phase != "resume_phase" or not has_resume:
+        # --- Candidate C: Supabase Question Bank Retrieval ---
+        # Allow Supabase in resume_phase too: periodically (every 3rd turn) or when
+        # the strategy is topic_transition, or always in role_phase. This ensures
+        # the question bank contributes without forcing artificial rotation.
+        supabase_eligible = (
+            interview_phase != "resume_phase"
+            or not has_resume
+            or turn_count % 3 == 2  # every 3rd turn in resume_phase
+            or strategy == "topic_transition"
+            or target_category in (CAT_ROLE_COMPETENCY, CAT_MISSING_SKILL)
+        )
+        if supabase_eligible:
             try:
-                search_query = f"{role_name} {target_technology or topic} {target_category} {difficulty}"
-                rag_result = self.rag.ask(
-                    f"Select one practical technical interview question for {role_name} focusing on {target_technology or topic} and {target_category}.",
+                # Map ESCO role to Question Bank Role format using canonical normalization
+                mapped_role = role_name.strip().lower().replace(" ", "_").replace("-", "_")
+                if "full_stack" in mapped_role or "fullstack" in mapped_role:
+                    mapped_role = "full_stack_developer"
+                elif "backend" in mapped_role:
+                    mapped_role = "backend_developer"
+                elif "frontend" in mapped_role:
+                    mapped_role = "frontend_developer"
+                
+                # Build a descriptive, semantically clean retrieval query based on available state
+                query_parts = []
+                if target_technology or topic:
+                    query_parts.append(str(target_technology or topic))
+                if target_category:
+                    query_parts.append(str(target_category).replace("_", " "))
+                if strategy:
+                    query_parts.append(str(strategy).replace("_", " "))
+                if difficulty:
+                    query_parts.append(str(difficulty).lower())
+                    
+                search_query = " ".join(query_parts).strip()
+                logger.info(f"[RAG Retrieval] Executing search with query: '{search_query}'")                
+                filters = {}
+                if mapped_role:
+                    filters["role"] = mapped_role
+                if difficulty:
+                    filters["difficulty"] = difficulty
+                    
+                rag_results = self.rag.ask(
                     search_query=search_query,
+                    filters=filters,
                 )
-                if isinstance(rag_result, dict):
-                    bank_q = rag_result.get("answer") or rag_result.get("question") or rag_result.get("text") or ""
-                else:
-                    bank_q = str(rag_result or "")
-                bank_q = bank_q.strip().strip('"').strip("'")
-                if bank_q and len(bank_q) >= 15:
-                    intent = detect_question_intent(bank_q)
-                    candidate_pool.append(QuestionCandidate(
-                        text=bank_q,
-                        source=SOURCE_SUPABASE_BANK,
-                        category=target_category,
-                        topic=target_technology or topic,
-                        intent=intent,
-                        project=target_proj_name,
-                        technology=target_technology,
-                        difficulty=difficulty,
-                        selection_reason=f"Retrieved high-quality technical question for {target_technology} from verified question bank."
-                    ))
+                
+                if not isinstance(rag_results, list):
+                    rag_results = [rag_results] if rag_results else []
+                    
+                for rank_idx, rag_item in enumerate(rag_results):
+                    if isinstance(rag_item, dict):
+                        bank_q = rag_item.get("question") or rag_item.get("answer") or ""
+                        similarity = rag_item.get("similarity")
+                        rank = rag_item.get("rank", rank_idx + 1)
+                    else:
+                        bank_q = str(rag_item or "")
+                        similarity = None
+                        rank = rank_idx + 1
+                        
+                    bank_q = bank_q.strip().strip('"').strip("'")
+                    if bank_q and len(bank_q) >= 15:
+                        intent = detect_question_intent(bank_q)
+                        sim_str = f"{similarity:.4f}" if similarity is not None else "N/A"
+                        candidate_pool.append(QuestionCandidate(
+                            text=bank_q,
+                            source=SOURCE_SUPABASE_BANK,
+                            category=target_category,
+                            topic=target_technology or topic,
+                            intent=intent,
+                            project=target_proj_name,
+                            technology=target_technology,
+                            difficulty=difficulty,
+                            selection_reason=f"Retrieved exact technical question from verified bank (Rank: {rank}, Similarity: {sim_str}).",
+                            rag_rank=rank,
+                            rag_similarity=similarity,
+                            rag_id=rag_item.get("metadata", {}).get("id") if isinstance(rag_item, dict) else None
+                        ))
             except Exception as exc:
                 logger.warning("Supabase RAG retrieval error: %s", exc)
 
@@ -613,23 +908,43 @@ STRICT INTERVIEWER RULES:
         coverage_ratio = explored_count / max(1, total_resume_items)
         if unexplored_missing and has_resume and (coverage_ratio >= 0.4 or strategy == "missing_skill" or turn_count >= 3):
             target_missing = unexplored_missing[0]
+            diff_rubric = DIFFICULTY_RUBRIC.get(difficulty, DIFFICULTY_RUBRIC.get("medium", ""))
+            
             missing_skill_prompt = f"""
+SYSTEM:
 You are a senior technical interviewer for {role_name}.
-The candidate's resume does NOT list experience with {target_missing}, which is an important requirement for {role_name}.
 
-CANDIDATE'S KNOWN STACK:
-- Projects: {", ".join(str(p.get("name") if isinstance(p, dict) else p) for p in projects_inventory[:3])}
-- Technologies: {", ".join(technologies_inventory[:6])}
+CONTEXT:
+- Target Role: {role_name}
+- Missing Skill (PRIMARY CONTEXT): {target_missing}
+- Candidate's Known Stack: {", ".join(technologies_inventory[:6])}
+- Candidate's Known Projects: {", ".join(str(p.get("name") if isinstance(p, dict) else p) for p in projects_inventory[:3])}
+- Candidate's Last Answer (SECONDARY CONTEXT):
+"{last_answer}"
+- Current Difficulty: {difficulty}
+- Difficulty Definition: {diff_rubric}
+- Recent Questions (DO NOT REPEAT):
+{chr(10).join(f"- {q}" for q in previous_questions[-6:]) if previous_questions else "None"}
 
-INTERVIEW GOAL:
-Frame a realistic, hypothetical engineering scenario asking how the candidate would approach evaluating or integrating {target_missing} into their architecture.
-Example framing: "Your project uses [Stack]. If you needed to integrate {target_missing} to solve [Problem], how would you design that integration and handle [Challenge]?"
+INTERVIEW STRATEGY:
+- Desired Intent: scenario
+- Intent Purpose: Determine whether the candidate can reason about integrating or evaluating a required technology they lack direct experience with.
 
-STRICT RULES:
-1. Do NOT claim the candidate already has experience with {target_missing}. Frame it explicitly as a hypothetical scenario or architectural extension.
-2. Return ONLY valid JSON:
+QUESTIONING RULES:
+- Independently formulate the question from the supplied context.
+- Do not use a fixed sentence template.
+- Do not copy or paraphrase previous questions.
+- Avoid repeating the same reasoning angle.
+- Choose natural conversational wording yourself.
+- Avoid repeatedly using the same sentence structure or phrasing when another natural formulation would fit the intended question better.
+- Ask exactly one question.
+- Frame a realistic, hypothetical engineering scenario asking how the candidate would approach evaluating or integrating {target_missing} into their architecture.
+- Do NOT claim the candidate already has experience with {target_missing}. Frame it explicitly as a hypothetical scenario or architectural extension.
+
+OUTPUT:
+Return ONLY valid JSON:
 {{
-    "question": "Your single hypothetical scenario question here"
+    "question": "..."
 }}
 """
             try:
@@ -637,15 +952,9 @@ STRICT RULES:
                 if llm:
                     response = llm.invoke(missing_skill_prompt)
                     raw_text = extract_llm_text(response)
-                    match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-                    if match:
-                        parsed = json.loads(match.group(0))
-                        q_text = parsed.get("question") or parsed.get("answer") or ""
-                    else:
-                        q_text = raw_text
-                    q_text = q_text.strip().strip('"').strip("'")
+                    q_text = parse_llm_question_json(raw_text)
                     if q_text and len(q_text) >= 15:
-                        intent = detect_question_intent(q_text)
+                        intent = detect_question_intent(q_text, desired_intent)
                         candidate_pool.append(QuestionCandidate(
                             text=q_text,
                             source=SOURCE_MISSING_SKILL,
@@ -663,6 +972,13 @@ STRICT RULES:
         # ------------------------------------------------------------------
         # 4. EVALUATE AND SCORE ALL CANDIDATES
         # ------------------------------------------------------------------
+        from ai_engine.services.semantic_duplicate_detector import SemanticDuplicateDetector
+        semantic_detector = SemanticDuplicateDetector(previous_questions)
+        
+        # Phase 3.1: Batch embed all candidates to save API calls
+        candidate_texts = [cand.text for cand in candidate_pool]
+        semantic_detector.prefetch_candidate_embeddings(candidate_texts)
+        
         evaluated_candidates: List[QuestionCandidate] = []
         for cand in candidate_pool:
             eval_cand = QuestionQualityEvaluator.evaluate(
@@ -680,8 +996,23 @@ STRICT RULES:
                 last_answer=last_answer,
                 strategy=strategy,
                 target_difficulty=difficulty,
+                follow_up_depth=follow_up_depth,
+                turn_count=turn_count,
+                total_projects=len(projects_inventory),
+                total_technologies=len(technologies_inventory),
+                semantic_detector=semantic_detector,
             )
             evaluated_candidates.append(eval_cand)
+
+            if eval_cand.source == SOURCE_SUPABASE_BANK:
+                logger.info(
+                    "[RAG Diagnostic] rank=%s similarity=%s question_id=%s accepted=%s rejection_reason=%s",
+                    eval_cand.rag_rank,
+                    f"{eval_cand.rag_similarity:.4f}" if eval_cand.rag_similarity is not None else "None",
+                    eval_cand.rag_id or "N/A",
+                    eval_cand.is_valid,
+                    eval_cand.rejection_reason or "N/A"
+                )
 
         # ------------------------------------------------------------------
         # 5. SELECT WINNING CANDIDATE & LOG DECISION
@@ -693,25 +1024,68 @@ STRICT RULES:
             winner = valid_candidates[0]
         else:
             # Deterministic category-aware fallback if all candidates failed validation
-            fallback_text = controller.fallback(
+            fallback_texts = controller.fallback_candidates(
                 difficulty=difficulty,
-                previous_questions=previous_questions,
                 category=target_category,
                 project_name=target_proj_name,
                 technology=target_technology,
             )
-            winner = QuestionCandidate(
-                text=fallback_text,
-                source=SOURCE_GEMINI_RESUME if has_resume else SOURCE_ROLE_BANK,
-                category=target_category,
-                topic=target_technology or topic,
-                intent=detect_question_intent(fallback_text),
-                project=target_proj_name,
-                technology=target_technology,
-                difficulty=difficulty,
-                score=40.0,
-                selection_reason=f"Deterministic fallback for category {target_category}."
-            )
+            
+            winner = None
+            for f_text in fallback_texts:
+                cand = QuestionCandidate(
+                    text=f_text,
+                    source="fallback",
+                    category=target_category,
+                    topic=target_technology or topic,
+                    intent=detect_question_intent(f_text, desired_intent=STRATEGY_TO_INTENT.get(strategy)),
+                    project=target_proj_name,
+                    technology=target_technology,
+                    difficulty=difficulty,
+                    selection_reason=f"Deterministic fallback for category {target_category}."
+                )
+                
+                eval_cand = QuestionQualityEvaluator.evaluate(
+                    cand,
+                    role_name=role_name,
+                    verified_technologies=technologies_inventory,
+                    verified_projects=[p.get("name") if isinstance(p, dict) else str(p) for p in projects_inventory],
+                    unsupported_technologies=unsupported_technologies,
+                    missing_skills=missing_skills,
+                    previous_questions=previous_questions,
+                    recent_intents=recent_intents,
+                    categories_covered=categories_covered,
+                    projects_covered=projects_covered,
+                    technologies_covered=technologies_covered,
+                    last_answer=last_answer,
+                    strategy=strategy,
+                    target_difficulty=difficulty,
+                    follow_up_depth=follow_up_depth,
+                    turn_count=turn_count,
+                    total_projects=len(projects_inventory),
+                    total_technologies=len(technologies_inventory),
+                    semantic_detector=semantic_detector,
+                )
+                
+                if eval_cand.is_valid:
+                    eval_cand.score = 40.0
+                    winner = eval_cand
+                    break
+            
+            if not winner:
+                # Absolute last resort emergency fallback if even fallback candidates fail validation
+                winner = QuestionCandidate(
+                    text=f"In your technical experience with {target_technology or topic}, what were the key architecture decisions and trade-offs you made?",
+                    source="fallback",
+                    category=target_category,
+                    topic=target_technology or topic,
+                    intent=INTENT_ARCHITECTURE,
+                    project=target_proj_name,
+                    technology=target_technology,
+                    difficulty=difficulty,
+                    score=40.0,
+                    selection_reason="Emergency final fallback bypasses validation."
+                )
 
         # Step 24: Rich Debug Logging of Candidate Selection and Rejection Reasons
         rejected_candidates = [c for c in evaluated_candidates if c != winner]
@@ -755,8 +1129,11 @@ STRICT RULES:
             rejection_log,
         )
 
+        from app.utils.resume import normalize_generated_question
+        final_winner_text = normalize_generated_question(winner.text)
+
         return {
-            "answer": winner.text,
+            "answer": final_winner_text,
             "source": winner.source,
             "category": winner.category,
             "intent": winner.intent,

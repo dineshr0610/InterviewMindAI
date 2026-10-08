@@ -1,0 +1,113 @@
+{
+  "Python Developer": {
+    "fundamentals": 10,
+    "explain": 16,
+    "tradeoff": 10,
+    "debug": 9,
+    "scenario": 8,
+    "implement": 12,
+    "compare": 11,
+    "architecture": 8,
+    "optimize": 8,
+    "diagnose": 8
+  },
+  "Java Developer": {
+    "fundamentals": 12,
+    "explain": 14,
+    "tradeoff": 13,
+    "debug": 10,
+    "scenario": 16,
+    "implement": 14,
+    "compare": 9,
+    "architecture": 4,
+    "optimize": 4,
+    "diagnose": 4
+  },
+  "DevOps / Cloud Engineer": {
+    "fundamentals": 19,
+    "explain": 23,
+    "implement": 18,
+    "tradeoff": 19,
+    "debug": 15,
+    "scenario": 21,
+    "compare": 10,
+    "architecture": 7,
+    "optimize": 5,
+    "diagnose": 8
+  },
+  "AI Engineer": {
+    "fundamentals": 12,
+    "explain": 17,
+    "implement": 14,
+    "tradeoff": 16,
+    "debug": 10,
+    "scenario": 15,
+    "compare": 4,
+    "architecture": 4,
+    "optimize": 4,
+    "diagnose": 4
+  },
+  "Database Developer": {
+    "fundamentals": 13,
+    "explain": 18,
+    "implement": 12,
+    "compare": 10,
+    "tradeoff": 13,
+    "optimize": 3,
+    "diagnose": 5,
+    "scenario": 16,
+    "debug": 8,
+    "architecture": 2
+  },
+  "Machine Learning Engineer": {
+    "fundamentals": 20,
+    "explain": 31,
+    "diagnose": 6,
+    "compare": 7,
+    "tradeoff": 9,
+    "implement": 10,
+    "scenario": 11,
+    "debug": 6
+  },
+  "Data Analyst": {
+    "explain": 22,
+    "implement": 15,
+    "debug": 10,
+    "tradeoff": 12,
+    "scenario": 22,
+    "diagnose": 3,
+    "fundamentals": 11,
+    "compare": 4,
+    "optimize": 1
+  },
+  "Full Stack Developer": {
+    "explain": 18,
+    "scenario": 23,
+    "implement": 12,
+    "debug": 13,
+    "tradeoff": 14,
+    "architecture": 3,
+    "diagnose": 6,
+    "fundamentals": 11
+  },
+  "Frontend Developer": {
+    "fundamentals": 13,
+    "implement": 15,
+    "debug": 16,
+    "scenario": 16,
+    "compare": 10,
+    "tradeoff": 11,
+    "architecture": 9,
+    "explain": 10
+  },
+  "Backend Developer": {
+    "fundamentals": 18,
+    "implement": 23,
+    "debug": 23,
+    "tradeoff": 24,
+    "scenario": 31,
+    "explain": 18,
+    "compare": 8,
+    "architecture": 2
+  }
+}

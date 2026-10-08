@@ -1,0 +1,361 @@
+{
+  "role_selected": "Java Developer",
+  "total_staged_before_batch25": 2922,
+  "cumulative_difficulty_before": {
+    "easy": [
+      285,
+      23.9
+    ],
+    "medium": [
+      591,
+      49.6
+    ],
+    "hard": [
+      316,
+      26.5
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.385,
+    "answer": 0.35,
+    "question+answer": 0.327
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what are the",
+      6
+    ],
+    [
+      "what is the",
+      5
+    ],
+    [
+      "how do you",
+      3
+    ],
+    [
+      "you have a",
+      3
+    ],
+    [
+      "you need to",
+      2
+    ],
+    [
+      "what does the",
+      2
+    ],
+    [
+      "you notice your",
+      1
+    ],
+    [
+      "a highthroughput java",
+      1
+    ],
+    [
+      "explain the primary",
+      1
+    ],
+    [
+      "when tuning a",
+      1
+    ],
+    [
+      "what exactly does",
+      1
+    ],
+    [
+      "an application crashes",
+      1
+    ],
+    [
+      "what is escape",
+      1
+    ],
+    [
+      "you suspect a",
+      1
+    ],
+    [
+      "a java application",
+      1
+    ],
+    [
+      "you deploy a",
+      1
+    ],
+    [
+      "explain the jvm",
+      1
+    ],
+    [
+      "two threads increment",
+      1
+    ],
+    [
+      "explain the concept",
+      1
+    ],
+    [
+      "a developer uses",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      97
+    ],
+    [
+      "what is the",
+      88
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      35
+    ],
+    [
+      "explain the concept",
+      27
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "what is a",
+      23
+    ],
+    [
+      "you need to",
+      22
+    ],
+    [
+      "you have a",
+      22
+    ],
+    [
+      "explain the difference",
+      17
+    ],
+    [
+      "you are building",
+      17
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "explain the purpose",
+      11
+    ],
+    [
+      "what does the",
+      9
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "why is it",
+      6
+    ]
+  ],
+  "top_opening_share_new_batch": 0.12,
+  "distinct_openings_new_batch": 35,
+  "role_distribution": {
+    "Java Developer": 50
+  },
+  "skill_distribution": {
+    "JVM & Memory Management": 15,
+    "Java Concurrency": 20,
+    "Enterprise Architecture": 15
+  },
+  "technology_distribution": {
+    "Java": 50
+  },
+  "topic_distribution": {
+    "Garbage Collection & JIT": 15,
+    "Multithreading & Thread Pools": 20,
+    "Distributed Systems & Resilience": 15
+  },
+  "intent_distribution": {
+    "debug": 8,
+    "scenario": 10,
+    "explain": 9,
+    "tradeoff": 9,
+    "implement": 7,
+    "fundamentals": 7
+  },
+  "difficulty_distribution": {
+    "hard": 18,
+    "medium": 24,
+    "easy": 8
+  },
+  "question_type_distribution": {
+    "debugging": 8,
+    "scenario": 10,
+    "concept": 16,
+    "tradeoff": 9,
+    "implementation": 7
+  },
+  "bucket_progress": {
+    "JVM & Memory Management | Garbage Collection & JIT": {
+      "generated_now": 15
+    },
+    "Java Concurrency | Multithreading & Thread Pools": {
+      "generated_now": 20
+    },
+    "Enterprise Architecture | Distributed Systems & Resilience": {
+      "generated_now": 15
+    }
+  },
+  "cumulative_generated_production": 1242,
+  "cumulative_staging_total": 2972,
+  "cumulative_generated_by_role": {
+    "Python Developer": 150,
+    "Java Developer": 150,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 100,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 100,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 150,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      293,
+      23.6
+    ],
+    "medium": [
+      615,
+      49.5
+    ],
+    "hard": [
+      334,
+      26.9
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -6.1,
+    "medium": 4.6,
+    "hard": 1.5
+  },
+  "target_gap_pct_points_after": {
+    "easy": -6.4,
+    "medium": 4.5,
+    "hard": 1.9
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 350,
+    "Frontend Developer": 350,
+    "Java Developer": 350,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 150,
+      "Java Developer": 150,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 100,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 100,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 150,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 532,
+      "Data Analyst": 89,
+      "AI Engineer": 76,
+      "Full Stack Developer": 168,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 115,
+      "Frontend Developer": 55,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 89,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 44,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 83,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 17,
+      "Product Manager": 14,
+      "Data Scientist": 68,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 99,
+      "Site Reliability Engineer": 16,
+      "UX Engineer": 15
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Backend Developer": 50,
+    "Performance Engineer": 15,
+    "Software Engineer": 20,
+    "Architecture": 15
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1242,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

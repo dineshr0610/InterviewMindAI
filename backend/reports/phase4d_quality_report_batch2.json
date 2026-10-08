@@ -1,0 +1,60 @@
+{
+  "Batch 2 buckets processed": 4,
+  "Questions attempted": 50,
+  "Questions accepted": 50,
+  "Questions rejected": 0,
+  "Rejection reasons": {},
+  "Role distribution": {
+    "Python Developer": 50
+  },
+  "Skill distribution": {
+    "OOP": 24,
+    "Memory Management": 13,
+    "Concurrency": 13
+  },
+  "Technology distribution": {
+    "Python": 50
+  },
+  "Topic distribution": {
+    "Inheritance": 12,
+    "Metaclasses": 12,
+    "GIL": 13,
+    "Multithreading": 13
+  },
+  "Intent distribution": {
+    "fundamentals": 4,
+    "explain": 8,
+    "implement": 7,
+    "tradeoff": 5,
+    "debug": 4,
+    "scenario": 4,
+    "compare": 6,
+    "architecture": 4,
+    "optimize": 4,
+    "diagnose": 4
+  },
+  "Difficulty distribution": {
+    "easy": 6,
+    "medium": 22,
+    "hard": 22
+  },
+  "Question type distribution": {
+    "concept": 12,
+    "implementation": 7,
+    "tradeoff": 5,
+    "debugging": 8,
+    "scenario": 4,
+    "comparison": 6,
+    "architecture": 4,
+    "optimization": 4
+  },
+  "Duplicate count": 0,
+  "Semantic duplicate count": 0,
+  "Technical rejection count": 0,
+  "Prompt leakage count": 0,
+  "Remaining gap count": 3611,
+  "Files updated": [
+    "data/interview_question_bank_v2_generated.jsonl",
+    "reports/phase4d_quality_report.json"
+  ]
+}

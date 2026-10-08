@@ -1,0 +1,367 @@
+{
+  "role_selected": "AI Engineer",
+  "total_staged_before_batch30": 3172,
+  "cumulative_difficulty_before": {
+    "easy": [
+      322,
+      22.3
+    ],
+    "medium": [
+      714,
+      49.5
+    ],
+    "hard": [
+      406,
+      28.2
+    ]
+  },
+  "attempted": 50,
+  "accepted": 48,
+  "rejected": 2,
+  "rejection_reasons": {
+    "prompt_leakage": 2
+  },
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.459,
+    "answer": 0.21,
+    "question+answer": 0.278
+  },
+  "prompt_leakage": 2,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      5
+    ],
+    [
+      "in ai evaluation",
+      2
+    ],
+    [
+      "you need to",
+      2
+    ],
+    [
+      "when designing an",
+      2
+    ],
+    [
+      "an ai agent",
+      2
+    ],
+    [
+      "you use an",
+      2
+    ],
+    [
+      "you are building",
+      2
+    ],
+    [
+      "in the context",
+      2
+    ],
+    [
+      "you are designing",
+      1
+    ],
+    [
+      "when building a",
+      1
+    ],
+    [
+      "you run an",
+      1
+    ],
+    [
+      "a generative ai",
+      1
+    ],
+    [
+      "you are evaluating",
+      1
+    ],
+    [
+      "what is interrater",
+      1
+    ],
+    [
+      "you want to",
+      1
+    ],
+    [
+      "you upgrade a",
+      1
+    ],
+    [
+      "what does calibration",
+      1
+    ],
+    [
+      "an ai coding",
+      1
+    ],
+    [
+      "in ai security",
+      1
+    ],
+    [
+      "an attacker a",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "what is the",
+      117
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      105
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      40
+    ],
+    [
+      "explain the concept",
+      35
+    ],
+    [
+      "you need to",
+      30
+    ],
+    [
+      "you have a",
+      29
+    ],
+    [
+      "what is a",
+      28
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "you are building",
+      20
+    ],
+    [
+      "explain the difference",
+      18
+    ],
+    [
+      "you notice that",
+      17
+    ],
+    [
+      "you are designing",
+      11
+    ],
+    [
+      "explain the purpose",
+      11
+    ],
+    [
+      "what does the",
+      9
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "in the context",
+      9
+    ],
+    [
+      "you deploy a",
+      9
+    ]
+  ],
+  "top_opening_share_new_batch": 0.104,
+  "distinct_openings_new_batch": 37,
+  "role_distribution": {
+    "AI Engineer": 48
+  },
+  "skill_distribution": {
+    "AI Evaluation": 17,
+    "AI Security": 18,
+    "Structured Outputs": 13
+  },
+  "technology_distribution": {
+    "LLMs": 30,
+    "Security Architecture": 18
+  },
+  "topic_distribution": {
+    "Model Benchmarking": 17,
+    "Prompt Injection": 18,
+    "Data Extraction": 13
+  },
+  "intent_distribution": {
+    "scenario": 11,
+    "tradeoff": 10,
+    "debug": 9,
+    "explain": 5,
+    "implement": 8,
+    "fundamentals": 5
+  },
+  "difficulty_distribution": {
+    "medium": 21,
+    "hard": 19,
+    "easy": 8
+  },
+  "question_type_distribution": {
+    "scenario": 11,
+    "tradeoff": 10,
+    "debugging": 9,
+    "concept": 10,
+    "implementation": 8
+  },
+  "bucket_progress": {
+    "AI Evaluation | Model Benchmarking": {
+      "generated_now": 17
+    },
+    "AI Security | Prompt Injection": {
+      "generated_now": 18
+    },
+    "Structured Outputs | Data Extraction": {
+      "generated_now": 13
+    }
+  },
+  "cumulative_generated_production": 1490,
+  "cumulative_staging_total": 3220,
+  "cumulative_generated_by_role": {
+    "Python Developer": 150,
+    "Java Developer": 150,
+    "DevOps / Cloud Engineer": 195,
+    "AI Engineer": 148,
+    "Database Developer": 150,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 150,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 150,
+    "Backend Developer": 197
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      330,
+      22.1
+    ],
+    "medium": [
+      735,
+      49.3
+    ],
+    "hard": [
+      425,
+      28.5
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": 4.3,
+    "medium": -2.5,
+    "hard": -1.8
+  },
+  "target_gap_pct_points_after": {
+    "easy": 4.1,
+    "medium": -2.7,
+    "hard": -1.5
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 350,
+    "Frontend Developer": 350,
+    "Java Developer": 350,
+    "Database Developer": 350,
+    "DevOps / Cloud Engineer": 305,
+    "Backend Developer": 303,
+    "Data Analyst": 350,
+    "AI Engineer": 352,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 150,
+      "Java Developer": 150,
+      "DevOps / Cloud Engineer": 195,
+      "AI Engineer": 148,
+      "Database Developer": 150,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 150,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 150,
+      "Backend Developer": 197
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 645,
+      "Data Analyst": 139,
+      "AI Engineer": 124,
+      "Full Stack Developer": 168,
+      "Machine Learning Engineer": 87,
+      "DevOps / Cloud Engineer": 165,
+      "Frontend Developer": 55,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 140,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 79,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 148,
+      "Python Developer": 10,
+      "Data Architect": 20,
+      "Platform Engineer": 33,
+      "Product Manager": 47,
+      "Data Scientist": 135,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 132,
+      "Site Reliability Engineer": 101,
+      "UX Engineer": 15
+    }
+  },
+  "applicable_roles_this_batch": {
+    "AI Engineer": 48,
+    "Machine Learning Engineer": 17,
+    "Data Scientist": 17,
+    "Security Engineer": 18,
+    "Architecture": 18,
+    "Data Engineer": 13,
+    "Backend Developer": 13
+  },
+  "records_appended": 48,
+  "final_file_line_count": 1490,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

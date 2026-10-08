@@ -1,0 +1,149 @@
+{
+  "success": true,
+  "message": "Success",
+  "data": {
+    "selected_role": "Software Engineer",
+    "role_match_score": 27.1,
+    "score_breakdown": {
+      "core_skills": 20.3,
+      "technical_concepts": 0.0,
+      "project_experience": 30.0,
+      "frameworks_tools": 65.0,
+      "relevant_experience": 75.0
+    },
+    "matched_areas": [
+      {
+        "topic": "Software Development",
+        "category": "core_skills",
+        "confidence": 0.88,
+        "section": "Experience",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev",
+        "evidence": "Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Developed React frontend components."
+      },
+      {
+        "topic": "Python",
+        "category": "programming_languages",
+        "confidence": 0.99,
+        "section": "Work Experience",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev",
+        "evidence": "Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Developed React frontend components."
+      },
+      {
+        "topic": "JavaScript",
+        "category": "programming_languages",
+        "confidence": 0.99,
+        "section": "Work Experience",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev",
+        "evidence": "Junior Engineer at Web Solutions (2018-2020): Worked on Node.js and Postgres databases."
+      },
+      {
+        "topic": "PostgreSQL",
+        "category": "frameworks_tools",
+        "confidence": 0.99,
+        "section": "Work Experience",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev",
+        "evidence": "Junior Engineer at Web Solutions (2018-2020): Worked on Node.js and Postgres databases."
+      },
+      {
+        "topic": "REST API",
+        "category": "frameworks_tools",
+        "confidence": 0.9,
+        "section": "Summary",
+        "source": "Summary",
+        "evidence": "Skills: React, TypeScript, Python, FastAPI, Node.js, PostgreSQL."
+      }
+    ],
+    "partial_matches": [],
+    "missing_areas": [
+      "Data Structures",
+      "Algorithms",
+      "Object Oriented Programming",
+      "Problem Solving",
+      "System Design",
+      "Java",
+      "C++",
+      "C#",
+      "Go",
+      "Design Patterns",
+      "Clean Code",
+      "Version Control",
+      "Software Testing",
+      "Debugging",
+      "Code Review",
+      "SQL",
+      "MySQL",
+      "MongoDB",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Jira",
+      "Unit Testing",
+      "Integration Testing",
+      "Test Automation",
+      "Backend Development",
+      "Frontend Development",
+      "API Integration"
+    ],
+    "unrelated_skills": [
+      "Node.js",
+      "React",
+      "TypeScript",
+      "Application Programming Interface"
+    ],
+    "feedback": {
+      "strengths": [
+        "Strong foundational alignment with Software Engineer competencies (Software Development, Python, JavaScript).",
+        "Hands-on familiarity with relevant tools and libraries: PostgreSQL, REST API."
+      ],
+      "focus_areas": [
+        "Core Software Engineer competencies to strengthen: Data Structures, Algorithms, Object Oriented Programming.",
+        "Prepare for interview questions on key concepts: Design Patterns, Clean Code, Version Control.",
+        "Gain practical exposure to role tooling: SQL, MySQL, MongoDB."
+      ],
+      "resume_improvements": [
+        "Add detailed project bullet points highlighting architectural decisions, algorithms, and libraries used.",
+        "Explicitly list production frameworks and developer tools relevant to Software Engineer.",
+        "Quantify project achievements with metrics (e.g., performance benchmarks, latency reductions, test coverage)."
+      ]
+    },
+    "interview_context": [
+      {
+        "topic": "Software Development",
+        "category": "core_skills",
+        "confidence": 0.88,
+        "evidence": "Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Developed React frontend components.",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev"
+      },
+      {
+        "topic": "Python",
+        "category": "programming_languages",
+        "confidence": 0.99,
+        "evidence": "Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Developed React frontend components.",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev"
+      },
+      {
+        "topic": "JavaScript",
+        "category": "programming_languages",
+        "confidence": 0.99,
+        "evidence": "Junior Engineer at Web Solutions (2018-2020): Worked on Node.js and Postgres databases.",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev"
+      },
+      {
+        "topic": "PostgreSQL",
+        "category": "frameworks_tools",
+        "confidence": 0.99,
+        "evidence": "Junior Engineer at Web Solutions (2018-2020): Worked on Node.js and Postgres databases.",
+        "source": "- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Dev"
+      },
+      {
+        "topic": "REST API",
+        "category": "frameworks_tools",
+        "confidence": 0.9,
+        "evidence": "Skills: React, TypeScript, Python, FastAPI, Node.js, PostgreSQL.",
+        "source": "Summary"
+      }
+    ],
+    "ai_analysis": null,
+    "analysis_source": "deterministic"
+  }
+}

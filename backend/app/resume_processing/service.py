@@ -22,6 +22,7 @@ from app.resume_processing.schemas import (
     ScoreBreakdown,
 )
 from app.resume_processing.scorer import DeterministicScorer, get_scorer
+from app.resume_processing.ai_analyzer import get_ai_analyzer
 
 logger = logging.getLogger("interviewmind.resume_processing.service")
 
@@ -34,6 +35,7 @@ class ResumeProcessingService:
         self.matcher: RoleMatcher = get_matcher()
         self.scorer: DeterministicScorer = get_scorer()
         self.feedback_generator: FeedbackGenerator = get_feedback_generator()
+        self.ai_analyzer = get_ai_analyzer()
 
     def process(
         self,
@@ -58,19 +60,33 @@ class ResumeProcessingService:
         # Step 2: Technical information and evidence extraction
         profile = self.extractor.extract(parsed_resume, candidate_name=candidate_name)
 
-        # Step 3: Match strictly against the single selected role
+        # Step 3: Match strictly against the single selected role (deterministic)
         match_result = self.matcher.match(profile, selected_role_identifier=role)
 
-        # Step 4: Deterministic score calculation
+        # Step 4: Deterministic score calculation (authoritative; AI never touches it)
         role_match_score, score_breakdown = self.scorer.compute_score(match_result)
 
-        # Step 5: Actionable feedback generation
+        # Step 5: Actionable feedback generation (deterministic)
         feedback = self.feedback_generator.generate(match_result, role_match_score, score_breakdown)
 
-        # Step 6: Construct structured interview_context for Module 2
+        # Step 6: Construct structured interview_context for Module 2 (deterministic evidence only)
         interview_context = self._build_interview_context(match_result)
 
-        # Step 7: Assemble validated Module 1 output payload
+        # Step 7: Optional AI qualitative analysis. Computed AFTER everything above and attached
+        # as a separate, validated block. It is never merged into the deterministic fields.
+        ai_data = None
+        analysis_source = "deterministic"
+        try:
+            ai_data = self.ai_analyzer.analyze(profile, match_result.role_profile)
+            if ai_data:
+                analysis_source = "hybrid"
+            else:
+                ai_data = None
+        except Exception as e:
+            ai_data = None
+            logger.error(f"AI analysis failed, returning deterministic analysis only: {e}")
+
+        # Step 8: Assemble validated Module 1 output payload
         output = Module1Output(
             selected_role=match_result.selected_role,
             role_match_score=role_match_score,
@@ -81,6 +97,8 @@ class ResumeProcessingService:
             unrelated_skills=match_result.unrelated_skills,
             feedback=feedback,
             interview_context=interview_context,
+            ai_analysis=ai_data,
+            analysis_source=analysis_source,
         )
 
         logger.info(
