@@ -1,7 +1,7 @@
 """Local Question Bank Service for InterviewMind AI.
 
 Provides safe, in-memory, role-aware question retrieval from the canonical
-frozen 5,000-question dataset (data/interview_question_bank_v2_generated.jsonl).
+frozen 3,146-question dataset (data/question_bank_v3/canonical_questions.jsonl).
 """
 
 from __future__ import annotations
@@ -116,10 +116,10 @@ class QuestionBankService:
         # Look in known backend locations
         base_dir = Path(__file__).resolve().parent.parent.parent
         candidates = [
+            base_dir / "data" / "question_bank_v3" / "canonical_questions.jsonl",
             base_dir / "data" / "interview_question_bank_v2_generated.jsonl",
-            base_dir / "data" / "knowledge_base" / "technical_knowledge_5000.jsonl",
+            Path("data/question_bank_v3/canonical_questions.jsonl").resolve(),
             Path("data/interview_question_bank_v2_generated.jsonl").resolve(),
-            Path("data/knowledge_base/technical_knowledge_5000.jsonl").resolve(),
         ]
 
         for cand in candidates:
@@ -127,7 +127,7 @@ class QuestionBankService:
                 return cand
 
         # Fallback to default expected path even if not yet checked
-        return base_dir / "data" / "interview_question_bank_v2_generated.jsonl"
+        return base_dir / "data" / "question_bank_v3" / "canonical_questions.jsonl"
 
     def load(self, force_reload: bool = False) -> int:
         """

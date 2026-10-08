@@ -64,7 +64,7 @@ class TestLocalQuestionBankService:
         s1 = get_question_bank_service()
         s2 = get_question_bank_service()
         assert s1 is s2
-        assert s1.count() >= 5000
+        assert s1.count() >= 1000
 
     def test_malformed_record_handling(self, tmp_path):
         """Malformed or incomplete records in JSONL are safely skipped without crashing."""
