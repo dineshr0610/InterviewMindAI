@@ -1,8 +1,0 @@
-John Doe
-Full Stack Engineer
-Skills: React, TypeScript, Python, FastAPI, Node.js, PostgreSQL.
-Experience:
-- Software Engineer at Tech Corp (2020-2023): Built scalable backend APIs in Python and FastAPI. Developed React frontend components.
-- Junior Engineer at Web Solutions (2018-2020): Worked on Node.js and Postgres databases.
-Education:
-- BS Computer Science, University of Technology (2018)

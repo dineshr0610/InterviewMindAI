@@ -14,16 +14,18 @@ evaluation_service = EvaluationService()
 
 def generate_question(state: InterviewState):
 
+    history = state.get("history", [])
     response = service.generate_question(
-        state["topic"],
-        state["difficulty"],
-        [entry["question"] for entry in state["history"] if entry.get("question")],
+        state.get("topic", ""),
+        state.get("difficulty", "Medium"),
+        [entry["question"] for entry in history if entry.get("question")],
         resume_text=state.get("resume_text"),
         strategy=state.get("next_strategy"),
         last_answer=state.get("answer"),
+        state=state,
     )
 
-    state["question"] = response["answer"]
+    state["question"] = response.get("answer", "")
 
     return state
 
@@ -37,10 +39,18 @@ def evaluate_answer(state: InterviewState):
         state["difficulty"],
     )
 
-    state["score"] = result["score"]
-    state["feedback"] = result["feedback"]
-    state["strengths"] = result["strengths"]
-    state["improvements"] = result["improvements"]
+    state["score"] = result.get("score", 0)
+    state["feedback"] = result.get("feedback", "")
+    state["strengths"] = result.get("strengths", [])
+    state["improvements"] = result.get("improvements", [])
+    
+    demonstrated = result.get("demonstrated_concepts", [])
+    missing = result.get("missing_concepts", [])
+    misconceptions = result.get("misconceptions", [])
+    
+    state["demonstrated_competencies"] = state.get("demonstrated_competencies", []) + demonstrated
+    state["weak_competencies"] = state.get("weak_competencies", []) + missing
+    state["misconceptions"] = state.get("misconceptions", []) + misconceptions
 
     return state
 
@@ -75,7 +85,8 @@ def update_interview_state(state: InterviewState):
     # Decide what a real interviewer would ask next based on the candidate's
     # last answer (score) and how deeply we have already probed this subject.
     follow_up_depth = state.get("follow_up_depth") or 0
-    strategy = choose_next_strategy(state["score"], follow_up_depth)
+    has_misconception = bool(state.get("misconceptions"))
+    strategy = choose_next_strategy(state["score"], follow_up_depth, has_misconception)
 
     # Track and cap how many consecutive related questions we ask so the
     # interview stays balanced and eventually transitions topics.
@@ -83,9 +94,17 @@ def update_interview_state(state: InterviewState):
         follow_up_depth += 1
     else:
         follow_up_depth = 0
+        state["misconceptions"] = [] # Clear misconceptions when changing topics
 
     state["follow_up_depth"] = follow_up_depth
     state["next_strategy"] = strategy
+    
+    # Sync Aliases for Adaptive Strategy Context
+    state["current_strategy"] = strategy
+    state["current_difficulty"] = state["difficulty"]
+    state["recent_questions"] = [entry["question"] for entry in history][-3:] if history else []
+    state["recent_answers"] = [entry["answer"] for entry in history][-3:] if history else []
+    state["recent_evaluations"] = [f"Score: {entry['score']}" for entry in history][-3:] if history else []
 
     return state
 

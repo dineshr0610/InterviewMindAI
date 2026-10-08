@@ -16,6 +16,9 @@ except ImportError:
                 "feedback": "Solid response demonstrating core technical understanding.",
                 "strengths": ["Clear communication", "Addressed problem directly"],
                 "improvements": ["Elaborate further on edge cases"],
+                "demonstrated_concepts": ["Basic understanding"],
+                "missing_concepts": ["Edge cases"],
+                "misconceptions": [],
             }
 
 from ai_engine.prompts.evaluation_prompt import EVALUATION_PROMPT
@@ -38,5 +41,8 @@ except Exception:
                 "feedback": "Solid response demonstrating core technical understanding.",
                 "strengths": ["Clear explanation", "Direct approach"],
                 "improvements": ["Elaborate on edge cases and performance"],
+                "demonstrated_concepts": ["Fundamentals"],
+                "missing_concepts": ["Advanced details"],
+                "misconceptions": [],
             }
     evaluation_chain = FallbackEvaluationChain()

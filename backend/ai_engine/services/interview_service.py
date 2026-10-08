@@ -216,6 +216,107 @@ class QuestionCandidate:
     rag_id: Optional[str] = None
 
 
+@dataclass
+class ResumeEvidenceProfile:
+    target_role: str
+    programming_languages: List[str] = field(default_factory=list)
+    core_skills: List[str] = field(default_factory=list)
+    frameworks: List[str] = field(default_factory=list)
+    databases: List[str] = field(default_factory=list)
+    concepts: List[str] = field(default_factory=list)
+    projects: List[Dict[str, Any]] = field(default_factory=list)
+    experience: List[Dict[str, Any]] = field(default_factory=list)
+    demonstrated_strengths: List[str] = field(default_factory=list)
+    weak_areas: List[str] = field(default_factory=list)
+    missing_evidence: List[str] = field(default_factory=list)
+    untested_competencies: List[str] = field(default_factory=list)
+
+    @classmethod
+    def from_match_data(cls, match_data: Dict[str, Any], role_name: str) -> "ResumeEvidenceProfile":
+        m1_output = match_data.get("module1_output") or {}
+        comp_matrix = m1_output.get("competency_matrix") or {}
+        ai_analysis = m1_output.get("ai_analysis") or {}
+        
+        def _get_topics(cat_key: str, statuses: tuple) -> List[str]:
+            items = comp_matrix.get(cat_key) or []
+            return [item.get("topic", "") for item in items if item.get("status") in statuses and item.get("topic")]
+
+        def _get_missing(cat_key: str) -> List[str]:
+            return _get_topics(cat_key, ("missing",))
+
+        def _get_verified(cat_key: str) -> List[str]:
+            return _get_topics(cat_key, ("strong_match", "partial_match"))
+
+        if not comp_matrix:
+            return cls(
+                target_role=role_name,
+                programming_languages=match_data.get("matching_skills") or match_data.get("matched_skills") or [],
+                core_skills=(match_data.get("matching_skills") or match_data.get("matched_skills") or [])[5:10],
+                frameworks=match_data.get("relevant_technologies") or match_data.get("matched_technologies") or [],
+                projects=match_data.get("relevant_projects") or match_data.get("matched_projects") or [],
+                experience=match_data.get("relevant_experience") or match_data.get("matched_experience") or [],
+                demonstrated_strengths=match_data.get("feedback", {}).get("strengths", []),
+                weak_areas=match_data.get("weak_areas", []),
+                missing_evidence=match_data.get("missing_skills", []),
+                untested_competencies=match_data.get("missing_skills", []),
+            )
+            
+        return cls(
+            target_role=role_name,
+            programming_languages=_get_verified("programming_languages"),
+            core_skills=_get_verified("core_skills"),
+            frameworks=_get_verified("frameworks_tools"),
+            concepts=_get_verified("technical_concepts"),
+            projects=comp_matrix.get("projects") or match_data.get("relevant_projects") or match_data.get("matched_projects") or [],
+            experience=comp_matrix.get("experience_evidence") or match_data.get("relevant_experience") or match_data.get("matched_experience") or [],
+            demonstrated_strengths=ai_analysis.get("strong_matches") or match_data.get("feedback", {}).get("strengths") or [],
+            weak_areas=ai_analysis.get("skill_gaps") or match_data.get("feedback", {}).get("focus_areas") or match_data.get("weak_areas") or [],
+            missing_evidence=(
+                _get_missing("programming_languages") + 
+                _get_missing("core_skills") + 
+                _get_missing("frameworks_tools") + 
+                _get_missing("technical_concepts")
+            ),
+            untested_competencies=ai_analysis.get("interview_focus_areas") or match_data.get("missing_skills") or [],
+        )
+
+    def to_prompt_context(self) -> str:
+        lines = [f"Target Role: {self.target_role}"]
+        if self.demonstrated_strengths:
+            lines.append(f"Demonstrated Strengths: {', '.join(self.demonstrated_strengths[:5])}")
+        
+        verified = self.programming_languages + self.core_skills + self.frameworks
+        if verified:
+            lines.append(f"Verified Skills & Technologies: {', '.join(verified[:8])}")
+            
+        gaps = self.weak_areas + self.missing_evidence
+        if gaps:
+            lines.append(f"Known Weaknesses & Missing Evidence: {', '.join(gaps[:5])}")
+            
+        if self.untested_competencies:
+            lines.append(f"Untested Competencies to Explore: {', '.join(self.untested_competencies[:5])}")
+        
+        evidence_lines = []
+        for p in self.projects[:2]:
+            name = p.get('name') if isinstance(p, dict) else str(p)
+            desc = p.get('evidence') if isinstance(p, dict) else ""
+            if name and desc:
+                evidence_lines.append(f"- Project '{name}': {desc[:200]}")
+            elif name:
+                evidence_lines.append(f"- Project: {name[:200]}")
+        
+        for e in self.experience[:2]:
+            desc = e.get('description') if isinstance(e, dict) else str(e)
+            if desc:
+                evidence_lines.append(f"- Experience: {desc[:200]}")
+
+        if evidence_lines:
+            lines.append("Key Resume Evidence:")
+            lines.extend(evidence_lines)
+            
+        return "\n".join(lines)
+
+
 class QuestionQualityEvaluator:
     """Evaluates question candidates for quality, role relevance, grounding, novelty, and validity."""
 
@@ -556,11 +657,14 @@ class InterviewService:
             or match_data.get("role_name")
             or "Software Engineer"
         )
-        matched_skills = match_data.get("matched_skills") or match_data.get("matching_skills") or []
-        matched_technologies = match_data.get("matched_technologies") or match_data.get("relevant_technologies") or []
-        matched_projects = match_data.get("matched_projects") or match_data.get("relevant_projects") or []
-        matched_experience = match_data.get("matched_experience") or match_data.get("relevant_experience") or []
-        missing_skills = match_data.get("missing_skills") or []
+        
+        profile = ResumeEvidenceProfile.from_match_data(match_data, role_name)
+        
+        matched_skills = profile.programming_languages + profile.core_skills
+        matched_technologies = profile.frameworks + profile.databases
+        matched_projects = profile.projects
+        matched_experience = profile.experience
+        missing_skills = profile.missing_evidence
         evidence_list = match_data.get("evidence") or []
 
         topic_inventory = match_data.get("topic_inventory") or state_dict.get("topic_inventory") or {}
@@ -689,7 +793,7 @@ CONTEXT:
 [ANSWER]
 {last_answer}
 [/ANSWER]
-- Known Weaknesses (SECONDARY CONTEXT): {', '.join(state_dict.get('weak_areas', [])[:5]) or 'None'}
+- Known Weaknesses (SECONDARY CONTEXT): {', '.join(state_dict.get('weak_competencies', [])[:5]) or 'None'}
 - Known Misconceptions (SECONDARY CONTEXT): {', '.join(state_dict.get('misconceptions', [])[:3]) or 'None'}
 - Recent Questions (DO NOT REPEAT):
 {chr(10).join(f"- {q}" for q in previous_questions[-6:]) if previous_questions else "None"}
@@ -809,9 +913,10 @@ Return ONLY valid JSON:
         # --- Candidate B: Gemini Resume-Grounded Question (RESUME_PLUS_BANK mode) ---
         if has_resume and interview_phase == "resume_phase":
             cleaned_resume = sanitize_resume_for_prompt(resume_text or "")
-            evidence_block = target_proj_evidence or (
-                "\n".join(f"- {e}" for e in evidence_list[:6]) if evidence_list else cleaned_resume[:1500]
-            )
+            context_str = profile.to_prompt_context()
+            if not any([profile.programming_languages, profile.core_skills, profile.frameworks, profile.projects, profile.experience, profile.demonstrated_strengths]):
+                context_str += f"\nRaw Resume Context:\n{cleaned_resume[:1500]}"
+            evidence_block = target_proj_evidence or context_str
 
             category_instructions = {
                 CAT_ARCHITECTURE: "Evaluate understanding of high-level system architecture, component boundaries, and design patterns.",
@@ -839,7 +944,7 @@ CONTEXT:
 - Target Role: {role_name}
 - Target Technology/Topic (PRIMARY CONTEXT): {target_technology or topic}
 - Target Project (PRIMARY CONTEXT): {target_proj_name or "Resume project work"}
-- Verified Resume Evidence (PRIMARY CONTEXT):
+- Verified Candidate Profile & Evidence (PRIMARY CONTEXT):
 {evidence_block}
 - RETRIEVED TECHNICAL CONTEXT (from Question Bank):
 {retrieved_bank_context}
