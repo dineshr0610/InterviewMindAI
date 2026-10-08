@@ -1,0 +1,1417 @@
+{
+ "totals": {
+  "rows": 9394,
+  "candidates_all": 2258,
+  "pool_counts_all": {
+   "conversational": 1962,
+   "code_output_quiz": 90,
+   "rejected": 41,
+   "quiz_true_false": 141,
+   "hands_on_practical": 17,
+   "needs_context": 7
+  },
+  "pool_counts_after_dedupe": {
+   "conversational": 1949,
+   "code_output_quiz": 15,
+   "quiz_true_false": 141,
+   "hands_on_practical": 17,
+   "needs_context": 7
+  }
+ },
+ "per_source": {
+  "JavaScript": {
+   "raw_rows": 716,
+   "candidates_extracted": 600,
+   "pools": {
+    "conversational": 510,
+    "code_output_quiz": 90
+   },
+   "qtypes": {
+    "concept": 312,
+    "compare": 63,
+    "how_to": 135,
+    "code_output_quiz": 90
+   },
+   "multi_question_rows": 0,
+   "reject_reasons": {},
+   "non_question_rows": 116,
+   "row_reject_reasons": {
+    "markdown_subheading_promoted_to_question": 26,
+    "noun_heading_not_a_question": 6,
+    "answer_key_fragment_promoted_to_question": 84
+   },
+   "dup_flagged": 75,
+   "mojibake": 0,
+   "row_stats": {
+    "header_equals_subtopic": 716,
+    "rows": 716,
+    "row_cls_question": 510,
+    "row_cls_fragment_subheading": 26,
+    "row_cls_noun_heading": 6,
+    "row_cls_code_output_quiz": 90,
+    "row_cls_fragment_answer_key": 84
+   }
+  },
+  "React": {
+   "raw_rows": 581,
+   "candidates_extracted": 448,
+   "pools": {
+    "conversational": 447,
+    "rejected": 1
+   },
+   "qtypes": {
+    "how_to": 113,
+    "compare": 43,
+    "concept": 292
+   },
+   "multi_question_rows": 0,
+   "reject_reasons": {
+    "no_answer_text": 1
+   },
+   "non_question_rows": 134,
+   "row_reject_reasons": {
+    "markdown_subheading_promoted_to_question": 124,
+    "noun_heading_not_a_question": 9,
+    "null": 1
+   },
+   "dup_flagged": 1,
+   "mojibake": 0,
+   "row_stats": {
+    "header_equals_subtopic": 581,
+    "rows": 581,
+    "row_cls_question": 448,
+    "row_cls_fragment_subheading": 124,
+    "row_cls_noun_heading": 9
+   }
+  },
+  "DevOps-AWS": {
+   "raw_rows": 61,
+   "candidates_extracted": 444,
+   "pools": {
+    "conversational": 352,
+    "quiz_true_false": 89,
+    "rejected": 3
+   },
+   "qtypes": {
+    "concept": 282,
+    "how_to": 15,
+    "true_false": 89,
+    "compare": 10,
+    "scenario": 45,
+    "unknown_form": 3
+   },
+   "multi_question_rows": 43,
+   "reject_reasons": {
+    "no_answer_text": 16,
+    "unknown_question_form": 3
+   },
+   "non_question_rows": 14,
+   "row_reject_reasons": {
+    "exercise_index_table": 14
+   },
+   "dup_flagged": 1,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 61,
+    "rows_with_questions": 47,
+    "multi_question_rows": 43,
+    "rows_without_questions_exercise_index_table": 14
+   }
+  },
+  "DevOps-K8s": {
+   "raw_rows": 53,
+   "candidates_extracted": 341,
+   "pools": {
+    "hands_on_practical": 16,
+    "conversational": 261,
+    "quiz_true_false": 32,
+    "rejected": 27,
+    "needs_context": 5
+   },
+   "qtypes": {
+    "hands_on_task": 16,
+    "concept": 181,
+    "true_false": 32,
+    "how_to": 63,
+    "needs_visual": 2,
+    "code_output_quiz": 3,
+    "unknown_form": 22,
+    "compare": 11,
+    "scenario": 11
+   },
+   "multi_question_rows": 41,
+   "reject_reasons": {
+    "answer_has_TODO": 4,
+    "no_answer_text": 29,
+    "requires_image_or_diagram": 2,
+    "references_unseen_context": 5,
+    "unknown_question_form": 22
+   },
+   "non_question_rows": 6,
+   "row_reject_reasons": {
+    "exercise_index_table": 6
+   },
+   "dup_flagged": 1,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 53,
+    "rows_with_questions": 47,
+    "multi_question_rows": 41,
+    "rows_without_questions_exercise_index_table": 6
+   }
+  },
+  "DevOps-Linux": {
+   "raw_rows": 36,
+   "candidates_extracted": 298,
+   "pools": {
+    "conversational": 272,
+    "hands_on_practical": 1,
+    "rejected": 8,
+    "quiz_true_false": 15,
+    "needs_context": 2
+   },
+   "qtypes": {
+    "concept": 169,
+    "how_to": 66,
+    "scenario": 18,
+    "compare": 20,
+    "hands_on_task": 1,
+    "unknown_form": 5,
+    "true_false": 15,
+    "code_output_quiz": 4
+   },
+   "multi_question_rows": 31,
+   "reject_reasons": {
+    "no_answer_text": 83,
+    "unknown_question_form": 5,
+    "references_unseen_context": 2
+   },
+   "non_question_rows": 3,
+   "row_reject_reasons": {
+    "exercise_index_table": 2,
+    "documentation_or_toc": 1
+   },
+   "dup_flagged": 2,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 36,
+    "rows_without_questions_exercise_index_table": 2,
+    "rows_without_questions_documentation_or_toc": 1,
+    "rows_with_questions": 33,
+    "multi_question_rows": 31
+   }
+  },
+  "DevOps-Git": {
+   "raw_rows": 9,
+   "candidates_extracted": 39,
+   "pools": {
+    "conversational": 36,
+    "quiz_true_false": 3
+   },
+   "qtypes": {
+    "how_to": 10,
+    "concept": 18,
+    "compare": 2,
+    "scenario": 6,
+    "true_false": 3
+   },
+   "multi_question_rows": 7,
+   "reject_reasons": {
+    "no_answer_text": 1
+   },
+   "non_question_rows": 1,
+   "row_reject_reasons": {
+    "exercise_index_table": 1
+   },
+   "dup_flagged": 0,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 9,
+    "rows_with_questions": 8,
+    "multi_question_rows": 7,
+    "rows_without_questions_exercise_index_table": 1
+   }
+  },
+  "DevOps-CICD": {
+   "raw_rows": 5,
+   "candidates_extracted": 42,
+   "pools": {
+    "conversational": 39,
+    "quiz_true_false": 2,
+    "rejected": 1
+   },
+   "qtypes": {
+    "concept": 24,
+    "true_false": 2,
+    "how_to": 9,
+    "compare": 3,
+    "scenario": 3,
+    "unknown_form": 1
+   },
+   "multi_question_rows": 4,
+   "reject_reasons": {
+    "unknown_question_form": 1,
+    "no_answer_text": 1
+   },
+   "non_question_rows": 1,
+   "row_reject_reasons": {
+    "exercise_index_table": 1
+   },
+   "dup_flagged": 0,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 5,
+    "rows_with_questions": 4,
+    "multi_question_rows": 4,
+    "rows_without_questions_exercise_index_table": 1
+   }
+  },
+  "SystemDesign": {
+   "raw_rows": 166,
+   "candidates_extracted": 46,
+   "pools": {
+    "conversational": 45,
+    "rejected": 1
+   },
+   "qtypes": {
+    "design_prompt": 45,
+    "unknown_form": 1
+   },
+   "multi_question_rows": 0,
+   "reject_reasons": {
+    "unknown_question_form": 1
+   },
+   "non_question_rows": 155,
+   "row_reject_reasons": {
+    "documentation_section": 155
+   },
+   "dup_flagged": 8,
+   "mojibake": 0,
+   "row_stats": {
+    "rows": 166,
+    "documentation_rows": 155,
+    "list_rows": 3,
+    "standalone_design_rows": 8
+   }
+  }
+ },
+ "dedupe": {
+  "scope": "all non-rejected candidates (JS, React, DevOps, SD)",
+  "live_candidates": 2217,
+  "exact_normalized_groups": 14,
+  "exact_dup_records": 102,
+  "exact_removable": 88,
+  "cross_source_groups": 0,
+  "groups_differing_only_in_legacy_difficulty": 11,
+  "near_dup_pairs_ge_0.90": 0,
+  "near_removable_ge_0.90": 0,
+  "related_pairs_0.75_to_0.90": 92,
+  "near_samples": [],
+  "related_samples": [
+   [
+    "What is the output of below code?",
+    "What is the output order of below code?",
+    0.88,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What are the applications of the seal method",
+    "What are the applications of the assign method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of clearTimeout method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of exec method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of clearInterval method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of requestAnimationFrame method?",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of the freeze method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of unmountComponentAtNode method?",
+    0.75,
+    "JavaScript",
+    "React"
+   ],
+   [
+    "What is the purpose of the seal method",
+    "What is the purpose of renderToNodeStream method?",
+    0.75,
+    "JavaScript",
+    "React"
+   ],
+   [
+    "How do you make synchronous HTTP request",
+    "How do you make asynchronous HTTP request",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of clearTimeout method",
+    "What is the purpose of exec method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ],
+   [
+    "What is the purpose of clearTimeout method",
+    "What is the purpose of clearInterval method",
+    0.75,
+    "JavaScript",
+    "JavaScript"
+   ]
+  ],
+  "exact_samples": [
+   [
+    "What is the output of below code?",
+    [
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript",
+     "JavaScript"
+    ],
+    [
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Medium",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard",
+     "Hard"
+    ]
+   ],
+   [
+    "State",
+    [
+     "React",
+     "React"
+    ],
+    [
+     "Medium",
+     "Hard"
+    ]
+   ],
+   [
+    "What can you attach to an EC2 instance in order to store data?",
+    [
+     "DevOps-AWS",
+     "DevOps-AWS"
+    ],
+    [
+     "Hard",
+     "Hard"
+    ]
+   ],
+   [
+    "Explain selectors",
+    [
+     "DevOps-K8s",
+     "DevOps-K8s"
+    ],
+    [
+     "Hard",
+     "Hard"
+    ]
+   ],
+   [
+    "Explain what will ls [^XYZ] match",
+    [
+     "DevOps-Linux",
+     "DevOps-Linux"
+    ],
+    [
+     "Hard",
+     "Hard"
+    ]
+   ],
+   [
+    "What is a Linux distribution?",
+    [
+     "DevOps-Linux",
+     "DevOps-Linux"
+    ],
+    [
+     "Medium",
+     "Hard"
+    ]
+   ],
+   [
+    "Design the Twitter timeline and search (or Facebook feed and search)",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Easy",
+     "Hard"
+    ]
+   ],
+   [
+    "Design a key-value store for a search engine",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Easy",
+     "Hard"
+    ]
+   ],
+   [
+    "Design the data structures for a social network",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Hard",
+     "Easy"
+    ]
+   ],
+   [
+    "Design a web crawler",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Hard",
+     "Easy"
+    ]
+   ],
+   [
+    "Design a system that scales to millions of users on AWS",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Hard",
+     "Easy"
+    ]
+   ],
+   [
+    "Design Pastebin.com (or Bit.ly)",
+    [
+     "SystemDesign",
+     "SystemDesign"
+    ],
+    [
+     "Hard",
+     "Easy"
+    ]
+   ]
+  ]
+ },
+ "conversational_unique": 1949,
+ "conversational_before_dedupe": 1962,
+ "conv_by_role": {
+  "Frontend Developer": 956,
+  "DevOps / Cloud Engineer": 956,
+  "Backend Developer": 37
+ },
+ "conv_by_skill": {
+  "Frontend Developer | JavaScript": 510,
+  "Frontend Developer | React": 446,
+  "DevOps / Cloud Engineer | AWS": 351,
+  "DevOps / Cloud Engineer | Linux": 270,
+  "DevOps / Cloud Engineer | Kubernetes": 260,
+  "DevOps / Cloud Engineer | CI/CD": 39,
+  "Backend Developer | System Design": 37,
+  "DevOps / Cloud Engineer | Git": 36
+ },
+ "conv_by_qtype": {
+  "concept": 1266,
+  "how_to": 411,
+  "compare": 152,
+  "scenario": 83,
+  "design_prompt": 37
+ },
+ "conv_by_rubric": {
+  "2": 1068,
+  "1": 697,
+  "3": 184
+ },
+ "conv_by_intent": {
+  "explain": 777,
+  "implement": 402,
+  "unassigned": 393,
+  "compare": 150,
+  "scenario": 76,
+  "debug": 62,
+  "reasoning": 43,
+  "design": 37,
+  "optimize": 6,
+  "tradeoff": 3
+ },
+ "conv_by_legacy_difficulty": {
+  "Hard": 1599,
+  "Medium": 194,
+  "Easy": 156
+ },
+ "conv_legacy_vs_rubric": {
+  "differ": 1615,
+  "agree": 334
+ },
+ "conv_category_hits": {
+  "0": 1373,
+  "1": 517,
+  "2": 55,
+  "3": 4
+ },
+ "conv_category_counts": {
+  "trade_offs": 179,
+  "architecture": 132,
+  "implementation": 119,
+  "performance_scalability": 72,
+  "debugging_edge_cases": 51,
+  "security_auth": 40,
+  "api_design": 28,
+  "database_design": 18
+ },
+ "conv_topic_unassigned": 258,
+ "conv_topic_dist": {
+  "Frontend Developer | JavaScript | unassigned": 165,
+  "Frontend Developer | React | unassigned": 93,
+  "Frontend Developer | React | components_props_state": 88,
+  "Frontend Developer | JavaScript | objects_prototypes_oop": 75,
+  "Frontend Developer | React | state_management": 69,
+  "Frontend Developer | React | hooks": 64,
+  "Frontend Developer | React | rendering_vdom": 60,
+  "Frontend Developer | JavaScript | dom_events_browser": 54,
+  "Frontend Developer | JavaScript | functions": 44,
+  "Frontend Developer | JavaScript | arrays_collections": 42,
+  "Frontend Developer | JavaScript | async_programming": 39,
+  "Frontend Developer | JavaScript | types_coercion_equality": 37,
+  "DevOps / Cloud Engineer | AWS | Identify the Service": 37,
+  "Backend Developer | System Design | design_case_study": 37,
+  "DevOps / Cloud Engineer | AWS | Misc": 34,
+  "DevOps / Cloud Engineer | AWS | Pricing Models": 30,
+  "DevOps / Cloud Engineer | Linux | Processes": 26,
+  "Frontend Developer | React | forms_events": 23,
+  "DevOps / Cloud Engineer | AWS | DNS (Route 53)": 23,
+  "Frontend Developer | JavaScript | es6_modules_syntax": 22,
+  "DevOps / Cloud Engineer | Kubernetes | Services": 20,
+  "DevOps / Cloud Engineer | CI/CD | CI/CD - Jenkins": 19,
+  "DevOps / Cloud Engineer | Kubernetes | Misc": 19,
+  "DevOps / Cloud Engineer | Linux | Disk and Filesystem": 19,
+  "DevOps / Cloud Engineer | AWS | ELB": 18,
+  "Frontend Developer | React | routing": 17,
+  "DevOps / Cloud Engineer | Linux | System Calls": 17,
+  "DevOps / Cloud Engineer | Linux | Networking": 17,
+  "DevOps / Cloud Engineer | AWS | Security": 16,
+  "DevOps / Cloud Engineer | Kubernetes | Volumes": 16,
+  "DevOps / Cloud Engineer | Kubernetes | Resources Quota": 16,
+  "DevOps / Cloud Engineer | Kubernetes | Pods": 16,
+  "DevOps / Cloud Engineer | Linux | Misc": 16,
+  "Frontend Developer | JavaScript | closures_scope": 15,
+  "DevOps / Cloud Engineer | Kubernetes | ReplicaSets": 15,
+  "DevOps / Cloud Engineer | Linux | Users and Groups": 15,
+  "DevOps / Cloud Engineer | AWS | VPC": 14,
+  "DevOps / Cloud Engineer | Linux | Linux 101": 14,
+  "DevOps / Cloud Engineer | AWS | IAM": 13,
+  "DevOps / Cloud Engineer | Kubernetes | Operators": 13,
+  "DevOps / Cloud Engineer | Linux | Kernel": 13,
+  "DevOps / Cloud Engineer | AWS | EBS": 12,
+  "Frontend Developer | React | advanced_patterns": 11,
+  "DevOps / Cloud Engineer | AWS | RDS": 11,
+  "DevOps / Cloud Engineer | AWS | Auto Scaling Group": 11,
+  "DevOps / Cloud Engineer | CI/CD | CI/CD Self Assessment": 11,
+  "DevOps / Cloud Engineer | Kubernetes | Ingress": 11,
+  "DevOps / Cloud Engineer | Linux | Troubleshooting and Debugging": 11,
+  "DevOps / Cloud Engineer | AWS | Billing and Support": 10,
+  "DevOps / Cloud Engineer | Git | Rebase": 10,
+  "DevOps / Cloud Engineer | Kubernetes | Deployments": 10,
+  "DevOps / Cloud Engineer | Kubernetes | Cluster and Architecture": 10,
+  "DevOps / Cloud Engineer | Linux | Globbing & Wildcards": 10,
+  "DevOps / Cloud Engineer | Linux | Advanced Networking": 10,
+  "Frontend Developer | JavaScript | performance_security": 9,
+  "DevOps / Cloud Engineer | AWS | SQS": 9,
+  "DevOps / Cloud Engineer | Kubernetes | Kubernetes 101": 9,
+  "DevOps / Cloud Engineer | Linux | Security": 9,
+  "DevOps / Cloud Engineer | Linux | Permissions": 9,
+  "Frontend Developer | JavaScript | error_handling_debugging": 8,
+  "DevOps / Cloud Engineer | AWS | Scenarios": 8,
+  "DevOps / Cloud Engineer | Git | Git Basics": 8,
+  "DevOps / Cloud Engineer | Kubernetes | Access Control": 8,
+  "DevOps / Cloud Engineer | Linux | Packaging": 8,
+  "Frontend Developer | React | testing_tooling": 7,
+  "DevOps / Cloud Engineer | AWS | Production Operations and Migrations": 7,
+  "DevOps / Cloud Engineer | AWS | ElastiCache": 7,
+  "DevOps / Cloud Engineer | AWS | S3 Security": 7,
+  "DevOps / Cloud Engineer | CI/CD | CI/CD - GitHub Actions": 7,
+  "DevOps / Cloud Engineer | Kubernetes | Helm": 7,
+  "DevOps / Cloud Engineer | Linux | SSH": 7,
+  "DevOps / Cloud Engineer | Linux | Filesystem Hierarchy Standard": 7,
+  "Frontend Developer | React | styling": 6,
+  "DevOps / Cloud Engineer | AWS | ECS": 6,
+  "DevOps / Cloud Engineer | AWS | EFS": 6,
+  "DevOps / Cloud Engineer | AWS | AMI": 6,
+  "DevOps / Cloud Engineer | Kubernetes | Static Pods": 6,
+  "DevOps / Cloud Engineer | Kubernetes | Commands": 6,
+  "DevOps / Cloud Engineer | Kubernetes | Namespaces - commands": 6,
+  "DevOps / Cloud Engineer | Kubernetes | Secrets": 6,
+  "DevOps / Cloud Engineer | Linux | Applications and Services": 6,
+  "DevOps / Cloud Engineer | Linux | AWK": 6,
+  "DevOps / Cloud Engineer | Linux | Performance Analysis": 6,
+  "DevOps / Cloud Engineer | Linux | Filesystem & Files": 6,
+  "DevOps / Cloud Engineer | AWS | CloudFront": 5,
+  "DevOps / Cloud Engineer | AWS | RedShift": 5,
+  "DevOps / Cloud Engineer | Git | Merge": 5,
+  "DevOps / Cloud Engineer | Git | Branches": 5,
+  "DevOps / Cloud Engineer | Kubernetes | Pods Commands": 5,
+  "DevOps / Cloud Engineer | Kubernetes | Controllers": 5,
+  "DevOps / Cloud Engineer | Kubernetes | Labels and Selectors": 5,
+  "DevOps / Cloud Engineer | Linux | Systemd": 5,
+  "DevOps / Cloud Engineer | Linux | DNS": 5,
+  "Frontend Developer | React | performance": 4,
+  "Frontend Developer | React | react_native_ecosystem": 4,
+  "DevOps / Cloud Engineer | AWS | Lambda": 4,
+  "DevOps / Cloud Engineer | AWS | DynamoDB": 4,
+  "DevOps / Cloud Engineer | AWS | SNS": 4,
+  "DevOps / Cloud Engineer | AWS | Placement Groups": 4,
+  "DevOps / Cloud Engineer | Kubernetes | Network Policies": 4,
+  "DevOps / Cloud Engineer | Kubernetes | Deployment Strategies": 4,
+  "DevOps / Cloud Engineer | Kubernetes | DaemonSet": 4,
+  "DevOps / Cloud Engineer | Kubernetes | Namespaces": 4,
+  "DevOps / Cloud Engineer | Linux | Scenarios": 4,
+  "DevOps / Cloud Engineer | Linux | I/O Redirection": 4,
+  "DevOps / Cloud Engineer | Linux | Boot Process": 4,
+  "DevOps / Cloud Engineer | AWS | Disaster Recovery": 3,
+  "DevOps / Cloud Engineer | AWS | Automation": 3,
+  "DevOps / Cloud Engineer | AWS | Aurora": 3,
+  "DevOps / Cloud Engineer | AWS | Instance Store": 3,
+  "DevOps / Cloud Engineer | AWS | Objects": 3,
+  "DevOps / Cloud Engineer | AWS | Buckets 101": 3,
+  "DevOps / Cloud Engineer | AWS | EC2": 3,
+  "DevOps / Cloud Engineer | AWS | Architecture Design": 3,
+  "DevOps / Cloud Engineer | Git | Git Diff": 3,
+  "DevOps / Cloud Engineer | Kubernetes | CronJob": 3,
+  "DevOps / Cloud Engineer | Kubernetes | Pods Troubleshooting and Debugging": 3,
+  "DevOps / Cloud Engineer | Kubernetes | Scenarios": 3,
+  "DevOps / Cloud Engineer | Kubernetes | Node Affinity": 3,
+  "DevOps / Cloud Engineer | Kubernetes | Kustomize": 3,
+  "DevOps / Cloud Engineer | Kubernetes | Taints": 3,
+  "DevOps / Cloud Engineer | Linux | Memory": 3,
+  "DevOps / Cloud Engineer | Linux | Distributions": 3,
+  "DevOps / Cloud Engineer | Linux | Hardware": 3,
+  "DevOps / Cloud Engineer | Linux | Virtualization": 3,
+  "DevOps / Cloud Engineer | AWS | ENI": 2,
+  "DevOps / Cloud Engineer | AWS | Monitoring and Logging": 2,
+  "DevOps / Cloud Engineer | AWS | Global Infrastructure": 2,
+  "DevOps / Cloud Engineer | AWS | Launch Template": 2,
+  "DevOps / Cloud Engineer | AWS | AWS Organizations": 2,
+  "DevOps / Cloud Engineer | AWS | Fargate": 2,
+  "DevOps / Cloud Engineer | CI/CD | Zuul": 2,
+  "DevOps / Cloud Engineer | Git | Git Internal": 2,
+  "DevOps / Cloud Engineer | Git | Scenarios": 2,
+  "DevOps / Cloud Engineer | Kubernetes | Policy Testing": 2,
+  "DevOps / Cloud Engineer | Kubernetes | Monitoring": 2,
+  "DevOps / Cloud Engineer | Kubernetes | Gatekeeper": 2,
+  "DevOps / Cloud Engineer | Kubernetes | etcd": 2,
+  "DevOps / Cloud Engineer | Kubernetes | Troubleshooting Scenarios": 2,
+  "DevOps / Cloud Engineer | Linux | DNF": 2,
+  "DevOps / Cloud Engineer | Linux | Namespaces": 2,
+  "DevOps / Cloud Engineer | AWS | Basics": 1,
+  "DevOps / Cloud Engineer | AWS | NLB": 1,
+  "DevOps / Cloud Engineer | AWS | Default VPC": 1,
+  "DevOps / Cloud Engineer | AWS | High Availability": 1,
+  "DevOps / Cloud Engineer | Git | References": 1,
+  "DevOps / Cloud Engineer | Kubernetes | Resource Limits": 1,
+  "DevOps / Cloud Engineer | Kubernetes | Kubelet": 1,
+  "DevOps / Cloud Engineer | Kubernetes | Istio": 1,
+  "DevOps / Cloud Engineer | Kubernetes | StatefulSet": 1,
+  "DevOps / Cloud Engineer | Kubernetes | Security": 1,
+  "DevOps / Cloud Engineer | Kubernetes | Scheduler": 1,
+  "DevOps / Cloud Engineer | Kubernetes | DaemonSet - Commands": 1
+ },
+ "pools_by_role": {
+  "Backend Developer": {
+   "conversational": 37
+  },
+  "DevOps / Cloud Engineer": {
+   "conversational": 956,
+   "quiz_true_false": 141,
+   "hands_on_practical": 17,
+   "needs_context": 7
+  },
+  "Frontend Developer": {
+   "conversational": 956,
+   "code_output_quiz": 15
+  }
+ },
+ "devops_inactive_authentic": 1125,
+ "fidelity": {
+  "devops_question_text_equals_html_stripped_raw": 1164,
+  "devops_total": 1164,
+  "jsreact_question_text_equals_header": 1048,
+  "jsreact_total": 1048
+ },
+ "samples": {
+  "JavaScript_fragment_subheading": [
+   "# Example: Creating and Using a Promise",
+   "# `bind`",
+   "# `apply`",
+   "# Example: Pure vs. Impure Functions",
+   "# Syntax Examples:",
+   "# Key Features:",
+   "# Example:",
+   "# Summary"
+  ],
+  "JavaScript_noun_heading": [
+   "Before Currying (Normal n-ary Function)",
+   "Key Points",
+   "Benefits of Currying",
+   "After Currying (Unary Function Chain)",
+   "Mixin Example using Object composition",
+   "Benefits"
+  ],
+  "JavaScript_fragment_answer_key": [
+   "## Answer: 3",
+   "## Answer: 4",
+   "## Answer: 2",
+   "## Answer: 3",
+   "## Answer: 1",
+   "## Answer: 3",
+   "## Answer: 4",
+   "## Answer: 2"
+  ],
+  "React_fragment_subheading": [
+   "# **createElement:**",
+   "# **cloneElement:**",
+   "# Give an example of Reselect usage?",
+   "# Core Concepts of Flux",
+   "# Does Context replace Redux?",
+   "# 4. **Commit Phase (Real DOM Updates)**",
+   "# **1. Virtual DOM & Component Rendering**",
+   "# 2. **React Fiber Architecture**"
+  ],
+  "React_noun_heading": [
+   "Props",
+   "Example Usage",
+   "React Router",
+   "Summary Table",
+   "React Native",
+   "React supported libraries & Integration",
+   "React Redux",
+   "Props:"
+  ],
+  "DevOps-AWS_noq_exercise_index_table": [
+   "Containers",
+   "DNS",
+   "CodePipeline",
+   "CDK",
+   "IAM",
+   "Databases",
+   "ELB",
+   "Misc"
+  ],
+  "DevOps-CICD_noq_exercise_index_table": [
+   "CI/CD Exercises"
+  ],
+  "DevOps-Git_noq_exercise_index_table": [
+   "Exercises"
+  ],
+  "DevOps-K8s_noq_exercise_index_table": [
+   "Labels and Selectors",
+   "Scheduler",
+   "Kustomize",
+   "Pods",
+   "ReplicaSet",
+   "Service"
+  ],
+  "DevOps-Linux_noq_exercise_index_table": [
+   "Basics",
+   "Misc"
+  ],
+  "DevOps-Linux_noq_documentation_or_toc": [
+   "Linux Master Application"
+  ]
+ },
+ "curated": {
+  "rows": 3261,
+  "types": {
+   "template_core_concept_deep_dive": 695,
+   "template_code_pattern": 501,
+   "other_curated": 689,
+   "template_production_scenario": 689,
+   "template_pitfalls_checklist": 687
+  },
+  "active_by_type": {
+   "other_curated": 155
+  },
+  "embedded_by_type": {
+   "template_core_concept_deep_dive": 323,
+   "template_code_pattern": 222,
+   "other_curated": 689,
+   "template_production_scenario": 314,
+   "template_pitfalls_checklist": 324
+  },
+  "mojibake_rows": 0,
+  "subtopic_unbalanced_parens_rows": 277,
+  "distinct_role_topic_subtopic": 585,
+  "distinct_with_balanced_parens": 535,
+  "template_question_rows": 0,
+  "template_question_regex_exact_matches": 0,
+  "exact_duplicate_content_groups": 129,
+  "exact_duplicate_records": 317,
+  "role_dist": {
+   "Frontend Developer": 419,
+   "Backend Developer": 318,
+   "Full Stack Developer": 212,
+   "Python Developer": 311,
+   "Java Developer": 389,
+   "Data Analyst": 323,
+   "Machine Learning Engineer": 303,
+   "AI Engineer": 333,
+   "Database Developer": 278,
+   "DevOps / Cloud Engineer": 375
+  }
+ },
+ "codealpaca": {
+  "rows": 4500,
+  "categories": {
+   "modify_code": 374,
+   "write_code": 2876,
+   "coding_task_verb": 489,
+   "other": 280,
+   "conceptual_instruction": 463,
+   "code_reading": 18
+  },
+  "top_verbs": [
+   [
+    "write",
+    1076
+   ],
+   [
+    "create",
+    1042
+   ],
+   [
+    "generate",
+    193
+   ],
+   [
+    "what",
+    137
+   ],
+   [
+    "given",
+    126
+   ],
+   [
+    "construct",
+    112
+   ],
+   [
+    "design",
+    105
+   ],
+   [
+    "how",
+    105
+   ],
+   [
+    "implement",
+    90
+   ],
+   [
+    "find",
+    87
+   ],
+   [
+    "edit",
+    75
+   ],
+   [
+    "using",
+    75
+   ],
+   [
+    "convert",
+    69
+   ],
+   [
+    "explain",
+    68
+   ],
+   [
+    "develop",
+    65
+   ],
+   [
+    "suggest",
+    62
+   ],
+   [
+    "you",
+    46
+   ],
+   [
+    "rewrite",
+    45
+   ],
+   [
+    "modify",
+    44
+   ],
+   [
+    "use",
+    41
+   ],
+   [
+    "calculate",
+    41
+   ],
+   [
+    "describe",
+    40
+   ],
+   [
+    "identify",
+    30
+   ],
+   [
+    "change",
+    26
+   ],
+   [
+    "compute",
+    26
+   ]
+  ],
+  "languages": {
+   "python": 1824,
+   "unspecified": 900,
+   "javascript": 486,
+   "sql": 377,
+   "html/css": 291,
+   "java": 269,
+   "c++": 119,
+   "php": 50,
+   "c#": 48,
+   "c": 41,
+   "bash": 31,
+   "ruby": 31,
+   "r": 12,
+   "swift": 5,
+   "perl": 5,
+   "matlab": 4,
+   "rust": 3,
+   "go": 2,
+   "scala": 1,
+   "typescript": 1
+  },
+  "has_input_spec": 2341,
+  "instruction_ends_with_qmark": 284,
+  "active_status": 112,
+  "embedded": 2001,
+  "role_language_mismatch": 1023,
+  "role_language_checked": 3600,
+  "dup_instruction_groups": 1,
+  "dup_instruction_records": 2,
+  "boilerplate_rubric_rows": 4500,
+  "samples": {
+   "modify_code": [
+    "Edit the Python code so that it prints out the total number of elements in the list.",
+    "Change the variable `x` to the data type desired.",
+    "Rewrite the following C++ code using only pointer references instead of array subscripts:",
+    "Replace the placeholder with a for loop for iterating over the numbers from 1 to n and printing them."
+   ],
+   "write_code": [
+    "Write an SQL query to calculate the average order price for each product category in the \"orders\" table.",
+    "Write a SQL query to find the total number of orders placed between two given dates.",
+    "Create a C program that prints out the Fibonacci sequence.",
+    "Write a function in JavaScript to count the number of vowels in a given string."
+   ],
+   "coding_task_verb": [
+    "Sum up the numbers in the array in Javascript.",
+    "Sort the array in ascending order.",
+    "Count the number of characters in the string.",
+    "Read the JSON string below and convert it into a dictionary."
+   ],
+   "other": [
+    "Follow the comments in the code to complete the program which prints a conversion table from Fahrenheit to Celsius.",
+    "Follow the comments to complete the code that finds the maximum value in an array.",
+    "Re-write the code segment as a list comprehension.",
+    "You are given a matrix of m rows and n columns. Write a function that calculates the transpose of the given matrix."
+   ],
+   "conceptual_instruction": [
+    "What is the purpose of a constructor in a class in Java?",
+    "How to reverse a list in C++?",
+    "Describe the basic syntax of a Java function?",
+    "What is the purpose of declaring a function as static in C++?"
+   ],
+   "code_reading": [
+    "What is the output of the following code?",
+    "Determine the output of the given Python code.",
+    "What is the output of this Java program?",
+    "Identify the correct output of this Java program given the input."
+   ]
+  },
+  "role_x_language": {
+   "Python Developer": {
+    "python": 1662,
+    "unspecified": 262,
+    "java": 131,
+    "javascript": 59,
+    "html/css": 51,
+    "sql": 27
+   },
+   "Database Developer": {
+    "sql": 345,
+    "unspecified": 78,
+    "python": 18,
+    "javascript": 4,
+    "c++": 4,
+    "c": 3
+   },
+   "Java Developer": {
+    "javascript": 331,
+    "java": 137,
+    "unspecified": 37,
+    "python": 15,
+    "c++": 4,
+    "c#": 3
+   },
+   "Frontend Developer": {
+    "html/css": 239,
+    "unspecified": 224,
+    "javascript": 83,
+    "c++": 61,
+    "python": 49,
+    "php": 31
+   },
+   "Full Stack Developer": {
+    "unspecified": 85,
+    "python": 17,
+    "c++": 4,
+    "javascript": 3,
+    "c#": 2,
+    "perl": 2
+   },
+   "DevOps / Cloud Engineer": {
+    "unspecified": 32,
+    "bash": 20,
+    "python": 10,
+    "c++": 7,
+    "php": 7,
+    "c": 5
+   },
+   "AI Engineer": {
+    "unspecified": 35,
+    "python": 9,
+    "c#": 4,
+    "c": 2,
+    "bash": 1,
+    "php": 1
+   },
+   "Data Analyst": {
+    "unspecified": 45,
+    "python": 16,
+    "c++": 5,
+    "c#": 2,
+    "c": 2,
+    "javascript": 1
+   },
+   "Machine Learning Engineer": {
+    "unspecified": 42,
+    "python": 18,
+    "c++": 4,
+    "php": 3,
+    "javascript": 1,
+    "c#": 1
+   },
+   "Backend Developer": {
+    "unspecified": 60,
+    "python": 10,
+    "c++": 9,
+    "c#": 3,
+    "javascript": 2,
+    "c": 2
+   }
+  }
+ },
+ "exposure": {
+  "UNSOURCED": {
+   "rows": 6,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 6,
+   "embedded_total": 6
+  },
+  "Curated-v1": {
+   "rows": 3261,
+   "active_status": 155,
+   "active_and_embedded(retrievable_now)": 155,
+   "retrievable_breakdown": {
+    "other_curated": 155
+   },
+   "inactive": 3106,
+   "embedded_total": 1872
+  },
+  "JavaScript": {
+   "rows": 716,
+   "active_status": 716,
+   "active_and_embedded(retrievable_now)": 324,
+   "retrievable_breakdown": {
+    "conversational": 226,
+    "rejected:markdown_subheading_promoted_to_question": 10,
+    "code_output_quiz": 52,
+    "rejected:answer_key_fragment_promoted_to_question": 36
+   },
+   "inactive": 0,
+   "embedded_total": 324
+  },
+  "React": {
+   "rows": 581,
+   "active_status": 581,
+   "active_and_embedded(retrievable_now)": 277,
+   "retrievable_breakdown": {
+    "conversational": 203,
+    "rejected:markdown_subheading_promoted_to_question": 70,
+    "rejected:noun_heading_not_a_question": 3,
+    "rejected": 1
+   },
+   "inactive": 0,
+   "embedded_total": 277
+  },
+  "DevOps-Linux": {
+   "rows": 36,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 36,
+   "embedded_total": 13
+  },
+  "DevOps-K8s": {
+   "rows": 53,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 53,
+   "embedded_total": 24
+  },
+  "DevOps-CICD": {
+   "rows": 5,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 5,
+   "embedded_total": 1
+  },
+  "DevOps-Git": {
+   "rows": 9,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 9,
+   "embedded_total": 3
+  },
+  "DevOps-AWS": {
+   "rows": 61,
+   "active_status": 0,
+   "active_and_embedded(retrievable_now)": 0,
+   "retrievable_breakdown": {},
+   "inactive": 61,
+   "embedded_total": 34
+  },
+  "SystemDesign": {
+   "rows": 166,
+   "active_status": 166,
+   "active_and_embedded(retrievable_now)": 75,
+   "retrievable_breakdown": {
+    "rejected:documentation_section": 72,
+    "multi": 2,
+    "conversational_single": 1
+   },
+   "inactive": 0,
+   "embedded_total": 75
+  },
+  "CodeAlpaca": {
+   "rows": 4500,
+   "active_status": 112,
+   "active_and_embedded(retrievable_now)": 42,
+   "retrievable_breakdown": {
+    "coding_task": 42
+   },
+   "inactive": 4388,
+   "embedded_total": 2001
+  }
+ },
+ "unsourced_rows": 6
+}

@@ -1,0 +1,392 @@
+{
+  "role_selected": "AI Engineer",
+  "total_staged_before_batch20": 2672,
+  "cumulative_difficulty_before": {
+    "easy": [
+      244,
+      25.9
+    ],
+    "medium": [
+      445,
+      47.2
+    ],
+    "hard": [
+      253,
+      26.9
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.472,
+    "answer": 0.332,
+    "question+answer": 0.403
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what are the",
+      6
+    ],
+    [
+      "explain the concept",
+      3
+    ],
+    [
+      "you are building",
+      3
+    ],
+    [
+      "how would you",
+      2
+    ],
+    [
+      "what tradeoffs exist",
+      2
+    ],
+    [
+      "a user inputs",
+      2
+    ],
+    [
+      "an ai agent",
+      2
+    ],
+    [
+      "how does subword",
+      1
+    ],
+    [
+      "explain what the",
+      1
+    ],
+    [
+      "an llm perfectly",
+      1
+    ],
+    [
+      "you notice an",
+      1
+    ],
+    [
+      "in a rag",
+      1
+    ],
+    [
+      "your vector search",
+      1
+    ],
+    [
+      "a user queries",
+      1
+    ],
+    [
+      "what does it",
+      1
+    ],
+    [
+      "you implemented hybrid",
+      1
+    ],
+    [
+      "your rag pipeline",
+      1
+    ],
+    [
+      "explain the architectural",
+      1
+    ],
+    [
+      "what is the",
+      1
+    ],
+    [
+      "what does the",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "what are the",
+      70
+    ],
+    [
+      "what is the",
+      66
+    ],
+    [
+      "how do you",
+      25
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "explain the concept",
+      21
+    ],
+    [
+      "what is a",
+      19
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "you need to",
+      14
+    ],
+    [
+      "explain the difference",
+      14
+    ],
+    [
+      "you are building",
+      10
+    ],
+    [
+      "explain the purpose",
+      9
+    ],
+    [
+      "you have a",
+      9
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "what does the",
+      6
+    ],
+    [
+      "explain how event",
+      5
+    ]
+  ],
+  "top_opening_share_new_batch": 0.12,
+  "distinct_openings_new_batch": 37,
+  "role_distribution": {
+    "AI Engineer": 50
+  },
+  "skill_distribution": {
+    "LLM Fundamentals": 6,
+    "RAG Architecture": 13,
+    "AI Evaluation": 6,
+    "AI Agents": 7,
+    "AI Operations": 7,
+    "AI Security": 6,
+    "Structured Outputs": 5
+  },
+  "technology_distribution": {
+    "AI/ML": 30,
+    "Vector Databases": 7,
+    "Cloud Infrastructure": 7,
+    "Security": 6
+  },
+  "topic_distribution": {
+    "Architecture & Inference": 6,
+    "Embeddings & Chunking": 7,
+    "Advanced Retrieval (Hybrid/Rerank)": 6,
+    "Metrics & Hallucinations": 6,
+    "Tools & Memory": 7,
+    "Latency, Cost & Caching": 7,
+    "Guardrails & Prompt Injection": 6,
+    "Function Calling & Validation": 5
+  },
+  "intent_distribution": {
+    "fundamentals": 8,
+    "explain": 9,
+    "tradeoff": 8,
+    "scenario": 11,
+    "implement": 8,
+    "debug": 6
+  },
+  "difficulty_distribution": {
+    "medium": 29,
+    "easy": 8,
+    "hard": 13
+  },
+  "question_type_distribution": {
+    "concept": 17,
+    "tradeoff": 8,
+    "scenario": 11,
+    "implementation": 8,
+    "debugging": 6
+  },
+  "bucket_progress": {
+    "LLM Fundamentals | Architecture & Inference": {
+      "generated_now": 6
+    },
+    "RAG Architecture | Embeddings & Chunking": {
+      "generated_now": 7
+    },
+    "RAG Architecture | Advanced Retrieval (Hybrid/Rerank)": {
+      "generated_now": 6
+    },
+    "AI Evaluation | Metrics & Hallucinations": {
+      "generated_now": 6
+    },
+    "AI Agents | Tools & Memory": {
+      "generated_now": 7
+    },
+    "AI Operations | Latency, Cost & Caching": {
+      "generated_now": 7
+    },
+    "AI Security | Guardrails & Prompt Injection": {
+      "generated_now": 6
+    },
+    "Structured Outputs | Function Calling & Validation": {
+      "generated_now": 5
+    }
+  },
+  "cumulative_generated_production": 992,
+  "cumulative_staging_total": 2722,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 100,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 100,
+    "Full Stack Developer": 50,
+    "Frontend Developer": 100,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      252,
+      25.4
+    ],
+    "medium": [
+      474,
+      47.8
+    ],
+    "hard": [
+      266,
+      26.8
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -4.1,
+    "medium": 2.2,
+    "hard": 1.9
+  },
+  "target_gap_pct_points_after": {
+    "easy": -4.6,
+    "medium": 2.8,
+    "hard": 1.8
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 400,
+    "Frontend Developer": 400,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 450,
+    "Full Stack Developer": 450
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 100,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 100,
+      "Full Stack Developer": 50,
+      "Frontend Developer": 100,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 427,
+      "Data Analyst": 82,
+      "AI Engineer": 70,
+      "Full Stack Developer": 148,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 103,
+      "Frontend Developer": 36,
+      "Performance Engineer": 95,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 37,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 73,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 11,
+      "Product Manager": 14,
+      "Data Scientist": 30,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 6,
+      "Software Engineer": 7
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Machine Learning Engineer": 12,
+    "Data Scientist": 12,
+    "Backend Developer": 19,
+    "Data Engineer": 7,
+    "Search Engineer": 6,
+    "Quality Assurance": 6,
+    "Software Engineer": 7,
+    "DevOps / Cloud Engineer": 7,
+    "Performance Engineer": 7,
+    "Security Engineer": 6
+  },
+  "records_appended": 50,
+  "final_file_line_count": 992,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

@@ -1,0 +1,308 @@
+{
+  "role_selected": "Machine Learning Engineer",
+  "total_staged_before_batch7": 2030,
+  "cumulative_difficulty_before": {
+    "easy": [
+      56,
+      18.7
+    ],
+    "medium": [
+      129,
+      43.0
+    ],
+    "hard": [
+      115,
+      38.3
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.237,
+    "answer": 0.143,
+    "question+answer": 0.132
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      5
+    ],
+    [
+      "what does a",
+      2
+    ],
+    [
+      "how does a",
+      2
+    ],
+    [
+      "what do the",
+      2
+    ],
+    [
+      "how would you",
+      2
+    ],
+    [
+      "what quantity does",
+      1
+    ],
+    [
+      "if a model",
+      1
+    ],
+    [
+      "what are residuals",
+      1
+    ],
+    [
+      "when training linear",
+      1
+    ],
+    [
+      "two highly correlated",
+      1
+    ],
+    [
+      "how do ridge",
+      1
+    ],
+    [
+      "why cant you",
+      1
+    ],
+    [
+      "a polynomial regression",
+      1
+    ],
+    [
+      "what does gini",
+      1
+    ],
+    [
+      "why are single",
+      1
+    ],
+    [
+      "why dont decision",
+      1
+    ],
+    [
+      "a fully grown",
+      1
+    ],
+    [
+      "why does a",
+      1
+    ],
+    [
+      "how do gradient",
+      1
+    ],
+    [
+      "why can impuritybased",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      29
+    ],
+    [
+      "what is the",
+      28
+    ],
+    [
+      "how do you",
+      10
+    ],
+    [
+      "you need to",
+      7
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "what is a",
+      6
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "how would you",
+      5
+    ],
+    [
+      "explain how rate",
+      4
+    ],
+    [
+      "how does the",
+      4
+    ],
+    [
+      "explain how global",
+      3
+    ],
+    [
+      "explain how search",
+      3
+    ],
+    [
+      "explain how theme",
+      3
+    ],
+    [
+      "explain how acid",
+      3
+    ],
+    [
+      "explain how tlsssl",
+      3
+    ],
+    [
+      "explain how jwt",
+      3
+    ],
+    [
+      "explain how token",
+      3
+    ]
+  ],
+  "top_opening_share_new_batch": 0.1,
+  "distinct_openings_new_batch": 42,
+  "role_distribution": {
+    "Machine Learning Engineer": 50
+  },
+  "skill_distribution": {
+    "Supervised Learning": 30,
+    "Model Evaluation": 20
+  },
+  "technology_distribution": {
+    "ML": 50
+  },
+  "topic_distribution": {
+    "Linear Regression": 10,
+    "Trees": 10,
+    "SVM": 10,
+    "Precision": 10,
+    "ROC-AUC": 10
+  },
+  "intent_distribution": {
+    "fundamentals": 12,
+    "explain": 21,
+    "diagnose": 6,
+    "compare": 7,
+    "tradeoff": 1,
+    "implement": 2,
+    "scenario": 1
+  },
+  "difficulty_distribution": {
+    "easy": 30,
+    "medium": 20
+  },
+  "question_type_distribution": {
+    "concept": 33,
+    "debugging": 6,
+    "comparison": 7,
+    "tradeoff": 1,
+    "implementation": 2,
+    "scenario": 1
+  },
+  "bucket_progress": {
+    "Supervised Learning | Linear Regression": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "Supervised Learning | Trees": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "Supervised Learning | SVM": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "Model Evaluation | Precision": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "Model Evaluation | ROC-AUC": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    }
+  },
+  "cumulative_generated_production": 350,
+  "cumulative_staging_total": 2080,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 50,
+    "DevOps / Cloud Engineer": 50,
+    "AI Engineer": 50,
+    "Database Developer": 50,
+    "Machine Learning Engineer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      86,
+      24.6
+    ],
+    "medium": [
+      149,
+      42.6
+    ],
+    "hard": [
+      115,
+      32.9
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -11.3,
+    "medium": -2.0,
+    "hard": 13.3
+  },
+  "target_gap_pct_points_after": {
+    "easy": -5.4,
+    "medium": -2.4,
+    "hard": 7.9
+  },
+  "remaining_gap_count": 3361,
+  "records_appended": 50,
+  "final_file_line_count": 350,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

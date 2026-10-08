@@ -20,6 +20,22 @@ def event_loop() -> Generator[asyncio.AbstractEventLoop, None, None]:
     yield loop
     loop.close()
 
+@pytest.fixture(autouse=True)
+def mock_gemini_llm(monkeypatch):
+    """Globally mock Gemini LLM calls during tests to prevent quota usage."""
+    class MockResponse:
+        def __init__(self, content):
+            self.content = content
+    
+    def mock_invoke(*args, **kwargs):
+        return MockResponse('{"summary": "Mock summary", "core_requirements": [{"requirement": "Mock Req", "status": "missing_evidence", "confidence": 0.0}]}')
+        
+    try:
+        from ai_engine.models.llm import PoolableLLM
+        monkeypatch.setattr(PoolableLLM, "invoke", mock_invoke)
+    except ImportError:
+        pass
+
 
 @pytest.fixture
 async def async_client() -> AsyncGenerator[AsyncClient, None]:

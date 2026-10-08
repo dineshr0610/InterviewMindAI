@@ -1,0 +1,463 @@
+{
+  "role_selected": "DevOps / Cloud Engineer",
+  "total_staged_before_batch10": 2180,
+  "cumulative_difficulty_before": {
+    "easy": [
+      132,
+      29.3
+    ],
+    "medium": [
+      199,
+      44.2
+    ],
+    "hard": [
+      119,
+      26.4
+    ]
+  },
+  "attempted": 50,
+  "accepted": 45,
+  "rejected": 5,
+  "rejection_reasons": {
+    "prompt_leakage": 5
+  },
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.224,
+    "answer": 0.138,
+    "question+answer": 0.171
+  },
+  "prompt_leakage": 5,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "how do you",
+      3
+    ],
+    [
+      "what are the",
+      3
+    ],
+    [
+      "what is the",
+      2
+    ],
+    [
+      "how would you",
+      2
+    ],
+    [
+      "what does the",
+      2
+    ],
+    [
+      "how do docker",
+      1
+    ],
+    [
+      "a colleague builds",
+      1
+    ],
+    [
+      "every code change",
+      1
+    ],
+    [
+      "your image has",
+      1
+    ],
+    [
+      "a security scan",
+      1
+    ],
+    [
+      "you are asked",
+      1
+    ],
+    [
+      "what does a",
+      1
+    ],
+    [
+      "why does a",
+      1
+    ],
+    [
+      "how do maxsurge",
+      1
+    ],
+    [
+      "a new rollout",
+      1
+    ],
+    [
+      "after deploying pods",
+      1
+    ],
+    [
+      "your horizontalpodautoscaler never",
+      1
+    ],
+    [
+      "compare the recreate",
+      1
+    ],
+    [
+      "even with a",
+      1
+    ],
+    [
+      "how do implicit",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      33
+    ],
+    [
+      "what is the",
+      33
+    ],
+    [
+      "how do you",
+      17
+    ],
+    [
+      "how would you",
+      15
+    ],
+    [
+      "you need to",
+      9
+    ],
+    [
+      "what is a",
+      8
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "how does the",
+      5
+    ],
+    [
+      "what does the",
+      5
+    ],
+    [
+      "when would you",
+      5
+    ],
+    [
+      "explain how rate",
+      4
+    ],
+    [
+      "how does a",
+      4
+    ],
+    [
+      "explain how global",
+      3
+    ],
+    [
+      "explain how search",
+      3
+    ],
+    [
+      "explain how theme",
+      3
+    ],
+    [
+      "explain how acid",
+      3
+    ]
+  ],
+  "top_opening_share_new_batch": 0.067,
+  "distinct_openings_new_batch": 38,
+  "role_distribution": {
+    "DevOps / Cloud Engineer": 45
+  },
+  "skill_distribution": {
+    "Docker": 10,
+    "Kubernetes Core": 10,
+    "AWS IAM": 6,
+    "Terraform": 9,
+    "Monitoring": 10
+  },
+  "technology_distribution": {
+    "Docker": 10,
+    "Kubernetes": 10,
+    "AWS": 6,
+    "Terraform": 9,
+    "Prometheus": 10
+  },
+  "topic_distribution": {
+    "Images": 10,
+    "Deployments": 10,
+    "Policies": 6,
+    "State": 9,
+    "Alerting": 10
+  },
+  "intent_distribution": {
+    "fundamentals": 5,
+    "explain": 10,
+    "compare": 4,
+    "scenario": 6,
+    "optimize": 1,
+    "implement": 6,
+    "tradeoff": 2,
+    "debug": 4,
+    "diagnose": 4,
+    "architecture": 3
+  },
+  "difficulty_distribution": {
+    "easy": 16,
+    "medium": 22,
+    "hard": 7
+  },
+  "question_type_distribution": {
+    "concept": 15,
+    "comparison": 4,
+    "scenario": 6,
+    "optimization": 1,
+    "implementation": 6,
+    "tradeoff": 2,
+    "debugging": 8,
+    "architecture": 3
+  },
+  "bucket_progress": {
+    "Docker | Images": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "Kubernetes Core | Deployments": {
+      "generated_now": 10,
+      "planned": 10,
+      "remaining_in_bucket": 0
+    },
+    "AWS IAM | Policies": {
+      "generated_now": 6,
+      "planned": 15,
+      "remaining_in_bucket": 9
+    },
+    "Terraform | State": {
+      "generated_now": 9,
+      "planned": 15,
+      "remaining_in_bucket": 6
+    },
+    "Monitoring | Alerting": {
+      "generated_now": 10,
+      "planned": 15,
+      "remaining_in_bucket": 5
+    }
+  },
+  "cumulative_generated_production": 495,
+  "cumulative_staging_total": 2225,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 50,
+    "DevOps / Cloud Engineer": 95,
+    "AI Engineer": 50,
+    "Database Developer": 50,
+    "Machine Learning Engineer": 50,
+    "Data Analyst": 50,
+    "Full Stack Developer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      148,
+      29.9
+    ],
+    "medium": [
+      221,
+      44.6
+    ],
+    "hard": [
+      126,
+      25.5
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -0.7,
+    "medium": -0.8,
+    "hard": 1.4
+  },
+  "target_gap_pct_points_after": {
+    "easy": -0.1,
+    "medium": -0.4,
+    "hard": 0.5
+  },
+  "remaining_gap_count": 3216,
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 100,
+      "Java Developer": 50,
+      "DevOps / Cloud Engineer": 95,
+      "AI Engineer": 50,
+      "Database Developer": 50,
+      "Machine Learning Engineer": 50,
+      "Data Analyst": 50,
+      "Full Stack Developer": 50
+    },
+    "C_combined_primary_role": {
+      "AI Engineer": 50,
+      "Backend Developer": 254,
+      "Data Analyst": 50,
+      "Database Developer": 50,
+      "DevOps / Cloud Engineer": 95,
+      "Frontend Developer": 1476,
+      "Full Stack Developer": 50,
+      "Java Developer": 50,
+      "Machine Learning Engineer": 50,
+      "Python Developer": 100
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 311,
+      "Data Analyst": 77,
+      "AI Engineer": 70,
+      "Full Stack Developer": 23,
+      "Machine Learning Engineer": 58,
+      "DevOps / Cloud Engineer": 30,
+      "Frontend Developer": 31,
+      "Performance Engineer": 44,
+      "System Design": 4,
+      "Database Developer": 5,
+      "Architecture": 24,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 16,
+      "Security Engineer": 5,
+      "Network Engineer": 7,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 3,
+      "Python Developer": 10
+    }
+  },
+  "priority1_remaining_by_role": {
+    "AI Engineer": 160,
+    "Backend Developer": 195,
+    "Data Analyst": 130,
+    "Database Developer": 160,
+    "DevOps / Cloud Engineer": 205,
+    "Frontend Developer": 180,
+    "Full Stack Developer": 160,
+    "Java Developer": 160,
+    "Machine Learning Engineer": 190,
+    "Python Developer": 170
+  },
+  "coverage_matrix": {
+    "Python Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 100,
+      "combined_primary": 100,
+      "applicable_role_count_generated": 10,
+      "priority1_remaining": 170
+    },
+    "Frontend Developer": {
+      "existing_supabase_primary": 1476,
+      "generated_primary": 0,
+      "combined_primary": 1476,
+      "applicable_role_count_generated": 31,
+      "priority1_remaining": 180
+    },
+    "Java Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 2,
+      "priority1_remaining": 160
+    },
+    "Database Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 5,
+      "priority1_remaining": 160
+    },
+    "DevOps / Cloud Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 95,
+      "combined_primary": 95,
+      "applicable_role_count_generated": 30,
+      "priority1_remaining": 205
+    },
+    "Backend Developer": {
+      "existing_supabase_primary": 254,
+      "generated_primary": 0,
+      "combined_primary": 254,
+      "applicable_role_count_generated": 311,
+      "priority1_remaining": 195
+    },
+    "Data Analyst": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 77,
+      "priority1_remaining": 130
+    },
+    "AI Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 70,
+      "priority1_remaining": 160
+    },
+    "Machine Learning Engineer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 58,
+      "priority1_remaining": 190
+    },
+    "Full Stack Developer": {
+      "existing_supabase_primary": 0,
+      "generated_primary": 50,
+      "combined_primary": 50,
+      "applicable_role_count_generated": 23,
+      "priority1_remaining": 160
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Backend Developer": 36,
+    "Full Stack Developer": 10
+  },
+  "records_appended": 45,
+  "final_file_line_count": 495,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

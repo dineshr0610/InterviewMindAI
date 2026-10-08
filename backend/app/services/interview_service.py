@@ -83,6 +83,19 @@ class InterviewService:
                 resume_match["role_match_score"] = m1_output.role_match_score
                 resume_match["score_breakdown"] = m1_output.score_breakdown.model_dump()
                 resume_match["feedback"] = m1_output.feedback.model_dump()
+                resume_match["analysis_source"] = m1_output.analysis_source
+                # Extract AI-identified focus areas and skill gaps to enrich the adaptive state
+                if m1_output.ai_analysis:
+                    ai_analysis = m1_output.ai_analysis
+                    resume_match["ai_focus_areas"] = ai_analysis.get("interview_focus_areas") or []
+                    resume_match["ai_skill_gaps"] = ai_analysis.get("skill_gaps") or []
+                    resume_match["ai_transferable_skills"] = ai_analysis.get("transferable_skills") or []
+                    logger.info(
+                        "AI analysis integrated: source=%s, focus_areas=%d, skill_gaps=%d",
+                        m1_output.analysis_source,
+                        len(resume_match["ai_focus_areas"]),
+                        len(resume_match["ai_skill_gaps"]),
+                    )
             except Exception as exc:
                 logger.warning("Module 1 resume processing integration fallback: %s", exc)
 
@@ -104,11 +117,18 @@ class InterviewService:
             assessment_state=state,
         )
 
-        question = await self._retrieve_question(
+        state["interview_id"] = str(interview.id)
+
+        question, meta = await self._retrieve_question(
             topic=current_topic,
             difficulty=current_difficulty,
             previous_questions=[],
             resume_text=self._resume_context(resume_text, resume_match),
+            strategy="baseline",
+            role_config=role_config,
+            resume_match=resume_match,
+            interview_phase=state.get("interview_phase", "resume_phase" if resume_text else "role_phase"),
+            state=state,
         )
         if not question:
             raise AIProviderException("Could not retrieve a suitable baseline question.")
@@ -119,6 +139,10 @@ class InterviewService:
             topic=current_topic,
             difficulty=current_difficulty,
             question_type="baseline",
+            category=meta.get("category"),
+            source=meta.get("source"),
+            project=meta.get("project"),
+            technology=meta.get("technology"),
         )
         if isinstance(self.repository, InterviewRepository):
             await self.repository.update_interview_fields(interview.id, assessment_state=state)
@@ -337,11 +361,37 @@ class InterviewService:
                     if valid:
                         next_question = supplied_next
             if not next_question:
-                next_question = await self._retrieve_question(
+                next_question, next_meta = await self._retrieve_question(
                     topic=next_topic,
                     difficulty=next_difficulty,
                     previous_questions=previous_questions,
-                    resume_text=self._resume_context(getattr(interview, "resume_text", None), resume_match),
+                    resume_text=self._resume_context(getattr(interview, "resume_text", None), resume_match) if state.get("interview_phase") == "resume_phase" else None,
+                    strategy=state.get("next_strategy"),
+                    last_answer=stripped_answer,
+                    role_config=role_config,
+                    resume_match=resume_match,
+                    interview_phase=state.get("interview_phase", "role_phase"),
+                    state=state,
+                )
+                if next_question:
+                    state = self._record_question(
+                        state,
+                        next_question,
+                        topic=next_topic,
+                        difficulty=next_difficulty,
+                        question_type=getattr(pending_message, "question_type", None) or "technical",
+                        category=next_meta.get("category"),
+                        source=next_meta.get("source"),
+                        project=next_meta.get("project"),
+                        technology=next_meta.get("technology"),
+                    )
+            elif next_question:
+                state = self._record_question(
+                    state,
+                    next_question,
+                    topic=next_topic,
+                    difficulty=next_difficulty,
+                    question_type=getattr(pending_message, "question_type", None) or "technical",
                 )
             if not next_question:
                 # A retrieval outage must not leave the session in a state
@@ -682,18 +732,44 @@ class InterviewService:
         difficulty: str,
         previous_questions: List[str],
         resume_text: Optional[str],
-    ) -> Optional[str]:
+        strategy: Optional[str] = None,
+        last_answer: Optional[str] = None,
+        role_config: Optional[Dict[str, Any]] = None,
+        resume_match: Optional[Dict[str, Any]] = None,
+        interview_phase: Optional[str] = None,
+        state: Optional[Dict[str, Any]] = None,
+    ) -> tuple[Optional[str], Dict[str, Any]]:
         """Use the existing RAG-backed provider once, then a bounded fallback."""
         try:
+            role_name = (
+                (role_config or {}).get("selected_name")
+                or (role_config or {}).get("name")
+                if role_config
+                else None
+            )
             candidate = await self.ai_provider.generate_question(
                 topic=topic,
                 difficulty=difficulty,
                 previous_questions=previous_questions,
                 resume_text=resume_text,
+                strategy=strategy,
+                last_answer=last_answer,
+                role=role_name,
+                resume_match=resume_match,
+                interview_phase=interview_phase,
+                state=state,
+                return_metadata=True,
             )
-            valid, reason = validate_question(candidate, topic, previous_questions)
+            if isinstance(candidate, dict):
+                q_text = candidate.get("answer") or candidate.get("question") or candidate.get("text") or ""
+                q_meta = candidate
+            else:
+                q_text = str(candidate or "")
+                q_meta = {}
+
+            valid, reason = validate_question(q_text, topic, previous_questions, resume_context=resume_text)
             if valid:
-                return candidate.strip()
+                return q_text.strip(), q_meta
             logger.warning("Discarded generated question (%s) for topic %s", reason, topic)
         except Exception as exc:
             logger.warning("RAG question retrieval failed for topic %s: %s", topic, exc)
@@ -702,9 +778,15 @@ class InterviewService:
         # competing RAG system.
         from ai_engine.services.question_controller import AdaptiveQuestionController
 
-        fallback = AdaptiveQuestionController(topic).fallback(difficulty, previous_questions)
-        valid, _ = validate_question(fallback, topic, previous_questions)
-        return fallback if valid else None
+        fallback_candidates = AdaptiveQuestionController(topic).fallback_candidates(difficulty)
+        fallback = fallback_candidates[0] if fallback_candidates else "What is your experience with this topic?"
+        
+        for cand in fallback_candidates:
+            if not any(cand.lower() == p.lower() for p in previous_questions):
+                fallback = cand
+                break
+        valid, _ = validate_question(fallback, topic, previous_questions, resume_context=resume_text)
+        return (fallback, {"source": "fallback", "category": "implementation", "intent": "implement"}) if valid else (None, {})
 
     async def _claim_pending_answer(self, message: Any, answer: str, fingerprint: str) -> Any:
         if not isinstance(self.repository, InterviewRepository):
@@ -852,17 +934,56 @@ class InterviewService:
         topic: str,
         difficulty: str,
         question_type: str,
+        category: Optional[str] = None,
+        source: Optional[str] = None,
+        project: Optional[str] = None,
+        technology: Optional[str] = None,
     ) -> Dict[str, Any]:
+        from ai_engine.services.question_controller import detect_question_intent
+
         next_state = dict(state)
         history = list(next_state.get("question_history") or [])
+        intent = detect_question_intent(question)
         history.append(
             {
                 "question": question,
                 "topic": topic,
                 "difficulty": difficulty,
                 "question_type": question_type,
+                "category": category,
+                "source": source,
+                "project": project,
+                "technology": technology,
+                "intent": intent,
             }
         )
+        
+        # Update dynamic coverage & intent tracking
+        projects_covered = list(next_state.get("projects_covered") or [])
+        if project and project not in projects_covered:
+            projects_covered.append(project)
+
+        technologies_covered = list(next_state.get("technologies_covered") or [])
+        if technology and technology not in technologies_covered:
+            technologies_covered.append(technology)
+
+        categories_covered = list(next_state.get("categories_covered") or [])
+        if category and category not in categories_covered:
+            categories_covered.append(category)
+
+        sources_used = list(next_state.get("sources_used") or [])
+        if source:
+            sources_used.append(source)
+
+        topics_covered = list(next_state.get("topics_covered") or [])
+        if topic and topic not in topics_covered:
+            topics_covered.append(topic)
+
+        intents_used = list(next_state.get("question_intents_used") or [])
+        intents_used.append(intent)
+        recent_intents = intents_used[-3:]
+        recent_topics = topics_covered[-3:]
+
         next_state.update(
             {
                 "asked_questions": [item["question"] for item in history][-100:],
@@ -873,6 +994,14 @@ class InterviewService:
                 "current_question": question,
                 "current_topic": topic,
                 "current_difficulty": difficulty,
+                "projects_covered": projects_covered,
+                "technologies_covered": technologies_covered,
+                "categories_covered": categories_covered,
+                "sources_used": sources_used,
+                "topics_covered": topics_covered,
+                "question_intents_used": intents_used,
+                "recent_question_intents": recent_intents,
+                "recent_question_topics": recent_topics,
             }
         )
         return next_state
@@ -994,12 +1123,21 @@ class InterviewService:
             key: state.get(key)
             for key in (
                 "phase",
+                "interview_phase",
                 "current_question",
                 "current_topic",
                 "current_difficulty",
                 "asked_questions",
                 "asked_concepts",
                 "question_history",
+                "projects_covered",
+                "technologies_covered",
+                "categories_covered",
+                "topics_covered",
+                "sources_used",
+                "question_intents_used",
+                "recent_question_intents",
+                "recent_question_topics",
                 "topic_scores",
                 "technical_scores",
                 "communication_scores",
@@ -1008,5 +1146,12 @@ class InterviewService:
                 "next_strategy",
                 "question_mode",
                 "remaining_interview_time",
+                # AI-analysis enrichments
+                "strong_areas",
+                "weak_areas",
+                "misconceptions",
+                "ai_focus_areas",
+                "ai_skill_gaps",
+                "analysis_source",
             )
         }

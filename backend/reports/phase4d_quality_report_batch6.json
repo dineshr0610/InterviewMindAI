@@ -1,0 +1,290 @@
+{
+  "total_staged_before_batch6": 1980,
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5": [],
+  "intra_batch_pairs_ge_0.6": [],
+  "max_similarity_vs_staging": {
+    "question": 0.173,
+    "answer": 0.207,
+    "question+answer": 0.145
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "how would you",
+      2
+    ],
+    [
+      "what is the",
+      2
+    ],
+    [
+      "what is a",
+      2
+    ],
+    [
+      "what separates a",
+      1
+    ],
+    [
+      "inside an over",
+      1
+    ],
+    [
+      "what does lag",
+      1
+    ],
+    [
+      "show how you",
+      1
+    ],
+    [
+      "how do rownumber",
+      1
+    ],
+    [
+      "to fetch the",
+      1
+    ],
+    [
+      "a report uses",
+      1
+    ],
+    [
+      "lastvalueprice over partition",
+      1
+    ],
+    [
+      "a login table",
+      1
+    ],
+    [
+      "why do most",
+      1
+    ],
+    [
+      "what does the",
+      1
+    ],
+    [
+      "why can a",
+      1
+    ],
+    [
+      "an index exists",
+      1
+    ],
+    [
+      "how do clustered",
+      1
+    ],
+    [
+      "for where status",
+      1
+    ],
+    [
+      "a mysql innodb",
+      1
+    ],
+    [
+      "an index on",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      29
+    ],
+    [
+      "what is the",
+      23
+    ],
+    [
+      "how do you",
+      9
+    ],
+    [
+      "you need to",
+      7
+    ],
+    [
+      "you are building",
+      7
+    ],
+    [
+      "what is a",
+      6
+    ],
+    [
+      "explain how event",
+      5
+    ],
+    [
+      "explain how api",
+      5
+    ],
+    [
+      "explain how rate",
+      4
+    ],
+    [
+      "how does the",
+      4
+    ],
+    [
+      "explain how global",
+      3
+    ],
+    [
+      "explain how search",
+      3
+    ],
+    [
+      "explain how theme",
+      3
+    ],
+    [
+      "explain how acid",
+      3
+    ],
+    [
+      "explain how tlsssl",
+      3
+    ],
+    [
+      "explain how jwt",
+      3
+    ],
+    [
+      "explain how token",
+      3
+    ],
+    [
+      "explain how draganddrop",
+      3
+    ]
+  ],
+  "top_opening_share_new_batch": 0.04,
+  "distinct_openings_new_batch": 47,
+  "role_distribution": {
+    "Database Developer": 50
+  },
+  "skill_distribution": {
+    "Advanced SQL": 10,
+    "Indexing": 10,
+    "Query Optimization": 10,
+    "Transactions": 10,
+    "Relational Theory": 10
+  },
+  "technology_distribution": {
+    "SQL": 10,
+    "B-Tree Indexes": 10,
+    "PostgreSQL": 10,
+    "Relational Databases": 10,
+    "Relational Model": 10
+  },
+  "topic_distribution": {
+    "Window Functions": 10,
+    "B-Trees": 10,
+    "Execution Plans": 10,
+    "ACID": 10,
+    "Normalization": 10
+  },
+  "intent_distribution": {
+    "fundamentals": 7,
+    "explain": 11,
+    "implement": 4,
+    "compare": 7,
+    "tradeoff": 5,
+    "optimize": 3,
+    "diagnose": 5,
+    "scenario": 5,
+    "debug": 1,
+    "architecture": 2
+  },
+  "difficulty_distribution": {
+    "easy": 15,
+    "medium": 23,
+    "hard": 12
+  },
+  "question_type_distribution": {
+    "concept": 18,
+    "implementation": 4,
+    "comparison": 7,
+    "tradeoff": 5,
+    "optimization": 3,
+    "debugging": 6,
+    "scenario": 5,
+    "architecture": 2
+  },
+  "bucket_progress": {
+    "Advanced SQL | Window Functions": {
+      "generated_now": 10
+    },
+    "Indexing | B-Trees": {
+      "generated_now": 10
+    },
+    "Query Optimization | Execution Plans": {
+      "generated_now": 10
+    },
+    "Transactions | ACID": {
+      "generated_now": 10
+    },
+    "Relational Theory | Normalization": {
+      "generated_now": 10
+    }
+  },
+  "cumulative_generated_production": 300,
+  "cumulative_staging_total": 2030,
+  "cumulative_generated_by_role": {
+    "Python Developer": 100,
+    "Java Developer": 50,
+    "DevOps / Cloud Engineer": 50,
+    "AI Engineer": 50,
+    "Database Developer": 50
+  },
+  "cumulative_generated_by_difficulty": {
+    "easy": 56,
+    "medium": 129,
+    "hard": 115
+  },
+  "cumulative_generated_difficulty_pct": {
+    "easy": 18.7,
+    "medium": 43.0,
+    "hard": 38.3
+  },
+  "cumulative_generated_by_intent": {
+    "fundamentals": 33,
+    "explain": 49,
+    "tradeoff": 35,
+    "debug": 22,
+    "scenario": 25,
+    "implement": 35,
+    "compare": 31,
+    "architecture": 22,
+    "optimize": 23,
+    "diagnose": 25
+  },
+  "remaining_gap_count": 3411,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

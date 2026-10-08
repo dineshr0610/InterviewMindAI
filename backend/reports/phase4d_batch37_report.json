@@ -1,0 +1,407 @@
+{
+  "role_selected": "DevOps / Cloud Engineer",
+  "total_staged_before_batch37": 3522,
+  "cumulative_difficulty_before": {
+    "easy": [
+      380,
+      21.2
+    ],
+    "medium": [
+      876,
+      48.9
+    ],
+    "hard": [
+      536,
+      29.9
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.548,
+    "answer": 0.428,
+    "question+answer": 0.476
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "in a large",
+      3
+    ],
+    [
+      "in an aws",
+      2
+    ],
+    [
+      "in a kubernetes",
+      2
+    ],
+    [
+      "to refactor a",
+      1
+    ],
+    [
+      "when managing terraform",
+      1
+    ],
+    [
+      "during a bluegreen",
+      1
+    ],
+    [
+      "when architecting a",
+      1
+    ],
+    [
+      "your platform team",
+      1
+    ],
+    [
+      "in distributed consensus",
+      1
+    ],
+    [
+      "a highthroughput ecommerce",
+      1
+    ],
+    [
+      "when designing a",
+      1
+    ],
+    [
+      "during a sudden",
+      1
+    ],
+    [
+      "to validate automated",
+      1
+    ],
+    [
+      "an enterprise application",
+      1
+    ],
+    [
+      "following the deployment",
+      1
+    ],
+    [
+      "in an opentelemetry",
+      1
+    ],
+    [
+      "to avoid alert",
+      1
+    ],
+    [
+      "your engineering team",
+      1
+    ],
+    [
+      "a critical customerfacing",
+      1
+    ],
+    [
+      "during peak load",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "what is the",
+      138
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      106
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "you need to",
+      41
+    ],
+    [
+      "what is a",
+      41
+    ],
+    [
+      "how do you",
+      41
+    ],
+    [
+      "explain the concept",
+      35
+    ],
+    [
+      "you have a",
+      33
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "you are building",
+      22
+    ],
+    [
+      "you deploy a",
+      21
+    ],
+    [
+      "explain the difference",
+      18
+    ],
+    [
+      "you notice that",
+      17
+    ],
+    [
+      "when designing a",
+      14
+    ],
+    [
+      "in the context",
+      13
+    ],
+    [
+      "you are designing",
+      12
+    ],
+    [
+      "explain the purpose",
+      12
+    ],
+    [
+      "what does the",
+      11
+    ]
+  ],
+  "top_opening_share_new_batch": 0.06,
+  "distinct_openings_new_batch": 46,
+  "role_distribution": {
+    "DevOps / Cloud Engineer": 50
+  },
+  "skill_distribution": {
+    "Infrastructure as Code": 6,
+    "Reliability": 6,
+    "Observability": 6,
+    "Security": 5,
+    "AWS IAM": 5,
+    "Cloud Architecture": 5,
+    "Containers & OS": 5,
+    "Kubernetes": 6,
+    "CI/CD": 6
+  },
+  "technology_distribution": {
+    "Terraform": 6,
+    "Distributed Systems": 6,
+    "Prometheus": 6,
+    "Security": 5,
+    "AWS": 5,
+    "Networking": 5,
+    "Linux": 5,
+    "Kubernetes": 6,
+    "CI/CD": 6
+  },
+  "topic_distribution": {
+    "Terraform": 6,
+    "Distributed Systems": 6,
+    "SRE & Monitoring": 6,
+    "Policies": 5,
+    "AWS / Cloud": 5,
+    "DNS & Load Balancing": 5,
+    "Docker & Linux": 5,
+    "Container Orchestration": 6,
+    "Pipelines & Deployments": 6
+  },
+  "intent_distribution": {
+    "implement": 4,
+    "tradeoff": 5,
+    "scenario": 10,
+    "debug": 8,
+    "architecture": 8,
+    "compare": 2,
+    "diagnose": 6,
+    "optimize": 5,
+    "explain": 1,
+    "fundamentals": 1
+  },
+  "difficulty_distribution": {
+    "easy": 8,
+    "medium": 26,
+    "hard": 16
+  },
+  "question_type_distribution": {
+    "conceptual": 6,
+    "tradeoff": 5,
+    "scenario": 10,
+    "debugging": 7,
+    "architectural": 8,
+    "problem_solving": 8,
+    "best_practices": 6
+  },
+  "bucket_progress": {
+    "Infrastructure as Code | Terraform": {
+      "generated_now": 6
+    },
+    "Reliability | Distributed Systems": {
+      "generated_now": 6
+    },
+    "Observability | SRE & Monitoring": {
+      "generated_now": 6
+    },
+    "Security | Policies": {
+      "generated_now": 5
+    },
+    "AWS IAM | AWS / Cloud": {
+      "generated_now": 5
+    },
+    "Cloud Architecture | DNS & Load Balancing": {
+      "generated_now": 5
+    },
+    "Containers & OS | Docker & Linux": {
+      "generated_now": 5
+    },
+    "Kubernetes | Container Orchestration": {
+      "generated_now": 6
+    },
+    "CI/CD | Pipelines & Deployments": {
+      "generated_now": 6
+    }
+  },
+  "cumulative_generated_production": 1842,
+  "cumulative_staging_total": 3572,
+  "cumulative_generated_by_role": {
+    "Python Developer": 200,
+    "Java Developer": 200,
+    "DevOps / Cloud Engineer": 245,
+    "AI Engineer": 150,
+    "Database Developer": 200,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 150,
+    "Full Stack Developer": 150,
+    "Frontend Developer": 200,
+    "Backend Developer": 197,
+    "ML Engineer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      388,
+      21.1
+    ],
+    "medium": [
+      902,
+      49.0
+    ],
+    "hard": [
+      552,
+      30.0
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": 3.2,
+    "medium": -3.1,
+    "hard": -0.1
+  },
+  "target_gap_pct_points_after": {
+    "easy": 3.1,
+    "medium": -3.0,
+    "hard": -0.0
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 300,
+    "Frontend Developer": 300,
+    "Java Developer": 300,
+    "Database Developer": 300,
+    "DevOps / Cloud Engineer": 255,
+    "Backend Developer": 303,
+    "Data Analyst": 350,
+    "AI Engineer": 350,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 350
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 200,
+      "Java Developer": 200,
+      "DevOps / Cloud Engineer": 245,
+      "AI Engineer": 150,
+      "Database Developer": 200,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 150,
+      "Full Stack Developer": 150,
+      "Frontend Developer": 200,
+      "Backend Developer": 197,
+      "ML Engineer": 50
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 869,
+      "Data Analyst": 139,
+      "AI Engineer": 143,
+      "Full Stack Developer": 274,
+      "Machine Learning Engineer": 88,
+      "DevOps / Cloud Engineer": 249,
+      "Frontend Developer": 122,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 74,
+      "Architecture": 140,
+      "Java Developer": 52,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 79,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 166,
+      "Python Developer": 60,
+      "Data Architect": 20,
+      "Platform Engineer": 33,
+      "Product Manager": 47,
+      "Data Scientist": 169,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 165,
+      "Site Reliability Engineer": 117,
+      "UX Engineer": 15,
+      "ML Engineer": 50
+    }
+  },
+  "applicable_roles_this_batch": {
+    "DevOps / Cloud Engineer": 50,
+    "Backend Developer": 23,
+    "Full Stack Developer": 6
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1842,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

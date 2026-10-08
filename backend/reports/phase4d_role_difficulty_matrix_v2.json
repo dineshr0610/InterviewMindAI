@@ -1,0 +1,52 @@
+{
+  "Python Developer": {
+    "easy": 23,
+    "medium": 70,
+    "hard": 57
+  },
+  "Java Developer": {
+    "easy": 29,
+    "medium": 70,
+    "hard": 51
+  },
+  "DevOps / Cloud Engineer": {
+    "easy": 40,
+    "medium": 93,
+    "hard": 62
+  },
+  "AI Engineer": {
+    "easy": 24,
+    "medium": 74,
+    "hard": 52
+  },
+  "Database Developer": {
+    "easy": 32,
+    "medium": 75,
+    "hard": 43
+  },
+  "Machine Learning Engineer": {
+    "easy": 48,
+    "medium": 71,
+    "hard": 31
+  },
+  "Data Analyst": {
+    "easy": 42,
+    "medium": 77,
+    "hard": 31
+  },
+  "Full Stack Developer": {
+    "easy": 40,
+    "medium": 77,
+    "hard": 33
+  },
+  "Frontend Developer": {
+    "easy": 30,
+    "medium": 74,
+    "hard": 46
+  },
+  "Backend Developer": {
+    "easy": 39,
+    "medium": 99,
+    "hard": 59
+  }
+}

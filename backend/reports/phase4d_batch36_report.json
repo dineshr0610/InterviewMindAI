@@ -1,0 +1,362 @@
+{
+  "role_selected": "Database Developer",
+  "total_staged_before_batch36": 3472,
+  "cumulative_difficulty_before": {
+    "easy": [
+      373,
+      21.4
+    ],
+    "medium": [
+      852,
+      48.9
+    ],
+    "hard": [
+      517,
+      29.7
+    ]
+  },
+  "attempted": 50,
+  "accepted": 50,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.578,
+    "answer": 0.453,
+    "question+answer": 0.488
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      3
+    ],
+    [
+      "when designing a",
+      3
+    ],
+    [
+      "you manage an",
+      2
+    ],
+    [
+      "what is a",
+      2
+    ],
+    [
+      "you need to",
+      2
+    ],
+    [
+      "a query select",
+      2
+    ],
+    [
+      "when architecting a",
+      1
+    ],
+    [
+      "in a sharded",
+      1
+    ],
+    [
+      "in a relational",
+      1
+    ],
+    [
+      "a microservices architecture",
+      1
+    ],
+    [
+      "when replicating postgresql",
+      1
+    ],
+    [
+      "a network partition",
+      1
+    ],
+    [
+      "a 5node nosql",
+      1
+    ],
+    [
+      "you manage a",
+      1
+    ],
+    [
+      "in database replication",
+      1
+    ],
+    [
+      "a redis cache",
+      1
+    ],
+    [
+      "in a globally",
+      1
+    ],
+    [
+      "your automated pgdump",
+      1
+    ],
+    [
+      "you create a",
+      1
+    ],
+    [
+      "when optimizing a",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "what is the",
+      138
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      106
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "you need to",
+      41
+    ],
+    [
+      "what is a",
+      41
+    ],
+    [
+      "how do you",
+      41
+    ],
+    [
+      "explain the concept",
+      35
+    ],
+    [
+      "you have a",
+      33
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "you are building",
+      22
+    ],
+    [
+      "you deploy a",
+      21
+    ],
+    [
+      "explain the difference",
+      18
+    ],
+    [
+      "you notice that",
+      17
+    ],
+    [
+      "when designing a",
+      13
+    ],
+    [
+      "in the context",
+      13
+    ],
+    [
+      "you are designing",
+      12
+    ],
+    [
+      "explain the purpose",
+      12
+    ],
+    [
+      "what does the",
+      11
+    ]
+  ],
+  "top_opening_share_new_batch": 0.06,
+  "distinct_openings_new_batch": 39,
+  "role_distribution": {
+    "Database Developer": 50
+  },
+  "skill_distribution": {
+    "Database Architecture": 17,
+    "Query Performance & Indexing": 17,
+    "Transactions & Operations": 16
+  },
+  "technology_distribution": {
+    "Database": 50
+  },
+  "topic_distribution": {
+    "Replication & HA": 17,
+    "Performance & Tuning": 17,
+    "Database Internals": 16
+  },
+  "intent_distribution": {
+    "tradeoff": 11,
+    "scenario": 10,
+    "debug": 11,
+    "explain": 9,
+    "implement": 9
+  },
+  "difficulty_distribution": {
+    "hard": 19,
+    "medium": 24,
+    "easy": 7
+  },
+  "question_type_distribution": {
+    "tradeoff": 11,
+    "scenario": 10,
+    "debugging": 11,
+    "concept": 9,
+    "implementation": 9
+  },
+  "bucket_progress": {
+    "Database Architecture | Replication & HA": {
+      "generated_now": 17
+    },
+    "Query Performance & Indexing | Performance & Tuning": {
+      "generated_now": 17
+    },
+    "Transactions & Operations | Database Internals": {
+      "generated_now": 16
+    }
+  },
+  "cumulative_generated_production": 1792,
+  "cumulative_staging_total": 3522,
+  "cumulative_generated_by_role": {
+    "Python Developer": 200,
+    "Java Developer": 200,
+    "DevOps / Cloud Engineer": 195,
+    "AI Engineer": 150,
+    "Database Developer": 200,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 150,
+    "Full Stack Developer": 150,
+    "Frontend Developer": 200,
+    "Backend Developer": 197,
+    "ML Engineer": 50
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      380,
+      21.2
+    ],
+    "medium": [
+      876,
+      48.9
+    ],
+    "hard": [
+      536,
+      29.9
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": 3.4,
+    "medium": -3.1,
+    "hard": -0.3
+  },
+  "target_gap_pct_points_after": {
+    "easy": 3.2,
+    "medium": -3.1,
+    "hard": -0.1
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 300,
+    "Frontend Developer": 300,
+    "Java Developer": 300,
+    "Database Developer": 300,
+    "DevOps / Cloud Engineer": 305,
+    "Backend Developer": 303,
+    "Data Analyst": 350,
+    "AI Engineer": 350,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 350
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 200,
+      "Java Developer": 200,
+      "DevOps / Cloud Engineer": 195,
+      "AI Engineer": 150,
+      "Database Developer": 200,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 150,
+      "Full Stack Developer": 150,
+      "Frontend Developer": 200,
+      "Backend Developer": 197,
+      "ML Engineer": 50
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 846,
+      "Data Analyst": 139,
+      "AI Engineer": 143,
+      "Full Stack Developer": 268,
+      "Machine Learning Engineer": 88,
+      "DevOps / Cloud Engineer": 199,
+      "Frontend Developer": 122,
+      "Performance Engineer": 110,
+      "System Design": 4,
+      "Database Developer": 74,
+      "Architecture": 140,
+      "Java Developer": 52,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 79,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 166,
+      "Python Developer": 60,
+      "Data Architect": 20,
+      "Platform Engineer": 33,
+      "Product Manager": 47,
+      "Data Scientist": 169,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 165,
+      "Site Reliability Engineer": 117,
+      "UX Engineer": 15,
+      "ML Engineer": 50
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Database Developer": 50,
+    "Backend Developer": 50,
+    "DevOps / Cloud Engineer": 17
+  },
+  "records_appended": 50,
+  "final_file_line_count": 1792,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

@@ -44,6 +44,14 @@ def build_final_assessment(
         [item for row in messages for item in _list(row.get("communication_improvements"))]
     )
 
+    # Extract AI analysis enrichment from Module 1 output (if available)
+    module1_output = resume_match.get("module1_output") or {}
+    ai_analysis = module1_output.get("ai_analysis") or {}
+    ai_focus_areas = ai_analysis.get("interview_focus_areas") or []
+    ai_skill_gaps_raw = ai_analysis.get("skill_gaps") or []
+    ai_transferable_skills = ai_analysis.get("transferable_skills") or []
+    analysis_source = module1_output.get("analysis_source") or resume_match.get("analysis_source") or "deterministic"
+
     weak_topics = []
     topic_scores = {}
     for row in messages:
@@ -63,6 +71,8 @@ def build_final_assessment(
         technical_weaknesses=technical_weaknesses,
         coding=coding,
         communication_weaknesses=communication_weaknesses,
+        ai_skill_gaps=ai_skill_gaps_raw,
+        ai_focus_areas=ai_focus_areas,
     )
     recommendations = build_recommendations(skill_gaps, weak_topics, coding, resume_match)
 
@@ -101,6 +111,10 @@ def build_final_assessment(
         "topic_scores": {topic: _average(scores) for topic, scores in topic_scores.items()},
         "overall_assessment": overall,
         "questions_answered": len(technical_scores),
+        # AI enrichment fields
+        "analysis_source": analysis_source,
+        "ai_interview_focus_areas": ai_focus_areas[:8],
+        "ai_transferable_skills": ai_transferable_skills[:6],
     }
     if previous:
         assessment["progress_vs_previous"] = compare_assessments(previous, assessment)
@@ -115,17 +129,29 @@ def detect_skill_gaps(
     technical_weaknesses: List[str],
     coding: Optional[Dict[str, Any]],
     communication_weaknesses: List[str],
+    ai_skill_gaps: Optional[List[str]] = None,
+    ai_focus_areas: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
     missing_skills = list(resume_match.get("missing_skills") or [])
     weak_topic_names = [item["topic"] for item in weak_topics]
     coding_weaknesses = _coding_weaknesses(coding)
     covered = set(weak_topic_names)
+
+    # Merge AI-identified skill gaps with deterministic missing skills.
+    # AI gaps are additive; they never remove deterministic evidence.
+    merged_ai_gaps = _unique((ai_skill_gaps or []) + missing_skills)[:12]
+
     return {
         "missing_skills": missing_skills,
         "weak_topics": weak_topic_names,
         "weak_concepts": technical_weaknesses[:8],
         "coding_weaknesses": coding_weaknesses,
         "communication_weaknesses": communication_weaknesses[:6],
+        "ai_identified_gaps": (ai_skill_gaps or [])[:8],
+        "ai_focus_areas_not_covered": [
+            area for area in (ai_focus_areas or [])
+            if area and area not in covered
+        ][:6],
         "role_topics_not_covered": [
             topic
             for topic in (role.get("important_topics") or [])

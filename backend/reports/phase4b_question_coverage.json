@@ -1,0 +1,48 @@
+{
+  "roles": {
+    "Full Stack Developer": 413,
+    "Backend Developer": 23,
+    "Frontend Developer": 390,
+    "Database Developer": 1,
+    "Data Analyst": 1
+  },
+  "skills": {
+    "Performance": 7,
+    "Core JavaScript": 199,
+    "HTML/DOM": 32,
+    "CSS & Styling": 5,
+    "Microservices": 4,
+    "React Fundamentals": 148,
+    "State Management": 5,
+    "API Design": 2,
+    "Database Integration": 1,
+    "Language Core": 9,
+    "PWA": 1
+  },
+  "intents": {
+    "tradeoff": 25,
+    "design": 2,
+    "fundamentals": 43,
+    "architecture": 1,
+    "scenario": 10,
+    "explain": 151,
+    "implement": 149,
+    "optimize": 6,
+    "compare": 24,
+    "debug": 2
+  },
+  "difficulty": {
+    "hard": 44,
+    "medium": 368,
+    "easy": 1
+  },
+  "types": {
+    "tradeoff": 25,
+    "architecture": 3,
+    "concept": 200,
+    "scenario": 10,
+    "implementation": 149,
+    "comparison": 24,
+    "debugging": 2
+  }
+}

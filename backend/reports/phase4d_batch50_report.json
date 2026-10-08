@@ -1,0 +1,69 @@
+{
+  "batch": "batch_50_full_stack_developer",
+  "records_attempted": 50,
+  "records_accepted": 50,
+  "records_rejected": 0,
+  "rejection_reasons": {},
+  "max_similarity_scores": {
+    "question": 0.58,
+    "answer": 0.391,
+    "combined": 0.471
+  },
+  "intra_batch_overlaps": 0,
+  "intra_batch_answer_overlaps": 0,
+  "answer_flags_gt_50": 0,
+  "staging_metrics": {
+    "previous_staging_total": 2442,
+    "final_staging_total": 2492,
+    "role_total": 250,
+    "remaining_to_500": 250
+  },
+  "distributions": {
+    "difficulty": {
+      "hard": 17,
+      "medium": 27,
+      "easy": 6
+    },
+    "intent": {
+      "diagnose": 12,
+      "architecture": 15,
+      "scenario": 11,
+      "tradeoff": 8,
+      "optimize": 1,
+      "explain": 2,
+      "compare": 1
+    },
+    "primary_skill": {
+      "Observability": 10,
+      "Multi-Tenancy": 10,
+      "BFF / Edge Architecture": 10,
+      "Reliability": 10,
+      "Security": 10
+    },
+    "technology": {
+      "OpenTelemetry": 10,
+      "Architecture": 20,
+      "System Design": 10,
+      "AppSec": 10
+    },
+    "topic": {
+      "Distributed Tracing": 10,
+      "Tenant Isolation": 10,
+      "API Gateway": 10,
+      "Cross-Layer Consistency": 10,
+      "Cross-Layer Vulnerabilities": 10
+    },
+    "opening_diversity": {
+      "what is the": 7,
+      "a user clicks": 2,
+      "how do you": 2,
+      "in a distributed": 2,
+      "you are building": 2,
+      "a complex react": 1,
+      "when migrating from": 1,
+      "in a nextjs": 1,
+      "a user complains": 1,
+      "in a multitenant": 1
+    }
+  }
+}

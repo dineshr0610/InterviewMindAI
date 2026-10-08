@@ -1,6 +1,46 @@
 {
   "roles": [
     {
+      "role_id": "python_developer",
+      "role_name": "Python Developer",
+      "programming_languages": [
+        "Python",
+        "SQL"
+      ],
+      "core_skills": [
+        "Object Oriented Programming",
+        "Data Structures",
+        "Algorithms",
+        "REST API",
+        "Typing",
+        "Asyncio",
+        "Concurrency"
+      ],
+      "frameworks": [
+        "Django",
+        "FastAPI",
+        "Flask"
+      ],
+      "tools": [
+        "Git",
+        "Docker",
+        "pytest"
+      ],
+      "concepts": [
+        "Design Patterns",
+        "Microservices",
+        "Testing",
+        "Debugging",
+        "Performance",
+        "Packaging",
+        "Dependency Management"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "Redis"
+      ]
+    },
+    {
       "role_id": "frontend_developer",
       "role_name": "Frontend Developer",
       "programming_languages": [
@@ -24,12 +64,10 @@
       "libraries": [
         "Redux",
         "React Router",
-        "Tailwind CSS",
-        "Bootstrap"
+        "Tailwind CSS"
       ],
       "tools": [
         "Git",
-        "GitHub",
         "npm",
         "Webpack",
         "Vite",
@@ -42,15 +80,129 @@
         "Promises",
         "Event Loop",
         "State Management",
-        "Component Architecture",
-        "DOM Manipulation",
-        "Browser Concepts"
+        "Component Architecture"
       ],
       "testing": [
         "Jest",
-        "React Testing Library",
         "Cypress",
-        "Playwright"
+        "React Testing Library"
+      ]
+    },
+    {
+      "role_id": "java_developer",
+      "role_name": "Java Developer",
+      "programming_languages": [
+        "Java",
+        "SQL"
+      ],
+      "core_skills": [
+        "Object Oriented Programming",
+        "Data Structures",
+        "Algorithms",
+        "REST API",
+        "JVM Internals",
+        "Multithreading"
+      ],
+      "frameworks": [
+        "Spring Boot",
+        "Spring MVC",
+        "Hibernate"
+      ],
+      "tools": [
+        "Git",
+        "Maven",
+        "Gradle",
+        "JUnit"
+      ],
+      "concepts": [
+        "Design Patterns",
+        "Microservices",
+        "Testing",
+        "Concurrency",
+        "Garbage Collection"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "MySQL",
+        "Oracle"
+      ]
+    },
+    {
+      "role_id": "database_developer",
+      "role_name": "Database Developer",
+      "programming_languages": [
+        "SQL",
+        "PL/SQL",
+        "T-SQL",
+        "Python"
+      ],
+      "core_skills": [
+        "Database Management",
+        "Schema Design",
+        "Indexing",
+        "Query Optimization",
+        "Data Modeling"
+      ],
+      "frameworks": [],
+      "tools": [
+        "Git",
+        "SSMS",
+        "pgAdmin",
+        "ETL Tools"
+      ],
+      "concepts": [
+        "ACID",
+        "Normalization",
+        "Transactions",
+        "Stored Procedures",
+        "Triggers",
+        "Data Warehousing",
+        "Replication"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "MySQL",
+        "Oracle",
+        "SQL Server",
+        "MongoDB"
+      ]
+    },
+    {
+      "role_id": "devops_cloud_engineer",
+      "role_name": "DevOps / Cloud Engineer",
+      "programming_languages": [
+        "Python",
+        "Bash",
+        "Go"
+      ],
+      "core_skills": [
+        "Infrastructure as Code",
+        "CI/CD",
+        "Containerization",
+        "Cloud Platforms",
+        "Networking",
+        "Security"
+      ],
+      "frameworks": [],
+      "tools": [
+        "Git",
+        "Docker",
+        "Kubernetes",
+        "Terraform",
+        "Ansible",
+        "Jenkins",
+        "GitHub Actions",
+        "Prometheus",
+        "Grafana"
+      ],
+      "concepts": [
+        "High Availability",
+        "Scalability",
+        "Observability",
+        "Load Balancing",
+        "Microservices",
+        "Threat Detection",
+        "Network Security"
       ]
     },
     {
@@ -61,8 +213,8 @@
         "Python",
         "JavaScript",
         "TypeScript",
-        "C#",
         "Go",
+        "C#",
         "SQL"
       ],
       "core_skills": [
@@ -81,82 +233,103 @@
         "FastAPI",
         ".NET"
       ],
-      "databases": [
-        "PostgreSQL",
-        "MySQL",
-        "MongoDB",
-        "Redis"
+      "tools": [
+        "Git",
+        "Docker"
       ],
       "concepts": [
         "HTTP",
-        "REST",
         "Microservices",
-        "Database Management",
         "Caching",
         "Concurrency",
         "Message Queues",
         "Server Architecture",
         "CRUD Operations"
       ],
-      "tools": [
-        "Git",
-        "GitHub",
-        "Docker",
-        "Postman"
-      ],
-      "testing": [
-        "Unit Testing",
-        "Integration Testing",
-        "API Testing"
+      "databases": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Redis"
       ]
     },
     {
-      "role_id": "fullstack_developer",
-      "role_name": "Full Stack Developer",
+      "role_id": "data_analyst",
+      "role_name": "Data Analyst",
       "programming_languages": [
-        "JavaScript",
-        "TypeScript",
         "Python",
-        "Java",
+        "R",
         "SQL"
       ],
-      "frontend": [
-        "HTML",
-        "CSS",
-        "React",
-        "Angular",
-        "Vue",
-        "Next.js"
+      "core_skills": [
+        "Data Analysis",
+        "Data Visualization",
+        "Statistical Analysis",
+        "Data Cleaning",
+        "Data Preprocessing"
       ],
-      "backend": [
-        "Node.js",
-        "Express.js",
-        "Django",
-        "FastAPI",
-        "Spring Boot"
-      ],
-      "databases": [
-        "MongoDB",
-        "PostgreSQL",
-        "MySQL",
-        "Redis"
-      ],
-      "core_concepts": [
-        "REST API",
-        "Authentication",
-        "Authorization",
-        "API Integration",
-        "Client Server Architecture",
-        "State Management",
-        "Database Design",
-        "Frontend + backend + databases + APIs"
+      "frameworks": [
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Seaborn"
       ],
       "tools": [
-        "Git",
-        "GitHub",
+        "Tableau",
+        "Power BI",
+        "Jupyter",
+        "Excel"
+      ],
+      "concepts": [
+        "Exploratory Data Analysis",
+        "A/B Testing",
+        "Dashboards",
+        "Metrics",
+        "Reporting",
+        "ETL"
+      ],
+      "databases": [
+        "Snowflake",
+        "BigQuery",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "role_id": "ai_engineer",
+      "role_name": "AI Engineer",
+      "programming_languages": [
+        "Python",
+        "C++"
+      ],
+      "core_skills": [
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Natural Language Processing",
+        "Prompt Engineering",
+        "RAG"
+      ],
+      "frameworks": [
+        "PyTorch",
+        "TensorFlow",
+        "LangChain",
+        "Hugging Face"
+      ],
+      "tools": [
         "Docker",
-        "Postman",
-        "npm"
+        "Git"
+      ],
+      "concepts": [
+        "LLMs",
+        "Embeddings",
+        "Transformer",
+        "Fine-tuning",
+        "Vector Databases",
+        "Model Evaluation"
+      ],
+      "databases": [
+        "ChromaDB",
+        "Pinecone",
+        "Milvus"
       ]
     },
     {
@@ -164,365 +337,83 @@
       "role_name": "ML Engineer",
       "programming_languages": [
         "Python",
-        "SQL"
+        "SQL",
+        "C++"
       ],
       "core_skills": [
         "Machine Learning",
-        "Deep Learning",
-        "Feature Engineering",
         "Model Training",
+        "Feature Engineering",
         "Model Evaluation",
-        "Data Preprocessing",
-        "ML Algorithms",
-        "Regression",
-        "Classification"
+        "MLOps",
+        "Data Preprocessing"
       ],
-      "machine_learning": [
+      "frameworks": [
+        "Scikit-Learn",
+        "XGBoost",
+        "PyTorch",
+        "TensorFlow"
+      ],
+      "tools": [
+        "Docker",
+        "MLflow",
+        "Git"
+      ],
+      "concepts": [
         "Supervised Learning",
         "Unsupervised Learning",
         "Classification",
         "Regression",
-        "Clustering",
-        "Dimensionality Reduction",
-        "Cross Validation",
-        "Hyperparameter Tuning"
-      ],
-      "libraries": [
-        "NumPy",
-        "Pandas",
-        "Scikit-learn",
-        "SciPy"
-      ],
-      "deep_learning": [
-        "PyTorch",
-        "TensorFlow",
-        "Keras"
-      ],
-      "specializations": [
-        "Natural Language Processing",
-        "Computer Vision",
-        "Recommender Systems",
-        "Time Series"
-      ],
-      "mlops": [
-        "Model Deployment",
-        "MLflow",
-        "Docker",
-        "Model Monitoring"
-      ],
-      "tools": [
-        "Git",
-        "GitHub",
-        "Jupyter"
+        "Hyperparameter Tuning",
+        "Cross-Validation"
       ],
       "databases": [
-        "SQL",
-        "PostgreSQL",
-        "MongoDB"
+        "PostgreSQL"
       ]
     },
     {
-      "role_id": "data_analyst",
-      "role_name": "Data Analyst",
+      "role_id": "full_stack_developer",
+      "role_name": "Full Stack Developer",
       "programming_languages": [
-        "SQL",
-        "Python",
-        "R"
-      ],
-      "core_skills": [
-        "Data Analysis",
-        "Data Cleaning",
-        "Data Visualization",
-        "Exploratory Data Analysis",
-        "Statistical Analysis",
-        "Statistics",
-        "Excel Concepts"
-      ],
-      "libraries": [
-        "Pandas",
-        "NumPy",
-        "Matplotlib",
-        "Seaborn"
-      ],
-      "visualization": [
-        "Power BI",
-        "Tableau",
-        "Excel"
-      ],
-      "databases": [
-        "MySQL",
-        "PostgreSQL",
-        "SQL Server"
-      ],
-      "statistics": [
-        "Descriptive Statistics",
-        "Hypothesis Testing",
-        "Correlation",
-        "Regression",
-        "Probability"
-      ],
-      "tools": [
-        "Excel",
-        "Jupyter",
-        "Git"
-      ]
-    },
-    {
-      "role_id": "data_scientist",
-      "role_name": "Data Scientist",
-      "programming_languages": [
-        "Python",
-        "R",
-        "SQL"
-      ],
-      "core_skills": [
-        "Data Science",
-        "Statistical Analysis",
-        "Machine Learning",
-        "Data Mining",
-        "Data Preprocessing",
-        "Feature Engineering"
-      ],
-      "machine_learning": [
-        "Classification",
-        "Regression",
-        "Clustering",
-        "Dimensionality Reduction",
-        "Model Evaluation",
-        "Cross Validation",
-        "Hyperparameter Tuning"
-      ],
-      "libraries": [
-        "Pandas",
-        "NumPy",
-        "Scikit-learn",
-        "SciPy",
-        "Matplotlib",
-        "Seaborn"
-      ],
-      "databases": [
-        "SQL",
-        "PostgreSQL",
-        "MongoDB"
-      ],
-      "visualization": [
-        "Power BI",
-        "Tableau"
-      ],
-      "advanced": [
-        "Deep Learning",
-        "NLP",
-        "Time Series",
-        "Experimentation"
-      ]
-    },
-    {
-      "role_id": "devops_engineer",
-      "role_name": "DevOps Engineer",
-      "programming_languages": [
-        "Python",
-        "Bash",
-        "PowerShell",
-        "Go"
-      ],
-      "core_skills": [
-        "CI/CD",
-        "Infrastructure as Code",
-        "Containerization",
-        "Continuous Integration",
-        "Continuous Deployment",
-        "System Administration",
-        "Linux",
-        "Git",
-        "Docker",
-        "Cloud Networking"
-      ],
-      "tools": [
-        "Git",
-        "GitHub",
-        "Jenkins",
-        "GitHub Actions",
-        "GitLab CI"
-      ],
-      "containers": [
-        "Docker",
-        "Kubernetes"
-      ],
-      "infrastructure": [
-        "Terraform",
-        "Ansible"
-      ],
-      "cloud": [
-        "AWS",
-        "Azure",
-        "Google Cloud"
-      ],
-      "monitoring": [
-        "Prometheus",
-        "Grafana",
-        "ELK Stack"
-      ],
-      "concepts": [
-        "Linux",
-        "Networking",
-        "Load Balancing",
-        "Monitoring",
-        "Logging",
-        "Deployment Automation"
-      ]
-    },
-    {
-      "role_id": "cloud_engineer",
-      "role_name": "Cloud Engineer",
-      "programming_languages": [
-        "Python",
-        "Bash",
-        "PowerShell"
-      ],
-      "cloud_platforms": [
-        "AWS",
-        "Microsoft Azure",
-        "Google Cloud"
-      ],
-      "core_services": [
-        "Compute",
-        "Storage",
-        "Networking",
-        "Databases",
-        "Identity and Access Management"
-      ],
-      "devops": [
-        "Docker",
-        "Kubernetes",
-        "CI/CD",
-        "Terraform",
-        "Ansible"
-      ],
-      "networking": [
-        "TCP/IP",
-        "DNS",
-        "HTTP",
-        "Load Balancing",
-        "Virtual Networks",
-        "Firewalls"
-      ],
-      "security": [
-        "IAM",
-        "Encryption",
-        "Security Groups",
-        "Secrets Management"
-      ],
-      "monitoring": [
-        "CloudWatch",
-        "Azure Monitor",
-        "Google Cloud Monitoring",
-        "Prometheus",
-        "Grafana"
-      ]
-    },
-    {
-      "role_id": "cybersecurity_engineer",
-      "role_name": "Cybersecurity Engineer",
-      "programming_languages": [
-        "Python",
-        "Bash",
-        "PowerShell"
-      ],
-      "core_skills": [
-        "Cybersecurity",
-        "Network Security",
-        "Application Security",
-        "Threat Detection",
-        "Vulnerability Assessment",
-        "Incident Response",
-        "Database Security"
-      ],
-      "security": [
-        "Authentication",
-        "Authorization",
-        "Encryption",
-        "PKI",
-        "Firewalls",
-        "IDS",
-        "IPS"
-      ],
-      "networking": [
-        "TCP/IP",
-        "DNS",
-        "HTTP",
-        "VPN",
-        "Network Protocols"
-      ],
-      "tools": [
-        "Wireshark",
-        "Nmap",
-        "Burp Suite",
-        "Metasploit"
-      ],
-      "concepts": [
-        "OWASP",
-        "Penetration Testing",
-        "Security Monitoring",
-        "Malware Analysis",
-        "Risk Assessment",
-        "Security Policies"
-      ],
-      "cloud_security": [
-        "AWS Security",
-        "Azure Security",
-        "IAM",
-        "Cloud Security"
-      ]
-    },
-    {
-      "role_id": "software_engineer",
-      "role_name": "Software Engineer",
-      "programming_languages": [
-        "Java",
-        "Python",
-        "C++",
-        "C#",
         "JavaScript",
-        "Go"
+        "TypeScript",
+        "Python",
+        "Java",
+        "SQL",
+        "HTML",
+        "CSS"
       ],
       "core_skills": [
-        "Data Structures",
-        "Algorithms",
-        "Object Oriented Programming",
-        "Software Development",
-        "Problem Solving",
-        "System Design"
-      ],
-      "software_engineering": [
-        "Design Patterns",
-        "Clean Code",
-        "Version Control",
-        "Software Testing",
-        "Debugging",
-        "Code Review"
-      ],
-      "databases": [
-        "SQL",
-        "MySQL",
-        "PostgreSQL",
-        "MongoDB"
-      ],
-      "development": [
-        "REST API",
-        "Backend Development",
         "Frontend Development",
-        "API Integration"
+        "Backend Development",
+        "REST API",
+        "Database Management",
+        "Responsive Web Design"
+      ],
+      "frameworks": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Express.js",
+        "Django",
+        "FastAPI"
       ],
       "tools": [
         "Git",
-        "GitHub",
         "Docker",
-        "Jira"
+        "Webpack"
       ],
-      "testing": [
-        "Unit Testing",
-        "Integration Testing",
-        "Test Automation"
+      "concepts": [
+        "Component Architecture",
+        "State Management",
+        "Authentication",
+        "API Design",
+        "Microservices"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "MongoDB",
+        "Redis"
       ]
     }
   ]

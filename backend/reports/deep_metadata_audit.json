@@ -1,0 +1,749 @@
+{
+  "field_stats": {
+    "question": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "skill": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "technology": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "topic": {
+      "present_count": 9394,
+      "null_or_empty_count": 0,
+      "distinct_values": 137,
+      "sample_values": [
+        "Python Algorithms & Data Structures",
+        "JavaScript / DOM / React Tasks",
+        "JavaScript Core & DOM",
+        "React & Hooks",
+        "Java DSA & OOP Problems"
+      ],
+      "top_values": [
+        [
+          "Python Algorithms & Data Structures",
+          2272
+        ],
+        [
+          "JavaScript / DOM / React Tasks",
+          754
+        ],
+        [
+          "JavaScript Core & DOM",
+          716
+        ],
+        [
+          "React & Hooks",
+          581
+        ],
+        [
+          "Java DSA & OOP Problems",
+          531
+        ],
+        [
+          "SQL Queries & Schema Design",
+          457
+        ],
+        [
+          "Server Architecture & Scaling",
+          166
+        ],
+        [
+          "Full Stack Logic & APIs",
+          116
+        ],
+        [
+          "Backend Logic & Algorithms",
+          87
+        ],
+        [
+          "Bash & Automation Scripts",
+          86
+        ],
+        [
+          "Linux System Administration",
+          80
+        ],
+        [
+          "Data Analytics & SQL Queries",
+          74
+        ],
+        [
+          "ML Algorithms & Data Processing",
+          71
+        ],
+        [
+          "Cloud Computing & AWS",
+          61
+        ],
+        [
+          "Kubernetes Orchestration",
+          53
+        ],
+        [
+          "AI & NLP Implementation",
+          52
+        ],
+        [
+          "End-to-End System Architecture",
+          52
+        ],
+        [
+          "Deployment & DevOps for Full Stack",
+          52
+        ],
+        [
+          "JavaScript Algorithm Problems",
+          50
+        ],
+        [
+          "Model Evaluation & Metrics",
+          49
+        ]
+      ]
+    },
+    "subtopic": {
+      "present_count": 9388,
+      "null_or_empty_count": 6,
+      "distinct_values": 6571,
+      "sample_values": [
+        "## Answer: 1",
+        "## Answer: 4",
+        "## Answer: 2",
+        "## Answer: 3",
+        "composite index reordering"
+      ],
+      "top_values": [
+        [
+          "## Answer: 1",
+          24
+        ],
+        [
+          "## Answer: 4",
+          20
+        ],
+        [
+          "## Answer: 2",
+          20
+        ],
+        [
+          "## Answer: 3",
+          19
+        ],
+        [
+          "composite index reordering",
+          13
+        ],
+        [
+          "Refactoring slow queries using partial indexes",
+          13
+        ],
+        [
+          "Shared TypeScript types between React frontend and Node/FastAPI backend",
+          13
+        ],
+        [
+          "PL/pgSQL procedure with error rollback",
+          13
+        ],
+        [
+          "Parametric vs Non-parametric models",
+          13
+        ],
+        [
+          "Supervised vs Unsupervised vs Reinforcement learning",
+          13
+        ],
+        [
+          "RAGAS faithfulness/answer relevancy calculation",
+          13
+        ],
+        [
+          "Next.js hydration",
+          13
+        ],
+        [
+          "SSR vs CSR vs SSG",
+          13
+        ],
+        [
+          "VPC module with public/private subnets and NAT gateway",
+          13
+        ],
+        [
+          "Full stack state synchronization",
+          13
+        ],
+        [
+          "Client-server separation",
+          13
+        ],
+        [
+          "GitHub Actions matrix build workflow YAML",
+          13
+        ],
+        [
+          "Multi-stage Dockerfile for Node/Python",
+          13
+        ],
+        [
+          "S3 bucket with encryption and lifecycle rules",
+          13
+        ],
+        [
+          "Vercel/Render orchestration",
+          13
+        ]
+      ]
+    },
+    "category": {
+      "present_count": 9393,
+      "null_or_empty_count": 1,
+      "distinct_values": 7,
+      "sample_values": [
+        "Coding",
+        "Theory",
+        "Data Structures & Algorithms",
+        "Databases",
+        "Web Architecture"
+      ],
+      "top_values": [
+        [
+          "Coding",
+          5313
+        ],
+        [
+          "Theory",
+          4075
+        ],
+        [
+          "Data Structures & Algorithms",
+          1
+        ],
+        [
+          "Databases",
+          1
+        ],
+        [
+          "Web Architecture",
+          1
+        ],
+        [
+          "Programming Languages",
+          1
+        ],
+        [
+          "Backend Web Frameworks",
+          1
+        ]
+      ]
+    },
+    "role": {
+      "present_count": 9388,
+      "null_or_empty_count": 6,
+      "distinct_values": 10,
+      "sample_values": [
+        "Python Developer",
+        "Frontend Developer",
+        "Java Developer",
+        "Database Developer",
+        "DevOps / Cloud Engineer"
+      ],
+      "top_values": [
+        [
+          "Python Developer",
+          2583
+        ],
+        [
+          "Frontend Developer",
+          2470
+        ],
+        [
+          "Java Developer",
+          920
+        ],
+        [
+          "Database Developer",
+          735
+        ],
+        [
+          "DevOps / Cloud Engineer",
+          625
+        ],
+        [
+          "Backend Developer",
+          571
+        ],
+        [
+          "Data Analyst",
+          397
+        ],
+        [
+          "AI Engineer",
+          385
+        ],
+        [
+          "Machine Learning Engineer",
+          374
+        ],
+        [
+          "Full Stack Developer",
+          328
+        ]
+      ]
+    },
+    "role_id": {
+      "present_count": 9388,
+      "null_or_empty_count": 6,
+      "distinct_values": 10,
+      "sample_values": [
+        "python_developer",
+        "frontend_developer",
+        "java_developer",
+        "database_developer",
+        "devops_cloud_engineer"
+      ],
+      "top_values": [
+        [
+          "python_developer",
+          2583
+        ],
+        [
+          "frontend_developer",
+          2470
+        ],
+        [
+          "java_developer",
+          920
+        ],
+        [
+          "database_developer",
+          735
+        ],
+        [
+          "devops_cloud_engineer",
+          625
+        ],
+        [
+          "backend_developer",
+          571
+        ],
+        [
+          "data_analyst",
+          397
+        ],
+        [
+          "ai_engineer",
+          385
+        ],
+        [
+          "machine_learning_engineer",
+          374
+        ],
+        [
+          "fullstack_developer",
+          328
+        ]
+      ]
+    },
+    "difficulty": {
+      "present_count": 9388,
+      "null_or_empty_count": 6,
+      "distinct_values": 3,
+      "sample_values": [
+        "Easy",
+        "Hard",
+        "Medium"
+      ],
+      "top_values": [
+        [
+          "Easy",
+          3818
+        ],
+        [
+          "Hard",
+          3677
+        ],
+        [
+          "Medium",
+          1893
+        ]
+      ]
+    },
+    "strategy": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "intent": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "answer": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "explanation": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "rubric": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "evaluation_rubric": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "tags": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "source": {
+      "present_count": 9388,
+      "null_or_empty_count": 6,
+      "distinct_values": 10,
+      "sample_values": [
+        "https://github.com/sahil280114/codealpaca",
+        "InterviewMind-AI-Curated-Dataset-v1",
+        "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md",
+        "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md",
+        "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md"
+      ],
+      "top_values": [
+        [
+          "https://github.com/sahil280114/codealpaca",
+          4500
+        ],
+        [
+          "InterviewMind-AI-Curated-Dataset-v1",
+          3261
+        ],
+        [
+          "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md",
+          716
+        ],
+        [
+          "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md",
+          581
+        ],
+        [
+          "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md",
+          166
+        ],
+        [
+          "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md",
+          61
+        ],
+        [
+          "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md",
+          53
+        ],
+        [
+          "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md",
+          36
+        ],
+        [
+          "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md",
+          9
+        ],
+        [
+          "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md",
+          5
+        ]
+      ]
+    },
+    "metadata": {
+      "present_count": 0,
+      "null_or_empty_count": 9394,
+      "distinct_values": 0,
+      "sample_values": [],
+      "top_values": []
+    },
+    "status": {
+      "present_count": 7664,
+      "null_or_empty_count": 1730,
+      "distinct_values": 1,
+      "sample_values": [
+        "inactive"
+      ],
+      "top_values": [
+        [
+          "inactive",
+          7664
+        ]
+      ]
+    },
+    "languages": {
+      "present_count": 3261,
+      "null_or_empty_count": 6133,
+      "distinct_values": 9,
+      "sample_values": [
+        "list:Python",
+        "list:JavaScript,TypeScript,HTML",
+        "list:Java",
+        "list:Bash,Python,YAML",
+        "list:SQL,Python,R"
+      ],
+      "top_values": [
+        [
+          "list:Python",
+          644
+        ],
+        [
+          "list:JavaScript,TypeScript,HTML",
+          419
+        ],
+        [
+          "list:Java",
+          389
+        ],
+        [
+          "list:Bash,Python,YAML",
+          375
+        ],
+        [
+          "list:SQL,Python,R",
+          323
+        ],
+        [
+          "list:Python,Java,JavaScript",
+          318
+        ],
+        [
+          "list:Python,SQL",
+          303
+        ],
+        [
+          "list:SQL,PL/SQL,Python",
+          278
+        ],
+        [
+          "list:JavaScript,TypeScript,Python",
+          212
+        ]
+      ]
+    },
+    "dataset_type": {
+      "present_count": 6127,
+      "null_or_empty_count": 3267,
+      "distinct_values": 2,
+      "sample_values": [
+        "Real-World-CodeAlpaca-20k",
+        "Real-World-Curated-Online"
+      ],
+      "top_values": [
+        [
+          "Real-World-CodeAlpaca-20k",
+          4500
+        ],
+        [
+          "Real-World-Curated-Online",
+          1627
+        ]
+      ]
+    }
+  },
+  "topic_distribution": {
+    "Python Algorithms & Data Structures": 2272,
+    "JavaScript / DOM / React Tasks": 754,
+    "JavaScript Core & DOM": 716,
+    "React & Hooks": 581,
+    "Java DSA & OOP Problems": 531,
+    "SQL Queries & Schema Design": 457,
+    "Server Architecture & Scaling": 166,
+    "Full Stack Logic & APIs": 116,
+    "Backend Logic & Algorithms": 87,
+    "Bash & Automation Scripts": 86,
+    "Linux System Administration": 80,
+    "Data Analytics & SQL Queries": 74,
+    "ML Algorithms & Data Processing": 71,
+    "Cloud Computing & AWS": 61,
+    "Kubernetes Orchestration": 53,
+    "AI & NLP Implementation": 52,
+    "End-to-End System Architecture": 52,
+    "Deployment & DevOps for Full Stack": 52,
+    "JavaScript Algorithm Problems": 50,
+    "Model Evaluation & Metrics": 49,
+    "Classification Models & Algorithms": 48,
+    "Descriptive & Inferential Statistics": 48,
+    "Hypothesis Testing & A/B Testing": 48,
+    "Advanced SQL for Analytics": 48,
+    "Data Visualization & BI Tools": 48,
+    "React Component Tasks": 47,
+    "Container Orchestration (Kubernetes)": 45,
+    "React Framework & Ecosystem": 45,
+    "DSA & Problem Solving": 44,
+    "API Logic & Middleware": 44,
+    "Java Collections Framework": 44,
+    "Built-in Data Structures": 44,
+    "CSS3 & Modern Styling": 44,
+    "JavaScript Core & ES6+": 44,
+    "OOP Design Patterns": 44,
+    "RESTful API Design & Standards": 44,
+    "Vector Embeddings & Vector Databases": 44,
+    "Java Core Fundamentals & JVM": 44,
+    "LangChain & LangGraph Workflows": 44,
+    "JOIN Types & Execution Mechanics": 44,
+    "Networking, Proxies & Security": 44,
+    "Cloud Computing Fundamentals (AWS/Azure/GCP)": 44,
+    "Deep Learning & Neural Networks": 43,
+    "Browser Architecture & Performance": 43,
+    "Client-Side API Integration": 43,
+    "Authentication & Authorization": 43,
+    "Concurrency & Async Processing": 43,
+    "Infrastructure as Code (Terraform)": 43,
+    "Object-Oriented Programming in Python": 43,
+    "Exception Handling & Best Practices": 40,
+    "JDBC, JPA & Spring Boot": 40,
+    "Python APIs & Web Frameworks": 40,
+    "Database Normalization": 40,
+    "Exception Handling & Clean Code": 40,
+    "Observability & Error Handling": 30,
+    "CI/CD Pipeline Architecture": 30,
+    "HTML5 & Semantic Elements": 30,
+    "Regression Models & Loss Functions": 30,
+    "Data Cleaning & Quality": 30,
+    "Transformers Architecture": 30,
+    "DOM & Event Handling": 30,
+    "Multithreading & Concurrency": 30,
+    "Java Memory Management & GC": 30,
+    "Web Accessibility (a11y) & SEO": 30,
+    "Transaction Isolation Levels": 30,
+    "Metrics Definition & KPI Tracking": 30,
+    "Preprocessing & Feature Engineering": 30,
+    "Caching & Performance Optimization": 30,
+    "Bias-Variance Tradeoff & Regularization": 30,
+    "MLOps & Model Serving": 30,
+    "Natural Language Processing (NLP)": 30,
+    "Large Language Models (LLMs)": 30,
+    "Agentic AI & LLM Frameworks": 30,
+    "ACID Properties & Transactions": 30,
+    "Git Version Control & Workflows": 30,
+    "Modules, Packages & Namespaces": 30,
+    "Concurrency in Python": 30,
+    "Object-Oriented Programming in Java": 30,
+    "Index Optimization Tasks": 26,
+    "Database Logic & Procedures": 26,
+    "Machine Learning Fundamentals": 26,
+    "LLM Evaluation & Benchmarking": 26,
+    "Terraform HCL Scripts": 26,
+    "Configuration & Pipeline Tasks": 26,
+    "Complex SQL Problems": 15,
+    "Schema Migration & Partitioning": 15,
+    "RAG Ingestion & Query Pipelines": 15,
+    "Data-Processing & Feature Scripts": 15,
+    "Concurrent Programming Tasks": 15,
+    "Collections Manipulation": 15,
+    "File & Data Stream Operations": 15,
+    "SQL Analytical Queries": 15,
+    "CRUD & Repository Pattern": 15,
+    "Python ML Pipelines": 15,
+    "Database Queries & Optimizations": 15,
+    "NLP & Tokenization Scripts": 15,
+    "Visualization Code": 15,
+    "Data Cleaning Scripts": 15,
+    "Shell Scripting Automation": 15,
+    "Algorithms & Data Processing": 15
+  },
+  "category_distribution": {
+    "Coding": 5313,
+    "Theory": 4075,
+    "Data Structures & Algorithms": 1,
+    "Databases": 1,
+    "Web Architecture": 1,
+    "Programming Languages": 1,
+    "Backend Web Frameworks": 1
+  },
+  "role_distribution": {
+    "Python Developer": 2583,
+    "Frontend Developer": 2470,
+    "Java Developer": 920,
+    "Database Developer": 735,
+    "DevOps / Cloud Engineer": 625,
+    "Backend Developer": 571,
+    "Data Analyst": 397,
+    "AI Engineer": 385,
+    "Machine Learning Engineer": 374,
+    "Full Stack Developer": 328
+  },
+  "difficulty_distribution": {
+    "Hard": 3677,
+    "Easy": 3818,
+    "Medium": 1893
+  },
+  "status_distribution": {
+    "inactive": 7664
+  },
+  "languages_distribution": {
+    "list:Python": 644,
+    "list:JavaScript,TypeScript,HTML": 419,
+    "list:Java": 389,
+    "list:Bash,Python,YAML": 375,
+    "list:SQL,Python,R": 323,
+    "list:Python,Java,JavaScript": 318,
+    "list:Python,SQL": 303,
+    "list:SQL,PL/SQL,Python": 278,
+    "list:JavaScript,TypeScript,Python": 212
+  },
+  "source_distribution": {
+    "https://github.com/sahil280114/codealpaca": 4500,
+    "InterviewMind-AI-Curated-Dataset-v1": 3261,
+    "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md": 716,
+    "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md": 581,
+    "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md": 166,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md": 61,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md": 53,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md": 36,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md": 9,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md": 5
+  },
+  "text_patterns": {
+    "total_records": 9394,
+    "ends_with_question_mark": 690,
+    "contains_question_mark_not_at_end": 1159,
+    "no_question_mark_anywhere": 7545,
+    "short_records_lt_50_chars": 0,
+    "very_long_records_gt_1000_chars": 1976,
+    "has_answer_marker": 88,
+    "has_rubric_marker": 4509,
+    "has_markdown_code": 5865,
+    "has_markdown_header": 8699,
+    "has_template_explain": 689,
+    "has_placeholder": 216
+  },
+  "sample_short_records": []
+}

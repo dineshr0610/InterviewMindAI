@@ -20,8 +20,11 @@ from app.resume_processing.schemas import (
     MatchedArea,
     Module1Output,
     ScoreBreakdown,
+    CompetencyMatrix,
+    CompetencyEvidence,
 )
 from app.resume_processing.scorer import DeterministicScorer, get_scorer
+from app.resume_processing.ai_analyzer import get_ai_analyzer
 
 logger = logging.getLogger("interviewmind.resume_processing.service")
 
@@ -34,6 +37,7 @@ class ResumeProcessingService:
         self.matcher: RoleMatcher = get_matcher()
         self.scorer: DeterministicScorer = get_scorer()
         self.feedback_generator: FeedbackGenerator = get_feedback_generator()
+        self.ai_analyzer = get_ai_analyzer()
 
     def process(
         self,
@@ -58,19 +62,36 @@ class ResumeProcessingService:
         # Step 2: Technical information and evidence extraction
         profile = self.extractor.extract(parsed_resume, candidate_name=candidate_name)
 
-        # Step 3: Match strictly against the single selected role
+        # Step 3: Match strictly against the single selected role (deterministic)
         match_result = self.matcher.match(profile, selected_role_identifier=role)
 
-        # Step 4: Deterministic score calculation
+        # Step 4: Deterministic score calculation (authoritative; AI never touches it)
         role_match_score, score_breakdown = self.scorer.compute_score(match_result)
 
-        # Step 5: Actionable feedback generation
+        # Step 5: Actionable feedback generation (deterministic)
         feedback = self.feedback_generator.generate(match_result, role_match_score, score_breakdown)
 
-        # Step 6: Construct structured interview_context for Module 2
+        # Step 6: Construct structured interview_context for Module 2 (deterministic evidence only)
         interview_context = self._build_interview_context(match_result)
 
-        # Step 7: Assemble validated Module 1 output payload
+        # Step 6.5: Build Competency Matrix (shared truth for deterministic and AI)
+        competency_matrix = self._build_competency_matrix(match_result)
+
+        # Step 7: Optional AI qualitative analysis. Computed AFTER everything above and attached
+        # as a separate, validated block. It is never merged into the deterministic fields.
+        ai_data = None
+        analysis_source = "deterministic"
+        try:
+            ai_data = self.ai_analyzer.analyze(competency_matrix, profile, match_result.role_profile)
+            if ai_data:
+                analysis_source = "hybrid"
+            else:
+                ai_data = None
+        except Exception as e:
+            ai_data = None
+            logger.error(f"AI analysis failed, returning deterministic analysis only: {e}")
+
+        # Step 8: Assemble validated Module 1 output payload
         output = Module1Output(
             selected_role=match_result.selected_role,
             role_match_score=role_match_score,
@@ -81,6 +102,9 @@ class ResumeProcessingService:
             unrelated_skills=match_result.unrelated_skills,
             feedback=feedback,
             interview_context=interview_context,
+            competency_matrix=competency_matrix,
+            ai_analysis=ai_data,
+            analysis_source=analysis_source,
         )
 
         logger.info(
@@ -92,6 +116,67 @@ class ResumeProcessingService:
         )
 
         return output
+
+    def _build_competency_matrix(self, match_result) -> CompetencyMatrix:
+        """Create a structured, normalized competency matrix representing the resume evidence."""
+        matrix = CompetencyMatrix(target_role=match_result.selected_role)
+        
+        # Helper to map match result arrays to competency evidence
+        def populate_category(target_list, category_name):
+            seen_topics = set()
+            for match in match_result.matched_areas:
+                if match.category == category_name and match.topic not in seen_topics:
+                    seen_topics.add(match.topic)
+                    target_list.append(CompetencyEvidence(
+                        topic=match.topic,
+                        category=category_name,
+                        status="strong_match",
+                        evidence=match.evidence,
+                        source=match.source,
+                        confidence=match.confidence
+                    ))
+            for match in match_result.partial_matches:
+                if match.category == category_name and match.topic not in seen_topics:
+                    seen_topics.add(match.topic)
+                    target_list.append(CompetencyEvidence(
+                        topic=match.topic,
+                        category=category_name,
+                        status="partial_match",
+                        evidence=match.evidence,
+                        source=match.source,
+                        confidence=match.confidence
+                    ))
+            
+            # Map missing areas by checking the role profile
+            role_p = match_result.role_profile
+            expected = []
+            if category_name == "programming_languages": expected = role_p.programming_languages
+            elif category_name == "core_skills": expected = role_p.core_skills
+            elif category_name == "frameworks_tools": expected = role_p.frameworks_tools
+            elif category_name == "technical_concepts": expected = role_p.technical_concepts
+            
+            for item in expected:
+                if item in match_result.missing_areas and item not in seen_topics:
+                    seen_topics.add(item)
+                    target_list.append(CompetencyEvidence(
+                        topic=item,
+                        category=category_name,
+                        status="missing",
+                        evidence="",
+                        source="",
+                        confidence=0.0
+                    ))
+
+        populate_category(matrix.programming_languages, "programming_languages")
+        populate_category(matrix.core_skills, "core_skills")
+        populate_category(matrix.frameworks_tools, "frameworks_tools")
+        populate_category(matrix.technical_concepts, "technical_concepts")
+        
+        if match_result.candidate_profile:
+            matrix.projects = match_result.candidate_profile.projects or []
+            matrix.experience_evidence = match_result.candidate_profile.experience or []
+            
+        return matrix
 
     def _build_interview_context(self, match_result) -> List[InterviewContextItem]:
         """

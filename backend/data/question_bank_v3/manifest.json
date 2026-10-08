@@ -1,0 +1,16 @@
+{
+  "pipeline_version": "1.0.0",
+  "timestamp": "2026-10-08T13:48:03.043278+00:00",
+  "source_sha256": "0231d302fd970db0e826ac114b820069b763f214fa541d24aba4ebc28c832f87",
+  "canonical_sha256": "464e2f19567a8b2f7f74ee8cc87648922fb3b0f9a71108217f8a5e86cb0dc1fa",
+  "quarantine_sha256": "38375ee5e96bcd141e4817f27570bf7bbe77965e21f63fbd5949a3187f88dc46",
+  "counts": {
+    "raw": 5000,
+    "canonical": 3146,
+    "quarantined": 1854
+  },
+  "normalization_rules": {
+    "role": "Mapped to 10 canonical roles. Unmapped quarantined.",
+    "difficulty": "Lowercased, mapped to easy/medium/hard. Others quarantined."
+  }
+}

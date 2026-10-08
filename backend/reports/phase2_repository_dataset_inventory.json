@@ -1,0 +1,124 @@
+{
+  "inventory": [
+    {
+      "FILE": "backend\\data\\knowledge_base\\real_technical_dataset.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 9782081,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\data\\knowledge_base\\real_technical_dataset.jsonl",
+      "FORMAT": ".jsonl",
+      "SIZE_BYTES": 9071346,
+      "ROW_COUNT_ESTIMATE": 0,
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\data\\knowledge_base\\real_technical_dataset.sql",
+      "FORMAT": ".sql",
+      "SIZE_BYTES": 7945330,
+      "ROW_COUNT_ESTIMATE": 139,
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\data\\knowledge_base\\technical_knowledge_5000.jsonl",
+      "FORMAT": ".jsonl",
+      "SIZE_BYTES": 9307736,
+      "ROW_COUNT_ESTIMATE": 2,
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\docs\\ADAPTIVE_INTERVIEW_ARCHITECTURE.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 4113,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\docs\\ADAPTIVE_INTERVIEW_VALIDATION_REPORT.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 4189,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\docs\\QUESTION_BANK_RAG_FINAL_VALIDATION_REPORT.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 5538,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\database_dataset_forensic_audit.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 116429,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\database_dataset_forensic_audit.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 36254,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\question_bank_cleanup_audit.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 4157326,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\question_bank_cleanup_migration.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 14329909,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\question_bank_reconstruction_candidates.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 3203898,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "backend\\reports\\question_quality_defects_samples.json",
+      "FORMAT": ".json",
+      "SIZE_BYTES": 19970,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Already-clean questions",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "docs\\adaptive_interview_audit.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 44213,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    },
+    {
+      "FILE": "docs\\LIVE_INTERVIEW_VALIDATION_REPORT.md",
+      "FORMAT": ".md",
+      "SIZE_BYTES": 17499,
+      "ROW_COUNT_ESTIMATE": "unknown",
+      "PURPOSE": "Documentation/Tutorial or Raw Data",
+      "POTENTIAL_VALUE": "High"
+    }
+  ]
+}

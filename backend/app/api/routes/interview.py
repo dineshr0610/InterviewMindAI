@@ -25,6 +25,7 @@ from app.resume_processing import (
     Module1Output,
     get_resume_processing_service,
 )
+from app.resume_processing.config import normalize_role_name
 from app.utils.resume import (
     ALLOWED_MIME_TYPES,
     MAX_RESUME_SIZE_BYTES,
@@ -53,6 +54,18 @@ async def get_roles(
 ) -> dict:
     """Return role requirements used by resume matching and question selection."""
     return success_response({"roles": service.available_roles()})
+
+
+@router.get(
+    "/roles/normalize",
+    response_model=dict,
+    summary="Normalize a role identifier",
+)
+async def get_normalized_role(
+    role: str,
+) -> dict:
+    """Return the Phase 6 canonical normalized role name."""
+    return success_response({"normalized_role": normalize_role_name(role)})
 
 
 @router.post(
@@ -173,7 +186,11 @@ async def analyze_resume(
             role=request.role,
             candidate_name=request.candidate_name,
         )
-        return success_response(result.model_dump())
+        res_dump = result.model_dump()
+        import json
+        with open("scratch/latest_analyze_response.json", "w") as f:
+            json.dump(res_dump, f, indent=2)
+        return success_response(res_dump)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     except Exception as exc:

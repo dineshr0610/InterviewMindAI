@@ -1,0 +1,491 @@
+{'OTHER:NONE': 6, 'Curated-v1': 3261, 'JavaScript': 716, 'React': 581, 'DevOps-Linux': 36, 'DevOps-K8s': 53, 'DevOps-CICD': 5, 'DevOps-Git': 9, 'DevOps-AWS': 61, 'SystemDesign': 166, 'CodeAlpaca': 4500}
+====================================================================================================
+SOURCE SystemDesign 166
+------------------------------------------------------------
+META: {"role": "Backend Developer", "topic": "Server Architecture & Scaling", "source": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md", "role_id": "backend_developer", "category": "Theory", "subtopic": "Consistency patterns", "difficulty": "Easy", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Consistency patterns
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+With multiple copies of the same data, we are faced with options on how to synchronize them so clients have a consistent view of the data.  Recall the definition of consistency from the [CAP theorem](#cap-theorem) - Every read receives the most recent write or an error.
+------------------------------------------------------------
+META: {"role": "Backend Developer", "topic": "Server Architecture & Scaling", "source": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md", "role_id": "backend_developer", "category": "Theory", "subtopic": "Source(s) and further reading", "difficulty": "Easy", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Source(s) and further reading
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+* [A word on scalability](http://www.allthingsdistributed.com/2006/03/a_word_on_scalability.html)
+* [Scalability, availability, stability, patterns](http://www.slideshare.net/jboner/scalability-availability-stability-patterns/)
+------------------------------------------------------------
+META: {"role": "Backend Developer", "topic": "Server Architecture & Scaling", "source": "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md", "role_id": "backend_developer", "category": "Theory", "subtopic": "Next steps", "difficulty": "Easy", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Next steps
+
+**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+Next, we'll look at high-level trade-offs:
+
+* **Performance** vs **scalability**
+* **Latency** vs **throughput**
+* **Availability** vs **consistency**
+
+Keep in mind that **everything is a trade-off**.
+
+Then we'll dive into more specific topics such as DNS, CDNs, and load balancers.
+====================================================================================================
+SOURCE DevOps-AWS 61
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Cloud Computing & AWS", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# ECS", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # ECS
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Cloud Computing & AWS | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is Amazon ECS?</summary><br><b>
+
+[AWS Docs](https://aws.amazon.com/ecs): "Amazon Elastic Container Service (Amazon ECS) is a fully managed container orchestration service. Customers such as Duolingo, Samsung, GE, and Cook Pad use ECS to run their most sensitive and mission critical applications because of its security, reliability, and scalability."
+
+In simpler words, it allows you to launch containers on AWS.<br>
+While AWS takes care of starting/stopping containers, you need to provision and maintain the infrastructure where the containers are running (EC2 instances).
+</b></details>
+
+<details>
+<summary>What one should do in order to make EC2 instance part of an ECS cluster?</summary><br><b>
+
+Install ECS agent on it. Some AMIs have built-in configuration for that.
+</b></details>
+
+<details>
+<summary>What ECS launch types are there?</summary><br><b>
+
+* EC2 Instance
+* AWS Fargate
+</b></details>
+
+<details>
+<summary>What is Amazon ECR?</summary><br><b>
+
+[AWS Docs](https://aws.amazon.com/ecr): "Amazon Elastic Container Registry (ECR) is a fully-managed Docker container registry that makes it easy for developers to store, manage, and deploy Docker container images."
+</b></details>
+
+<detai
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Cloud Computing & AWS", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Security", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Security
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Cloud Computing & AWS | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is the shared responsibility model? What AWS is responsible for and what the user is responsible for based on the shared responsibility model?</summary><br><b>
+
+The shared responsibility model defines what the customer is responsible for and what AWS is responsible for.
+
+More on the shared responsibility model [here](https://aws.amazon.com/compliance/shared-responsibility-model)
+</b></details>
+
+<details>
+<summary>True or False? Based on the shared responsibility model, Amazon is responsible for physical CPUs and security groups on instances</summary><br><b>
+
+False. It is responsible for Hardware in its sites but not for security groups which created and managed by the users.
+</b></details>
+
+<details>
+<summary>Explain "Shared Controls" in regards to the shared responsibility model</summary><br><b>
+
+AWS definition: "apply to both the infrastructure layer and customer layers, but in completely separate contexts or perspectives. In a shared control, AWS provides the requirements for the infrastructure and the customer must provide their own control implementation within their use of AWS services"
+
+Learn more about it [here](https://aws.amazon.com/compliance/shared-responsibility-mod
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Cloud Computing & AWS", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# ENI", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # ENI
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Cloud Computing & AWS | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>Explain Elastic Network Interfaces (ENI)</summary><br><b>
+
+[AWS Docs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html): "An elastic network interface is a logical networking component in a VPC that represents a virtual network card."
+</b></details>
+
+<details>
+<summary>Name at least three attributes the Elastic Network Interfaces (ENI) can include</summary><br><b>
+
+1. One public IPv4 address
+2. Mac Address
+3. A primary private IPv4 address (from the address range of your VPC)
+</b></details>
+
+<details>
+<summary>True or False? ENI are not bound to a specific availability zone</summary><br><b>
+
+False. ENI are bound to specific availability zone.
+</b></details>
+
+<details>
+<summary>True or False? ENI can be created independently of EC2 instances</summary><br><b>
+
+True. They can be attached later on and on the fly (for failover purposes).
+</b></details>
+====================================================================================================
+SOURCE DevOps-K8s 53
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Kubernetes Orchestration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# Deployments Commands", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # Deployments Commands
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Kubernetes Orchestration | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>Create a file definition/manifest of a deployment called "dep", with 3 replicas that uses the image 'redis'</summary><br><b>
+
+`k create deploy dep -o yaml --image=redis --dry-run=client --replicas 3 > deployment.yaml `
+
+</b></details>
+
+<details>
+<summary>Delete the deployment `depdep`</summary><br><b>
+
+`k delete deploy depdep`
+
+</b></details>
+
+<details>
+<summary>Create a deployment called "pluck" using the image "redis" and make sure it runs 5 replicas</summary><br><b>
+
+`kubectl create deployment pluck --image=redis`
+
+`kubectl scale deployment pluck --replicas=5`
+</b></details>
+
+<details>
+<summary>Create a deployment with the following properties:
+
+* called "blufer"
+* using the image "python"
+* runs 3 replicas
+* all pods will be placed on a node that has the label "blufer"
+</summary><br><b>
+
+`kubectl create deployment blufer --image=python --replicas=3 -o yaml --dry-run=client > deployment.yaml`
+
+Add the following section (`vi deployment.yaml`):
+
+```
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedlingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: blufer
+            operator: Exists
+```
+
+`kubectl apply -f 
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Kubernetes Orchestration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# Static Pods", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # Static Pods
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Kubernetes Orchestration | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What are Static Pods?</summary><br><b>
+
+[Kubernetes.io](https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/): "Static Pods are managed directly by the kubelet daemon on a specific node, without the API server observing them. Unlike Pods that are managed by the control plane (for example, a Deployment); instead, the kubelet watches each static Pod (and restarts it if it fails)."
+</b></details>
+
+<details>
+<summary>True or False? The same as there are "Static Pods" there are other static resources like "deployments" and "replicasets"</summary><br><b>
+
+False.
+</b></details>
+
+<details>
+<summary>What are some use cases for using Static Pods?</summary><br><b>
+
+One clear use case is running Control Plane Pods -  running Pods such as kube-apiserver, scheduler, etc. These should run and operate regardless of whether some components of the cluster work or not and they should run on specific nodes of the cluster.
+</b></details>
+
+<details>
+<summary>How to identify which Pods are Static Pods?</summary><br><b>
+
+The suffix of the Pods is the same as the name of the nodes on which they are running
+TODO: check if it's always the case.
+</b></details>
+
+<details>
+<summary>Which o
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Kubernetes Orchestration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Services", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Services
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Kubernetes Orchestration | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is a Service in Kubernetes?</summary><br><b>
+
+"An abstract way to expose an application running on a set of Pods as a network service." - read more [here](https://kubernetes.io/docs/concepts/services-networking/service)
+
+In simpler words, it allows you to add an internal or external connectivity to a certain application running in a container.
+</b></details>
+
+<details>
+<summary>Place the components in the right placeholders in regards to Kubernetes service<br>
+
+</summary><br><b>
+
+</b></details>
+
+<details>
+<summary>How to create a service for an existing deployment called "alle" on port 8080 so the Pod(s) accessible via a Load Balancer?</summary><br><b>
+
+The imperative way:
+
+`kubectl expose deployment alle --type=LoadBalancer --port 8080`
+</b></details>
+
+<details>
+<summary>True or False? The lifecycle of Pods and Services isn't connected so when a Pod dies, the Service still stays </summary><br><b>
+
+True
+</b></details>
+
+<details>
+<summary>After creating a service, how to check it was created?</summary><br><b>
+
+`kubectl get svc`
+</b></details>
+
+<details>
+<summary>What's the default Service type?</summary><br><b>
+
+ClusterIP - used for internal communication.
+</b></details>
+
+<det
+====================================================================================================
+SOURCE DevOps-Linux 36
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Linux System Administration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Basics", "difficulty": "Medium", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Basics
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Linux System Administration | **Difficulty**: Medium
+
+#### Technical Explanation & Model Answer
+|Name|Topic|Objective & Instructions|Solution|Comments|
+|--------|--------|------|----|----|
+| Navigation | cd, pwd | [Exercise](exercises/navigation/README.md) | [Solution](exercises/navigation/solution.md)
+| Create and Destroy | touch, rm, mkdir | [Exercise](exercises/create_remove/README.md) | [Solution](exercises/create_remove/solution.md)
+| Copy Time | touch, cp, ls | [Exercise](exercises/copy/README.md) | [Solution](exercises/copy/solution.md)
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Linux System Administration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Linux Master Application", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Linux Master Application
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Linux System Administration | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+A completely free application for testing your knowledge on Linux.
+Disclaimer: developed by repository owner
+
+<a href="https://play.google.com/store/apps/details?id=com.codingshell.linuxmaster"></a>
+
+- [Linux](#linux)
+  - [Linux Master Application](#linux-master-application)
+  - [Linux Exercises](#linux-exercises)
+    - [Basics](#basics)
+    - [Misc](#misc)
+  - [Linux Questions](#linux-questions)
+    - [Linux 101](#linux-101)
+    - [I/O Redirection](#io-redirection)
+    - [Filesystem Hierarchy Standard](#filesystem-hierarchy-standard)
+    - [Permissions](#permissions)
+    - [Scenarios](#scenarios)
+    - [Systemd](#systemd)
+    - [Troubleshooting and Debugging](#troubleshooting-and-debugging)
+      - [Scenarios](#scenarios-1)
+    - [Kernel](#kernel)
+    - [SSH](#ssh)
+    - [Globbing & Wildcards](#globbing--wildcards)
+    - [Boot Process](#boot-process)
+    - [Disk and Filesystem](#disk-and-filesystem)
+    - [Performance Analysis](#performance-analysis)
+    - [Processes](#processes)
+    - [Security](#security)
+    - [Networking](#networking)
+    - [DNS](#dns)
+    - [Packaging](#packaging)
+    - [DNF](#dnf)
+    - [Applications and Services](#applications-and-services)
+    - [Users an
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Linux System Administration", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Misc", "difficulty": "Easy", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Misc
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Linux System Administration | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+|Name|Topic|Objective & Instructions|Solution|Comments|
+|--------|--------|------|----|----|
+| Unique Count |  | [Exercise](exercises/uniqe_count/README.md) | [Solution](exercises/uniqe_count/solution.md)
+====================================================================================================
+SOURCE DevOps-Git 9
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Git Version Control", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "References", "difficulty": "Easy", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: References
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Git Version Control | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>How to list the current git references in a given repository? </summary><br><b>
+
+`find .git/refs/`
+</b></details>
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Git Version Control", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Git Basics", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Git Basics
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Git Version Control | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>How do you know if a certain directory is a git repository?</summary><br><b>
+You can check if there is a ".git" directory.
+</b>
+</details>
+
+<details>
+<summary>Explain the following: <code>git directory</code>, <code>working directory</code> and <code>staging area</code></summary><br>
+<b>
+
+This answer taken from [git-scm.com](https://git-scm.com/book/en/v1/Getting-Started-Git-Basics#_the_three_states)
+
+"The Git directory is where Git stores the meta-data and object database for your project. This is the most important
+part of Git, and it is what is copied when you clone a repository from another computer.
+
+The working directory is a single checkout of one version of the project. These files are pulled out of the compressed
+database in the Git directory and placed on disk for you to use or modify.
+
+The staging area is a simple file, generally contained in your Git directory, that stores information about what will go
+into your next commit. It’s sometimes referred to as the index, but it’s becoming standard to refer to it as the staging
+area."
+</b>
+</details>
+
+<details>
+<summary>What is the difference between <code>git pull</code> and <code>git fetch</code>?</summary><br><b>
+
+Shortly, g
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "Git Version Control", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "Exercises", "difficulty": "Medium", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: Exercises
+
+**Role**: DevOps / Cloud Engineer | **Topic**: Git Version Control | **Difficulty**: Medium
+
+#### Technical Explanation & Model Answer
+| Name              | Topic  | Objective & Instructions         | Solution                                    | Comments |
+| ----------------- | ------ | -------------------------------- | ------------------------------------------- | -------- |
+| My first Commit   | Commit | [Exercise](commit_01.md)         | [Solution](solutions/commit_01_solution.md) |          |
+| Time to Branch    | Branch | [Exercise](branch_01.md)         | [Solution](solutions/branch_01_solution.md) |          |
+| Squashing Commits | Commit | [Exercise](squashing_commits.md) | [Solution](solutions/squashing_commits.md)  |          |
+====================================================================================================
+SOURCE DevOps-CICD 5
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "CI/CD Pipelines", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# CI/CD - GitHub Actions", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # CI/CD - GitHub Actions
+
+**Role**: DevOps / Cloud Engineer | **Topic**: CI/CD Pipelines | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is a Workflow in GitHub Actions?</summary><br><b>
+
+A YAML file that defines the automation actions and instructions to execute upon a specific event.<br>
+The file is placed in the repository itself.
+
+A Workflow can be anything - running tests, compiling code, building packages, ...
+</b></details>
+
+<details>
+<summary>What is a Runner in GitHub Actions?</summary><br><b>
+
+A workflow has to be executed somewhere. The environment where the workflow is executed is called Runner.<br>
+A Runner can be an on-premise host or GitHub hoste
+</b></details>
+
+<details>
+<summary>What is a Job in GitHub Actions?</summary><br><b>
+
+A job is a series of steps which are executed on the same runner/environment.<br>
+A workflow must include at least one job.
+</b></details>
+
+<details>
+<summary>What is an Action in GitHub Actions?</summary><br><b>
+
+An action is the smallest unit in a workflow. It includes the commands to execute as part of the job.
+</b></details>
+
+<details>
+<summary>In GitHub Actions workflow, what the 'on' attribute/directive is used for?</summary><br><b>
+
+Specify upon which events the workflow will be triggered.<br>
+For example, you might configure the workflow to trigger every
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "CI/CD Pipelines", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "CI/CD Self Assessment", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: CI/CD Self Assessment
+
+**Role**: DevOps / Cloud Engineer | **Topic**: CI/CD Pipelines | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is Continuous Integration?</summary><br><b>
+
+A development practice where developers integrate code into a shared repository frequently. It can range from a couple of changes every day or a week to a couple of changes in one hour in larger scales.
+
+Each piece of code (change/patch) is verified to make sure that the change is safe to merge. Today, it's a common practice to test the change using an automated build that makes sure the code can be integrated. It can be one build which runs several tests in different levels (unit, functional, etc.) or several separate builds that all or some has to pass in order for the change to be merged into the repository.
+</b></details>
+
+<details>
+<summary>What is Continuous Deployment?</summary><br><b>
+
+A development strategy used by developers to release software automatically into production where any code commit must pass through an automated testing phase. Only when this is successful is the release considered production worthy. This eliminates any human interaction and should be implemented only after production-ready pipelines have been set with real-time monitoring and reporting of deployed assets. If any issues are detected in pr
+------------------------------------------------------------
+META: {"role": "DevOps / Cloud Engineer", "topic": "CI/CD Pipelines", "source": "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md", "status": "inactive", "role_id": "devops_cloud_engineer", "category": "Theory", "subtopic": "# CI/CD - Jenkins", "difficulty": "Hard", "dataset_type": "Real-World-Curated-Online"}
+### Technical Interview Question: # CI/CD - Jenkins
+
+**Role**: DevOps / Cloud Engineer | **Topic**: CI/CD Pipelines | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+<details>
+<summary>What is Jenkins? What have you used it for?</summary><br><b>
+
+Jenkins is an open source automation tool written in Java with plugins built for Continuous Integration purpose. Jenkins is used to build and test your software projects continuously making it easier for developers to integrate changes to the project, and making it easier for users to obtain a fresh build. It also allows you to continuously deliver your software by integrating with a large number of testing and deployment technologies.
+
+Jenkins integrates development life-cycle processes of all kinds, including build, document, test, package, stage, deploy, static analysis and much more.
+
+</b></details>
+
+<details>
+<summary>What are the advantages of Jenkins over its competitors? Can you compare it to one of the following systems?
+
+  * Travis
+  * Bamboo
+  * Teamcity
+  * CircleCI</summary><br><b>
+
+  Jenkins has several advantages over its competitors, including Travis, Bamboo, TeamCity, and CircleCI. Here are some of the key advantages:
+
+1. Open-source and free
+2. Customizable and flexible
+3. Wide range of integrations and Plugins
+4. Active and supportive community
+
+When comparing Jenkins to its competitors, there are som

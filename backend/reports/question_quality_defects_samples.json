@@ -1,0 +1,253 @@
+{
+  "no_question_mark": [
+    {
+      "id": "6d734390-b218-44ea-b3fc-28b24a54129e",
+      "topic": "Binary Search",
+      "content": "Binary Search requires sorted data and repeatedly divides the search space in half."
+    },
+    {
+      "id": "2934c627-8079-4230-a012-f2de8a71022b",
+      "topic": "JavaScript Core & DOM",
+      "content": "### Technical Interview Question: Why do I need to use the freeze method\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Easy\n\n#### Technical Explanation & Model Answer\nIn the Object-oriented paradigm, an existing API contains certain elements that are not intended"
+    },
+    {
+      "id": "ceb31d85-9a2b-444b-89f6-bd8da8ce9c89",
+      "topic": "JavaScript Core & DOM",
+      "content": "### Technical Interview Question: # 4. What is the output of below equality check\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```javascript\nconsole.log(0.1 + 0.2 === 0.3);\n```\n\n- 1: false\n- 2: true\n\n<details><summ"
+    },
+    {
+      "id": "71292746-8aae-4af6-8c0c-eb0d9bcbc23d",
+      "topic": "HTML5 & Semantic Elements",
+      "content": "### Pitfalls & Best Practices: HTML5 & Semantic Elements \u2014 Structure\n\n**Role Target**: Frontend Developer | **Level**: Easy\n\n#### Top 3 Common Mistakes\n1. **Ignoring Edge Cases**: Failing to account for null, empty, or out-of-order data when dealing with Structure.\n2. **Over-Engineering**: Applying "
+    },
+    {
+      "id": "cbdb9de3-5010-47f6-a0e2-837dbb746722",
+      "topic": "JavaScript Core & DOM",
+      "content": "### Technical Interview Question: Key Points\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Medium\n\n#### Technical Explanation & Model Answer\n- **`call`** and **`apply`** are almost interchangeable; both invoke the function immediately, but differ in how arguments"
+    }
+  ],
+  "very_short_lt_30_chars": [],
+  "very_long_gt_1500_chars": [
+    {
+      "id": "296e63ce-2e50-4a9a-99b7-1d2c5e82b2c6",
+      "topic": "REST APIs with Type Sharing",
+      "char_count": 1707,
+      "content_preview": "### REST APIs with Type Sharing: Deep Dive into Shared TypeScript types between React frontend and Node/FastAPI backend\n\n**Role Focus**: Full Stack Developer | **Difficulty**: Easy | **Language/Stack**: JavaScript, TypeScript, Python, Java, SQL\n\n#### Architectural Overview\nIn Full Stack Developer en"
+    },
+    {
+      "id": "29ca2426-cd46-4675-8f4c-549446fd52c1",
+      "topic": "JavaScript Core & DOM",
+      "char_count": 5295,
+      "content_preview": "### Technical Interview Question: What are the possible ways to create objects in JavaScript\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nThere are many ways to create objects in javascript as mentioned below:\n\n   "
+    },
+    {
+      "id": "65263198-f59e-40ce-8c6c-c1c595a24dd5",
+      "topic": "React & Hooks",
+      "char_count": 2055,
+      "content_preview": "### Technical Interview Question: What is an updater function? Should an updater function be used in all cases?\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nAn **updater function** is a form of `setState` where you pass a "
+    },
+    {
+      "id": "29e048ab-56aa-44e2-8e7d-aaf3cdc88196",
+      "topic": "Python Algorithms & Data Structures",
+      "char_count": 1535,
+      "content_preview": "### Real Coding Task: Write a Python program to implement a text-based game\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Hard\n\n#### Problem Description\nWrite a Python program to implement a text-based game\n\n#### Verified Solution & Code Implementation\n```text\nimport random\n\nd"
+    },
+    {
+      "id": "65c9e923-621c-4fdb-9f30-449afc4e3679",
+      "topic": "React & Hooks",
+      "char_count": 2390,
+      "content_preview": "### Technical Interview Question: What is suspense component?\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nReact Suspense is a built-in feature that lets you delay rendering part of the UI until asynchronous work (such as "
+    }
+  ],
+  "contains_answer_block": [
+    {
+      "id": "2934c627-8079-4230-a012-f2de8a71022b",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: Why do I need to use the freeze method\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Easy\n\n#### Technical Explanation & Model Answer\nIn the Object-oriented paradigm, an existing API contains certain elements that are not intended"
+    },
+    {
+      "id": "ceb31d85-9a2b-444b-89f6-bd8da8ce9c89",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: # 4. What is the output of below equality check\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```javascript\nconsole.log(0.1 + 0.2 === 0.3);\n```\n\n- 1: false\n- 2: true\n\n<details><summ"
+    },
+    {
+      "id": "cbdb9de3-5010-47f6-a0e2-837dbb746722",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: Key Points\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Medium\n\n#### Technical Explanation & Model Answer\n- **`call`** and **`apply`** are almost interchangeable; both invoke the function immediately, but differ in how arguments"
+    },
+    {
+      "id": "64dc0688-7165-4cf1-92d3-bbb84a8b287a",
+      "topic": "Server Architecture & Scaling",
+      "content_preview": "### Technical Interview Question: Design the Twitter timeline and search (or Facebook feed and search)\n\n**Role**: Backend Developer | **Topic**: Server Architecture & Scaling | **Difficulty**: Easy\n\n#### Technical Explanation & Model Answer\n[View exercise and solution](solutions/system_design/twitte"
+    },
+    {
+      "id": "29a1d355-e540-4695-b126-c92e6ae23570",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: What happens if you write constructor more than once in a class\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nThe \"constructor\" in a class is a special method and it should be defin"
+    }
+  ],
+  "contains_rubric_block": [],
+  "contains_markdown_code_fences": [
+    {
+      "id": "17bebb17-a596-41bc-a86c-cec147f29695",
+      "topic": "Java DSA & OOP Problems",
+      "content_preview": "### Real Coding Task: How would you check for syntax errors in a given Java code?\n\n**Role**: Java Developer | **Category**: Coding | **Difficulty**: Medium\n\n#### Problem Description\nHow would you check for syntax errors in a given Java code?\n\n#### Verified Solution & Code Implementation\n```text\nSynt"
+    },
+    {
+      "id": "ceb31d85-9a2b-444b-89f6-bd8da8ce9c89",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: # 4. What is the output of below equality check\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```javascript\nconsole.log(0.1 + 0.2 === 0.3);\n```\n\n- 1: false\n- 2: true\n\n<details><summ"
+    },
+    {
+      "id": "647c56ca-df2e-4cd6-a916-c2aea108ad5b",
+      "topic": "Built-in Data Structures",
+      "content_preview": "### Code Implementation: Built-in Data Structures (Heapq)\n\n**Role**: Python Developer | **Category**: Theory | **Language**: Python\n\n#### Implementation Pattern\nBelow is the standard, production-grade pattern demonstrating Heapq within Built-in Data Structures:\n\n```text\n// Technical Demonstration: H"
+    },
+    {
+      "id": "48d61f91-a787-4c20-945e-73e942dc9cbe",
+      "topic": "Java DSA & OOP Problems",
+      "content_preview": "### Real Coding Task: Write a JavaScript function that multiplies two numbers together.\n\n**Role**: Java Developer | **Category**: Coding | **Difficulty**: Easy\n\n#### Problem Description\nWrite a JavaScript function that multiplies two numbers together.\n\n#### Verified Solution & Code Implementation\n``"
+    },
+    {
+      "id": "29a1d355-e540-4695-b126-c92e6ae23570",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: What happens if you write constructor more than once in a class\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nThe \"constructor\" in a class is a special method and it should be defin"
+    }
+  ],
+  "contains_markdown_headings": [
+    {
+      "id": "2934c627-8079-4230-a012-f2de8a71022b",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: Why do I need to use the freeze method\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Easy\n\n#### Technical Explanation & Model Answer\nIn the Object-oriented paradigm, an existing API contains certain elements that are not intended"
+    },
+    {
+      "id": "17bebb17-a596-41bc-a86c-cec147f29695",
+      "topic": "Java DSA & OOP Problems",
+      "content_preview": "### Real Coding Task: How would you check for syntax errors in a given Java code?\n\n**Role**: Java Developer | **Category**: Coding | **Difficulty**: Medium\n\n#### Problem Description\nHow would you check for syntax errors in a given Java code?\n\n#### Verified Solution & Code Implementation\n```text\nSynt"
+    },
+    {
+      "id": "ceb31d85-9a2b-444b-89f6-bd8da8ce9c89",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: # 4. What is the output of below equality check\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```javascript\nconsole.log(0.1 + 0.2 === 0.3);\n```\n\n- 1: false\n- 2: true\n\n<details><summ"
+    },
+    {
+      "id": "71292746-8aae-4af6-8c0c-eb0d9bcbc23d",
+      "topic": "HTML5 & Semantic Elements",
+      "content_preview": "### Pitfalls & Best Practices: HTML5 & Semantic Elements \u2014 Structure\n\n**Role Target**: Frontend Developer | **Level**: Easy\n\n#### Top 3 Common Mistakes\n1. **Ignoring Edge Cases**: Failing to account for null, empty, or out-of-order data when dealing with Structure.\n2. **Over-Engineering**: Applying "
+    },
+    {
+      "id": "cbdb9de3-5010-47f6-a0e2-837dbb746722",
+      "topic": "JavaScript Core & DOM",
+      "content_preview": "### Technical Interview Question: Key Points\n\n**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Medium\n\n#### Technical Explanation & Model Answer\n- **`call`** and **`apply`** are almost interchangeable; both invoke the function immediately, but differ in how arguments"
+    }
+  ],
+  "explain_template_boilerplate": [
+    {
+      "id": "8d6663fe-ebd1-4b73-b476-39aec8bd1c10",
+      "topic": "DSA & Problem Solving",
+      "content_preview": "Explain how Dijkstra shortest path operates in the context of DSA & Problem Solving. What are the primary trade-offs when choosing this approach over standard alternatives in Java Developer applications?"
+    },
+    {
+      "id": "e2b7dcec-3c5e-4426-9a20-8266fe0df53e",
+      "topic": "DSA & Problem Solving",
+      "content_preview": "Explain how Linked list cycle detection operates in the context of DSA & Problem Solving. What are the primary trade-offs when choosing this approach over standard alternatives in Java Developer applications?"
+    },
+    {
+      "id": "8451d278-ff4a-4d2a-bb34-1a41eb4252a2",
+      "topic": "Observability & Error Handling",
+      "content_preview": "Explain how Structured logging operates in the context of Observability & Error Handling. What are the primary trade-offs when choosing this approach over standard alternatives in Backend Developer applications?"
+    },
+    {
+      "id": "6d181bd9-28c7-4db1-97c7-f3a23d6a2df4",
+      "topic": "API Logic & Middleware",
+      "content_preview": "Explain how Global error handler operates in the context of API Logic & Middleware. What are the primary trade-offs when choosing this approach over standard alternatives in Backend Developer applications?"
+    },
+    {
+      "id": "23d895e8-dd09-4bd5-953d-241391fabac0",
+      "topic": "Query Optimization & Execution Plans",
+      "content_preview": "Explain how Cost-based optimizer operates in the context of Query Optimization & Execution Plans. What are the primary trade-offs when choosing this approach over standard alternatives in Database Developer applications?"
+    }
+  ],
+  "write_a_program_template": [
+    {
+      "id": "29e048ab-56aa-44e2-8e7d-aaf3cdc88196",
+      "topic": "Python Algorithms & Data Structures",
+      "content_preview": "### Real Coding Task: Write a Python program to implement a text-based game\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Hard\n\n#### Problem Description\nWrite a Python program to implement a text-based game\n\n#### Verified Solution & Code Implementation\n```text\nimport random\n\nd"
+    },
+    {
+      "id": "f878d5f0-32c8-4249-9b05-b8864637fad9",
+      "topic": "Python Algorithms & Data Structures",
+      "content_preview": "### Real Coding Task: Write a Python script to fetch the top 10 latest YouTube videos.\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Medium\n\n#### Problem Description\nWrite a Python script to fetch the top 10 latest YouTube videos.\n\n#### Verified Solution & Code Implementation\n"
+    },
+    {
+      "id": "6490977d-f15e-4b16-9640-2877201248f9",
+      "topic": "Python Algorithms & Data Structures",
+      "content_preview": "### Real Coding Task: Write a Python program to find all the prime numbers in the range between 1 to 1000.\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Hard\n\n#### Problem Description\nWrite a Python program to find all the prime numbers in the range between 1 to 1000.\n\n#### Ve"
+    },
+    {
+      "id": "fe5f7dfa-3c9d-4f9b-94eb-6bd5dd2885f8",
+      "topic": "Python Algorithms & Data Structures",
+      "content_preview": "### Real Coding Task: Write a Python program to filter out even numbers from a given list.\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Hard\n\n#### Problem Description\nWrite a Python program to filter out even numbers from a given list.\n**Input Specification**:\n```\nnumbers = ["
+    },
+    {
+      "id": "83df4314-d627-4f1a-9d67-5e18488d974b",
+      "topic": "Python Algorithms & Data Structures",
+      "content_preview": "### Real Coding Task: Write a Python function to find the number of odd numbers in the given list.\n\n**Role**: Python Developer | **Category**: Coding | **Difficulty**: Hard\n\n#### Problem Description\nWrite a Python function to find the number of odd numbers in the given list.\n**Input Specification**:"
+    }
+  ],
+  "scenario_template_p99": [
+    {
+      "id": "b5010667-5392-4956-b250-1d06b9675f56",
+      "topic": "CSS3 & Modern Styling",
+      "content_preview": "### Production Scenario: Scaling CSS3 & Modern Styling with Specificity\n\n**Role**: Frontend Developer | **Difficulty**: Medium\n\n#### Problem Statement\nA high-concurrency production service for a Frontend Developer application encounters performance bottlenecks and latency spikes during peak load. Th"
+    },
+    {
+      "id": "71e557f9-ed1d-46c7-ae48-e9ba73ff9fc0",
+      "topic": "CSS3 & Modern Styling",
+      "content_preview": "### Production Scenario: Scaling CSS3 & Modern Styling with CSS Variables\n\n**Role**: Frontend Developer | **Difficulty**: Easy\n\n#### Problem Statement\nA high-concurrency production service for a Frontend Developer application encounters performance bottlenecks and latency spikes during peak load. Th"
+    },
+    {
+      "id": "d7a91582-d555-4e2c-a96c-56ba33c2d731",
+      "topic": "Data Cleaning & Quality",
+      "content_preview": "### Production Scenario: Scaling Data Cleaning & Quality with median\n\n**Role**: Data Analyst | **Difficulty**: Medium\n\n#### Problem Statement\nA high-concurrency production service for a Data Analyst application encounters performance bottlenecks and latency spikes during peak load. The engineering t"
+    },
+    {
+      "id": "657363db-0cc5-4177-abf6-c26410d9fec9",
+      "topic": "Classification Models & Algorithms",
+      "content_preview": "### Production Scenario: Scaling Classification Models & Algorithms with Logistic Regression\n\n**Role**: Machine Learning Engineer | **Difficulty**: Easy\n\n#### Problem Statement\nA high-concurrency production service for a Machine Learning Engineer application encounters performance bottlenecks and la"
+    },
+    {
+      "id": "af726098-f8ee-4030-8104-e3d171f65f47",
+      "topic": "Client-Side API Integration",
+      "content_preview": "### Production Scenario: Scaling Client-Side API Integration with WebSockets\n\n**Role**: Frontend Developer | **Difficulty**: Hard\n\n#### Problem Statement\nA high-concurrency production service for a Frontend Developer application encounters performance bottlenecks and latency spikes during peak load."
+    }
+  ],
+  "contains_placeholders": [
+    {
+      "id": "548ab635-4487-4060-976a-c30e6625bc62",
+      "topic": "React & Hooks",
+      "content_preview": "### Technical Interview Question: How to combine multiple inline style objects?\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nYou can use _spread operator_ in regular React:\n\n    ```jsx harmony\n    <button style={{ ...style"
+    },
+    {
+      "id": "6c5ce4de-2788-49b6-a78d-9bf7cff22c00",
+      "topic": "React & Hooks",
+      "content_preview": "### Technical Interview Question: # Basic Usage\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```jsx\n     import { useOptimistic } from 'react';\n\n     function TodoList({ todos, addTodo }) {\n       const [optimisticTodos, a"
+    },
+    {
+      "id": "a39c34ab-0a96-4b3e-9a90-0e37d9aef0a1",
+      "topic": "Kubernetes Orchestration",
+      "content_preview": "### Technical Interview Question: Helm\n\n**Role**: DevOps / Cloud Engineer | **Topic**: Kubernetes Orchestration | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n<details>\n<summary>What is Helm?</summary><br><b>\n\nPackage manager for Kubernetes. Basically the ability to package YAML f"
+    },
+    {
+      "id": "20b03aaf-cf42-4c60-8bb2-a343e74ba8b9",
+      "topic": "React & Hooks",
+      "content_preview": "### Technical Interview Question: How does `useReducer` works? Explain with an example\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\nThe `useReducer` hooks works similarly to Redux, where:\n\n        *   You define a **reduce"
+    },
+    {
+      "id": "21034154-3c25-4bff-803a-833881146093",
+      "topic": "React & Hooks",
+      "content_preview": "### Technical Interview Question: # Example: Search with Deferred Results\n\n**Role**: Frontend Developer | **Topic**: React & Hooks | **Difficulty**: Hard\n\n#### Technical Explanation & Model Answer\n```jsx\n     import { useState, useDeferredValue, useMemo } from 'react';\n\n     function SearchResults({"
+    }
+  ],
+  "tech_metadata_mismatch": []
+}

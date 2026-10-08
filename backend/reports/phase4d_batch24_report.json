@@ -1,0 +1,372 @@
+{
+  "role_selected": "Frontend Developer",
+  "total_staged_before_batch24": 2872,
+  "cumulative_difficulty_before": {
+    "easy": [
+      279,
+      24.4
+    ],
+    "medium": [
+      562,
+      49.2
+    ],
+    "hard": [
+      301,
+      26.4
+    ]
+  },
+  "attempted": 45,
+  "accepted": 45,
+  "rejected": 0,
+  "rejection_reasons": {},
+  "exact_duplicates": 0,
+  "near_duplicates": 0,
+  "semantic_competency_duplicates": 0,
+  "expected_answer_overlap_rejections": 0,
+  "answer_overlap_flags_ge_0.5_vs_staging": [
+    [
+      "You are building a fully responsive grid system without using Media Qu",
+      0.517
+    ],
+    [
+      "A junior developer uses `z-index: 99999;` on a modal component, but it",
+      0.545
+    ]
+  ],
+  "intra_batch_question_pairs_ge_0.6": [],
+  "intra_batch_answer_pairs_ge_0.5": [],
+  "max_similarity_vs_staging": {
+    "question": 0.587,
+    "answer": 0.545,
+    "question+answer": 0.518
+  },
+  "prompt_leakage": 0,
+  "technical_rejections": 0,
+  "taxonomy_rejections": 0,
+  "top20_openings_new_batch": [
+    [
+      "what is the",
+      5
+    ],
+    [
+      "what are the",
+      4
+    ],
+    [
+      "you are building",
+      3
+    ],
+    [
+      "how do you",
+      2
+    ],
+    [
+      "you need to",
+      2
+    ],
+    [
+      "you have a",
+      2
+    ],
+    [
+      "an endtoend e2e",
+      1
+    ],
+    [
+      "when writing frontend",
+      1
+    ],
+    [
+      "you write a",
+      1
+    ],
+    [
+      "explain the difference",
+      1
+    ],
+    [
+      "you are testing",
+      1
+    ],
+    [
+      "your frontend integration",
+      1
+    ],
+    [
+      "you are writing",
+      1
+    ],
+    [
+      "in the context",
+      1
+    ],
+    [
+      "a suite of",
+      1
+    ],
+    [
+      "an e2e test",
+      1
+    ],
+    [
+      "what is mutation",
+      1
+    ],
+    [
+      "explain the purpose",
+      1
+    ],
+    [
+      "a single page",
+      1
+    ],
+    [
+      "you implement a",
+      1
+    ]
+  ],
+  "top20_openings_entire_staging": [
+    [
+      "technical interview question",
+      1463
+    ],
+    [
+      "real coding task",
+      112
+    ],
+    [
+      "what are the",
+      90
+    ],
+    [
+      "what is the",
+      83
+    ],
+    [
+      "how would you",
+      72
+    ],
+    [
+      "how do you",
+      32
+    ],
+    [
+      "explain the concept",
+      26
+    ],
+    [
+      "what tradeoffs exist",
+      24
+    ],
+    [
+      "what is a",
+      23
+    ],
+    [
+      "you need to",
+      19
+    ],
+    [
+      "you have a",
+      19
+    ],
+    [
+      "explain the difference",
+      17
+    ],
+    [
+      "you are building",
+      17
+    ],
+    [
+      "you notice that",
+      16
+    ],
+    [
+      "explain the purpose",
+      11
+    ],
+    [
+      "when would you",
+      9
+    ],
+    [
+      "what tradeoffs are",
+      7
+    ],
+    [
+      "an application experiences",
+      7
+    ],
+    [
+      "what does the",
+      6
+    ],
+    [
+      "why is it",
+      6
+    ]
+  ],
+  "top_opening_share_new_batch": 0.111,
+  "distinct_openings_new_batch": 33,
+  "role_distribution": {
+    "Frontend Developer": 45
+  },
+  "skill_distribution": {
+    "Frontend Testing": 15,
+    "Browser APIs": 15,
+    "CSS Architecture": 15
+  },
+  "technology_distribution": {
+    "Testing": 15,
+    "Web APIs": 15,
+    "CSS": 15
+  },
+  "topic_distribution": {
+    "E2E & Isolation": 15,
+    "Workers & Observers": 15,
+    "Specificity & Cascade": 15
+  },
+  "intent_distribution": {
+    "scenario": 11,
+    "tradeoff": 9,
+    "debug": 8,
+    "explain": 8,
+    "implement": 7,
+    "fundamentals": 2
+  },
+  "difficulty_distribution": {
+    "medium": 26,
+    "hard": 14,
+    "easy": 5
+  },
+  "question_type_distribution": {
+    "scenario": 11,
+    "tradeoff": 9,
+    "debugging": 8,
+    "concept": 10,
+    "implementation": 7
+  },
+  "bucket_progress": {
+    "Frontend Testing | E2E & Isolation": {
+      "generated_now": 15
+    },
+    "Browser APIs | Workers & Observers": {
+      "generated_now": 15
+    },
+    "CSS Architecture | Specificity & Cascade": {
+      "generated_now": 15
+    }
+  },
+  "cumulative_generated_production": 1187,
+  "cumulative_staging_total": 2917,
+  "cumulative_generated_by_role": {
+    "Python Developer": 150,
+    "Java Developer": 100,
+    "DevOps / Cloud Engineer": 145,
+    "AI Engineer": 100,
+    "Database Developer": 100,
+    "Machine Learning Engineer": 100,
+    "Data Analyst": 100,
+    "Full Stack Developer": 100,
+    "Frontend Developer": 145,
+    "Backend Developer": 147
+  },
+  "cumulative_generated_difficulty": {
+    "easy": [
+      284,
+      23.9
+    ],
+    "medium": [
+      588,
+      49.5
+    ],
+    "hard": [
+      315,
+      26.5
+    ]
+  },
+  "target_gap_pct_points_before": {
+    "easy": -5.6,
+    "medium": 4.2,
+    "hard": 1.4
+  },
+  "target_gap_pct_points_after": {
+    "easy": -6.1,
+    "medium": 4.5,
+    "hard": 1.5
+  },
+  "remaining_new_questions_to_minimum_500_for_each_role": {
+    "Python Developer": 350,
+    "Frontend Developer": 355,
+    "Java Developer": 400,
+    "Database Developer": 400,
+    "DevOps / Cloud Engineer": 355,
+    "Backend Developer": 353,
+    "Data Analyst": 400,
+    "AI Engineer": 400,
+    "Machine Learning Engineer": 400,
+    "Full Stack Developer": 400
+  },
+  "role_coverage": {
+    "A_existing_supabase_by_metadata_role": {
+      "Backend Developer": 254,
+      "Frontend Developer": 1476
+    },
+    "B_generated_by_role": {
+      "Python Developer": 150,
+      "Java Developer": 100,
+      "DevOps / Cloud Engineer": 145,
+      "AI Engineer": 100,
+      "Database Developer": 100,
+      "Machine Learning Engineer": 100,
+      "Data Analyst": 100,
+      "Full Stack Developer": 100,
+      "Frontend Developer": 145,
+      "Backend Developer": 147
+    },
+    "generated_mentioning_role_as_applicable": {
+      "Backend Developer": 482,
+      "Data Analyst": 89,
+      "AI Engineer": 76,
+      "Full Stack Developer": 163,
+      "Machine Learning Engineer": 70,
+      "DevOps / Cloud Engineer": 115,
+      "Frontend Developer": 55,
+      "Performance Engineer": 95,
+      "System Design": 4,
+      "Database Developer": 24,
+      "Architecture": 74,
+      "Java Developer": 2,
+      "API Designer": 1,
+      "System Administrator": 21,
+      "Security Engineer": 44,
+      "Network Engineer": 12,
+      "Cloud Engineer": 1,
+      "Kubernetes Administrator": 1,
+      "Data Engineer": 83,
+      "Python Developer": 10,
+      "Data Architect": 5,
+      "Platform Engineer": 17,
+      "Product Manager": 14,
+      "Data Scientist": 68,
+      "Business Intelligence": 6,
+      "Search Engineer": 6,
+      "Quality Assurance": 21,
+      "Software Engineer": 74,
+      "Site Reliability Engineer": 16,
+      "UX Engineer": 15
+    }
+  },
+  "applicable_roles_this_batch": {
+    "Software Engineer": 30,
+    "Quality Assurance": 15,
+    "Full Stack Developer": 15,
+    "UX Engineer": 15
+  },
+  "records_appended": 45,
+  "final_file_line_count": 1187,
+  "supabase_modifications": 0,
+  "embeddings": 0,
+  "gemini_api_calls": 0
+}

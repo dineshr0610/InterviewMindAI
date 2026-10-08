@@ -1,0 +1,322 @@
+[
+  {
+    "ROLE": "Python Developer",
+    "CURRENT": 1,
+    "TARGET": 500,
+    "GAP": 499,
+    "CORE_SKILLS": [
+      "Python Core",
+      "Concurrency"
+    ],
+    "CORE_SKILL_GAPS": {
+      "Python Core": 136,
+      "Concurrency": 136
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 74,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 150,
+      "medium": 224,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "Frontend Developer",
+    "CURRENT": 899,
+    "TARGET": 500,
+    "GAP": 0,
+    "CORE_SKILLS": [
+      "JavaScript",
+      "React"
+    ],
+    "CORE_SKILL_GAPS": {
+      "JavaScript": 0,
+      "React": 0
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 0,
+      "explain": 0,
+      "implement": 9,
+      "compare": 0,
+      "debug": 47,
+      "tradeoff": 46,
+      "scenario": 41,
+      "architecture": 25,
+      "design": 23,
+      "optimize": 7,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 0,
+      "medium": 81,
+      "hard": 102
+    }
+  },
+  {
+    "ROLE": "Java Developer",
+    "CURRENT": 1,
+    "TARGET": 500,
+    "GAP": 499,
+    "CORE_SKILLS": [
+      "Java Core",
+      "Concurrency"
+    ],
+    "CORE_SKILL_GAPS": {
+      "Java Core": 150,
+      "Concurrency": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 74,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 149,
+      "medium": 225,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "Database Developer",
+    "CURRENT": 4,
+    "TARGET": 500,
+    "GAP": 496,
+    "CORE_SKILLS": [
+      "Relational Databases",
+      "NoSQL Databases"
+    ],
+    "CORE_SKILL_GAPS": {
+      "Relational Databases": 150,
+      "NoSQL Databases": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 71,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 146,
+      "medium": 225,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "DevOps / Cloud Engineer",
+    "CURRENT": 941,
+    "TARGET": 500,
+    "GAP": 0,
+    "CORE_SKILLS": [
+      "Cloud Providers",
+      "Containerization"
+    ],
+    "CORE_SKILL_GAPS": {
+      "Cloud Providers": 125,
+      "Containerization": 125
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 0,
+      "explain": 0,
+      "implement": 67,
+      "compare": 31,
+      "debug": 45,
+      "tradeoff": 47,
+      "scenario": 45,
+      "architecture": 18,
+      "design": 16,
+      "optimize": 0,
+      "diagnose": 5
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 0,
+      "medium": 159,
+      "hard": 79
+    }
+  },
+  {
+    "ROLE": "Backend Developer",
+    "CURRENT": 42,
+    "TARGET": 500,
+    "GAP": 458,
+    "CORE_SKILLS": [
+      "API Design",
+      "Microservices"
+    ],
+    "CORE_SKILL_GAPS": {
+      "API Design": 136,
+      "Microservices": 136
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 74,
+      "explain": 40,
+      "implement": 71,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 13,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 114,
+      "medium": 221,
+      "hard": 123
+    }
+  },
+  {
+    "ROLE": "Data Analyst",
+    "CURRENT": 4,
+    "TARGET": 500,
+    "GAP": 496,
+    "CORE_SKILLS": [
+      "SQL",
+      "Data Visualization"
+    ],
+    "CORE_SKILL_GAPS": {
+      "SQL": 150,
+      "Data Visualization": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 71,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 146,
+      "medium": 225,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "AI Engineer",
+    "CURRENT": 0,
+    "TARGET": 500,
+    "GAP": 500,
+    "CORE_SKILLS": [
+      "LLMs",
+      "RAG"
+    ],
+    "CORE_SKILL_GAPS": {
+      "LLMs": 150,
+      "RAG": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 75,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 150,
+      "medium": 225,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "Machine Learning Engineer",
+    "CURRENT": 0,
+    "TARGET": 500,
+    "GAP": 500,
+    "CORE_SKILLS": [
+      "ML Algorithms",
+      "Deep Learning"
+    ],
+    "CORE_SKILL_GAPS": {
+      "ML Algorithms": 150,
+      "Deep Learning": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 75,
+      "explain": 75,
+      "implement": 75,
+      "compare": 50,
+      "debug": 50,
+      "tradeoff": 50,
+      "scenario": 50,
+      "architecture": 25,
+      "design": 25,
+      "optimize": 15,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 150,
+      "medium": 225,
+      "hard": 125
+    }
+  },
+  {
+    "ROLE": "Full Stack Developer",
+    "CURRENT": 939,
+    "TARGET": 500,
+    "GAP": 0,
+    "CORE_SKILLS": [
+      "Frontend",
+      "Backend"
+    ],
+    "CORE_SKILL_GAPS": {
+      "Frontend": 150,
+      "Backend": 150
+    },
+    "INTENT_GAPS": {
+      "fundamentals": 0,
+      "explain": 0,
+      "implement": 5,
+      "compare": 0,
+      "debug": 47,
+      "tradeoff": 46,
+      "scenario": 41,
+      "architecture": 25,
+      "design": 23,
+      "optimize": 5,
+      "diagnose": 10
+    },
+    "DIFFICULTY_GAPS": {
+      "easy": 0,
+      "medium": 77,
+      "hard": 100
+    }
+  }
+]

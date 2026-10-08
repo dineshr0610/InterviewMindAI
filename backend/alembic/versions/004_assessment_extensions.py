@@ -32,6 +32,7 @@ def upgrade() -> None:
     op.add_column("interview_messages", sa.Column("communication_evaluation", sa.JSON(), nullable=True))
     op.add_column("interview_messages", sa.Column("answer_fingerprint", sa.String(length=64), nullable=True))
 
+    op.execute("DROP TABLE IF EXISTS code_submissions CASCADE")
     op.create_table(
         "code_submissions",
         sa.Column("id", sa.UUID(), nullable=False),

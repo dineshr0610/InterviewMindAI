@@ -63,6 +63,26 @@ def clean_resume_text(text: str) -> str:
     Clean extracted resume text while preserving useful content.
     """
     text = re.sub(r'\x00', '', text)
+    
+    # 1. Normalize icon-font ligatures and artifacts
+    text = re.sub(r'[\u2640-\u2642\u00b6\u2322/]+laptop-code', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'[\u2640-\u2642\u00b6\u2322/]+usic', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'[\u2640-\u2642\u00b6\u2322/]+envel[\u2322o]pe', '', text, flags=re.IGNORECASE)
+    
+    # Remove duplicate social media prefixes
+    text = re.sub(r'github(?=github\.com)', '', text, flags=re.IGNORECASE)
+    text = re.sub(r'linkedin(?=linkedin\.com)', '', text, flags=re.IGNORECASE)
+    
+    # Fix specific spacing/artifact issues
+    text = re.sub(r'\bF ull-Stack\b', 'Full-Stack', text, flags=re.IGNORECASE)
+    text = re.sub(r'/heartbeat', '', text, flags=re.IGNORECASE)
+    
+    # Strip remaining known bad unicode artifacts
+    text = re.sub(r'[\u2640-\u2642\u00b6\u2322]', '', text)
+
+    # Fix missing spaces after closing parentheses before capital letters
+    text = re.sub(r'(\))([A-Z][a-z])', r'\1 — \2', text)
+    
     text = re.sub(r'[ \t]+', ' ', text)
     text = re.sub(r'\n{3,}', '\n\n', text)
     text = re.sub(r'^\s*\n', '', text, flags=re.MULTILINE)
@@ -79,4 +99,15 @@ def sanitize_resume_for_prompt(text: str) -> str:
     text = text.strip()
     if len(text) > 8000:
         text = text[:8000]
+    return text
+
+
+def normalize_generated_question(text: str) -> str:
+    """
+    Normalize generated questions without applying destructive resume-specific cleaning.
+    """
+    text = re.sub(r'\x00', '', text)
+    text = re.sub(r'[ \t]+', ' ', text)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    text = text.strip()
     return text

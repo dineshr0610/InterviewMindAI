@@ -1,0 +1,142 @@
+{
+  "Python Developer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "OOP",
+      "Memory Management",
+      "Concurrency"
+    ],
+    "avoid_skills": [
+      "Python Fundamentals",
+      "Functions & Functional Programming",
+      "OOP"
+    ]
+  },
+  "Frontend Developer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Frontend Testing",
+      "Browser APIs",
+      "CSS & Styling"
+    ],
+    "avoid_skills": [
+      "Web Security",
+      "Core JavaScript",
+      "React Fundamentals"
+    ]
+  },
+  "Java Developer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Java Backend Engineering",
+      "Design",
+      "Debugging"
+    ],
+    "avoid_skills": [
+      "Java Core",
+      "Collections Framework",
+      "Spring / Spring Boot"
+    ]
+  },
+  "Database Developer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Replication",
+      "Performance",
+      "Operations"
+    ],
+    "avoid_skills": [
+      "Indexing",
+      "Query Optimization",
+      "Transactions"
+    ]
+  },
+  "DevOps / Cloud Engineer": {
+    "remaining_to_500": 355,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Security",
+      "Containers & OS",
+      "Reliability"
+    ],
+    "avoid_skills": [
+      "Networking",
+      "Linux Core",
+      "Docker"
+    ]
+  },
+  "Backend Developer": {
+    "remaining_to_500": 353,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Background Processing",
+      "Scalability",
+      "Scaling"
+    ],
+    "avoid_skills": [
+      "Security",
+      "Messaging",
+      "Reliability"
+    ]
+  },
+  "Data Analyst": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Root Cause Analysis",
+      "SQL Fundamentals",
+      "Data Transformation"
+    ],
+    "avoid_skills": [
+      "Data Cleaning",
+      "Data Visualization",
+      "Python Pandas"
+    ]
+  },
+  "AI Engineer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "AI Evaluation",
+      "AI Security",
+      "Structured Outputs"
+    ],
+    "avoid_skills": [
+      "RAG Core",
+      "AI Agents",
+      "RAG Architecture"
+    ]
+  },
+  "Machine Learning Engineer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "MLOps & Pipelines",
+      "Deep Learning",
+      "Model Debugging"
+    ],
+    "avoid_skills": [
+      "Supervised Learning",
+      "Model Evaluation",
+      "Feature Engineering"
+    ]
+  },
+  "Full Stack Developer": {
+    "remaining_to_500": 400,
+    "recommended_batch_size": 50,
+    "prioritize_skills": [
+      "Deployment & Architecture",
+      "End-to-End Debugging",
+      "Full Stack Performance"
+    ],
+    "avoid_skills": [
+      "Authentication",
+      "Debugging",
+      "System Architecture"
+    ]
+  }
+}

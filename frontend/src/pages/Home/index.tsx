@@ -9,7 +9,7 @@ import { Button } from '../../components/ui/Button'
 import { Card } from '../../components/ui/Card'
 import { useInterviewContext } from '../../context/InterviewContext'
 import { interviewService } from '../../services/interviewService'
-import { Sparkles, Zap, Trophy, ArrowRight, FileText, Upload, X, Loader2 } from 'lucide-react'
+import { Sparkles, ArrowRight, FileText, Upload, X, Loader2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 import { PreInterviewAnalysisModal, Module1AnalysisResult } from '../../components/interview/PreInterviewAnalysisModal'
@@ -77,8 +77,37 @@ export default function HomePage() {
 
   // Auto-analyze resume when target role changes
   useEffect(() => {
-    if (resumeContext && selectedRole && selectedRole.trim().length >= 2) {
-      fetchResumeAnalysis(resumeContext, selectedRole.trim(), getValues('name') || 'Candidate')
+    let active = true
+
+    const validateAndFetch = async () => {
+      if (resumeContext && selectedRole && selectedRole.trim().length >= 2) {
+        try {
+          const normalizedCurrent = await interviewService.normalizeRole(selectedRole.trim())
+          if (!active) return
+
+          if (analysisResult) {
+            // explicit validation
+            if (analysisResult.selected_role === normalizedCurrent) {
+              return // Reuse the existing analysis!
+            } else {
+              setAnalysisResult(null) // Mark stale by clearing
+            }
+          }
+
+          await fetchResumeAnalysis(resumeContext, selectedRole.trim(), getValues('name') || 'Candidate')
+        } catch (err) {
+          console.warn('[Home] Validation or analysis error:', err)
+        }
+      }
+    }
+
+    const timer = setTimeout(() => {
+      validateAndFetch()
+    }, 500)
+
+    return () => {
+      active = false
+      clearTimeout(timer)
     }
   }, [selectedRole, resumeContext])
 
@@ -148,17 +177,23 @@ export default function HomePage() {
       return
     }
 
-    if (!analysisResult) {
-      const analysis = await fetchResumeAnalysis(
-        resumeContext,
-        currentRole,
-        getValues('name') || 'Candidate'
-      )
-      if (analysis) {
+    try {
+      const normalizedCurrent = await interviewService.normalizeRole(currentRole.trim())
+
+      if (!analysisResult || analysisResult.selected_role !== normalizedCurrent) {
+        const analysis = await fetchResumeAnalysis(
+          resumeContext,
+          currentRole.trim(),
+          getValues('name') || 'Candidate'
+        )
+        if (analysis) {
+          setShowAnalysisModal(true)
+        }
+      } else {
         setShowAnalysisModal(true)
       }
-    } else {
-      setShowAnalysisModal(true)
+    } catch (err) {
+      console.warn('[Home] Preview analysis error:', err)
     }
   }
 
@@ -190,10 +225,13 @@ export default function HomePage() {
       // If a resume is uploaded, present the pre-interview analysis overview first!
       if (resumeContext && data.role) {
         let currentAnalysis = analysisResult
-        if (!currentAnalysis || currentAnalysis.selected_role !== data.role) {
+        
+        const normalizedCurrent = await interviewService.normalizeRole(data.role.trim())
+
+        if (!currentAnalysis || currentAnalysis.selected_role !== normalizedCurrent) {
           currentAnalysis = await fetchResumeAnalysis(
             resumeContext,
-            data.role,
+            data.role.trim(),
             data.name || 'Candidate'
           )
         }
@@ -237,65 +275,27 @@ export default function HomePage() {
 
       <main className="flex-1 px-4 py-12 md:px-6 lg:px-8">
         <motion.div
-          className="max-w-6xl mx-auto space-y-12"
+          className="max-w-2xl mx-auto space-y-12"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Hero Section */}
-          <motion.section variants={itemVariants} className="text-center space-y-6 py-8">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-4">
-              Ace Your Interviews with <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI</span>
+          <motion.section variants={itemVariants} className="text-center space-y-4 py-8">
+            <h2 className="text-4xl md:text-5xl font-bold text-text">
+              Prepare for your interview
             </h2>
-            <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto">
-              Get real-time feedback on your interview responses. Practice with AI-powered questions and improve your performance.
+            <p className="text-lg text-text-secondary">
+              Practice with questions tailored to your target role and experience.
             </p>
           </motion.section>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Features */}
-            <motion.section variants={itemVariants} className="space-y-4">
-              <h3 className="text-2xl font-bold text-text mb-6">Why Choose InterviewMind AI?</h3>
-
-              <motion.div variants={itemVariants} className="space-y-3">
-                <Card className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/20">
-                    <Sparkles className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-text mb-1">AI-Powered Evaluation</h4>
-                    <p className="text-sm text-text-secondary">Get instant feedback on content, delivery, and improvements</p>
-                  </div>
-                </Card>
-
-                <Card className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-secondary/20">
-                    <Zap className="h-6 w-6 text-secondary" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-text mb-1">Resume-Based Personalization</h4>
-                    <p className="text-sm text-text-secondary">Upload your resume and get questions tuned to your experience</p>
-                  </div>
-                </Card>
-
-                <Card className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent/20">
-                    <Trophy className="h-6 w-6 text-accent" />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-text mb-1">Unlimited Questions</h4>
-                    <p className="text-sm text-text-secondary">Continue answering until you choose to end the interview</p>
-                  </div>
-                </Card>
-              </motion.div>
-            </motion.section>
-
+          <div className="flex justify-center items-center">
             {/* Form Section */}
-            <motion.section variants={itemVariants}>
+            <motion.section variants={itemVariants} className="w-full">
               <Card variant="elevated" className="space-y-6 p-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-text mb-2">Start Your AI Interview</h3>
-                  <p className="text-text-secondary">Enter your details to begin practicing</p>
+                  <h3 className="text-2xl font-bold text-text">Start Interview</h3>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -323,29 +323,12 @@ export default function HomePage() {
                     error={errors.role?.message}
                   />
 
-                  {/* Dynamic Adaptive AI Badge */}
-                  <div className="w-full rounded-xl bg-surface/80 border border-primary/20 p-3.5 flex items-start gap-3 bg-gradient-to-r from-primary/5 via-surface to-surface shadow-sm">
-                    <div className="p-2 rounded-lg bg-primary/10 text-primary mt-0.5 flex-shrink-0">
-                      <Zap className="h-4 w-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                          Adaptive AI Engine Active
-                        </span>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          Auto-Calibrated
-                        </span>
-                      </div>
-                      <p className="text-xs text-text-secondary mt-1 leading-relaxed">
-                        Questions dynamically scale in real-time (<span className="text-emerald-400 font-medium">Easy</span> ↔ <span className="text-amber-400 font-medium">Medium</span> ↔ <span className="text-rose-400 font-medium">Hard</span>) based on your answer depth and technical score.
-                      </p>
-                    </div>
-                  </div>
-
                   {/* Resume Upload */}
                   <div className="w-full space-y-2">
-                    <label className="block text-sm font-medium text-text">Resume (Optional)</label>
+                    <div>
+                      <label className="block text-sm font-medium text-text">Resume (Optional)</label>
+                      <p className="text-sm text-text-secondary mt-1">Add your resume for questions tailored to your experience.</p>
+                    </div>
 
                     {!resumeFile ? (
                       <button
@@ -449,21 +432,26 @@ export default function HomePage() {
                     </div>
                   )}
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    isLoading={isSubmitting || isLoading || isAnalyzing}
-                    className="w-full group"
-                  >
-                    Start Interview
-                    <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                  <div className="pt-2">
+                    <p className="text-sm text-text-secondary text-center mb-4">
+                      Your interview adapts to your answers and performance.
+                    </p>
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      size="lg"
+                      isLoading={isSubmitting || isLoading || isAnalyzing}
+                      className="w-full group"
+                    >
+                      Start Interview
+                      <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </div>
                 </form>
 
-                <div className="border-t border-surface-light pt-4">
+                <div className="pt-2">
                   <p className="text-xs text-text-secondary text-center">
-                    No account needed. Answer as many questions as you like, then end the interview to see your results.
+                    No account required
                   </p>
                 </div>
               </Card>

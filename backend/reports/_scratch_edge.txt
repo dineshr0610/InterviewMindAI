@@ -1,0 +1,217 @@
+### JS rows with '## Answer' (first 2)
+{"role": "Frontend Developer", "topic": "JavaScript Core & DOM", "source": "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md", "role_id": "frontend_developer", "category": "Theory", "subtopic": "## Answer: 3", "difficulty": "Easy", "dataset_type": "Real-Worl
+### Technical Interview Question: ## Answer: 3
+
+**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+Unlike regular functions, the arrow functions doesn't not allow duplicate parameters in either strict or non-strict mode. So you can see `SyntaxError` in the console.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#table-of-contents)**
+-----
+{"role": "Frontend Developer", "topic": "JavaScript Core & DOM", "source": "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md", "role_id": "frontend_developer", "category": "Theory", "subtopic": "## Answer: 4", "difficulty": "Easy", "dataset_type": "Real-Worl
+### Technical Interview Question: ## Answer: 4
+
+**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Easy
+
+#### Technical Explanation & Model Answer
+The + operator is not meant or defined for arrays. So it converts arrays into strings and concatenates them.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#table-of-contents)**
+-----
+### JS rows with <summary> (first 2)
+{"role": "Frontend Developer", "topic": "JavaScript Core & DOM", "source": "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md", "role_id": "frontend_developer", "category": "Theory", "subtopic": "# 3. What is the output of below code", "difficulty": "Hard", "
+### Technical Interview Question: # 3. What is the output of below code
+
+**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+```javascript
+function main() {
+  console.log("A");
+  setTimeout(function print() {
+    console.log("B");
+  }, 0);
+  console.log("C");
+}
+main();
+```
+
+- 1: A, B and C
+- 2: B, A and C
+- 3: A and C
+- 4: A, C and B
+
+<details><summary><b>Answer</b></summary>
+<p>
+-----
+{"role": "Frontend Developer", "topic": "JavaScript Core & DOM", "source": "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md", "role_id": "frontend_developer", "category": "Theory", "subtopic": "# 13. What is the output of below code", "difficulty": "Hard", 
+### Technical Interview Question: # 13. What is the output of below code
+
+**Role**: Frontend Developer | **Topic**: JavaScript Core & DOM | **Difficulty**: Hard
+
+#### Technical Explanation & Model Answer
+```javascript
+const arrowFunc = () => arguments.length;
+console.log(arrowFunc(1, 2, 3));
+```
+
+- 1: ReferenceError: arguments is not defined
+- 2: 3
+- 3: undefined
+- 4: null
+
+<details><summary><b>Answer</b></summary>
+<p>
+-----
+### SD subtopics (all)
+Consistency patterns | Source(s) and further reading | Next steps | Study guide | System design topics: start here | Source(s) and further reading | Step 3: Design core components | Prep for the system design interview | Object-oriented design interview questions with solutions | Step 1: Outline use cases, constraints, and assumptions | Anki flashcards | Coding Resource: Interactive Coding Challenges | Latency vs throughput | Design the Twitter timeline and search (or Facebook feed and search) | Learn how to design large-scale systems | Step 2: Review the scalability article | CAP theorem | Step 2: Create a high level design | How to approach a system design interview question | Design a key-value store for a search engine | # CP - consistency and partition tolerance | Source(s) and further reading | Step 1: Review the scalability video lecture | System design interview questions with solutions | Weak consistency | # AP - availability and partition tolerance | Design the data structures for a social network | Design a web crawler | Learn from the open source community | Motivation | Design a system that scales to millions of users on AWS | Index of system design topics | Back-of-the-envelope calculations | Design Pastebin.com (or Bit.ly) | Source(s) and further reading | Performance vs scalability | Step 4: Scale the design | Design Amazon's sales ranking by category feature | Design Mint.com | ## Disadvantage(s): refresh-ahead | Database | # Cache-aside | Web server caching | Disadvantage(s): failover | Disadvantage(s): asynchronism | # Graph database | Pull CDNs | Caching at the database query level | ## Tighten up the schema | Application layer | # Write-behind (write-back) | Message queues | ## Source(s) and further reading: SQL or NoSQL | ## Disadvantage(s): replication | Back pressure | ## Disadvantage(s): master-slave replication | Source(s) and further reading | # Availability in parallel vs in sequence | Communication | Client caching | Layer 7 load balancing | Reverse proxy (web server) | ## Avoid expensive joins | Push CDNs | Disadvantage(s): CDN | ## Source(s) and further reading: federation | Horizontal scaling | # Active-active | ## Source(s) and further reading: document store | Disadvantage(s): load balancer | # 99.99% availability - four 9s | Strong consistency | Source(s) and further reading | Task queues | Caching at the object level | # Master-slave and master-master | ## Disadvantage(s): cache-aside | ## Partition tables | Layer 4 load balancing | ## Source(s) and further reading: replication | ## Disadvantage(s): write-behind | ## Source(s) and further reading: key-value store | # Master-slave replication | # Refresh-ahead | ## Source(s) and further reading: graph | # Sharding | # Wide column store | Service Discovery | # Denormalization | Asynchronism | ## Source(s) and further reading: wide column store | # Master-master replication | ## Disadvantage(s): master-master replication | # Disadvantage(s): horizontal scaling | Disadvantage(s): application layer | ## Disadvantage(s): write through | Application caching | # Active-passive | Cache | Domain name system | ### In sequence | # Federation | Relational database management system (RDBMS) | Disadvantage(s): reverse proxy | # Write-through | Source(s) and further reading | Source(s) and further reading | ## Source(s) and further reading: SQL tuning | # Source(s) and further reading: NoSQL | Availability patterns | Load balancer | Disadvantage(s): cache | ## Use good indices | When to update the cache | Source(s) and further reading | ## Disadvantage(s): federation | NoSQL | Source(s) and further reading | ## Disadvantage(s): denormalization | ## Disadvantage(s): sharding | # Document store | Eventual consistency | Disadvantage(s): DNS | # SQL tuning | Content delivery network | Source(s) and further reading | ### Source(s) and further reading: denormalization | Source(s) and further reading | Availability in numbers | Database caching | Microservices | CDN caching | ### In parallel | # 99.9% availability - three 9s | SQL or NoSQL | ## Tune the query cache | Load balancer vs reverse proxy | ## Source(s) and further reading: sharding | # Key-value store | Latency numbers every programmer should know | # Source(s) and further reading | # Disadvantage(s): RPC | # Disadvantage(s): REST | # Source(s) and further reading | # Source(s) and further reading: HTTP | Transmission control protocol (TCP) | Additional system design interview questions | Source(s) and further reading | Under development | Appendix | Hypertext transfer protocol (HTTP) | Contact info | User datagram protocol (UDP) | # Source(s) and further reading: REST and RPC | Security | # Source(s) and further reading: TCP and UDP | Real world architectures | Representational state transfer (REST) | Powers of two table | Credits | Remote procedure call (RPC) | Company architectures | # Source(s) and further reading | # Latency numbers visualized | Company engineering blogs | RPC and REST calls comparison
+### JS subtopics sample non-question-form
+165 ['# Example: Creating and Using a Promise', '# `bind`', '# `apply`', '# Example: Pure vs. Impure Functions', '# Syntax Examples:', '# Key Features:', '# Example:', '# Summary', '# Key Features of `let`:', '# Examples:', 'Before Currying (Normal n-ary Function)', '# Strict Equality (`===`)', '## Singleton with Closure (Classic JS Pattern)', '# Promise Syntax', '# Examples:', '# `call`', 'Key Points', '# Syntax', '# Example', 'Benefits of Currying', '# Common Operations with JSON', '# Loose Equality (`==`)', 'After Currying (Unary Function Chain)', '# Examples', '# Pros', '# Cons', 'Mixin Example using Object composition', 'Benefits', '# 3. What is the output of below code', '## Answer: 3', '# 13. What is the output of below code', '# 21. What is the output of below code', '# 23. What is the output of below code', '# 7. What is the output of below code', '## Answer: 4', '## Answer: 2', '## Answer: 3', '# 1. What is the output of below code', '## Answer: 1', '## Answer: 3', '## Answer: 4', '# 5. What is the output of below code', '## Answer: 2', '# 12. What is the output of below code', '## Answer: 2', '# 29. What is the output of below code', '# 8. What is the output of below code in latest Chrome', '# 18. What is the output of below code', '# 10. What is the output of below code', '## Answer: 3', '# 9. What is the output of below code', '# 19. What is the output of below code', '# 11. What is the output of below code in non-strict mode', '# 22. What is the output of below code', '## Answer: 1', '## Answer: 1', '# 28. What is the output of below code', '## Answer: 4', '## Answer: 1', '## Answer: 4']
+### RE non-question-form
+128 ['# **createElement:**', 'Props', 'Example Usage', 'React Router', 'Summary Table', '# **cloneElement:**', 'React Native', '# Core Concepts of Flux', 'React supported libraries & Integration', 'React Redux', '# 4. **Commit Phase (Real DOM Updates)**', '# **1. Virtual DOM & Component Rendering**', '# 2. **React Fiber Architecture**', '# 3. **Reconciliation (Diffing Algorithm)**', '# 5. **Hooks and State Management**', '# Example: Search input stays responsive while filtering a large list', 'Props:', 'Syntax:', '# 1. **Hook List / Linked List**', '# 1. **Follow the Rules of Hooks**', '# **B. Commit Phase**', '# Syntax', '# **Step 2: Provide the Context Value**', '# Example: Search with Deferred Results', '# Example: Tab Switching', '# **Step 1 : Create the Context**', '# Syntax', '**Concurrency and Prioritization**', '# Syntax', '# 5. **Re-render and State Update**', '# Example: Dynamic Style Injection', '# When NOT to Use', '# Syntax', '# Syntax', '# 4. **Updater Function**', '# How to read updated state after dispatch', '# Syntax', '# Example demonstrating that state does not update immediately', '# Example: Memoizing a Filtered List', '# Differences from useDeferredValue', '# 6. **Important: Hook Order**', '# 2. **State Storage**', '# Solution with useEvent (Experimental)', '# 3. **Initial Render**', '# Example: useLocalStorage Hook', '# **How Dependency Array Affects Behavior**', '**Double Buffering with Two Trees**', '# When to Use', '# Example: Custom Hook with Debug Value', '# Common Cleanup Scenarios', '# Execution Order', '# Syntax', '# **A. Render Phase (work-in-progress)**', '# Example: Accessible Form Input', '# 6. **React Scheduler**', '# Key Points', '# The Problem useEvent Solves', '# **Step 3: Consume the Context with** `**useContext**`', '# Syntax', '# Key Differences']
+### CodeAlpaca samples
+{"role": "Python Developer", "topic": "Python Algorithms & Data Structures", "source": "https://github.com/sahil280114/codealpaca", "status": "inactive", "role_id": "python_developer", "category": "Coding", "subtopic": "Edit the Python code so that it prints out the total number of elements in the l", "difficulty": "Easy", "dataset_type": "Real-World-CodeAlpaca-20k"}
+### Real Coding Task: Edit the Python code so that it prints out the total number of elements in the list.
+
+**Role**: Python Developer | **Category**: Coding | **Difficulty**: Easy
+
+#### Problem Description
+Edit the Python code so that it prints out the total number of elements in the list.
+**Input Specification**:
+```
+list = [1, 2, 3, 4, 5]
+```
+
+#### Verified Solution & Code Implementation
+```text
+list = [1, 2, 3, 4, 5]
+print("Total number of elements in the list: ", len(list))
+```
+
+#### Complexity & Quality Rubric
+- **Validation**: Handles nominal and boundary test cases.
+- **Best Practice**: Adheres to idiomatic design and standard time/space constraints.
+-----
+{"role": "Database Developer", "topic": "SQL Queries & Schema Design", "source": "https://github.com/sahil280114/codealpaca", "status": "inactive", "role_id": "database_developer", "category": "Coding", "subtopic": "Write an SQL query to calculate the average order price for each product categor", "difficulty": "Easy", "dataset_type": "Real-World-CodeAlpaca-20k"}
+### Real Coding Task: Write an SQL query to calculate the average order price for each product category in the "orders" table.
+
+**Role**: Database Developer | **Category**: Coding | **Difficulty**: Easy
+
+#### Problem Description
+Write an SQL query to calculate the average order price for each product category in the "orders" table.
+
+#### Verified Solution & Code Implementation
+```text
+SELECT category, AVG(price) as "Average Order Price"
+FROM orders
+GROUP BY category;
+```
+
+#### Complexity & Quality Rubric
+- **Validation**: Handles nominal and boundary test cases.
+- **Best Practice**: Adheres to idiomatic design and standard time/space constraints.
+-----
+{"role": "Database Developer", "topic": "SQL Queries & Schema Design", "source": "https://github.com/sahil280114/codealpaca", "status": "inactive", "role_id": "database_developer", "category": "Coding", "subtopic": "Write a SQL query to find the total number of orders placed between two given da", "difficulty": "Easy", "dataset_type": "Real-World-CodeAlpaca-20k"}
+### Real Coding Task: Write a SQL query to find the total number of orders placed between two given dates.
+
+**Role**: Database Developer | **Category**: Coding | **Difficulty**: Easy
+
+#### Problem Description
+Write a SQL query to find the total number of orders placed between two given dates.
+**Input Specification**:
+```
+start_date = '2020-01-01'
+end_date = '2020-02-01'
+```
+
+#### Verified Solution & Code Implementation
+```text
+SELECT COUNT(*)
+FROM orders
+WHERE order_date BETWEEN '2020-01-01' AND '2020-02-01';
+```
+
+#### Complexity & Quality Rubric
+- **Validation**: Handles nominal and boundary test cases.
+- **Best Practice**: Adheres to idiomatic design and standard time/space constraints.
+-----
+### CodeAlpaca topic/role/category/difficulty counters
+topic [('Python Algorithms & Data Structures', 2272), ('JavaScript / DOM / React Tasks', 754), ('Java DSA & OOP Problems', 531), ('SQL Queries & Schema Design', 457), ('Full Stack Logic & APIs', 116), ('Backend Logic & Algorithms', 87), ('Bash & Automation Scripts', 86), ('Data Analytics & SQL Queries', 74), ('ML Algorithms & Data Processing', 71), ('AI & NLP Implementation', 52)]
+role [('Python Developer', 2272), ('Frontend Developer', 754), ('Java Developer', 531), ('Database Developer', 457), ('Full Stack Developer', 116), ('Backend Developer', 87), ('DevOps / Cloud Engineer', 86), ('Data Analyst', 74), ('Machine Learning Engineer', 71), ('AI Engineer', 52)]
+category [('Coding', 4500)]
+difficulty [('Easy', 2385), ('Hard', 1574), ('Medium', 541)]
+### CodeAlpaca subtopic sample
+['Edit the Python code so that it prints out the total number of elements in the l', 'Write an SQL query to calculate the average order price for each product categor', 'Write a SQL query to find the total number of orders placed between two given da', 'Create a C program that prints out the Fibonacci sequence.', 'Write a function in JavaScript to count the number of vowels in a given string.', 'Write code that removes spaces from a given string.', 'Create a list comprehension to generate a list of multiples of 3 from 0 to 23.', 'Create a Java program that prints out the sum of the numbers in the array.', 'Create a function in Java for computing the factorial of a positive integer numb', 'Sum up the numbers in the array in Javascript.', 'Write a SQL query to calculate the total number of orders in the "orders" table.', 'Write a function that takes a string and reverses the words.', 'Write a replace method for a string class which replaces the given string with a', 'Write code to create a list of all prime numbers between 2 and 100.', 'Create a function that takes in two numbers as arguments and returns the product']
+### CUR sample per first-line type
+TYPE CORE {"role": "Frontend Developer", "topic": "CSS3 & Modern Styling", "source": "InterviewMind-AI-Curated-Dataset-v1", "status": "inactive", "role_id": "frontend_developer", "category": "Theory", "subtopic": "Specificity", "languages": ["JavaScript", "TypeScript", "HTML", "CSS"], "difficulty": "Easy"}
+### CSS3 & Modern Styling: Deep Dive into Specificity
+
+**Role Focus**: Frontend Developer | **Difficulty**: Easy | **Language/Stack**: JavaScript, TypeScript, HTML, CSS
+
+#### Architectural Overview
+In Frontend Developer environments, Specificity within CSS3 & Modern Styling plays a pivotal role in system reliability and efficiency. Understanding the underlying mechanics of Specificity ensures that implementations scale predictably under production workloads.
+
+#### Core Principles & Mechanism
+1. **Core Mechanism**: Specificity enforces deterministic execution and guarantees correctness across d
+-----
+TYPE CODE {"role": "Frontend Developer", "topic": "HTML5 & Semantic Elements", "source": "InterviewMind-AI-Curated-Dataset-v1", "status": "inactive", "role_id": "frontend_developer", "category": "Theory", "subtopic": "Structure", "languages": ["JavaScript", "TypeScript", "HTML", "CSS"], "difficulty": "Easy"}
+### Code Implementation: HTML5 & Semantic Elements (Structure)
+
+**Role**: Frontend Developer | **Category**: Theory | **Language**: JavaScript, TypeScript, HTML, CSS
+
+#### Implementation Pattern
+Below is the standard, production-grade pattern demonstrating Structure within HTML5 & Semantic Elements:
+
+```text
+// Technical Demonstration: Structure
+Function/Component: Execute_Structure
+Input: (context, payload, options)
+Validation: Ensure payload is sanitized and conforms to schema
+Execution Flow:
+  1. Initialize state for Structure
+  2. Apply transformation logic conforming to HTML5 & Semantic E
+-----
+TYPE SCEN {"role": "Frontend Developer", "topic": "CSS3 & Modern Styling", "source": "InterviewMind-AI-Curated-Dataset-v1", "status": "inactive", "role_id": "frontend_developer", "category": "Theory", "subtopic": "TailwindCSS", "languages": ["JavaScript", "TypeScript", "HTML", "CSS"], "difficulty": "Easy"}
+### Production Scenario: Scaling CSS3 & Modern Styling with TailwindCSS
+
+**Role**: Frontend Developer | **Difficulty**: Easy
+
+#### Problem Statement
+A high-concurrency production service for a Frontend Developer application encounters performance bottlenecks and latency spikes during peak load. The engineering team decides to leverage TailwindCSS as part of the CSS3 & Modern Styling optimization strategy.
+
+#### Solution Architecture
+- **Strategy**: Refactor existing bottlenecks by implementing TailwindCSS.
+- **Data Flow**: Incoming requests pass through an optimized pipeline where TailwindCSS 
+-----
+TYPE PIT {"role": "Frontend Developer", "topic": "JavaScript Core & ES6+", "source": "InterviewMind-AI-Curated-Dataset-v1", "status": "inactive", "role_id": "frontend_developer", "category": "Theory", "subtopic": "Prototypes", "languages": ["JavaScript", "TypeScript", "HTML", "CSS"], "difficulty": "Easy"}
+### Pitfalls & Best Practices: JavaScript Core & ES6+ — Prototypes
+
+**Role Target**: Frontend Developer | **Level**: Easy
+
+#### Top 3 Common Mistakes
+1. **Ignoring Edge Cases**: Failing to account for null, empty, or out-of-order data when dealing with Prototypes.
+2. **Over-Engineering**: Applying complex variations of Prototypes when a simple, direct solution suffices.
+3. **Missing Telemetry**: Omitting error logging and structured metrics around Prototypes in production.
+
+#### Hardening Checklist for Production
+- [x] Unit test coverage >= 85% covering error scenarios.
+- [x] Graceful degradat
+-----
+### NONE rows
+{"topic": "Binary Search", "status": "inactive"} | Binary Search requires sorted data and repeatedly divides the search space in half.
+{"topic": "SQL Joins", "status": "inactive", "category": "Databases"} | SQL INNER JOIN returns rows with matching key values in both tables. LEFT JOIN returns all records from the left table along with matching records from the right table.
+{"topic": "REST APIs", "status": "inactive", "category": "Web Architecture"} | REST APIs operate over HTTP using standard methods GET, POST, PUT, DELETE for stateless client-server resource manipulation with structured JSON data representations.
+{"topic": "Java OOP", "status": "inactive", "category": "Programming Languages"} | Java OOP principles comprise Encapsulation, Inheritance, Polymorphism, and Abstraction to structure modular, reusable object-oriented software components.
+{"topic": "Python FastAPI", "status": "inactive", "category": "Backend Web Frameworks"} | Python FastAPI is a high-performance web framework for building RESTful APIs using Python 3.8+ typing, Pydantic data validation, OpenAPI specs, and Starlette async ASGI features.
+{"topic": "Binary Search", "status": "inactive", "category": "Data Structures & Algorithms"} | Binary Search algorithm requires sorted data and repeatedly divides the search space in half. Time complexity is O(log N) and space complexity is O(1) iterative or O(log N) recursive.

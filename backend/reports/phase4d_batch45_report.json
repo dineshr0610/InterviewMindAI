@@ -1,0 +1,72 @@
+{
+  "batch": "batch_45_python_developer",
+  "records_attempted": 50,
+  "records_accepted": 50,
+  "records_rejected": 0,
+  "rejection_reasons": {},
+  "max_similarity_scores": {
+    "question": 0.494,
+    "answer": 0.425,
+    "combined": 0.504
+  },
+  "intra_batch_overlaps": 0,
+  "intra_batch_answer_overlaps": 0,
+  "answer_flags_gt_50": 0,
+  "staging_metrics": {
+    "previous_staging_total": 2192,
+    "final_staging_total": 2242,
+    "role_total": 250,
+    "remaining_to_500": 250
+  },
+  "distributions": {
+    "difficulty": {
+      "hard": 16,
+      "medium": 31,
+      "easy": 3
+    },
+    "intent": {
+      "optimize": 3,
+      "diagnose": 12,
+      "compare": 6,
+      "architecture": 9,
+      "tradeoff": 7,
+      "scenario": 8,
+      "explain": 5
+    },
+    "primary_skill": {
+      "C Extensions": 15,
+      "Asyncio": 17,
+      "Memory Profiling": 16,
+      "CPython Internals": 1,
+      "Memory Management": 1
+    },
+    "technology": {
+      "CPython": 15,
+      "asyncio": 17,
+      "tracemalloc": 16,
+      "C API": 1,
+      "Python": 1
+    },
+    "topic": {
+      "CPython Internals": 15,
+      "Async Concurrency": 16,
+      "Memory Management": 15,
+      "Reference Ownership": 1,
+      "Event Loop Internals": 1,
+      "Production Profiling": 1,
+      "Object Lifecycle": 1
+    },
+    "opening_diversity": {
+      "what is the": 11,
+      "a c extension": 4,
+      "you need to": 2,
+      "you are building": 2,
+      "you have a": 2,
+      "a python application": 1,
+      "when working with": 1,
+      "compare the architectural": 1,
+      "you are passing": 1,
+      "during a production": 1
+    }
+  }
+}

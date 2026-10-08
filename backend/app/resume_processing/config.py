@@ -110,35 +110,65 @@ def list_roles() -> List[Dict[str, Any]]:
     return data.get("roles", [])
 
 
+def normalize_role_name(role_identifier: str) -> str:
+    """Canonical role normalization as per Phase 6 requirements."""
+    if not role_identifier:
+        return ""
+        
+    r = role_identifier.lower().strip()
+    
+    if "python" in r:
+        return "Python Developer"
+    if "java" in r and "javascript" not in r:
+        return "Java Developer"
+    if "frontend" in r or "front-end" in r or "front end" in r or "react" in r or "ui" in r:
+        return "Frontend Developer"
+    if "backend" in r or "back-end" in r or "back end" in r or "api" in r or "server" in r:
+        return "Backend Developer"
+    if "full stack" in r or "full-stack" in r or "fullstack" in r:
+        return "Full Stack Developer"
+    if "devops" in r or "cloud" in r or "sre" in r or "infrastructure" in r:
+        return "DevOps / Cloud Engineer"
+    if "database" in r or "sql" in r or "dba" in r or "data engineer" in r:
+        return "Database Developer"
+    if "data analyst" in r or "data analysis" in r or "analytics" in r:
+        return "Data Analyst"
+    if "ai engineer" in r or "artificial intelligence" in r or "genai" in r or "llm" in r:
+        return "AI Engineer"
+    if "ml engineer" in r or "machine learning" in r or "ml" in r.split():
+        return "ML Engineer"
+        
+    return role_identifier.strip().title()
+
 def get_role_by_identifier(role_identifier: str) -> Optional[Dict[str, Any]]:
-    """Find a role dynamically by role_id, role_name, or fuzzy alias matching."""
+    """Find a role dynamically by canonical role mapping. Do not use fallbacks."""
     if not role_identifier:
         return None
 
+    canonical = normalize_role_name(role_identifier)
     roles = list_roles()
-    target = _normalize_name(role_identifier)
 
-    # 1. Exact match on role_id or role_name
+    # 1. Exact match on canonical role_name
     for role in roles:
-        if _normalize_name(role.get("role_id", "")) == target:
-            return role
-        if _normalize_name(role.get("role_name", "")) == target:
+        if role.get("role_name") == canonical:
             return role
 
-    # 2. Match with replaced underscores/hyphens
-    target_clean = role_identifier.strip().lower().replace("-", "_").replace(" ", "_")
+    # 2. Try matching by clean role_id
+    target_clean = canonical.lower().replace(" ", "_").replace("/", "").replace("__", "_")
     for role in roles:
-        if role.get("role_id", "").lower() == target_clean:
+        if role.get("role_id") == target_clean:
             return role
-
-    # 3. Substring / keyword match (e.g. 'ML' -> 'ML Engineer', 'Fullstack' -> 'Full Stack Developer')
+            
+    # 3. Substring / keyword match
+    target_norm = _normalize_name(canonical)
     for role in roles:
         role_name_norm = _normalize_name(role.get("role_name", ""))
         role_id_norm = _normalize_name(role.get("role_id", ""))
-        if target in role_name_norm or target in role_id_norm:
+        if target_norm in role_name_norm or target_norm in role_id_norm:
             return role
-        if role_name_norm in target or role_id_norm in target:
+        if role_name_norm in target_norm or role_id_norm in target_norm:
             return role
 
-    # 4. Fallback to default first role if nothing matches
+    # No fallback to Full Stack Developer or roles[0]. Return None to trigger ValueError.
     return None
+
