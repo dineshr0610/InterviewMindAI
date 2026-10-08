@@ -23,7 +23,10 @@ Return ONLY valid JSON.
 {{
     "score": 0,
     "feedback": "",
-    "strengths": "",
-    "improvements": ""
+    "strengths": [""],
+    "improvements": [""],
+    "demonstrated_concepts": [""],
+    "missing_concepts": [""],
+    "misconceptions": [""]
 }}
 """)

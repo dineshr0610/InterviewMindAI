@@ -38,3 +38,17 @@ class InterviewState(TypedDict):
     next_strategy: str
 
     follow_up_depth: int
+
+    # Adaptive Strategy State
+    target_role: str
+    demonstrated_competencies: list[str]
+    weak_competencies: list[str]
+    missing_resume_evidence: list[str]
+    untested_competencies: list[str]
+    recent_questions: list[str]
+    recent_answers: list[str]
+    recent_evaluations: list[str]
+    current_strategy: str
+    current_difficulty: str
+    recent_rag_context: list[str]
+    misconceptions: list[str]

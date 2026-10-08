@@ -88,7 +88,7 @@ class RAGService:
             logger.warning("[RAG] Supabase vector retrieval failed (%s), proceeding to local fallback", exc)
 
         # -------------------------------------------------------------
-        # 2. Local QuestionBankService Fallback (5,000 canonical dataset)
+        # 2. Local QuestionBankService Fallback (3,146 canonical dataset)
         # -------------------------------------------------------------
         try:
             bank_service = get_question_bank_service()
