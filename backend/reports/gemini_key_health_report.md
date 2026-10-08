@@ -15,17 +15,17 @@ Total configured keys: 13
 | KEY_09 | HEALTHY | - | YES |
 | KEY_10 | HEALTHY | - | YES |
 | KEY_11 | HEALTHY | - | YES |
-| KEY_12 | TEMPORARILY_UNAVAILABLE | TIMEOUT | NO |
+| KEY_12 | HEALTHY | - | YES |
 | KEY_13 | HEALTHY | - | YES |
 
-Total healthy keys: 12
+Total healthy keys: 13
 Total invalid keys: 0
 Total quota-exhausted keys: 0
-Total temporarily unavailable keys: 1
-Total embedding-ready keys: 12
+Total temporarily unavailable keys: 0
+Total embedding-ready keys: 13
 
 Total real API requests made:
-12
+13
 
 Database modifications:
 0

@@ -77,8 +77,37 @@ export default function HomePage() {
 
   // Auto-analyze resume when target role changes
   useEffect(() => {
-    if (resumeContext && selectedRole && selectedRole.trim().length >= 2) {
-      fetchResumeAnalysis(resumeContext, selectedRole.trim(), getValues('name') || 'Candidate')
+    let active = true
+
+    const validateAndFetch = async () => {
+      if (resumeContext && selectedRole && selectedRole.trim().length >= 2) {
+        try {
+          const normalizedCurrent = await interviewService.normalizeRole(selectedRole.trim())
+          if (!active) return
+
+          if (analysisResult) {
+            // explicit validation
+            if (analysisResult.selected_role === normalizedCurrent) {
+              return // Reuse the existing analysis!
+            } else {
+              setAnalysisResult(null) // Mark stale by clearing
+            }
+          }
+
+          await fetchResumeAnalysis(resumeContext, selectedRole.trim(), getValues('name') || 'Candidate')
+        } catch (err) {
+          console.warn('[Home] Validation or analysis error:', err)
+        }
+      }
+    }
+
+    const timer = setTimeout(() => {
+      validateAndFetch()
+    }, 500)
+
+    return () => {
+      active = false
+      clearTimeout(timer)
     }
   }, [selectedRole, resumeContext])
 
@@ -148,17 +177,23 @@ export default function HomePage() {
       return
     }
 
-    if (!analysisResult) {
-      const analysis = await fetchResumeAnalysis(
-        resumeContext,
-        currentRole,
-        getValues('name') || 'Candidate'
-      )
-      if (analysis) {
+    try {
+      const normalizedCurrent = await interviewService.normalizeRole(currentRole.trim())
+
+      if (!analysisResult || analysisResult.selected_role !== normalizedCurrent) {
+        const analysis = await fetchResumeAnalysis(
+          resumeContext,
+          currentRole.trim(),
+          getValues('name') || 'Candidate'
+        )
+        if (analysis) {
+          setShowAnalysisModal(true)
+        }
+      } else {
         setShowAnalysisModal(true)
       }
-    } else {
-      setShowAnalysisModal(true)
+    } catch (err) {
+      console.warn('[Home] Preview analysis error:', err)
     }
   }
 
@@ -190,10 +225,13 @@ export default function HomePage() {
       // If a resume is uploaded, present the pre-interview analysis overview first!
       if (resumeContext && data.role) {
         let currentAnalysis = analysisResult
-        if (!currentAnalysis || currentAnalysis.selected_role !== data.role) {
+        
+        const normalizedCurrent = await interviewService.normalizeRole(data.role.trim())
+
+        if (!currentAnalysis || currentAnalysis.selected_role !== normalizedCurrent) {
           currentAnalysis = await fetchResumeAnalysis(
             resumeContext,
-            data.role,
+            data.role.trim(),
             data.name || 'Candidate'
           )
         }

@@ -25,6 +25,7 @@ from app.resume_processing import (
     Module1Output,
     get_resume_processing_service,
 )
+from app.resume_processing.config import normalize_role_name
 from app.utils.resume import (
     ALLOWED_MIME_TYPES,
     MAX_RESUME_SIZE_BYTES,
@@ -53,6 +54,18 @@ async def get_roles(
 ) -> dict:
     """Return role requirements used by resume matching and question selection."""
     return success_response({"roles": service.available_roles()})
+
+
+@router.get(
+    "/roles/normalize",
+    response_model=dict,
+    summary="Normalize a role identifier",
+)
+async def get_normalized_role(
+    role: str,
+) -> dict:
+    """Return the Phase 6 canonical normalized role name."""
+    return success_response({"normalized_role": normalize_role_name(role)})
 
 
 @router.post(

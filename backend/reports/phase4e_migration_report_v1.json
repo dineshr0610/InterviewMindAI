@@ -1,0 +1,33 @@
+{
+  "source_sha256": "9a86edca07bc1b195de88b601345a55b45773602907c383e0ad630aff3e41092",
+  "source_size": 3653191,
+  "source_count": 2492,
+  "pre_migration_db_count": 9394,
+  "inserted_count": 2492,
+  "post_migration_db_count": 11886,
+  "new_migration_batch_count": 2492,
+  "role_counts": {
+    "Python Developer": 250,
+    "Java Developer": 250,
+    "DevOps / Cloud Engineer": 245,
+    "AI Engineer": 250,
+    "Database Developer": 250,
+    "ML Engineer": 250,
+    "Data Analyst": 250,
+    "Full Stack Developer": 250,
+    "Frontend Developer": 250,
+    "Backend Developer": 247
+  },
+  "status_counts": {
+    "active": 2492
+  },
+  "embedding_null_count": 2492,
+  "legacy_preservation": "SUCCESS - All legacy IDs preserved",
+  "metadata_validation": "SUCCESS",
+  "duplicate_checks": "SUCCESS - 0 duplicates",
+  "transaction_status": "COMMITTED",
+  "migration_duration_seconds": 2.92,
+  "warnings": [
+    "Legacy DB metadata uses Title Case for roles (e.g. 'Backend Developer'), which we preserved per instructions. However, the application code may use snake_case filtering (e.g. 'backend_developer'). This represents a potential compatibility issue."
+  ]
+}

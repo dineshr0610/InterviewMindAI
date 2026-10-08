@@ -1,0 +1,38 @@
+{
+  "global_summary": {
+    "new_questions": 2492,
+    "legacy_supabase_rows": 9394,
+    "legacy_question_bearing_records": 878,
+    "legacy_active_rows": 1730,
+    "legacy_inactive_rows": 7664,
+    "legacy_null_embeddings": 4764,
+    "legacy_populated_embeddings": 4630,
+    "exact_duplicates": 0,
+    "near_duplicates": 0,
+    "semantic_competency_collisions": 0,
+    "legitimate_overlaps": 0,
+    "false_positives": 0,
+    "review_required": 0,
+    "safe_new_migrations": 2492
+  },
+  "legacy_quality_audit": {
+    "INACTIVE/QUARANTINED CONTENT": 7664,
+    "POSSIBLE QUESTION - REVIEW": 878,
+    "NO INTERVIEW QUESTION": 852
+  },
+  "source_by_source_analysis": {
+    "InterviewMind-AI-Curated-Dataset-v1": 3261,
+    "unknown": 6,
+    "https://raw.githubusercontent.com/sudheerj/javascript-interview-questions/master/README.md": 716,
+    "https://github.com/sahil280114/codealpaca": 4500,
+    "https://raw.githubusercontent.com/donnemartin/system-design-primer/master/README.md": 166,
+    "https://raw.githubusercontent.com/sudheerj/reactjs-interview-questions/master/README.md": 581,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/kubernetes/README.md": 53,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/linux/README.md": 36,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/aws/README.md": 61,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/git/README.md": 9,
+    "https://raw.githubusercontent.com/bregman-arie/devops-exercises/master/topics/cicd/README.md": 5
+  },
+  "file_hash_verified": true,
+  "final_readiness_decision": "READY FOR MIGRATION"
+}

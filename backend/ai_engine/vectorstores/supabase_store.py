@@ -21,7 +21,7 @@ RAG_CANDIDATE_POOL_SIZE = 8
 
 class SupabaseVectorRetriever(BaseRetriever):
     k: int = RAG_CANDIDATE_POOL_SIZE
-    similarity_threshold: float = 0.3
+    similarity_threshold: float = 0.70
 
     def get_filtered_documents(self, query: str, metadata_filter: dict = None) -> List[Document]:
         supabase_url = os.getenv("SUPABASE_URL")

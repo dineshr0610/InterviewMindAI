@@ -37,6 +37,23 @@ class Feedback(BaseModel):
     resume_improvements: List[str] = Field(default_factory=list, description="Suggestions for improving resume clarity")
 
 
+class CompetencyEvidence(BaseModel):
+    topic: str = Field(..., description="Technical topic or skill")
+    category: str = Field(..., description="Category from role knowledge base")
+    status: str = Field(..., description="'strong_match', 'partial_match', or 'missing'")
+    evidence: str = Field(..., description="Concrete sentence or phrase extracted from resume proving usage")
+    source: str = Field(..., description="Project name, company, or section context")
+    confidence: float = Field(0.0, description="Match confidence")
+
+class CompetencyMatrix(BaseModel):
+    target_role: str = Field(..., description="Canonical target role")
+    programming_languages: List[CompetencyEvidence] = Field(default_factory=list)
+    core_skills: List[CompetencyEvidence] = Field(default_factory=list)
+    frameworks_tools: List[CompetencyEvidence] = Field(default_factory=list)
+    technical_concepts: List[CompetencyEvidence] = Field(default_factory=list)
+    projects: List[Dict[str, Any]] = Field(default_factory=list)
+    experience_evidence: List[Dict[str, Any]] = Field(default_factory=list)
+
 class Module1Output(BaseModel):
     selected_role: str = Field(..., description="Selected target role name")
     role_match_score: float = Field(..., ge=0, le=100, description="Deterministic overall role match score (0-100)")
@@ -49,6 +66,10 @@ class Module1Output(BaseModel):
     interview_context: List[InterviewContextItem] = Field(
         default_factory=list,
         description="Structured context passed to Module 2 for personalized question generation",
+    )
+    competency_matrix: Optional[CompetencyMatrix] = Field(
+        default=None,
+        description="Shared normalized resume evidence matrix",
     )
     ai_analysis: Optional[Dict[str, Any]] = Field(
         default=None,
@@ -110,6 +131,7 @@ class AIScoreBreakdown(BaseModel):
 
 
 class AIResumeAnalysisOutput(BaseModel):
+    target_role: str = Field(default="")
     summary: str = Field(default="")
     ai_match_score: Optional[float] = Field(default=None)
     ai_score_breakdown: Optional[AIScoreBreakdown] = Field(default=None)

@@ -1,0 +1,76 @@
+{
+  "batch": "batch_47_ai_engineer",
+  "records_attempted": 50,
+  "records_accepted": 50,
+  "records_rejected": 0,
+  "rejection_reasons": {},
+  "max_similarity_scores": {
+    "question": 0.498,
+    "answer": 0.296,
+    "combined": 0.441
+  },
+  "intra_batch_overlaps": 0,
+  "intra_batch_answer_overlaps": 0,
+  "answer_flags_gt_50": 0,
+  "staging_metrics": {
+    "previous_staging_total": 2292,
+    "final_staging_total": 2342,
+    "role_total": 250,
+    "remaining_to_500": 250
+  },
+  "distributions": {
+    "difficulty": {
+      "hard": 16,
+      "medium": 30,
+      "easy": 4
+    },
+    "intent": {
+      "tradeoff": 10,
+      "architecture": 10,
+      "compare": 3,
+      "optimize": 3,
+      "diagnose": 10,
+      "explain": 5,
+      "scenario": 9
+    },
+    "primary_skill": {
+      "Vector Indexing": 11,
+      "AI Observability": 11,
+      "Inference Reliability": 10,
+      "Multi-Agent Systems": 9,
+      "Advanced RAG": 9
+    },
+    "technology": {
+      "Vector Databases": 11,
+      "Evaluation": 11,
+      "LLMs": 10,
+      "Agents": 9,
+      "RAG": 9
+    },
+    "topic": {
+      "Vector Databases": 10,
+      "AI Evaluation": 10,
+      "Structured Generation": 10,
+      "Agent Orchestration": 7,
+      "Retrieval Architecture": 7,
+      "Query Expansion": 1,
+      "Agent State": 1,
+      "Routing": 1,
+      "Safety Metrics": 1,
+      "Re-ranking": 1,
+      "Scaling": 1
+    },
+    "opening_diversity": {
+      "what is the": 8,
+      "you are building": 4,
+      "you want to": 2,
+      "when configuring an": 1,
+      "you are tasked": 1,
+      "in product quantization": 1,
+      "your production rag": 1,
+      "you implement a": 1,
+      "how does hnsw": 1,
+      "explain the architecture": 1
+    }
+  }
+}

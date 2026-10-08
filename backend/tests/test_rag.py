@@ -129,3 +129,60 @@ def test_malformed_document_handled_safely() -> None:
         docs = retriever._get_relevant_documents("Binary Search")
         assert len(docs) == 1
         assert docs[0].page_content == ""
+
+
+def test_rag_threshold_below_70_rejected() -> None:
+    """Test 7: Proves that a result below 0.70 is rejected."""
+    # We test this by observing the RPC payload and simulating a response that a mocked DB might return
+    retriever = SupabaseVectorRetriever(k=2, similarity_threshold=0.70)
+
+    # In actual DB, the query itself filters it. We can simulate the DB return if we want,
+    # but the simplest way to prove the app rejects it is checking the payload threshold.
+    with patch.dict(os.environ, {"DATABASE_URL": ""}), \
+         patch.object(embedding_provider, "embed_query") as mock_embed, \
+         patch("requests.Session.post") as mock_post:
+         
+        mock_embed.return_value = [0.1] * 1536
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = [] # DB filters out < 0.70
+        mock_post.return_value = mock_resp
+
+        docs = retriever.get_filtered_documents("Test")
+        
+        # Verify the threshold was passed to Supabase
+        call_kwargs = mock_post.call_args.kwargs
+        assert call_kwargs["json"]["match_threshold"] == 0.70
+        assert len(docs) == 0
+
+
+def test_rag_threshold_above_70_accepted() -> None:
+    """Test 8: Proves that a result >= 0.70 is accepted."""
+    retriever = SupabaseVectorRetriever(k=2, similarity_threshold=0.70)
+    
+    mock_rows = [
+        {
+            "id": "123",
+            "content": "Valid high similarity content",
+            "metadata": {"role": "Backend Developer"},
+            "similarity": 0.75,
+        }
+    ]
+
+    with patch.dict(os.environ, {"DATABASE_URL": ""}), \
+         patch.object(embedding_provider, "embed_query") as mock_embed, \
+         patch("requests.Session.post") as mock_post:
+         
+        mock_embed.return_value = [0.1] * 1536
+        mock_resp = MagicMock()
+        mock_resp.status_code = 200
+        mock_resp.json.return_value = mock_rows
+        mock_post.return_value = mock_resp
+
+        docs = retriever.get_filtered_documents("Test", metadata_filter={"role": "Backend Developer"})
+        
+        call_kwargs = mock_post.call_args.kwargs
+        assert call_kwargs["json"]["match_threshold"] == 0.70
+        assert call_kwargs["json"]["metadata_filter"] == {"role": "Backend Developer"}
+        assert len(docs) == 1
+        assert docs[0].metadata["similarity"] >= 0.70

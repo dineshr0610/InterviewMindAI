@@ -80,7 +80,7 @@ def test_multimodal_content_fix(monkeypatch):
     except ImportError:
         pass
         
-    result = analyzer.analyze(_get_dummy_profile(), _get_dummy_role())
+    result = analyzer.analyze({}, _get_dummy_profile(), _get_dummy_role())
     assert result is not None
     assert result["summary"] == "test"
 
@@ -98,7 +98,7 @@ def test_malformed_json(monkeypatch):
     except ImportError:
         pass
         
-    result = analyzer.analyze(_get_dummy_profile(), _get_dummy_role())
+    result = analyzer.analyze({}, _get_dummy_profile(), _get_dummy_role())
     assert result is None
 
 def test_malformed_fields_validation(monkeypatch):
@@ -115,7 +115,7 @@ def test_malformed_fields_validation(monkeypatch):
     except ImportError:
         pass
         
-    result = analyzer.analyze(_get_dummy_profile(), _get_dummy_role())
+    result = analyzer.analyze({}, _get_dummy_profile(), _get_dummy_role())
     # Malformed data missing the 'requirement' key gets stripped, leaving core_requirements empty.
     # Since summary is missing, no content remains, and sanitize_ai_analysis returns None.
     assert result is None

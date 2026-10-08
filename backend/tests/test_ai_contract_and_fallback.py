@@ -63,7 +63,7 @@ def test_test1_gemini_succeeds_ai_analysis_populated():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=MOCK_AI_DATA):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         assert output.ai_analysis is not None
@@ -78,7 +78,7 @@ def test_test2_gemini_fails_ai_analysis_null():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=None):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         assert output.ai_analysis is None
@@ -90,7 +90,7 @@ def test_test3_gemini_fails_no_fabricated_fit_claim():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=None):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         output_dict = output.model_dump()
@@ -104,7 +104,7 @@ def test_test4_test5_gemini_fails_no_ai_recommendations_or_interviewer_focus():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=None):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         assert output.ai_analysis is None
@@ -117,7 +117,7 @@ def test_test6_gemini_fails_explicit_resume_facts_preserved():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=None):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         # Explicit resume facts are preserved in matched_areas
@@ -133,7 +133,7 @@ def test_test7_gemini_succeeds_evidence_comes_from_ai_analysis():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=MOCK_AI_DATA):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         assert output.ai_analysis is not None
@@ -148,7 +148,7 @@ def test_test8_gemini_succeeds_frontend_contract_fidelity():
     with patch.object(AIResumeAnalyzer, "analyze", return_value=MOCK_AI_DATA):
         output: Module1Output = service.process(
             resume_data=DUMMY_RESUME_TEXT.encode("utf-8"),
-            role="software_engineer",
+            role="full_stack_developer",
             candidate_name="Dinesh"
         )
         data = output.model_dump()

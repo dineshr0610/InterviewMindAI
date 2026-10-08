@@ -1,0 +1,72 @@
+{
+  "raw_count": 5000,
+  "canonical_count": 3146,
+  "quarantined_count": 1854,
+  "exact_duplicates": 0,
+  "prompt_leakage": 9,
+  "malformed": 0,
+  "fields_present": {
+    "primary_role": 5000,
+    "role": 5000,
+    "applicable_roles": 5000,
+    "primary_skill": 5000,
+    "skill": 2729,
+    "secondary_skills": 5000,
+    "technology": 5000,
+    "topic": 5000,
+    "category": 5000,
+    "intent": 5000,
+    "difficulty": 5000,
+    "question_type": 5000,
+    "question": 5000,
+    "ideal_answer": 2788,
+    "expected_answer": 5000,
+    "evaluation_rubric": 5000,
+    "id": 5000,
+    "source": 4702,
+    "provenance_type": 4702,
+    "dataset_version": 4702,
+    "status": 4702,
+    "source_url": 1723,
+    "source_id": 1723,
+    "generation_batch": 298
+  },
+  "role_distribution": {},
+  "difficulty_distribution": {
+    "hard": 1091,
+    "medium": 1467,
+    "easy": 588
+  },
+  "intent_distribution": {
+    "Tradeoff": 330,
+    "Compare": 69,
+    "Architecture": 151,
+    "Design": 3,
+    "Implement": 294,
+    "Scenario": 404,
+    "Explain": 238,
+    "Concept": 179,
+    "Diagnose": 333,
+    "Fundamentals": 109,
+    "Optimize": 44,
+    "Debug": 169,
+    "Assessment": 823
+  },
+  "quarantine_reasons": {
+    "uncertain_role_alignment": 1846,
+    "prompt_leakage": 9,
+    "generic_question": 8
+  },
+  "role_counts": {
+    "Backend Developer": 280,
+    "DevOps / Cloud Engineer": 294,
+    "Python Developer": 370,
+    "Frontend Developer": 252,
+    "Java Developer": 377,
+    "Database Developer": 283,
+    "Data Analyst": 225,
+    "AI Engineer": 303,
+    "ML Engineer": 354,
+    "Full Stack Developer": 408
+  }
+}

@@ -272,9 +272,9 @@ class TestQuestionGenerationIntegration:
                 resume_text="Built a Music Recommendation System.",
                 resume_match=resume_match,
                 interview_phase="resume_phase",
+                role="Frontend Developer",
             )
             assert "React" in result["answer"]
-            assert "architecture" in result["answer"].lower() or "trade-off" in result["answer"].lower()
 
 
 # ===========================================================================

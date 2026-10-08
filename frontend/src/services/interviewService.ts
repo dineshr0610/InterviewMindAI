@@ -121,6 +121,12 @@ export const interviewService = {
     return resData.data || resData
   },
 
+  async normalizeRole(role: string) {
+    const response = await api.get(`/api/interview/roles/normalize?role=${encodeURIComponent(role)}`)
+    const resData = response.data
+    return (resData.data && resData.data.normalized_role) || resData.normalized_role || role
+  },
+
   async checkHealth() {
     const response = await api.get('/api/health')
     const resData = response.data

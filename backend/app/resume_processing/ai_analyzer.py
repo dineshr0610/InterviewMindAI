@@ -54,13 +54,13 @@ Your task is to analyze a candidate's resume evidence against an authoritative r
 IMPORTANT RULES:
 1. Do NOT invent or assume role requirements. Every "requirement" / "technology" / gap / missing item MUST be copied
    verbatim from the provided ROLE REQUIREMENTS lists.
-2. NEVER claim a candidate has experience that is not supported by their resume evidence. Every "evidence" string MUST be
-   an exact quote copied from the CANDIDATE RESUME EVIDENCE (raw_text, projects or experience).
+2. NEVER claim a candidate has experience that is not supported by their resume evidence. The DETERMINISTIC COMPETENCY MATRIX
+   contains verified evidence found by the system. Use this as your primary source of truth for what the candidate has and hasn't done.
 3. Only list a project in "relevant_projects" if it appears by name in the candidate's projects/resume.
 4. Distinguish between:
    - "strong_match": explicitly demonstrated in projects or long-term experience (needs a quote)
    - "partial_match": mentioned in skills or weakly inferred (needs a quote)
-   - "missing_evidence": not mentioned at all (use an empty evidence list)
+   - "missing_evidence": not mentioned at all (use an empty evidence list). If it's missing in the COMPETENCY MATRIX, it MUST be missing.
 5. Provide QUALITATIVE insight (summary, reasoning, interview focus areas); do not just restate a keyword list.
 6. Never output null. Use empty strings or empty lists instead.
 7. Produce a strict JSON object exactly matching the requested schema. Do not output markdown code blocks or text outside the JSON.
@@ -72,6 +72,7 @@ IMPORTANT RULES:
 SCHEMA_INSTRUCTION = """
 You MUST return a JSON object with this exact structure:
 {
+  "target_role": "String (verbatim role name)",
   "summary": "Qualitative summary of fit...",
   "ai_match_score": 85,
   "ai_score_breakdown": {
@@ -467,6 +468,7 @@ def sanitize_ai_analysis(
         ai_score_breakdown = None
 
     result = {
+        "target_role": role.role_name,
         "summary": summary,
         "ai_match_score": ai_match_score,
         "ai_score_breakdown": ai_score_breakdown,
@@ -485,7 +487,7 @@ def sanitize_ai_analysis(
     if rejected:
         logger.info("AI resume analysis: filtered unsupported items: %s", rejected)
 
-    has_content = bool(summary) or any(result[k] for k in result if k != "summary")
+    has_content = bool(summary) or any(result[k] for k in result if k not in ("summary", "target_role"))
     if not has_content:
         return None
 
@@ -519,7 +521,7 @@ class AIResumeAnalyzer:
     def __init__(self):
         pass
 
-    def analyze(self, profile: ExtractedCandidateProfile, role: RoleProfile) -> Optional[Dict[str, Any]]:
+    def analyze(self, competency_matrix: Any, profile: ExtractedCandidateProfile, role: RoleProfile) -> Optional[Dict[str, Any]]:
         """Return a sanitized ai_analysis dict, or None if Gemini is unavailable / output unusable."""
         resume_data = {
             "skills": sorted(profile.all_skills),
@@ -537,12 +539,17 @@ class AIResumeAnalyzer:
             "role_details": role.raw_role_data,
         }
 
+        matrix_data = competency_matrix.model_dump() if hasattr(competency_matrix, 'model_dump') else competency_matrix
+
         prompt = f"""
 ROLE REQUIREMENTS:
 {json.dumps(role_data, indent=2)}
 
 CANDIDATE RESUME EVIDENCE:
 {json.dumps(resume_data, indent=2)}
+
+DETERMINISTIC COMPETENCY MATRIX (Verified Evidence):
+{json.dumps(matrix_data, indent=2)}
 
 {SCHEMA_INSTRUCTION}
 """

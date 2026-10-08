@@ -316,33 +316,88 @@ class AIProvider:
                     exc,
                 )
 
-        # Deterministic fallback evaluation.
-        answer_len = len(answer.strip())
+        # Deterministic fallback evaluation (evidence-aware heuristic).
+        import re
 
-        if answer_len >= 250:
-            score = 8
-        elif answer_len >= 150:
-            score = 7
-        elif answer_len >= 80:
-            score = 6
-        elif answer_len >= 40:
-            score = 5
-        else:
-            score = 3
+        stop_words = {
+            "what", "how", "why", "explain", "describe", "compare", "the", "and", "is",
+            "in", "to", "of", "a", "an", "with", "for", "on", "are", "you", "would",
+            "could", "should", "it", "this", "that", "can", "be", "as", "by", "or",
+            "not", "have", "has", "had", "do", "does", "did", "from", "at", "but",
+            "about", "which", "when", "where", "who", "whom", "whose", "we", "they",
+            "them", "then", "there", "their", "so", "if", "your", "my", "our", "us",
+            "will", "shall", "may", "might", "must", "benefits", "trade", "offs",
+            "pros", "cons", "advantages", "disadvantages", "differences", "between",
+            "using", "use", "used", "uses", "tell", "me", "about", "give", "example",
+            "examples", "some", "any", "all", "more", "less", "most", "least", "very"
+        }
+
+        def tokenize(text: str) -> set:
+            words = set()
+            for word in re.findall(r"\b[a-zA-Z0-9]+\b", text or ""):
+                lower_word = word.lower()
+                if len(lower_word) > 2 and lower_word not in stop_words:
+                    words.add(lower_word)
+            return words
+
+        q_tokens = tokenize(question)
+        topic_tokens = tokenize(topic) if topic else set()
+        target_tokens = q_tokens.union(topic_tokens)
+
+        if not target_tokens:
+            target_tokens = {"data", "system", "code", "application"}
+
+        a_tokens = tokenize(answer)
+
+        matched_tokens = set()
+        for at in a_tokens:
+            for tt in target_tokens:
+                # Exact match or prefix match for words 4+ chars
+                if at == tt or (len(tt) >= 4 and len(at) >= 4 and at[:4] == tt[:4]):
+                    matched_tokens.add(tt)
+
+        tech_vocab_count = len([w for w in a_tokens if len(w) > 4])
+        coverage_ratio = len(matched_tokens) / max(1, len(target_tokens))
+
+        score = 2.0  # Base score for attempting with non-empty answer
+
+        if coverage_ratio >= 0.5:
+            score += 4.0
+        elif coverage_ratio >= 0.3:
+            score += 3.0
+        elif coverage_ratio > 0.0:
+            score += 1.0
+
+        if tech_vocab_count >= 15 and coverage_ratio >= 0.2:
+            score += 2.0
+        elif tech_vocab_count >= 8 and coverage_ratio >= 0.1:
+            score += 1.0
+        elif tech_vocab_count >= 3 and coverage_ratio == 0.0:
+            # Minor points for using technical words even if missed exact concepts
+            score += 1.0
+
+        if not a_tokens:
+            score = 0.0
+        elif len(answer.strip()) > 150 and coverage_ratio == 0.0:
+            # Penalize long irrelevant answers
+            score = 1.0
+
+        score = max(0, min(10, round(score)))
 
         return {
             "score": score,
             "feedback": (
-                "The answer demonstrates useful understanding. "
-                "Add more technical detail, examples, and edge cases."
+                "The answer has been evaluated using a fallback heuristic. "
+                "Ensure your answers directly address the technical concepts "
+                "mentioned in the question."
             ),
             "strengths": [
-                "Attempted the question",
-                "Communicated a technical explanation",
-            ],
+                "Attempted the question"
+            ] if score > 0 else [],
             "improvements": [
                 "Add concrete implementation details",
-                "Discuss complexity and edge cases",
+                "Ensure direct relevance to the question's core concepts",
             ],
         }
+
 
