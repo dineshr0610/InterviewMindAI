@@ -110,3 +110,34 @@ async def test_end_interview_flow(client: AsyncClient) -> None:
         data = response.json()
         assert data["success"] is True
         assert data["data"]["status"] == "completed"
+
+@pytest.mark.asyncio
+async def test_analyze_resume_flow(client: AsyncClient) -> None:
+    """Test POST /api/interview/resume/analyze route (Regression for missing scratch dir)."""
+    payload = {
+        "resume_text": "I am a backend developer.",
+        "role": "Backend Developer",
+        "candidate_name": "Test Candidate",
+    }
+
+    mock_res = {
+        "baseline_score": 8.0,
+        "ai_score": 8.0,
+        "matched_skills": ["Python"],
+        "missing_evidence": ["Docker"],
+        "ai_analysis": {},
+        "target_role": "Backend Developer",
+    }
+
+    from unittest.mock import MagicMock
+    with patch("app.api.routes.interview.get_resume_processing_service") as mock_get_service:
+        mock_service = MagicMock()
+        mock_service.process.return_value.model_dump.return_value = mock_res
+        mock_get_service.return_value = mock_service
+        
+        response = await client.post("/api/interview/resume/analyze", json=payload)
+        
+        assert response.status_code == 200
+        data = response.json()
+        assert data["success"] is True
+        assert data["data"]["baseline_score"] == 8.0
